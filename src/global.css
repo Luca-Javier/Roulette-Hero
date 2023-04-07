@@ -1,0 +1,102 @@
+/* *--------------------------------------Reset-------------------------------------- */
+::root {
+  --money: #ffd700;
+  --stone: #314c90;
+  --good: #00ff75;
+  --lucky-btn: conic-gradient(
+    from 180deg at 50% 50%,
+    rgba(221, 0, 255, 0.515152) 0deg,
+    #59009f 110.62deg,
+    rgba(221, 0, 255, 0.515152) 360deg
+  );
+  --lucky-btn-bg: linear-gradient(
+    180deg,
+    rgba(150, 44, 233, 0.470899) 0%,
+    rgba(62, 44, 233, 0.470899) 46.88%,
+    #4dc2b4 98.44%
+  );
+}
+html {
+  font-size: 16px;
+  color: white;
+  background-color: black;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Arvo";
+}
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+/* *---------------------------------Utilities--------------------------------- */
+
+.grow-1 {
+  flex-grow: 1;
+}
+.flex {
+  display: flex;
+}
+.flex-column {
+  flex-direction: column;
+}
+.h-100 {
+  height: 100%;
+}
+.second-font {
+  font-family: "Arvo";
+}
+
+/* *---------------------------------Components--------------------------------- */
+.flex-buttons {
+  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  gap: 1rem;
+}
+.flex-buttons a {
+  flex-grow: 1;
+}
+.button {
+  cursor: pointer;
+  background-color: black;
+  border: medium solid white;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  color: white;
+  font: bold;
+  display: block;
+  flex-grow: 1;
+  width: 100%;
+}
+.title {
+  font-size: 2rem;
+  text-align: center;
+}
+/* *--------------------------------Global Styles-------------------------------- */
+main {
+  width: 320px;
+  max-height: 568px;
+  flex-grow: 1;
+  border: medium solid white;
+  border-radius: 15px;
+}
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

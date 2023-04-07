@@ -1,0 +1,16 @@
+TODO LIST
+
+
+.Buscar como hacer un buen readme, buscar ejemplos
+.Aprender MarkDown
+.Modificar Readme
+
+.Probar el footer
+
+.Averiguar sobre que está bueno subir y que no al git, tipo esta lista
+.Averiguar si es necesario el css.map
+
+.Ver como mostrar lo de figma en el respositorio
+
+.Aprender a documentar funciones
+. ¿Probar jsdoc?

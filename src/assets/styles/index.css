@@ -1,0 +1,126 @@
+/* ***************Variables*************** */
+:root {
+  /* variables */
+  --color-first: #fff;
+  --color-second: #000;
+  --color-money: #ffd700;
+  --color-stone: #314c90;
+  --color-lucky: conic-gradient(
+    from 180deg at 50% 50%,
+    rgba(221, 0, 255, 0.515152) 0deg,
+    #59009f 110.62deg,
+    rgba(221, 0, 255, 0.515152) 360deg
+  );
+  --color-lucky-second: linear-gradient(
+    180deg,
+    rgba(150, 44, 233, 0.470899) 0%,
+    rgba(62, 44, 233, 0.470899) 46.88%,
+    #4dc2b4 98.44%
+  );
+
+  --font: "Raleway", sans-serif;
+  --max-width: 680px;
+  /* fijas */
+  --color-grey_light: #f3f3f3;
+  --color-grey: #cccccc;
+  --color-grey_dark: #666666;
+  --color-link: #509ee3;
+  --color-text: #222222;
+  --color-title: #333333;
+  --color-white_alpha: rgba(255, 255, 255, 0.5);
+  --color-black_alpha: rgba(0, 0, 0, 0.5);
+  --bg-opacity_dark: var(--color-black_alpha);
+  --bg-opacity_light: var(--color-white_alpha);
+}
+
+/* ***************Reset*************** */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px; /* esto sobreescribe los tamaños asignados a los encabezados */
+  font-family: var(--font);
+  color: var(--color-first);
+  background-color: var(--color-second);
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+a:hover {
+  opacity: 75%;
+}
+p {
+  line-height: 1.6;
+}
+img {
+  max-width: 100%;
+}
+h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+h5 {
+  margin: 0;
+  font-size: 0.85rem;
+}
+h6 {
+  margin: 0;
+  font-size: 0.7rem;
+}
+
+/* ***************Utilidades*************** */
+
+.container {
+  margin: 0 auto;
+  text-align: center;
+  max-width: var(--max-width);
+}
+
+.tittle {
+  margin: 2rem auto;
+  font-weight: 700;
+  text-align: center;
+}
+
+.ds-block-md {
+  display: none;
+}
+
+@media (min-width: 576px) {
+  /* sm */
+}
+
+@media (min-width: 768px) {
+  /* md */
+  .ds-block-md {
+    display: block;
+  }
+}
+
+@media (min-width: 992px) {
+  /* lg */
+}
+
+@media (min-width: 1200px) {
+  /* xl */
+}
+
+@media (min-width: 1400px) {
+  /* xxl */
+}
