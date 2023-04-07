@@ -4,7 +4,7 @@ import useWheel from "./context/useWheel"
 import { WHEEL_TEMPLATE_BEGINNING } from "./wheelTemplates/wheelTemplates"
 
 const Characters = ({}) => {
-  const { handleSpin, configWheel } = useWheel()
+  const { handleSpin, configWheel, spin } = useWheel()
 
   const config = WHEEL_TEMPLATE_BEGINNING
   useEffect(() => {
@@ -19,7 +19,8 @@ const Characters = ({}) => {
 
   return (
     <>
-      <MyWheel />
+      {<MyWheel />}
+
       <button onClick={handleCharacter}>Spin</button>
       <div>Character</div>
     </>

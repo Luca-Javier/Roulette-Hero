@@ -7,53 +7,33 @@ const MyWheel = ({}) => {
 
   const { width, height, top, left } = config
 
-  return (
-    <div
-      style={{
-        margin: "1rem auto",
-        width: `${width}px`,
-        height: `${height}px`,
+  console.log(winner)
 
-        overflow: "hidden",
-        display: "flex",
-        justifyContent: "center",
-        textAlign: "center",
-        borderRadius: "100%",
-        position: "relative",
-      }}>
-      <div
-        style={{
-          transform: "rotate(-45deg)",
-          position: "absolute",
-          top: top,
-          left: left,
-        }}>
-        {data.length !== 0 && (
+  return (
+    <div className="wheel-container" style={{ height, width }}>
+      {
+        /* data.length !== 0  */ true && (
           <Wheel
             pointerProps={{
               src: "/src/assets/icons/Roulette-pointer.svg",
               style: {
-                transform: "rotate(45deg)",
-                height: 70,
-                width: 80,
-                left: 200,
-                top: 172,
+                left,
+                top,
+                position: "absolute",
+                height: "60px",
               },
             }}
             mustStartSpinning={spin}
             prizeNumber={winner}
             data={data.length === 0 ? [{ option: "noError" }] : data}
-            fontSize={16}
-            innerRadius={0.2}
             perpendicularText={true}
-            textDistance={20}
+            textDistance={30 * (width / 150)}
             outerBorderColor="white"
-            outerBorderWidth={115}
             spinDuration={[0.1]}
             onStopSpinning={finishSpin}
           />
-        )}
-      </div>
+        )
+      }
     </div>
   )
 }

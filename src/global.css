@@ -84,6 +84,22 @@ a {
   font-size: 2rem;
   text-align: center;
 }
+.wheel-container {
+  position: relative;
+  font-size: 2rem;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 150px;
+  width: 150px;
+  margin: 1rem auto;
+}
+.wheel-container > div {
+  height: 300px;
+  width: 300px;
+}
 /* *--------------------------------Global Styles-------------------------------- */
 main {
   width: 320px;

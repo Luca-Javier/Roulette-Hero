@@ -9,10 +9,10 @@ const useWheel = () => {
 }
 
 const initialConfig = {
-  width: 140,
-  height: 140,
-  top: -147,
-  left: -152,
+  width: 150,
+  height: 150,
+  left: 125,
+  top: 100,
   time: 400,
 }
 
