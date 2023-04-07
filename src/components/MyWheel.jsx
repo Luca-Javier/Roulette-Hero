@@ -37,7 +37,7 @@ const MyWheel = ({}) => {
                 height: 70,
                 width: 80,
                 left: 200,
-                top: 170,
+                top: 172,
               },
             }}
             mustStartSpinning={spin}
