@@ -11,8 +11,8 @@ const useWheel = () => {
 const initialConfig = {
   width: 140,
   height: 140,
-  top: -146,
-  left: -151,
+  top: -147,
+  left: -152,
   time: 400,
 }
 
