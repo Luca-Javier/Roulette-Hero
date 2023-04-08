@@ -39,23 +39,6 @@ a {
   text-decoration: none;
   color: inherit;
 }
-/* *---------------------------------Utilities--------------------------------- */
-
-.grow-1 {
-  flex-grow: 1;
-}
-.flex {
-  display: flex;
-}
-.flex-column {
-  flex-direction: column;
-}
-.h-100 {
-  height: 100%;
-}
-.second-font {
-  font-family: "Arvo";
-}
 
 /* *---------------------------------Components--------------------------------- */
 .flex-buttons {
@@ -100,7 +83,28 @@ a {
   height: 300px;
   width: 300px;
 }
+/* *---------------------------------Utilities--------------------------------- */
+
+.grow-1 {
+  flex-grow: 1;
+}
+.flex {
+  display: flex;
+}
+.flex-column {
+  flex-direction: column;
+}
+.h-100 {
+  height: 100%;
+}
+.second-font {
+  font-family: "Arvo";
+}
+.none {
+  display: none;
+}
 /* *--------------------------------Global Styles-------------------------------- */
+
 main {
   width: 320px;
   max-height: 568px;

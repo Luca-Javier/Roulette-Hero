@@ -1,4 +1,10 @@
-import { createContext, useCallback, useContext, useState } from "react"
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react"
 
 const wheelContext = createContext()
 
@@ -14,19 +20,23 @@ const initialConfig = {
   left: 125,
   top: 100,
   time: 400,
+  hidden: false,
 }
+
+const initialData = [{ option: "noError" }, { option: "noError2" }]
 
 let timeWheelFinish = 1100
 
 const WheelProvider = ({ children }) => {
   const [spin, setSpin] = useState(false)
-  const [winner, setWinner] = useState(null)
-  const [data, setData] = useState([])
+  const [winner, setWinner] = useState(0)
+  const [data, setData] = useState(initialData)
   const [config, setConfig] = useState(initialConfig)
 
   const configWheel = props => {
     setData(props.data)
-    if (props.config) setConfig({ ...config, ...props.config })
+    if (props.config) setConfig({ ...initialConfig, ...props.config })
+    else setConfig(initialConfig)
   }
 
   const handleSpin = newWinner => {
@@ -36,22 +46,19 @@ const WheelProvider = ({ children }) => {
     if (newWinner && typeof newWinner !== "object") whoWins = newWinner
     else whoWins = Math.floor(Math.random() * data.length)
 
-    console.log(whoWins)
-
     setWinner(whoWins)
-    console.time()
     setSpin(true)
 
+    let winnerToReturn = data[whoWins].option
+
     return new Promise(res =>
-      setTimeout(() => res(data[whoWins].option), config.time + timeWheelFinish)
+      setTimeout(() => res(winnerToReturn), config.time + timeWheelFinish)
     )
   }
 
   const finishSpin = () => {
     setTimeout(() => {
       setSpin(false)
-      setWinner(null)
-      setData([])
     }, config.time)
   }
 

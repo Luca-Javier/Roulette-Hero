@@ -3,37 +3,36 @@ import useWheel from "../context/useWheel"
 //import pointer from "../assets/icons/Roulette-pointer.svg"
 
 const MyWheel = ({}) => {
-  const { winner, spin, data, finishSpin, config } = useWheel()
+  const p = useWheel()
+  const { winner, spin, data, finishSpin, config } = p
 
-  const { width, height, top, left } = config
+  const { width, height, top, left, hidden } = config
 
-  console.log(winner)
+  let classNone = hidden ? "" : "none"
 
   return (
-    <div className="wheel-container" style={{ height, width }}>
-      {
-        /* data.length !== 0  */ true && (
-          <Wheel
-            pointerProps={{
-              src: "/src/assets/icons/Roulette-pointer.svg",
-              style: {
-                left,
-                top,
-                position: "absolute",
-                height: "60px",
-              },
-            }}
-            mustStartSpinning={spin}
-            prizeNumber={winner}
-            data={data.length === 0 ? [{ option: "noError" }] : data}
-            perpendicularText={true}
-            textDistance={30 * (width / 150)}
-            outerBorderColor="white"
-            spinDuration={[0.1]}
-            onStopSpinning={finishSpin}
-          />
-        )
-      }
+    <div
+      className={`wheel-container ${spin ? "" : classNone}`}
+      style={{ height, width }}>
+      <Wheel
+        pointerProps={{
+          src: "/src/assets/icons/Roulette-pointer.svg",
+          style: {
+            left,
+            top,
+            position: "absolute",
+            height: "60px",
+          },
+        }}
+        mustStartSpinning={spin}
+        prizeNumber={winner}
+        data={data}
+        perpendicularText={true}
+        textDistance={30 * (width / 150)}
+        outerBorderColor="white"
+        spinDuration={[0.1]}
+        onStopSpinning={finishSpin}
+      />
     </div>
   )
 }
