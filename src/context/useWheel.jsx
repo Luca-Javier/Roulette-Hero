@@ -32,6 +32,7 @@ const WheelProvider = ({ children }) => {
   const [winner, setWinner] = useState(0)
   const [data, setData] = useState(initialData)
   const [config, setConfig] = useState(initialConfig)
+  const [isMounted, setIsMounted] = useState(false)
 
   const configWheel = props => {
     setData(props.data)
@@ -42,24 +43,26 @@ const WheelProvider = ({ children }) => {
   const handleSpin = newWinner => {
     if (spin) return null
 
+    setSpin(true)
+
     let whoWins
     if (newWinner && typeof newWinner !== "object") whoWins = newWinner
     else whoWins = Math.floor(Math.random() * data.length)
 
     setWinner(whoWins)
-    setSpin(true)
 
     let winnerToReturn = data[whoWins].option
 
     return new Promise(res =>
-      setTimeout(() => res(winnerToReturn), config.time + timeWheelFinish)
+      setTimeout(() => {
+        setSpin(false)
+        res(winnerToReturn)
+      }, config.time + timeWheelFinish)
     )
   }
 
   const finishSpin = () => {
-    setTimeout(() => {
-      setSpin(false)
-    }, config.time)
+    //
   }
 
   const exports = {
