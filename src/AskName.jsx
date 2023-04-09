@@ -15,10 +15,11 @@ const AskName = ({}) => {
 
   return (
     <div className="form-ask-name">
+      <p>&amp;</p>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">What is your name traveler?</label>
         <input
-          pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s_--]+$"
+          pattern="^[A-Za-z0-9ÑñÁáÉéÍíÓóÚúÜü\s_-]+$"
           required
           autoComplete="off"
           className="input placeholder"
