@@ -1,5 +1,19 @@
 /* *--------------------------------------Reset-------------------------------------- */
-::root {
+:root {
+  --color-first: #000000;
+  --color-second: #ffffff;
+  --width: 320px;
+  --height: 568px;
+  --color-text: #ffffff;
+  --color-white: #ffffff;
+  --color-grey_light: #f3f3f3;
+  --color-grey: #cccccc;
+  --color-grey_dark: #666666;
+  --color-black: #000000;
+  --color-white_alpha: rgba(255, 255, 255, 0.5);
+  --color-black_alpha: rgba(0, 0, 0, 0.5);
+  --font: "Arvo";
+  /* project variables */
   --money: #ffd700;
   --stone: #314c90;
   --good: #00ff75;
@@ -18,14 +32,14 @@
 }
 html {
   font-size: 16px;
-  color: white;
-  background-color: black;
+  color: var(--color-text);
+  background-color: var(--color-first);
 }
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: "Arvo";
+  font-family: var(--font);
 }
 body {
   margin: 0;
@@ -40,7 +54,9 @@ a {
   color: inherit;
 }
 
-/* *---------------------------------Components--------------------------------- */
+/* *---------------------------------COMPONENTS--------------------------------- */
+/* *---------------------------------Buttons--------------------------------- */
+
 .flex-buttons {
   margin: 1rem auto;
   display: flex;
@@ -63,10 +79,8 @@ a {
   flex-grow: 1;
   width: 100%;
 }
-.title {
-  font-size: 2rem;
-  text-align: center;
-}
+/* *------------------------------------Wheel------------------------------------ */
+
 .wheel-container {
   position: relative;
   font-size: 2rem;
@@ -82,9 +96,36 @@ a {
 .wheel-container > div {
   height: 300px;
   width: 300px;
+  transform: rotate(-45deg);
 }
-/* *---------------------------------Utilities--------------------------------- */
+/* *------------------------------form-ask-name------------------------------ */
 
+.form-ask-name {
+  border: medium solid var(--color-first);
+  font: italic;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.form-ask-name > form {
+  border: medium solid var(--color-second);
+  border-radius: 10%;
+  padding: 1rem;
+  width: 70%;
+}
+.form-ask-name > form * {
+  margin: 0.5rem 0;
+}
+
+/* *---------------------------------Utilities--------------------------------- */
+.title {
+  font-size: 2rem;
+  text-align: center;
+}
 .grow-1 {
   flex-grow: 1;
 }
@@ -103,13 +144,24 @@ a {
 .none {
   display: none;
 }
+.placeholder::placeholder {
+  color: var(--color-grey_dark);
+}
+.input {
+  border: 0;
+  padding: 0.5rem;
+  border-bottom: thin solid white;
+}
+.input:focus-visible {
+  outline: none;
+}
 /* *--------------------------------Global Styles-------------------------------- */
 
 main {
-  width: 320px;
-  max-height: 568px;
+  width: var(--width);
+  max-height: var(--height);
   flex-grow: 1;
-  border: medium solid white;
+  border: medium solid var(--color-second);
   border-radius: 15px;
 }
 #root {
@@ -119,4 +171,8 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+input {
+  background-color: var(--color-first);
+  color: var(--color-second);
 }

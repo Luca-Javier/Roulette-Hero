@@ -1,16 +1,23 @@
-import { useRouteError } from "react-router-dom"
+import { useNavigate, useRouteError } from "react-router-dom"
+import Button from "./components/Button"
+import MyWheel from "./components/MyWheel"
 
 export default function ErrorPage() {
-  const error = useRouteError()
-  console.error(error)
+  const navigate = useNavigate()
+
+  const handleReturn = async () => {
+    navigate("/")
+  }
 
   return (
     <div id="error-page">
       <h1>Oops!</h1>
       <p>Sorry, an unexpected error has occurred.</p>
-      <p>
-        <i>{error.statusText || error.message}</i>
-      </p>
+      <p>Please return back to beginning</p>
+
+      <MyWheel />
+      <Button text="return" onClick={handleReturn} />
+      <p></p>
     </div>
   )
 }

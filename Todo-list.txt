@@ -5,8 +5,6 @@ TODO LIST
 .Aprender MarkDown
 .Modificar Readme
 
-.Probar el footer
-
 .Averiguar sobre que está bueno subir y que no al git, tipo esta lista
 .Averiguar si es necesario el css.map
 
@@ -14,3 +12,11 @@ TODO LIST
 
 .Aprender a documentar funciones
 . ¿Probar jsdoc?
+
+.Ver si usar reedux o reducers
+
+.Hacer footer y title responsivos, quizas ponerle la fuente "Press Start 2P"
+
+.Terminar la página de error
+
+.Hacer el componente options

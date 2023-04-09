@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react"
+import { createContext, useContext, useState } from "react"
 
 const wheelContext = createContext()
 
@@ -17,8 +11,8 @@ const useWheel = () => {
 const initialConfig = {
   width: 150,
   height: 150,
-  left: 125,
-  top: 100,
+  left: 138,
+  top: 109,
   time: 400,
   hidden: false,
 }
@@ -32,7 +26,6 @@ const WheelProvider = ({ children }) => {
   const [winner, setWinner] = useState(0)
   const [data, setData] = useState(initialData)
   const [config, setConfig] = useState(initialConfig)
-  const [isMounted, setIsMounted] = useState(false)
 
   const configWheel = props => {
     setData(props.data)
@@ -46,7 +39,8 @@ const WheelProvider = ({ children }) => {
     setSpin(true)
 
     let whoWins
-    if (newWinner && typeof newWinner !== "object") whoWins = newWinner
+    if (newWinner !== undefined && typeof newWinner !== "object")
+      whoWins = newWinner
     else whoWins = Math.floor(Math.random() * data.length)
 
     setWinner(whoWins)
@@ -61,9 +55,7 @@ const WheelProvider = ({ children }) => {
     )
   }
 
-  const finishSpin = () => {
-    //
-  }
+  //const finishSpin = () => {}
 
   const exports = {
     handleSpin,
@@ -72,7 +64,6 @@ const WheelProvider = ({ children }) => {
     data,
     configWheel,
     config,
-    finishSpin,
   }
 
   return (

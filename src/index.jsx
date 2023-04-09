@@ -15,7 +15,20 @@ function Home() {
 
   const handleCharacter = async e => {
     const res = await handleSpin(1)
+    console.log(res)
     if (res) navigate("/characters")
+  }
+
+  const handlePlay = async () => {
+    const res = await handleSpin(0)
+    console.log(res)
+    if (res) navigate("/ask-name")
+  }
+
+  const handleOptions = async () => {
+    const res = await handleSpin(2)
+    console.log(res)
+    if (res) navigate("/options")
   }
 
   return (
@@ -26,11 +39,11 @@ function Home() {
       </article>
       <article>
         <div className="flex-buttons">
-          <Button text={"Play"} />
+          <Button text={"Play"} onClick={handlePlay} />
         </div>
         <div className="flex-buttons">
           <Button text="Character" onClick={handleCharacter} />
-          <Button text="Options" />
+          <Button text="Options" onClick={handleOptions} />
         </div>
       </article>
     </section>
