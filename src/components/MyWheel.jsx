@@ -10,8 +10,6 @@ const MyWheel = ({}) => {
 
   let classNone = hidden ? "" : "none"
 
-  console.log(winner)
-
   return (
     <div
       className={`wheel-container ${spin ? "" : classNone}`}

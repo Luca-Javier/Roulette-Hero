@@ -13,10 +13,13 @@ TODO LIST
 .Aprender a documentar funciones
 . ¿Probar jsdoc?
 
-.Ver si usar reedux o reducers
-
 .Hacer footer y title responsivos, quizas ponerle la fuente "Press Start 2P"
 
 .Terminar la página de error
 
-.Hacer el componente options
+.Hacer página about
+
+.Hover en el close de options
+.Terminar configure de options
+.Agregar navegación a about en options
+

@@ -1,4 +1,10 @@
+import GameHeader from "./components/GameHeader"
+
 const Playing = ({}) => {
-  return <div>PlAYING</div>
+  return (
+    <div>
+      <GameHeader />
+    </div>
+  )
 }
 export default Playing

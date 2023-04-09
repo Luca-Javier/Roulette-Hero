@@ -10,12 +10,11 @@ const AskName = ({}) => {
   const handleSubmit = e => {
     e.preventDefault()
     dispatch(setName(e.target.name.value))
-    //navigate("/playing")
+    navigate("/playing")
   }
 
   return (
     <div className="form-ask-name">
-      <p>&amp;</p>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">What is your name traveler?</label>
         <input

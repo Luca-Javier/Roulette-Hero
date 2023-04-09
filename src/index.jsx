@@ -15,19 +15,16 @@ function Home() {
 
   const handleCharacter = async e => {
     const res = await handleSpin(1)
-    console.log(res)
     if (res) navigate("/characters")
   }
 
   const handlePlay = async () => {
     const res = await handleSpin(0)
-    console.log(res)
     if (res) navigate("/ask-name")
   }
 
   const handleOptions = async () => {
     const res = await handleSpin(2)
-    console.log(res)
     if (res) navigate("/options")
   }
 

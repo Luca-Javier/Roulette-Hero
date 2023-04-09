@@ -113,17 +113,65 @@ a {
 }
 .form-ask-name > form {
   border: medium solid var(--color-second);
-  border-radius: 10%;
+  border-radius: 25px;
   padding: 1rem;
   width: 70%;
 }
 .form-ask-name > form * {
   margin: 0.5rem 0;
 }
+/* *---------------------------------Header--------------------------------- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  border-bottom: thin solid var(--color-second);
+}
+.header-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 11px;
+  line-height: 0.3rem;
+}
+.header-name > p {
+  margin: 0.2rem;
+}
+.options-btn {
+  margin: 0 1rem;
+  width: 2rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+/* *---------------------------------Options--------------------------------- */
+.options-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+.options-title img {
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+}
+.options-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 60%;
+  flex-direction: column;
+}
+.options-menu button {
+  margin: 0.5rem 0;
+}
 
 /* *---------------------------------Utilities--------------------------------- */
 .title {
   font-size: 2rem;
+  display: block;
   text-align: center;
 }
 .grow-1 {
@@ -135,8 +183,40 @@ a {
 .flex-column {
   flex-direction: column;
 }
+.between {
+  justify-content: space-between;
+}
+.gap-05 {
+  gap: 0.5rem;
+}
+.justify-center {
+  justify-content: center;
+}
+.align-center {
+  align-items: center;
+}
+.m-center {
+  margin: 0 auto;
+}
+.my-1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.w-50 {
+  width: 50%;
+}
+w-100 {
+  width: 100%;
+}
 .h-100 {
   height: 100%;
+}
+.p-1 {
+  padding: 1rem;
+}
+.px-1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .second-font {
   font-family: "Arvo";
@@ -154,6 +234,18 @@ a {
 }
 .input:focus-visible {
   outline: none;
+}
+.bg-blur {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: var(--color-black_alpha);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.txt-left {
+  text-align: left;
 }
 /* *--------------------------------Global Styles-------------------------------- */
 
@@ -175,4 +267,16 @@ main {
 input {
   background-color: var(--color-first);
   color: var(--color-second);
+}
+.money {
+  color: var(--money);
+}
+.money:before {
+  content: url("./assets/icons/coins.svg") " ";
+}
+.stone {
+  color: var(--stone);
+}
+.stone::before {
+  content: url("./assets/icons/stone.svg") " ";
 }

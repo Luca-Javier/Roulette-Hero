@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const gameReducer = createSlice({
-  name: "counter",
+  name: "gamaState",
   initialState: {
+    gameState: { isPlaying: false },
     name: "",
   },
   reducers: {
@@ -15,3 +16,13 @@ const gameReducer = createSlice({
 export const { setName } = gameReducer.actions
 
 export default gameReducer.reducer
+
+/* 
+
+userInfo:{
+  name,
+  class/character,
+
+}
+
+*/
