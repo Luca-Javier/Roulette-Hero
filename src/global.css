@@ -194,13 +194,14 @@ a {
   border: thin solid var(--color-second);
   border-top: none;
   border-right: none;
-  margin: 2rem 1rem 1rem;
+  margin: 2rem 1rem 0;
   height: 135px;
-  /*  overflow: hidden; */
 }
 .interactive-sections {
   display: flex;
+  align-items: center;
   width: 100%;
+  height: 1.2rem;
   border-bottom: thin solid var(--color-second);
 }
 .interactive-sections > div {
@@ -209,15 +210,18 @@ a {
   height: 1rem;
   box-sizing: content-box;
   border: thin solid var(--color-second);
-  border-bottom: medium solid red;
+}
+.interactive-sections > div.isActive {
+  border-bottom: medium solid var(--color-first);
 }
 .interactive-per-section {
   width: 100%;
-  height: 100%;
+  height: calc(135px - 1.2rem);
   border-right: thin solid var(--color-second);
 }
 /* *----------------------------InteractiveButtons---------------------------- */
 .interactive-buttons {
+  height: 55px;
   display: flex;
   justify-content: space-around;
   align-items: center;
