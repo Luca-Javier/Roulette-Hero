@@ -23,3 +23,6 @@ TODO LIST
 .Terminar configure de options
 .Agregar navegación a about en options
 
+.Hacer scrolleable el main display
+
+.Hacer que la sección elegida no tenga el borde bottom
