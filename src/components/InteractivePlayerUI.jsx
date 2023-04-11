@@ -1,3 +1,5 @@
+import UserStats from "./sections/userStats"
+
 const InteractivePlayerUI = ({}) => {
   return (
     <section className="interactive-player-ui">
@@ -6,7 +8,7 @@ const InteractivePlayerUI = ({}) => {
         <div>2</div>
       </article>
       <article className="interactive-per-section">
-        <div>hoal</div>
+        <UserStats />
         {/* sections/UserStat
           sections/backpag
         

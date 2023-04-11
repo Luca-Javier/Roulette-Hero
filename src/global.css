@@ -29,6 +29,16 @@
     rgba(62, 44, 233, 0.470899) 46.88%,
     #4dc2b4 98.44%
   );
+  /* project variables | icons */
+  --icon-money: url("./assets/icons/coins.svg") " ";
+  --icon-stone: url("./assets/icons/stone.svg") " ";
+  --icon-health: url("./assets/icons/heart.svg");
+  --icon-shield: url("./assets/icons/shield.svg");
+  --icon-attack: url("./assets/icons/damage.svg");
+  --icon-karma: url("./assets/icons/karma.svg");
+  --icon-lucky: url("./assets/icons/lucky.svg");
+  --icon-stats-section: url("./assets/icons/equipment.svg");
+  --icon-backpag: url("./assets/icons/backpack.svg");
 }
 html {
   font-size: 16px;
@@ -171,7 +181,7 @@ a {
 
 .main-display {
   border: thin solid var(--color-second);
-  height: 272px;
+  height: 250px;
   font-size: 11px;
   margin: 1rem 1rem;
   overflow: hidden;
@@ -191,11 +201,12 @@ a {
 }
 /* *----------------------------InteractivePlayerUI---------------------------- */
 .interactive-player-ui {
+  --height: 150px;
   border: thin solid var(--color-second);
   border-top: none;
   border-right: none;
   margin: 2rem 1rem 0;
-  height: 135px;
+  height: var(--height);
 }
 .interactive-sections {
   display: flex;
@@ -216,7 +227,7 @@ a {
 }
 .interactive-per-section {
   width: 100%;
-  height: calc(135px - 1.2rem);
+  height: calc(var(--height) - 1.2rem);
   border-right: thin solid var(--color-second);
 }
 /* *----------------------------InteractiveButtons---------------------------- */
@@ -232,6 +243,52 @@ a {
   width: auto;
 
   /* margin: 0 1rem; */
+}
+/* *---------------------------------Utilities--------------------------------- */
+.stat-equipment {
+  height: 20px;
+  width: 20px;
+  border: thin solid var(--color-second);
+}
+.stat-equipment.helmet {
+  grid-area: helmet;
+  order: 4;
+  background-image: none;
+}
+.stat-equipment.chestplate {
+  grid-area: chestplate;
+  background-image: none;
+}
+.stat-equipment.left-hand {
+  grid-area: left-hand;
+  background-image: none;
+}
+.stat-equipment.right-hand {
+  grid-area: right-hand;
+  background-image: none;
+}
+.stat-equipment.pants {
+  grid-area: pants;
+  background-image: none;
+}
+.stat-equipment.left-shoe {
+  grid-area: left-shoe;
+  background-image: none;
+}
+.stat-equipment.right-shoe {
+  grid-area: right-shoe;
+  background-image: none;
+}
+.stats-equipment-container {
+  margin: 1rem 1rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, auto);
+  /* grid-template-areas:
+    "helmet     helmet     helmet      helmet      helmet      helmet"
+    "left-hand  left-hand  chestplate  chestplate  right-hand  right-hand"
+    "pants      pants      pants       pants       pants       pants"
+    "left-shoe left-shoe left-shoe right-shoe right-shoe right-shoe"; */
 }
 /* *---------------------------------Utilities--------------------------------- */
 .title {
@@ -312,6 +369,11 @@ w-100 {
 .txt-left {
   text-align: left;
 }
+.reset-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 /* *--------------------------------Global Styles-------------------------------- */
 
 main {
@@ -337,11 +399,47 @@ input {
   color: var(--money);
 }
 .money:before {
-  content: url("./assets/icons/coins.svg") " ";
+  content: var(--icon-money);
 }
 .stone {
   color: var(--stone);
 }
 .stone::before {
-  content: url("./assets/icons/stone.svg") " ";
+  content: var(--icon-stone);
+}
+.stat-icon {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  margin-left: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+.health::before {
+  width: 12px;
+  margin-right: 0.5rem;
+  content: var(--icon-health);
+}
+.shield::before {
+  width: 12px;
+  height: 12px;
+  margin-right: 0.5rem;
+  content: var(--icon-shield);
+}
+.attack::before {
+  width: 12px;
+  margin-right: 0.5rem;
+  content: var(--icon-attack);
+}
+.karma::before {
+  width: 12px;
+  margin-right: 0.5rem;
+  content: var(--icon-karma);
+}
+.lucky::before {
+  width: 12px;
+  margin-right: 0.5rem;
+  content: var(--icon-lucky);
+}
+.list-icons {
+  padding-inline-start: 1rem;
 }
