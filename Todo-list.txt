@@ -25,4 +25,6 @@ TODO LIST
 
 .Hacer scrolleable el main display
 
-.Hacer que la sección elegida no tenga el borde bottom
+.Detalle de borde de la seccion activada en la pantalla de interacción
+
+.Probar achicar el espacio que ocupa la armadura para meterle padding, estrategia en explicada en css file

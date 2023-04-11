@@ -241,54 +241,21 @@ a {
   display: inline-block;
   flex-grow: unset;
   width: auto;
+}
+/* *----------------------------stat-equipment---------------------------- */
 
-  /* margin: 0 1rem; */
-}
-/* *---------------------------------Utilities--------------------------------- */
-.stat-equipment {
-  height: 20px;
-  width: 20px;
-  border: thin solid var(--color-second);
-}
-.stat-equipment.helmet {
-  grid-area: helmet;
-  order: 4;
-  background-image: none;
-}
-.stat-equipment.chestplate {
-  grid-area: chestplate;
-  background-image: none;
-}
-.stat-equipment.left-hand {
-  grid-area: left-hand;
-  background-image: none;
-}
-.stat-equipment.right-hand {
-  grid-area: right-hand;
-  background-image: none;
-}
-.stat-equipment.pants {
-  grid-area: pants;
-  background-image: none;
-}
-.stat-equipment.left-shoe {
-  grid-area: left-shoe;
-  background-image: none;
-}
-.stat-equipment.right-shoe {
-  grid-area: right-shoe;
-  background-image: none;
-}
+/* Poner los pies absolutos con top x para poder hacer un padding */
 .stats-equipment-container {
-  margin: 1rem 1rem 0 0;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(4, auto);
-  /* grid-template-areas:
-    "helmet     helmet     helmet      helmet      helmet      helmet"
-    "left-hand  left-hand  chestplate  chestplate  right-hand  right-hand"
-    "pants      pants      pants       pants       pants       pants"
-    "left-shoe left-shoe left-shoe right-shoe right-shoe right-shoe"; */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.2rem;
+}
+.stats-equipment-container img {
+  width: 25px;
+  height: 25px;
+  border: thin solid var(--color-second);
 }
 /* *---------------------------------Utilities--------------------------------- */
 .title {
