@@ -22,11 +22,13 @@ const initialData = [{ option: "noError" }, { option: "noError2" }]
 let timeWheelFinish = 1100
 
 const WheelProvider = ({ children }) => {
+  //States
   const [spin, setSpin] = useState(false)
   const [winner, setWinner] = useState(0)
   const [data, setData] = useState(initialData)
   const [config, setConfig] = useState(initialConfig)
 
+  //Events
   const configWheel = props => {
     setData(props.data)
     if (props.config) setConfig({ ...initialConfig, ...props.config })
@@ -55,8 +57,7 @@ const WheelProvider = ({ children }) => {
     )
   }
 
-  //const finishSpin = () => {}
-
+  //Exports
   const exports = {
     handleSpin,
     winner,

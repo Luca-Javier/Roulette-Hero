@@ -1,10 +1,13 @@
 import { useNavigate } from "react-router-dom"
-import Button from "./components/Button"
+import Button from "../components/Button"
+import closeIcon from "/src/assets/icons/x_close.svg"
 
 const Options = ({}) => {
+  //States
   const navigate = useNavigate()
-  //todo Estado configure para mostrar configuraciones como sonido, etc.
+  //todo Estado/context configure para mostrar configuraciones como sonido, etc.
 
+  //Events
   const goBack = () => {
     navigate(-1)
   }
@@ -13,7 +16,7 @@ const Options = ({}) => {
     <>
       <div className="options-title">
         <h3 className="title txt-left">Options</h3>
-        <img src="/src/assets/icons/x_close.svg" alt="" onClick={goBack} />
+        <img src={closeIcon} alt="" onClick={goBack} />
       </div>
       <section className="options-menu">
         <Button text="Exit" to="/" />

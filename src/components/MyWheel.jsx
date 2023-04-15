@@ -3,11 +3,12 @@ import useWheel from "../context/useWheel"
 //import pointer from "../assets/icons/Roulette-pointer.svg"
 
 const MyWheel = ({}) => {
-  const p = useWheel()
-  const { winner, spin, data, config } = p
+  //Imports
+  const wheel = useWheel()
 
+  //Variables
+  const { winner, spin, data, config } = wheel
   const { width, height, top, left, hidden } = config
-
   let classNone = hidden ? "" : "none"
 
   return (
@@ -32,7 +33,6 @@ const MyWheel = ({}) => {
         textDistance={30 * (width / 150)}
         outerBorderColor="white"
         spinDuration={[0.1]}
-        //onStopSpinning={finishSpin}
       />
     </div>
   )

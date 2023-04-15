@@ -1,29 +1,32 @@
 import { useEffect } from "react"
-import Button from "./components/Button"
-import MyWheel from "./components/MyWheel"
-import useWheel from "./context/useWheel"
-import { WHEEL_TEMPLATE_BEGINNING } from "./wheelTemplates/wheelTemplates"
+import Button from "../components/Button"
+import MyWheel from "../components/MyWheel"
+import useWheel from "../context/useWheel"
+import { WHEEL_TEMPLATE_BEGINNING } from "../config/wheelTemplates"
 import { useNavigate } from "react-router-dom"
 
 function Home() {
+  //Imports
   const { handleSpin, configWheel } = useWheel()
   const navigate = useNavigate()
 
+  //Effects
   useEffect(() => {
     configWheel(WHEEL_TEMPLATE_BEGINNING)
   }, [])
 
-  const handleCharacter = async e => {
+  //Events
+  const goCharacter = async () => {
     const res = await handleSpin(1)
     if (res) navigate("/characters")
   }
 
-  const handlePlay = async () => {
+  const goPlay = async () => {
     const res = await handleSpin(0)
     if (res) navigate("/ask-name")
   }
 
-  const handleOptions = async () => {
+  const goOptions = async () => {
     const res = await handleSpin(2)
     if (res) navigate("/options")
   }
@@ -36,17 +39,15 @@ function Home() {
       </article>
       <article>
         <div className="flex-buttons">
-          <Button text={"Play"} onClick={handlePlay} />
+          <Button text={"Play"} onClick={goPlay} />
         </div>
         <div className="flex-buttons">
-          <Button text="Character" onClick={handleCharacter} />
-          <Button text="Options" onClick={handleOptions} />
+          <Button text="Character" onClick={goCharacter} />
+          <Button text="Options" onClick={goOptions} />
         </div>
       </article>
     </section>
   )
 }
-
-//* Redirecciones con react-router a menu, character, playing
 
 export default Home

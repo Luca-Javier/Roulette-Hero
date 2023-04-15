@@ -1,0 +1,52 @@
+<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><element><id>UMLClass</id><coordinates><x>270</x><y>180</y><w>189</w><h>99</h></coordinates><panel_attributes>userConfig
+--
+music  tinyInt
+sound  tinyInt
+language?  string
+-
+setMusic  (musicLevel  int): void
+setSound  (sondLevel  int): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>27</x><y>180</y><w>216</w><h>459</h></coordinates><panel_attributes>player
+--
+name  string
+class  string
+money  int
+stones  int
+stats:{
+    health  int
+    armor  int
+    attack  int
+    karma  float
+    lucky  float
+    trullyKarma  float
+  },
+equipment:{
+  helmet  object
+  left-hand  object
+  chest  object
+  right-hand  object
+  pants  object
+  left-foot  object
+  right-foot  object
+  },
+backpag:[
+    item  object
+  ]
+--
+setName  (name  string): void
+setClass  (class  string): void
+changeStats  (stats  object): void
+equipArmor  ({type  string, ...args}): void
+putBackpag  (item object): void
+removeBackpag  (idItem  int): void
+changeMoney  (money  int): void
+changeStones  (stones  int): void
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>270</x><y>306</y><w>216</w><h>54</h></coordinates><panel_attributes>events
+--
+event  string
+-
+setEventsByKarma  (karma  float): string
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>0</x><y>135</y><w>504</w><h>531</h></coordinates><panel_attributes>Redux stores
+--
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>

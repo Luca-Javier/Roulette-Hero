@@ -1,12 +1,13 @@
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { setName } from "./reducers/gameReducer"
+import { setName } from "../reducers/playerReducer"
 
 const AskName = ({}) => {
+  //Imports
   const navigate = useNavigate()
-
   const dispatch = useDispatch()
 
+  //Events
   const handleSubmit = e => {
     e.preventDefault()
     dispatch(setName(e.target.name.value))

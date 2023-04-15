@@ -1,11 +1,10 @@
 /* *--------------------------------------Reset-------------------------------------- */
 :root {
   --color-first: #000000;
-  --color-second: #ffffff;
+  --color-second: #ccc;
   --width: 320px;
   --height: 568px;
   --color-text: #ffffff;
-  --color-white: #ffffff;
   --color-grey_light: #f3f3f3;
   --color-grey: #cccccc;
   --color-grey_dark: #666666;
@@ -79,11 +78,11 @@ a {
 }
 .button {
   cursor: pointer;
-  background-color: black;
-  border: medium solid white;
+  background-color: var(--color-first);
+  border: medium solid var(--color-second);
   border-radius: 20px;
   padding: 0.5rem 1rem;
-  color: white;
+  color: var(--color-text);
   font: bold;
   display: block;
   flex-grow: 1;
@@ -177,6 +176,9 @@ a {
 .options-menu button {
   margin: 0.5rem 0;
 }
+.options-menu a {
+  width: 100%;
+}
 /* *--------------------------------Main Display-------------------------------- */
 
 .main-display {
@@ -257,6 +259,39 @@ a {
   height: 25px;
   border: thin solid var(--color-second);
 }
+/* *---------------------------------Character--------------------------------- */
+
+.characters-btns {
+  display: flex;
+  width: 40%;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: medium solid var(--color-second);
+  margin: 1rem;
+  border-radius: 15px;
+  height: 400px;
+  padding: 0.5rem;
+}
+.characters-btns button {
+  flex-grow: unset;
+}
+.character-info {
+  width: 60%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: medium solid var(--color-second);
+  margin: 1rem;
+  border-radius: 15px;
+  height: 450px;
+  padding: 0.5rem;
+}
+.character-info .stat-icon {
+  margin: 0 0.5rem;
+}
+.character-info button {
+  flex-grow: 0;
+}
 /* *---------------------------------Utilities--------------------------------- */
 .title {
   font-size: 2rem;
@@ -319,7 +354,7 @@ w-100 {
 .input {
   border: 0;
   padding: 0.5rem;
-  border-bottom: thin solid white;
+  border-bottom: thin solid var(--color-second);
 }
 .input:focus-visible {
   outline: none;
@@ -335,6 +370,9 @@ w-100 {
 }
 .txt-left {
   text-align: left;
+}
+.txt-center {
+  text-align: center;
 }
 .reset-ul {
   list-style: none;
@@ -386,7 +424,7 @@ input {
   margin-right: 0.5rem;
   content: var(--icon-health);
 }
-.shield::before {
+.armor::before {
   width: 12px;
   height: 12px;
   margin-right: 0.5rem;

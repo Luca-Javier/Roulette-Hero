@@ -1,4 +1,4 @@
-import FooterMd from "../components/FooterMd"
+import FooterMd from "./FooterMd"
 import TittleMd from "./TittleMd"
 
 const Layout = ({ children }) => {
@@ -12,4 +12,5 @@ const Layout = ({ children }) => {
     </>
   )
 }
+
 export default Layout

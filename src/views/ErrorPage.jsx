@@ -1,11 +1,13 @@
-import { useNavigate, useRouteError } from "react-router-dom"
-import Button from "./components/Button"
-import MyWheel from "./components/MyWheel"
+import { useNavigate } from "react-router-dom"
+import Button from "../components/Button"
+import MyWheel from "../components/MyWheel"
 
 export default function ErrorPage() {
+  //Imports
   const navigate = useNavigate()
 
-  const handleReturn = async () => {
+  //Events
+  const goHome = async () => {
     navigate("/")
   }
 
@@ -16,7 +18,7 @@ export default function ErrorPage() {
       <p>Please return back to beginning</p>
 
       <MyWheel />
-      <Button text="return" onClick={handleReturn} />
+      <Button text="return" onClick={goHome} />
       <p></p>
     </div>
   )

@@ -1,0 +1,19 @@
+[
+  {
+    "name": "Default",
+    "money": 22,
+    "stones": 2,
+    "stats": {
+      "health": 73,
+      "armor": 4,
+      "attack": 3,
+      "lucky": 2,
+      "karma": 1
+    },
+    "description": "The default character",
+    "img": "/src/assets/characters/default.png"
+  },
+  {
+    "name": "otherCharacter"
+  }
+]

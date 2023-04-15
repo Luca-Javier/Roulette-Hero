@@ -1,9 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit"
-//import reducer from "../reducers/"
-import gameReducer from "../reducers/gameReducer"
+import playerReducer from "../reducers/playerReducer"
+import userConfigReducer from "../reducers/userConfigReducer"
+import eventReducer from "../reducers/eventReducer"
 
-const store = configureStore({ reducer: { game: gameReducer } })
-
-//store.subscribe(() => console.log(store))
+const store = configureStore({
+  reducer: {
+    player: playerReducer,
+    userConfig: userConfigReducer,
+    event: eventReducer,
+  },
+})
 
 export default store

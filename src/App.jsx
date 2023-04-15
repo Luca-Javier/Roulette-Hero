@@ -1,11 +1,11 @@
 import Layout from "./components/Layout"
 import { HashRouter, Routes, Route } from "react-router-dom"
-import Home from "./index"
-import Characters from "./Characters"
-import Playing from "./Playing"
-import ErrorPage from "./ErrorPage"
-import AskName from "./AskName"
-import Options from "./Options"
+import Home from "./views/index"
+import Characters from "./views/Characters"
+import Playing from "./views/Playing"
+import ErrorPage from "./views/ErrorPage"
+import AskName from "./views/AskName"
+import Options from "./views/Options"
 
 export default () => {
   return (

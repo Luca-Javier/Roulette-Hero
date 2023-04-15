@@ -28,3 +28,9 @@ TODO LIST
 .Detalle de borde de la seccion activada en la pantalla de interacción
 
 .Probar achicar el espacio que ocupa la armadura para meterle padding, estrategia en explicada en css file
+
+.Hacer las funciones en el grafico de los reducers en UML
+
+.Hacer un personaje default y asígnarle sus stats al store
+
+.Probar poner getters en redux EJ: en trullyKarma
