@@ -88,6 +88,10 @@ a {
   flex-grow: 1;
   width: 100%;
 }
+.button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
 /* *------------------------------------Wheel------------------------------------ */
 
 .wheel-container {
