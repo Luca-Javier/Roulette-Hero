@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux"
-import headImg from "/src/assets/equipment/head.svg"
-import handImg from "/src/assets/equipment/hand.svg"
-import chestImg from "/src/assets/equipment/chest.svg"
-import pantImg from "/src/assets/equipment/pantalones.svg"
-import footImg from "/src/assets/equipment/foots.svg"
+import headImg from "/src/assets/equipment/empty/head.svg"
+import handImg from "/src/assets/equipment/empty/hand.svg"
+import chestImg from "/src/assets/equipment/empty/chest.svg"
+import pantImg from "/src/assets/equipment/empty/pantalones.svg"
+import footImg from "/src/assets/equipment/empty/foots.svg"
 
 const UserStats = ({}) => {
   //Imports

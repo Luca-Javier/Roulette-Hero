@@ -1,7 +1,7 @@
 import { useState } from "react"
 import UserStats from "./sections/UserStats"
-import equipIcon from "../../assets/icons/equipment2.svg"
-import backpackIcon from "../../assets/icons/backpack.svg"
+import equipIcon from "../../assets/icons/sections/equipment.svg"
+import backpackIcon from "../../assets/icons/sections/backpack.svg"
 import Backpag from "./sections/Backpag"
 
 const sections = {

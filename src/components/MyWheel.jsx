@@ -17,7 +17,7 @@ const MyWheel = ({}) => {
       style={{ height, width }}>
       <Wheel
         pointerProps={{
-          src: "/src/assets/icons/Roulette-pointer.svg",
+          src: "/src/assets/wheel/roulette-pointer.svg",
           style: {
             left,
             top,

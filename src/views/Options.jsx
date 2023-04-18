@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import Button from "../components/Button"
-import closeIcon from "/src/assets/icons/x_close.svg"
+import closeIcon from "/src/assets/icons/others/close-options.svg"
 
 const Options = ({}) => {
   //States

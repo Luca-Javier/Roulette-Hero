@@ -12,7 +12,7 @@
     },
     "equipment": [
       {
-        "src": "/src/assets/icons/simple-sword.svg",
+        "src": "/src/assets/weapons/swords/common-sword.svg",
         "alt": "simple-sword",
         "equipKey": "leftHand",
         "itemId": "simple-sword",

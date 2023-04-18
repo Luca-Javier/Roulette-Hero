@@ -29,15 +29,13 @@
     #4dc2b4 98.44%
   );
   /* project variables | icons */
-  --icon-money: url("./assets/icons/coins.svg") " ";
-  --icon-stone: url("./assets/icons/stone.svg") " ";
-  --icon-health: url("./assets/icons/heart.svg");
-  --icon-shield: url("./assets/icons/shield.svg");
-  --icon-attack: url("./assets/icons/damage.svg");
-  --icon-karma: url("./assets/icons/karma.svg");
-  --icon-lucky: url("./assets/icons/lucky.svg");
-  --icon-stats-section: url("./assets/icons/equipment.svg");
-  --icon-backpag: url("./assets/icons/backpack.svg");
+  --icon-money: url("./assets/icons/stats/coins.svg") " ";
+  --icon-stone: url("./assets/icons/stats/stone.svg") " ";
+  --icon-health: url("./assets/icons/stats/heart.svg");
+  --icon-shield: url("./assets/icons/stats/armor.svg");
+  --icon-attack: url("./assets/icons/stats/attack.svg");
+  --icon-karma: url("./assets/icons/stats/karma.svg");
+  --icon-lucky: url("./assets/icons/stats/lucky.svg");
 }
 html {
   font-size: 16px;
