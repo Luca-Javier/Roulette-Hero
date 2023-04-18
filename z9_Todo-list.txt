@@ -27,10 +27,10 @@ TODO LIST
 
 .Detalle de borde de la seccion activada en la pantalla de interacción
 
-.Probar achicar el espacio que ocupa la armadura para meterle padding, estrategia en explicada en css file
 
-.Hacer las funciones en el grafico de los reducers en UML
+.Crear componente lucky button
+.Crear componente ButtonsFightin
 
-.Hacer un personaje default y asígnarle sus stats al store
+.En usertStats cambiar los src por emptySrc y con condiciones que cargue la imagen del equipamiento
 
-.Probar poner getters en redux EJ: en trullyKarma
+.Hacer una función gigante de generateItem que dentro tenga la función para cada item 

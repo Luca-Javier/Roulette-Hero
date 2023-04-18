@@ -56,11 +56,25 @@ const Characters = ({}) => {
           {characterInfo && (
             <>
               <img src={characterInfo.img} alt={characterInfo.description} />
-              {Object.keys(characterInfo.stats).map(key => (
-                <p key={key} className={`stat-icon ${key}`}>
-                  {characterInfo.stats[key]}
-                </p>
-              ))}
+              <div className="flex between">
+                <div>
+                  {Object.keys(characterInfo.stats).map(key => (
+                    <p key={key} className={`stat-icon ${key}`}>
+                      {characterInfo.stats[key]}
+                    </p>
+                  ))}
+                </div>
+                <div className="character-fino-equip-img-container">
+                  {characterInfo.equipment.map(({ src, alt, quality }) => (
+                    <img
+                      src={src}
+                      alt={alt}
+                      title={alt}
+                      className={`quality ${quality}`}
+                    />
+                  ))}
+                </div>
+              </div>
               <div className="flex gap-05">
                 <p className="money">{characterInfo.money}</p>
 

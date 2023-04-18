@@ -10,6 +10,15 @@
       "lucky": 2,
       "karma": 1
     },
+    "equipment": [
+      {
+        "src": "/src/assets/icons/simple-sword.svg",
+        "alt": "simple-sword",
+        "equipKey": "leftHand",
+        "itemId": "simple-sword",
+        "quality": "common"
+      }
+    ],
     "description": "The default character",
     "img": "/src/assets/characters/default.png"
   },

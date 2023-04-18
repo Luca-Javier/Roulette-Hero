@@ -7,8 +7,8 @@ const Playing = ({}) => {
   return (
     <>
       <GameHeader />
-      <MainDisplay />
       <InteractivePlayerUI />
+      <MainDisplay />
       <InteractiveButtons />
     </>
   )

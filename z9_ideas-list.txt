@@ -1,3 +1,49 @@
 .hacer una funcion getEventByKarma (karma float): string que dentro tiene las variables con las probabilidades de cada evento ya calculadas con el trullyKarma, y que ponga el evento en el estado y la app reaciona cuando cambia el evento
 
-.Hacer un store para el chat. También podría ser un array con las keys para un futuro translateFunction, así no guardo el texto
+
+
+.Los equipmaientos estan organizados diferentes categorías. Pero cada una tiene calidad normal, rara, epica, legendaria
+
+Categorías: lucky, bloody ,critik, strongest
+
+
+
+
+Estructura de carpeta assets
+
+assets >
+  equipment >
+    left-hand >
+      normal, lucky, pike, armored
+    right-hand >
+      normal, lucky, pike, armored
+    helmet >
+      normal, lucky, pike, armored
+    chest >
+      normal, lucky, pike, armored
+    legs >
+      normal, lucky, pike, armored
+    left-foot >
+      normal, lucky, pike, armored
+    right-foot >
+      normal, lucky, pike, armored
+  weapons >
+    swords >
+      normal, lucky, bloody ,critik, strongest
+    hammer >
+      normal, lucky, bloody ,critik, strongest
+    rapier >
+      normal, lucky, bloody ,critik, strongest
+  enemys >
+    ...enemy
+  characters >
+    ...character
+  icons >
+    stats >
+      health, armor, damage, luck, karma, money, stone
+    secitons >
+      forje, backpack, equipment, shop
+    others >
+      closeOption, optionButton ...others
+  wheel >
+    pointer

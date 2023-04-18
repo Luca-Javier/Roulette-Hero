@@ -4,6 +4,7 @@ const EVENT = {
   shop: "shop",
   fight: "fight",
   backFight: "backFight",
+  fighting: "fighting",
 }
 
 export { EVENT }

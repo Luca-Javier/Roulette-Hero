@@ -1,18 +1,46 @@
-import UserStats from "./sections/userStats"
+import { useState } from "react"
+import UserStats from "./sections/UserStats"
+import equipIcon from "../../assets/icons/equipment2.svg"
+import backpackIcon from "../../assets/icons/backpack.svg"
+import Backpag from "./sections/Backpag"
 
-const InteractivePlayerUI = ({}) => {
+const sections = {
+  userStats: 0,
+  backpack: 1,
+}
+
+const InteractivePlayerUI = () => {
+  //States
+  const [section, setSection] = useState(sections.userStats)
+
+  //Events
+
   return (
     <section className="interactive-player-ui">
-      <article className="interactive-sections">
-        <div className="isActive">1</div>
-        <div>2</div>
-      </article>
       <article className="interactive-per-section">
-        <UserStats />
-        {/* sections/UserStat
-          sections/backpag
-        
-        */}
+        {section === sections.userStats && <UserStats />}
+        {section === sections.backpack && <Backpag />}
+      </article>
+      <article className="interactive-sections">
+        {/* Maybe a component */}
+        <div
+          className={section === sections.userStats && "isActive"}
+          onClick={() => setSection(sections.userStats)}>
+          <img
+            style={{ width: "17px" }}
+            src={equipIcon}
+            alt="Equipment icon section"
+          />
+        </div>
+        <div
+          className={section === sections.backpack && "isActive"}
+          onClick={() => setSection(sections.backpack)}>
+          <img
+            style={{ width: "15px" }}
+            src={backpackIcon}
+            alt="Backpack icon section"
+          />
+        </div>
       </article>
     </section>
   )

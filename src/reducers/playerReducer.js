@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { getTrullyKarma } from "../helpers/getTrullyKarma"
 
 const playerReducer = createSlice({
   name: "player",
@@ -13,9 +14,7 @@ const playerReducer = createSlice({
       attack: 3,
       lucky: 2,
       karma: 1,
-      get trullyKarma() {
-        return this.karma + this.karma * this.lucky * 0.25
-      },
+      trullyKarma: 0,
     },
     equipment: {
       helmet: {},
@@ -33,12 +32,18 @@ const playerReducer = createSlice({
       state.name = action.payload
     },
     setInitialStats: (state, action) => {
-      const { name, stats, money, stones } = action.payload
+      const { name, stats, money, stones, equipment } = action.payload
+
+      const trullyKarma = getTrullyKarma(stats.karma, stats.lucky)
 
       state.classs = name
       state.money = money
       state.stones = stones
-      state.stats = { ...state.stats, ...stats }
+      //todo trait with equipment
+
+      equipment.map(item => state.equipment[item.equipKey])
+
+      state.stats = { ...state.stats, ...stats, trullyKarma }
     },
     changeStats: (state, action) => {},
     equipArmor: () => {},
