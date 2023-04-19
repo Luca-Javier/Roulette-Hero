@@ -34,3 +34,11 @@ TODO LIST
 .En usertStats cambiar los src por emptySrc y con condiciones que cargue la imagen del equipamiento
 
 .Hacer una función gigante de generateItem que dentro tenga la función para cada item 
+
+.Poner en el store una propieda effects y pasiveEffects y un reducer de updateStatsFromEffects
+
+.Poner bien el karma y lucky para EJ: Sí tengo uno de trullykarma es como tener 0 porque yo multiplico. Entonces ver como me organizo
+
+.Hacer la comprobación de si usar generateWeaponID o equipment
+
+.reducer para generar un item si no tengo ninguno equipado

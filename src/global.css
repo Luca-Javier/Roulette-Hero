@@ -29,7 +29,7 @@
     #4dc2b4 98.44%
   );
   /* project variables | icons */
-  --icon-money: url("./assets/icons/stats/coins.svg") " ";
+  --icon-money: url("./assets/icons/stats/money.svg") " ";
   --icon-stone: url("./assets/icons/stats/stone.svg") " ";
   --icon-health: url("./assets/icons/stats/heart.svg");
   --icon-shield: url("./assets/icons/stats/armor.svg");

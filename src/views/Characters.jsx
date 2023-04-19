@@ -65,8 +65,9 @@ const Characters = ({}) => {
                   ))}
                 </div>
                 <div className="character-fino-equip-img-container">
-                  {characterInfo.equipment.map(({ src, alt, quality }) => (
+                  {characterInfo.items.map(({ src, alt, quality }) => (
                     <img
+                      key={alt}
                       src={src}
                       alt={alt}
                       title={alt}

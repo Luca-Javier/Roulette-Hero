@@ -8,32 +8,36 @@ Categorías: lucky, bloody ,critik, strongest
 
 
 
+.La variante critik no aumenta la probabilidad, aumenta el daño y todos los efectos se almacenarán effects en el store, que contiene un effect y el itemId
+
+
+
 
 Estructura de carpeta assets
 
 assets >
   equipment >
     left-hand >
-      normal, lucky, pike, armored
+      simple, lucky, pike, armored
     right-hand >
-      normal, lucky, pike, armored
+      simple, lucky, pike, armored
     helmet >
-      normal, lucky, pike, armored
+      simple, lucky, pike, armored
     chest >
-      normal, lucky, pike, armored
+      simple, lucky, pike, armored
     legs >
-      normal, lucky, pike, armored
+      simple, lucky, pike, armored
     left-foot >
-      normal, lucky, pike, armored
+      simple, lucky, pike, armored
     right-foot >
-      normal, lucky, pike, armored
+      simple, lucky, pike, armored
   weapons >
     swords >
-      normal, lucky, bloody ,critik, strongest
+      simple, lucky, bloody ,critik, strongest
     hammer >
-      normal, lucky, bloody ,critik, strongest
+      simple, lucky, bloody ,critik, strongest
     rapier >
-      normal, lucky, bloody ,critik, strongest
+      simple, lucky, bloody ,critik, strongest
   enemys >
     ...enemy
   characters >

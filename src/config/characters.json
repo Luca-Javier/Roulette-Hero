@@ -10,12 +10,11 @@
       "lucky": 2,
       "karma": 1
     },
-    "equipment": [
+    "items": [
       {
-        "src": "/src/assets/weapons/swords/common-sword.svg",
-        "alt": "simple-sword",
-        "equipKey": "leftHand",
-        "itemId": "simple-sword",
+        "src": "/src/assets/weapons/swords/simple-sword.svg",
+        "alt": "a simple common sword",
+        "itemId": "simple_common_sword_hand",
         "quality": "common"
       }
     ],
