@@ -6,8 +6,8 @@ import generateWeaponId from "../helpers/generateWeaponId"
 const playerReducer = createSlice({
   name: "player",
   initialState: {
-    name: "Default",
-    classs: "todo",
+    name: "Name",
+    className: "Default",
     money: 22,
     stones: 2,
     stats: {
@@ -19,13 +19,23 @@ const playerReducer = createSlice({
       trullyKarma: 1.5,
     },
     equipment: {
-      helmet: {},
-      leftHand: {},
-      chest: {},
-      rightHand: {},
-      pants: {},
-      leftFoot: {},
-      rightFoot: {},
+      helmet: null,
+      leftHand: null,
+      chest: null,
+      rightHand: null,
+      pants: null,
+      leftFoot: null,
+      rightFoot: null,
+    },
+    effects: {
+      luckyStatMultiplier: 0,
+      luckyHitMultiplier: 0,
+      healthSteal: 0,
+      attackMultiplier: 0,
+      hammerDamageMultiplier: 0,
+      rapierCritikMultiplier: 0,
+      reflectDamage: 0,
+      armorMultiplier: 0,
     },
     backpag: [],
   },
@@ -33,15 +43,18 @@ const playerReducer = createSlice({
     setName: (state, action) => {
       state.name = action.payload
     },
+
     setInitialStats: (state, action) => {
       const { name, stats, money, stones, items } = action.payload
 
       const trullyKarma = getTrullyKarma(stats.karma, stats.lucky)
 
-      state.classs = name
+      state.className = name
       state.money = money
       state.stones = stones
 
+      items.forEach(item => (state.equipment[item.equipKey] = item))
+      /*
       const generatedItems = items.map(item => {
         const itemId = item.itemId
         const trullyKarma = state.stats.trullyKarma.valueOf()
@@ -51,20 +64,45 @@ const playerReducer = createSlice({
 
       generatedItems.forEach(item => {
         if (item.equipKey === "hand") {
-          if (Object.entries(state.equipment.leftHand).length === 0)
-            return (state.equipment.leftHand = item)
-          else return (state.equipment.rightHand = item)
+          const leftHandIsEmpty =
+            Object.entries(state.equipment.leftHand).length === 0
+
+          if (leftHandIsEmpty) return (state.equipment.leftHand = item)
+          return (state.equipment.rightHand = item)
         }
+
         if (item.equipKey === "foot") {
-          if (Object.entries(state.equipment.leftFoot).length === 0)
-            return (state.equipment.leftFoot = item)
-          else return (state.equipment.rightFoot = item)
+          const leftFootIsEmpty =
+            Object.entries(state.equipment.leftFoot).length === 0
+
+          if (leftFootIsEmpty) return (state.equipment.leftFoot = item)
+          return (state.equipment.rightFoot = item)
         }
 
         state.equipment[item.equipKey] = item
       })
-
+*/
       state.stats = { ...state.stats, ...stats, trullyKarma }
+    },
+    updateAllFromItems: state => {
+      const playerEquips = state.equipment
+
+      for (let equipKey in playerEquips) {
+        const equip = playerEquips[equipKey]
+
+        if (equip !== null) {
+          for (let keyStat in equip.stats) {
+            state.stats[keyStat] += equip.stats[keyStat]
+          }
+
+          const EquipHasEffects = Object.entries(equip.effects).length !== 0
+          if (EquipHasEffects) {
+            for (let effectKey in equip.effects) {
+              state.effects[effectKey] += equip.effects[effectKey]
+            }
+          }
+        }
+      }
     },
     changeStats: (state, action) => {},
     equipArmor: () => {},
@@ -75,6 +113,7 @@ const playerReducer = createSlice({
   },
 })
 
-export const { setName, setInitialStats } = playerReducer.actions
+export const { setName, setInitialStats, updateAllFromItems } =
+  playerReducer.actions
 
 export default playerReducer.reducer

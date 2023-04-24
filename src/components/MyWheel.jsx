@@ -1,8 +1,16 @@
+/**
+ * @requires module:react-custom-roulette
+ * @deprecated  This package is builtin React ^16.13.1
+ * @file Roulette element
+ *
+ */
+
+import React from "react"
 import { Wheel } from "react-custom-roulette"
 import useWheel from "../context/useWheel"
 //import pointer from "../assets/icons/Roulette-pointer.svg"
 
-const MyWheel = ({}) => {
+const MyWheel = () => {
   //Imports
   const wheel = useWheel()
 
@@ -32,7 +40,7 @@ const MyWheel = ({}) => {
         perpendicularText={true}
         textDistance={30 * (width / 150)}
         outerBorderColor="white"
-        spinDuration={[0.1]}
+        spinDuration={0.1}
       />
     </div>
   )

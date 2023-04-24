@@ -1,4 +1,6 @@
+import React from "react"
+
 const Backpag = ({}) => {
-  return <div>Backpack</div>
+  return <section>Backpack</section>
 }
 export default Backpag

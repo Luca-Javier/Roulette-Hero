@@ -1,16 +1,17 @@
+import React from "react"
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import optionButtonImg from "/src/assets/icons/others/options-button.svg"
 
-const GameHeader = ({}) => {
+const GameHeader = () => {
   //Imports
-  const { name, classs, money, stones } = useSelector(state => state.player)
+  const { name, className, money, stones } = useSelector(state => state.player)
 
   return (
     <section className="header">
       <article className="header-name">
         <p>{name}</p>
-        <p>{classs}</p>
+        <p>{className}</p>
       </article>
 
       <article className="flex gap-05 align-center">

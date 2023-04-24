@@ -6,6 +6,7 @@ const eventReducer = createSlice({
   name: "event",
   initialState: {
     event: EVENT.waiting,
+    numEvents: 0,
   },
   reducers: {
     setEvent: (state, action) => {
@@ -14,9 +15,12 @@ const eventReducer = createSlice({
     setRandomEvent: state => {
       state.event = getRandomEvent()
     },
+    addEventNum: state => {
+      state.numEvents++
+    },
   },
 })
 
-export const { setEvent, setRandomEvent } = eventReducer.actions
+export const { setEvent, setRandomEvent, addEventNum } = eventReducer.actions
 
 export default eventReducer.reducer

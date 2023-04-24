@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { setName } from "../reducers/playerReducer"
 
-const AskName = ({}) => {
+const AskName = () => {
   //Imports
   const navigate = useNavigate()
   const dispatch = useDispatch()

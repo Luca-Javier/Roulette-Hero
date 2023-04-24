@@ -5,7 +5,15 @@ import {
   WEAPON_PROBS,
 } from "../config/itemProbabilities"
 
-const getWeaponId = ({ itemId, modifyKarma = 1.0 }) => {
+/**
+ *  Generates a weapon ID to generate an item with getItemById()
+ *
+ * @param {object} props
+ * @param {number} [props.modifyKarma=1.0]
+ * @returns {string} item id
+ * @example getWeapoId(): "simple_common_sword_hand"
+ */
+const getWeaponId = ({ modifyKarma = 1.0 }) => {
   let id = ""
 
   id += WEAPONS_VARIANT_PROBS.peek() + "_"
@@ -20,9 +28,3 @@ const getWeaponId = ({ itemId, modifyKarma = 1.0 }) => {
 }
 
 export default getWeaponId
-
-/* 
-
-ir generando un item ID y al final llamar una función que me devuelva el item
-
-*/

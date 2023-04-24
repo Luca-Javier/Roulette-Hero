@@ -1,3 +1,4 @@
+import React from "react"
 import { useEffect, useState } from "react"
 import allCharacters from "../config/characters.json"
 import { useDispatch, useSelector } from "react-redux"
@@ -12,6 +13,7 @@ const Characters = ({}) => {
   const navigate = useNavigate()
 
   //States
+
   const [characterInfo, setCharacterInfo] = useState()
   const [characters, setCharacters] = useState([])
 
@@ -53,6 +55,8 @@ const Characters = ({}) => {
           ))}
         </article>
         <article className="character-info">
+          {/* Character info by character.json */}
+
           {characterInfo && (
             <>
               <img src={characterInfo.img} alt={characterInfo.description} />

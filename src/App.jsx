@@ -1,3 +1,5 @@
+/** @file Routing of all pages */
+
 import Layout from "./components/Layout"
 import { HashRouter, Routes, Route } from "react-router-dom"
 import Home from "./views/index"

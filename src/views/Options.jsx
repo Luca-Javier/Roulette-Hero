@@ -1,8 +1,9 @@
+import React from "react"
 import { useNavigate } from "react-router-dom"
 import Button from "../components/Button"
 import closeIcon from "/src/assets/icons/others/close-options.svg"
 
-const Options = ({}) => {
+const Options = () => {
   //States
   const navigate = useNavigate()
   //todo Estado/context configure para mostrar configuraciones como sonido, etc.

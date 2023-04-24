@@ -1,3 +1,5 @@
+import React from "react"
+
 const LuckyButtons = ({ text, ...args }) => {
   return (
     <button className="button lucky-btn" {...args}>

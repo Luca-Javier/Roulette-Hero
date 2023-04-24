@@ -4,7 +4,7 @@ import { EVENT } from "../config/eventsTypes"
  * Get message from event
  *
  * @param {string} event
- * @return {string} message from event
+ * @return {string|null} message from event
  */
 const getMessage = event => {
   if (event === EVENT.walking) return `you are walking...`

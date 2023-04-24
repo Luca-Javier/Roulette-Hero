@@ -1,3 +1,4 @@
+import React from "react"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import getMessage from "../../helpers/getMessage"
@@ -18,7 +19,7 @@ const MainDisplay = () => {
   }, [event])
 
   return (
-    <section className="main-display">
+    <section className="texts-display">
       <ul>
         {messagesHistory.length !== 0 &&
           messagesHistory.map((message, i) => <li key={i}>{message}</li>)}

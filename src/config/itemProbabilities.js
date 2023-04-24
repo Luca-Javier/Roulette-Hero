@@ -1,3 +1,8 @@
+/**
+ * @file Probabilities for all items
+ * @requires module:js-weighted-list
+ */
+
 import WeightedList from "js-weighted-list"
 
 export const WEAPON_PROBS = new WeightedList([

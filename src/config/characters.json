@@ -6,7 +6,7 @@
     "stats": {
       "health": 73,
       "armor": 4,
-      "attack": 3,
+      "attack": 6,
       "lucky": 2,
       "karma": 1
     },
@@ -14,8 +14,10 @@
       {
         "src": "/src/assets/weapons/swords/simple-sword.svg",
         "alt": "a simple common sword",
-        "itemId": "simple_common_sword_hand",
-        "quality": "common"
+        "quality": "common",
+        "equipKey": "leftHand",
+        "stats": { "attack": 4 },
+        "effects": {}
       }
     ],
     "description": "The default character",
