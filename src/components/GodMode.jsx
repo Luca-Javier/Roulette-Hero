@@ -1,4 +1,4 @@
 const GodMode = ({}) => {
-  return <section></section>
+  return <div></div>
 }
 export default GodMode
