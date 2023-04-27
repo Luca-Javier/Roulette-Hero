@@ -39,14 +39,12 @@ const MainInteractiveUI = () => {
   //Effects
   useEffect(() => {
     if (event === EVENT.walking) dispatch(cleanChat())
-
-    if (event === EVENT.fighting) setSection(sections.fighting)
-
-    const wasInFight =
+    else if (event === EVENT.fighting) setSection(sections.fighting)
+    else if (
       event === EVENT.walking &&
       (section === sections.fighting || section === sections.seeSwords)
-
-    if (wasInFight) setSection(sections.userStats)
+    )
+      setSection(sections.userStats)
   }, [event])
 
   return (
