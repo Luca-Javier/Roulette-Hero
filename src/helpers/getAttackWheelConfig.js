@@ -42,6 +42,7 @@ const getAttackWheelConfig = ({ trullyKarma, item, criticProb }) => {
     }
   })
 
+  //Possible attacks as keys and the damage as values
   const possibleAttacks = {
     normal: realAttack,
     critic: realAttack * 2 * criticFromRapierItem,

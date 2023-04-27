@@ -12,7 +12,6 @@ export default function getCustomOptionWheelStyle({ option }) {
   else if (option === "fail") bgOptionColor = "#3a373b"
   else if (option === "critic") bgOptionColor = "#bd940f"
   else if (option === "lifeSteal") bgOptionColor = "#c21210"
-  else if (option === "d") bgOptionColor = "#bd940f"
 
   return { style: { backgroundColor: bgOptionColor, textColor: "transparent" } }
 }

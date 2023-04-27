@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import Button from "../Button"
 import { EVENT } from "../../config/eventsTypes"
@@ -17,14 +17,19 @@ const InteractiveButtons = () => {
 
   //Events
   const walk = () => {
-    dispatch(addEventNum())
     dispatch(setEvent(EVENT.walking))
-    setTimeout(() => dispatch(setRandomEvent()), getWalkTime())
   }
 
   const fight = () => {
     dispatch(setEvent(EVENT.fighting))
   }
+
+  //Effects
+  useEffect(() => {
+    if (event !== EVENT.walking) return undefined
+    dispatch(addEventNum())
+    setTimeout(() => dispatch(setRandomEvent()), getWalkTime())
+  }, [event])
 
   return (
     <section className="interactive-buttons">

@@ -4,8 +4,10 @@ import UserStats from "./sections/UserStats"
 import Backpag from "./sections/Backpag"
 import SectionsButtons from "./SectionsButtons"
 import Fightin from "./displayEvents/Fightin"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import SeeSwords from "./sections/seeSwords"
+import { EVENT } from "../../config/eventsTypes"
+import { cleanChat } from "../../reducers/eventReducer"
 
 /**
  *  Enum of sections for know the current section
@@ -29,13 +31,22 @@ const sections = {
 const MainInteractiveUI = () => {
   //Imports
   const { event } = useSelector(state => state.event)
+  const dispatch = useDispatch()
 
   //States
   const [section, setSection] = useState(sections.userStats)
 
   //Effects
   useEffect(() => {
-    if (event === "fighting") setSection(sections.fighting)
+    if (event === EVENT.walking) dispatch(cleanChat())
+
+    if (event === EVENT.fighting) setSection(sections.fighting)
+
+    const wasInFight =
+      event === EVENT.walking &&
+      (section === sections.fighting || section === sections.seeSwords)
+
+    if (wasInFight) setSection(sections.userStats)
   }, [event])
 
   return (

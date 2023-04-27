@@ -1,8 +1,62 @@
 [
   {
-    "src": "src/assets/enemys/enemy-3.png"
+    "src": "src/assets/enemys/enemy-3.png",
+    "wheelConfig": {
+      "data": [
+        {
+          "option": "critic",
+          "optionSize": 25,
+          "style": { "backgroundColor": "#bd940f", "textColor": "transparent" }
+        },
+        {
+          "option": "fail",
+          "optionSize": 5,
+          "style": { "backgroundColor": "#3a373b", "textColor": "transparent" }
+        },
+        {
+          "option": "normal",
+          "optionSize": 70,
+          "style": { "backgroundColor": "#e6dcdc", "textColor": "transparent" }
+        }
+      ],
+      "config": {
+        "hidden": false,
+        "width": 110,
+        "height": 110,
+        "left": 120,
+        "top": 99,
+        "pointerHeight": 50
+      }
+    }
   },
   {
-    "src": "src/assets/enemys/enemy-2.png"
+    "src": "src/assets/enemys/enemy-2.png",
+    "wheelConfig": {
+      "data": [
+        {
+          "option": "critic",
+          "optionSize": 25,
+          "style": { "backgroundColor": "#bd940f", "textColor": "transparent" }
+        },
+        {
+          "option": "fail",
+          "optionSize": 5,
+          "style": { "backgroundColor": "#3a373b", "textColor": "transparent" }
+        },
+        {
+          "option": "normal",
+          "optionSize": 70,
+          "style": { "backgroundColor": "#e6dcdc", "textColor": "transparent" }
+        }
+      ],
+      "config": {
+        "hidden": false,
+        "width": 110,
+        "height": 110,
+        "left": 120,
+        "top": 99,
+        "pointerHeight": 50
+      }
+    }
   }
 ]

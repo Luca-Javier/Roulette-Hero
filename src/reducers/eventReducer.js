@@ -8,6 +8,7 @@ const eventReducer = createSlice({
     event: EVENT.waiting,
     numEvents: 0,
     customEventMessage: "",
+    cleanChat: "initial",
   },
   reducers: {
     setEvent: (state, action) => {
@@ -22,10 +23,13 @@ const eventReducer = createSlice({
     addMessage: (state, action) => {
       state.customEventMessage = action.payload
     },
+    cleanChat: state => {
+      state.cleanChat = !state.cleanChat
+    },
   },
 })
 
-export const { setEvent, setRandomEvent, addEventNum, addMessage } =
+export const { setEvent, setRandomEvent, addEventNum, addMessage, cleanChat } =
   eventReducer.actions
 
 export default eventReducer.reducer

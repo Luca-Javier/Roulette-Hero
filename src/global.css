@@ -545,7 +545,8 @@ input {
   margin-bottom: 0.3rem;
 }
 .color-good {
-  color: var(--color-good);
+  color: var(--good);
+  font-weight: 400;
 }
 .health::before {
   width: 12px;

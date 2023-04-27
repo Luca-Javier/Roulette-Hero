@@ -7,7 +7,7 @@ const SeeSwords = ({}) => {
   const { leftHand, rightHand } = useSelector(state => state.player.equipment)
 
   return (
-    <section className="flex between">
+    <section className="flex flex-column between h-100">
       {leftHand && <WeaponInfo item={leftHand} />}
       {rightHand && <WeaponInfo item={rightHand} />}
     </section>

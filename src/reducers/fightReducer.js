@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 import getRandomEnemy from "../helpers/getRandomEnemy"
 import getAttackWheelConfig from "../helpers/getAttackWheelConfig"
+import getEnemyWheelConfig from "../helpers/getEnemyWheelConfig"
 
 const fightReducer = createSlice({
   name: "fight",
@@ -12,7 +13,8 @@ const fightReducer = createSlice({
       armor: null,
       attack: null,
       critickProb: null,
-      dodgeProb: null,
+      dodge: null,
+      wheelConfig: null,
     },
     player: {
       fullHealth: null,
@@ -22,13 +24,19 @@ const fightReducer = createSlice({
       rightAttack: { possibleAttacks: null, wheelConfig: null },
     },
     animationClass: "none",
+    isEnemyAttacking: false,
   },
   reducers: {
     prepareEnemyToFight: (state, action) => {
       const playerStats = action.payload.playerData.stats,
         numEvents = action.payload.numEvents
 
-      state.enemy = { ...getRandomEnemy({ playerStats, numEvents }) }
+      const enemy = getRandomEnemy({ playerStats, numEvents })
+
+      state.enemy = {
+        ...enemy,
+        /*  ...getEnemyWheelConfig({ enemy }), */
+      }
     },
     preparePlayerToFight: (state, action) => {
       const playerData = action.payload.playerData,
@@ -62,7 +70,7 @@ const fightReducer = createSlice({
     },
     attackEnemy: (state, action) => {
       const res = action.payload.res,
-        attack = action.payload.attack
+        attack = action.payload.attackDamage
 
       if (
         res === "normal" ||
@@ -80,6 +88,8 @@ const fightReducer = createSlice({
           state.player.currentHealth = state.player.fullHealth
         else state.player.currentHealth += lifeSteal
       }
+
+      if (state.enemy.currentHealth < 0) state.enemy.currentHealth = 0
     },
     setAnimation: (state, action) => {
       const animationOptions = action.payload
@@ -99,6 +109,16 @@ const fightReducer = createSlice({
     endAnimation: state => {
       state.animationClass = "none"
     },
+    toggleIsEnemyAttacking: state => {
+      state.isEnemyAttacking = !state.isEnemyAttacking
+    },
+    doEnemyAttack: (state, action) => {
+      const { attackDamage } = action.payload
+
+      state.player.currentHealth -= attackDamage
+
+      if (state.player.currentHealth < 0) state.player.currentHealth = 0
+    },
   },
 })
 
@@ -108,6 +128,8 @@ export const {
   attackEnemy,
   setAnimation,
   endAnimation,
+  toggleIsEnemyAttacking,
+  doEnemyAttack,
 } = fightReducer.actions
 
 export default fightReducer.reducer

@@ -5,7 +5,9 @@ import getMessage from "../../helpers/getMessage"
 
 const MainDisplay = () => {
   //Imports
-  const { event, customEventMessage } = useSelector(state => state.event)
+  const { event, customEventMessage, cleanChat } = useSelector(
+    state => state.event
+  )
 
   //States
   const [messagesHistory, setMessagesHistory] = useState([])
@@ -24,11 +26,19 @@ const MainDisplay = () => {
     setMessagesHistory([...messagesHistory, customEventMessage])
   }, [customEventMessage])
 
+  useEffect(() => {
+    if (cleanChat === "initial") return undefined
+
+    setMessagesHistory([])
+  }, [cleanChat])
+
   return (
     <section className="texts-display">
       <ul>
         {messagesHistory.length !== 0 &&
-          messagesHistory.map((message, i) => <li key={i}>{message}</li>)}
+          messagesHistory
+            .reverse()
+            .map((message, i) => <li key={i}>{message}</li>)}
       </ul>
     </section>
   )

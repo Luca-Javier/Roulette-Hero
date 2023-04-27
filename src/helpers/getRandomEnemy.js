@@ -39,7 +39,7 @@ export default function getRandomEnemy({ playerStats, numEvents }) {
   enemy.armor = calculateStatByKarma(armor)
   enemy.attack = calculateStatByKarma(attack)
   enemy.critickProb = specialMovesProbs
-  enemy.dodgeProb = specialMovesProbs
+  enemy.dodge = specialMovesProbs
 
   return enemy
 }

@@ -35,3 +35,7 @@ TODO LIST
 .Analizar si mi manera de organizar los items está correcta y va a ser escalable
 .crear evento cofre
 .generar un item random
+
+.Mantener el scroll en bottom del chat y sacar el reverse
+
+.Hacer un modo god
