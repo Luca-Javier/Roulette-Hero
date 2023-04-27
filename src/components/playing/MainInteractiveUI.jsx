@@ -27,7 +27,7 @@ const sections = {
   fighting: 2,
   seeSwords: 3,
 }
-// jajajaj
+//jujuju
 
 const MainInteractiveUI = () => {
   //Imports
@@ -41,7 +41,7 @@ const MainInteractiveUI = () => {
   useEffect(() => {
     if (event === EVENT.walking) dispatch(cleanChat())
 
-    if (event === EVENT.fighting) setSection(sections.fighting)
+    if (event === "juan") setSection(sections.fighting)
 
     const wasInFight =
       event === EVENT.walking &&
