@@ -1,12 +1,10 @@
 import React from "react"
 import FooterMd from "./FooterMd"
 import TittleMd from "./TittleMd"
-import GodMode from "./GodMode"
 
 const Layout = ({ children }) => {
   return (
     <>
-      <GodMode />
       <TittleMd />
       <main className="border border-3 border-white rounded-4 flex-grow-1 ">
         {children}
