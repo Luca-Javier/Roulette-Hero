@@ -27,6 +27,7 @@ const sections = {
   fighting: 2,
   seeSwords: 3,
 }
+// jajajaj
 
 const MainInteractiveUI = () => {
   //Imports
