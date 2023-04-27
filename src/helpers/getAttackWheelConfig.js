@@ -12,24 +12,10 @@ import getCustomOptionWheelStyle from "./getCustomOptionWheelStyle"
  * getItemStats({ trullyKarma, item }): [ possibleAttacks, wheelConfig ]
  */
 const getAttackWheelConfig = ({ trullyKarma, item, criticProb }) => {
-  let karmaFromItem = 1,
-    attackFromItem = 1,
-    attackFromHammerItem = 1,
-    criticFromRapierItem = 1
-
-  Object.keys(item.passiveEffects).forEach(effectKey => {
-    if (effectKey === "luckyHitMultiplier")
-      return (karmaFromItem += item.passiveEffects[effectKey])
-
-    if (effectKey === "attackMultiplier")
-      return (attackFromItem += item.passiveEffects[effectKey])
-
-    if (effectKey === "hammerDamageMultiplier")
-      return (attackFromHammerItem += item.passiveEffects[effectKey])
-
-    if (effectKey === "rapierCriticMultiplier")
-      return (criticFromRapierItem += item.passiveEffects[effectKey])
-  })
+  let karmaFromItem = 1 + item.passiveEffects?.luckyHitMultiplier || 1,
+    attackFromItem = 1 + item.passiveEffects?.attackMultiplier || 1,
+    attackFromHammerItem = 1 + item.passiveEffects?.hammerDamageMultiplier || 1,
+    criticFromRapierItem = 1 + item.passiveEffects?.rapierCriticMultiplier || 1
 
   let realKarma = trullyKarma * karmaFromItem,
     realAttack = item.attack * attackFromItem * attackFromHammerItem
