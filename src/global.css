@@ -33,6 +33,8 @@
   --icon-stone: url("./assets/icons/stats/stone.svg") " ";
   --icon-health: url("./assets/icons/stats/heart.svg");
   --icon-shield: url("./assets/icons/stats/armor.svg");
+  --icon-crtic: url("./assets/icons/stats/critick.svg");
+  --icon-dodge: url("./assets/icons/stats/dodge.svg");
   --icon-attack: url("./assets/icons/stats/attack.svg");
   --icon-karma: url("./assets/icons/stats/karma.svg");
   --icon-lucky: url("./assets/icons/stats/lucky.svg");
@@ -173,6 +175,9 @@ a {
   display: flex;
   align-items: center;
 }
+.options-btn:hover {
+  transform: scale(1.02);
+}
 /* *---------------------------------Options--------------------------------- */
 .options-title {
   display: flex;
@@ -185,6 +190,7 @@ a {
   height: 2.5rem;
   cursor: pointer;
 }
+
 .options-menu {
   display: flex;
   justify-content: center;
@@ -213,6 +219,19 @@ a {
   list-style: none;
   padding: 0;
   margin: 0;
+  overflow: auto;
+  max-height: 100%;
+}
+.texts-display ul::-webkit-scrollbar {
+  background-color: transparent;
+  width: 0px;
+}
+.texts-display ul:hover::-webkit-scrollbar {
+  width: 8px;
+}
+.texts-display ul:hover::-webkit-scrollbar-thumb {
+  background: var(--color-second);
+  border-radius: 4px;
 }
 .texts-display ul li {
   padding: 0.2rem 0.5rem;
@@ -331,6 +350,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
 .fight-container img {
   max-width: 70px;
@@ -339,7 +359,27 @@ a {
 .fight-enemy {
   text-align: right;
 }
-
+.fight-wheel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+.attack-animation {
+}
+.attack-animation.player-dodged::after {
+}
+.attack-animation.player-attack::after {
+  content: "player attack";
+}
+.attack-animation.enemy-dodged::after {
+}
+.attack-animation.enemy-attack::after {
+}
 /* *---------------------------------Progressbar--------------------------------- */
 .progress-container {
   position: relative;
@@ -369,6 +409,10 @@ progress::-webkit-progress-value {
 }
 progress[value]::-webkit-progress-bar {
   background-color: black;
+}
+/* *---------------------------------ItemInfo--------------------------------- */
+.item-info-img {
+  width: 50px;
 }
 /* *---------------------------------Utilities--------------------------------- */
 .title {
@@ -500,6 +544,9 @@ input {
   margin-left: 0.5rem;
   margin-bottom: 0.3rem;
 }
+.color-good {
+  color: var(--color-good);
+}
 .health::before {
   width: 12px;
   margin-right: 0.5rem;
@@ -526,6 +573,16 @@ input {
   margin-right: 0.5rem;
   content: var(--icon-lucky);
 }
+.critic::before {
+  width: 12px;
+  margin-right: 0.5rem;
+  content: var(--icon-crtic);
+}
+.dodge::before {
+  width: 12px;
+  margin-right: 0.5rem;
+  content: var(--icon-dodge);
+}
 .list-icons {
   padding-inline-start: 1rem;
 }
@@ -535,4 +592,30 @@ input {
 }
 .quality.rare {
   border-color: green;
+}
+.quality.epic {
+  border-color: #59009f;
+}
+.quality.legendary {
+  border-color: var(--money);
+}
+@keyframes walking-points {
+  0% {
+    content: "";
+  }
+  25% {
+    content: ".";
+  }
+  50% {
+    content: "..";
+  }
+  100% {
+    content: "...";
+  }
+}
+.walking-animation::after {
+  font-size: 30px;
+  line-height: 0.01px;
+  content: "";
+  animation: walking-points 3s infinite 1s;
 }

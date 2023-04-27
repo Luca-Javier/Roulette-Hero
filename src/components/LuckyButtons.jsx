@@ -7,4 +7,5 @@ const LuckyButtons = ({ text, ...args }) => {
     </button>
   )
 }
+
 export default LuckyButtons

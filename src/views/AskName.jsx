@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { setName } from "../reducers/playerReducer"
+import Button from "../components/Button"
 
 const AskName = () => {
   //Imports
@@ -19,6 +20,7 @@ const AskName = () => {
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">What is your name traveler?</label>
         <input
+          defaultValue="Testeando"
           pattern="^[A-Za-z0-9ÑñÁáÉéÍíÓóÚúÜü\s_-]+$"
           required
           autoComplete="off"
@@ -27,7 +29,7 @@ const AskName = () => {
           name="name"
           placeholder="Name..."
         />
-        <button className="button">Ready</button>
+        <Button text="Ready" />
       </form>
     </div>
   )

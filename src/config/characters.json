@@ -4,9 +4,10 @@
     "money": 22,
     "stones": 2,
     "stats": {
-      "health": 73,
+      "health": 42,
       "armor": 4,
-      "attack": 6,
+      "critic": 25,
+      "dodge": 25,
       "lucky": 2,
       "karma": 1
     },
@@ -16,14 +17,52 @@
         "alt": "a simple common sword",
         "quality": "common",
         "equipKey": "leftHand",
-        "stats": { "attack": 4 },
-        "effects": {}
+        "attack": 6,
+        "passiveEffects": {},
+        "activeEffects": {}
       }
     ],
     "description": "The default character",
     "img": "/src/assets/characters/default.png"
   },
+
   {
-    "name": "otherCharacter"
+    "name": "otherCharacter",
+    "money": 10,
+    "stones": 4,
+    "stats": {
+      "health": 42,
+      "armor": 4,
+      "critic": 25,
+      "dodge": 25,
+      "lucky": 2,
+      "karma": 1
+    },
+    "items": [
+      {
+        "src": "/src/assets/weapons/swords/simple-sword.svg",
+        "alt": "a bloody rare sword",
+        "quality": "rare",
+        "equipKey": "leftHand",
+        "attack": 8,
+        "passiveEffects": {},
+        "activeEffects": {
+          "lifeSteal": { "effect": 0.1 }
+        }
+      },
+      {
+        "src": "/src/assets/weapons/swords/simple-sword.svg",
+        "alt": "a lucky epic sword",
+        "quality": "epic",
+        "equipKey": "rightHand",
+        "attack": 10,
+        "passiveEffects": {
+          "luckyHitMultiplier": 0.2
+        },
+        "activeEffects": {}
+      }
+    ],
+    "description": "The default character",
+    "img": "/src/assets/characters/default.png"
   }
 ]

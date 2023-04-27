@@ -12,7 +12,7 @@ import enemies from "../config/enemies.json"
 export default function getRandomEnemy({ playerStats, numEvents }) {
   //Imports
   const enemy = enemies[Math.floor(Math.random() * enemies.length)]
-  const { trullyKarma, health, armor, attack, lucky } = playerStats
+  const { trullyKarma, health, armor, lucky } = playerStats
 
   //Functions
   const calculateStatByKarma = valueStat => {
@@ -30,7 +30,8 @@ export default function getRandomEnemy({ playerStats, numEvents }) {
 
   //Variables
   const calculatedHealth = calculateStatByKarma(health)
-  const specialMovesProbs = lucky > 0 ? 25 : 25 + lucky * -1.5
+  const specialMovesProbs = lucky > 0 ? 15 : 15 + lucky * -1.5
+  const attack = health / 7
 
   //Enemy Item
   enemy.fullHealth = calculatedHealth

@@ -5,7 +5,7 @@ import getMessage from "../../helpers/getMessage"
 
 const MainDisplay = () => {
   //Imports
-  const { event } = useSelector(state => state.event)
+  const { event, customEventMessage } = useSelector(state => state.event)
 
   //States
   const [messagesHistory, setMessagesHistory] = useState([])
@@ -18,6 +18,12 @@ const MainDisplay = () => {
       setMessagesHistory([...messagesHistory, message])
   }, [event])
 
+  useEffect(() => {
+    if (!customEventMessage) return undefined
+
+    setMessagesHistory([...messagesHistory, customEventMessage])
+  }, [customEventMessage])
+
   return (
     <section className="texts-display">
       <ul>
@@ -27,4 +33,5 @@ const MainDisplay = () => {
     </section>
   )
 }
+
 export default MainDisplay

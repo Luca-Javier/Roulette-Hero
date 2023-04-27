@@ -5,6 +5,7 @@ import Backpag from "./sections/Backpag"
 import SectionsButtons from "./SectionsButtons"
 import Fightin from "./displayEvents/Fightin"
 import { useSelector } from "react-redux"
+import SeeSwords from "./sections/seeSwords"
 
 /**
  *  Enum of sections for know the current section
@@ -43,6 +44,7 @@ const MainInteractiveUI = () => {
         {section === sections.userStats && <UserStats />}
         {section === sections.backpack && <Backpag />}
         {section === sections.fighting && <Fightin setSection={setSection} />}
+        {section === sections.seeSwords && <SeeSwords />}
       </article>
       <SectionsButtons
         section={section}

@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux"
 import {
   QUALITY_ITEM_PROBS,
   WEAPONS_VARIANT_PROBS,

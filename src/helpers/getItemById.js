@@ -12,6 +12,7 @@ const getRandomStat = (min, max) =>
 /**
  * Returns an item d by itemId. You can pass modifyKarma to get better or worse items.
  *
+ * @deprecated dividir esto en 2 funciones de armaduras y armas junto con los nuevos passiveEffects y effects de las armas
  *
  * @param {object} props
  * @param {string} props.itemId
@@ -33,6 +34,7 @@ const getItemById = ({ itemId, trullyKarma, modifyKarma = 1.0 }) => {
     equipKey = itemCaracteristics[3],
     qm = qualityMultiplier[quality]
 
+  // todo romper esta funcion de mierda y hacer una para armas y otra para armaduras. Además hacer que los efectos, cada sea un objeto con el número y probabilidad de que se active
   const item = {
     src: `/src/assets/weapons/${type + "s"}/${variant}-${type}.svg`,
     equipKey,
@@ -47,10 +49,10 @@ const getItemById = ({ itemId, trullyKarma, modifyKarma = 1.0 }) => {
         variant === "lucky" && equipKey !== "hand" ? 0.6 * qm : 0,
       luckyHitMultiplier:
         variant === "lucky" && equipKey === "hand" ? 0.6 * qm : 0,
-      healthSteal: variant === "bloody" ? 0.3 * qm : 0,
+      lifeStealPercent: variant === "bloody" ? 10 * qm : 0,
       attackMultiplier: variant === "strongest" ? 0.2 * qm : 0,
       hammerDamageMultiplier: type === "hammer" ? 0.4 * qm : 0,
-      rapierCritikMultiplier: type === "rapier" ? 0.4 * qm : 0,
+      rapierCriticMultiplier: type === "rapier" ? 0.4 * qm : 0,
       reflectDamage: variant === "pike" ? 0.3 * qm : 0,
       armorMultiplier: variant === "armored" ? 0.2 * qm : 0,
     },

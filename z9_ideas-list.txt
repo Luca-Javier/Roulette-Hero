@@ -1,7 +1,3 @@
-.hacer una funcion getEventByKarma (karma float): string que dentro tiene las variables con las probabilidades de cada evento ya calculadas con el trullyKarma, y que ponga el evento en el estado y la app reaciona cuando cambia el evento
-
-
-
 .Los equipmaientos estan organizados diferentes categorías. Pero cada una tiene calidad normal, rara, epica, legendaria
 
 Categorías: lucky, bloody ,critik, strongest
@@ -10,7 +6,11 @@ Categorías: lucky, bloody ,critik, strongest
 
 .La variante critik no aumenta la probabilidad, aumenta el daño y todos los efectos se almacenarán effects en el store, que contiene un effect y el itemId
 
+.Sí aplico 0 daño al enemigo entonces no se aplican los efectos (para el fail)
 
+.Todos los items al ser creados tienen que tener el daño como estadisitca base (que fue calculado random con un poco de factor karma) y luego todo queda base. Sí yo tengo lifeSteal tengo el robo según la caálidad, nada de karma y la probabilidad se calcula mas adelánte con la suerte. Es al pedo calcular cuando creo el item porque el personajes cambia la suerte
+
+.Poner la funcionalidad getItemWheelConfig en fight reducer y luego acceder al config wheel y mandar el possible attacks por un nuevo config end, que sería un callback para cuando la rueda termine
 
 
 Estructura de carpeta assets

@@ -16,10 +16,12 @@ const initialConfig = {
   top: 109,
   time: 400,
   hidden: false,
+  pointerHeight: 60,
 }
 
 const initialData = [{ option: "noError" }, { option: "noError2" }]
 
+// Time approx that the wheel takes to finish with the actual config
 let timeWheelFinish = 1100
 
 const WheelProvider = ({ children }) => {
@@ -31,7 +33,7 @@ const WheelProvider = ({ children }) => {
 
   //Events
   const configWheel = props => {
-    setData(props.data)
+    if (props.data) setData(props.data)
     if (props.config) setConfig({ ...initialConfig, ...props.config })
     else setConfig(initialConfig)
   }

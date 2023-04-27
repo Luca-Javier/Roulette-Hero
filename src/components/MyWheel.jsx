@@ -5,19 +5,23 @@
  *
  */
 
-import React from "react"
+import React, { useEffect } from "react"
 import { Wheel } from "react-custom-roulette"
 import useWheel from "../context/useWheel"
-//import pointer from "../assets/icons/Roulette-pointer.svg"
 
 const MyWheel = () => {
   //Imports
   const wheel = useWheel()
 
   //Variables
-  const { winner, spin, data, config } = wheel
-  const { width, height, top, left, hidden } = config
+  const { winner, spin, data, config, configWheel } = wheel
+  const { width, height, top, left, hidden, pointerHeight } = config
   let classNone = hidden ? "" : "none"
+
+  //Effect unmount
+  useEffect(() => {
+    return () => configWheel({ hidden: false })
+  }, [])
 
   return (
     <div
@@ -30,13 +34,14 @@ const MyWheel = () => {
             left,
             top,
             position: "absolute",
-            height: "60px",
+            height: pointerHeight,
             transform: "rotate(45deg)",
           },
         }}
         mustStartSpinning={spin}
         prizeNumber={winner}
         data={data}
+        radiusLineWidth={3}
         perpendicularText={true}
         textDistance={30 * (width / 150)}
         outerBorderColor="white"
@@ -45,4 +50,5 @@ const MyWheel = () => {
     </div>
   )
 }
+
 export default MyWheel

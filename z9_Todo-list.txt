@@ -10,46 +10,28 @@ TODO LIST
 
 .Ver como mostrar lo de figma en el respositorio
 
-.Aprender a documentar funciones
-. ¿Probar jsdoc?
-
 .Hacer footer y title responsivos, quizas ponerle la fuente "Press Start 2P"
 
 .Terminar la página de error
 
 .Hacer página about
 
-.Hover en el close de options
 .Terminar configure de options
 .Agregar navegación a about en options
 
-.Hacer scrolleable el main display
-
 .Detalle de borde de la seccion activada en la pantalla de interacción
-
-
-.Crear componente lucky button
-.Crear componente ButtonsFightin
-
-.En usertStats cambiar los src por emptySrc y con condiciones que cargue la imagen del equipamiento
-
-.Hacer una función gigante de generateItem que dentro tenga la función para cada item 
-
-.Poner en el store una propieda effects y pasiveEffects y un reducer de updateStatsFromEffects
-
-.Poner bien el karma y lucky para EJ: Sí tengo uno de trullykarma es como tener 0 porque yo multiplico. Entonces ver como me organizo
-
-.Hacer la comprobación de si usar generateWeaponID o equipment
-
 
 .Ver gh-pages y jsdocs con el tema ese que me gustó
 
 .Averiguar sobre redux-persist
 
-.Crear una section durante fight para ver mis armas
-.Poner las imagenes de las armas de los botones y de alguna manera hacerle daño al enemigo con lso efectos del arma
+.CAMBIAR LA seccion de armas en fight a seccion tipo "ver info", cambiar el icono por una lupa y un componente de info de un item, quizas componentes para weapon y equipment
 
-.Refactorizar y cambiar el attack por critick y dodge.
-.dividir efectos en efectos pasivos de armaduras y activos de armas
-.calcular el daño del enemigo en base a dividir la vida del player
-.Calcular en figh reducer el daño base de cada arma que tengo
+.Crear la animacion en fightin
+
+.Terminar weaponInfo
+.Crear armorInfo
+
+.Analizar si mi manera de organizar los items está correcta y va a ser escalable
+.crear evento cofre
+.generar un item random

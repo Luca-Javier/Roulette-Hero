@@ -7,29 +7,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    body {
-      background-color: black;
-    }
-
-    img {
-      /* transform: scale(.07); */
-      height: 20px;
-      width: 20px;
-      border: thin solid white;
+    .div1 {
+      height: 300px;
+      overflow: hidden;
+      border: 1px solid black;
+      overflow: hidden;
 
     }
 
-    .content::before {
-      fill: red;
-      height: 20px;
-      width: 20px;
-      content: url("/src/assets/icons/heart.svg");
+    .div2 {
+      max-height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
 
-    .bg-image {
-      height: 20px;
-      width: 20px;
-      background-image: url("/src/assets/equipment/chestTest.svg");
+    .div2::-webkit-scrollbar {
+      background-color: transparent;
+      width: 0px;
+    }
+
+    .div2:hover::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .div2:hover::-webkit-scrollbar-thumb {
+      background: #b3b3b3;
+      border-radius: 4px;
+      width: 8px;
     }
 
   </style>
@@ -37,14 +41,33 @@
 
 <body>
 
-  <img src="/src/assets/equipment/chestTest.svg" alt="">
-  <img src="/src/assets/icons/heart.svg" alt="">
-
-  <div class="content"></div>
-
-  <div class="bg-image">
-
+  <div class="div1">
+    <div class="div2">
+      <ul>
+        <li>hola</li>
+        <li>hola</li>
+        <li>holaddddddddddddddddddddddddddddddddddddddddddddddddddd</li>
+        <li>hola</li>
+        <li>hola</li>
+        <li>hola</li>
+        <li>hola</li>
+        <li>hola</li>
+        <li>hola</li>
+        <li>hola</li>
+        <li>hola</li>
+        <li>hola</li>
+        <li>hola</li>
+        <li>hola</li>
+        <li>hola</li>
+        <li>hola</li>
+        <li>hola</li>
+        <li>hola</li>
+        <li>hola</li>
+        <li>hola</li>
+      </ul>
+    </div>
   </div>
+
 
 </body>
 

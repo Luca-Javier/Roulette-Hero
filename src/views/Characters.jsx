@@ -6,14 +6,13 @@ import { setInitialStats } from "../reducers/playerReducer"
 import Button from "../components/Button"
 import { useNavigate } from "react-router-dom"
 
-const Characters = ({}) => {
+const Characters = () => {
   //Imports
   const { unlockedCharacters } = useSelector(state => state.userConfig)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   //States
-
   const [characterInfo, setCharacterInfo] = useState()
   const [characters, setCharacters] = useState([])
 
@@ -82,7 +81,6 @@ const Characters = ({}) => {
               </div>
               <div className="flex gap-05">
                 <p className="money">{characterInfo.money}</p>
-
                 <p className="stone">{characterInfo.stones}</p>
               </div>
               <p>{characterInfo.description}</p>

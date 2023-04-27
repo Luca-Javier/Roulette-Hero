@@ -6,7 +6,6 @@ import closeIcon from "/src/assets/icons/others/close-options.svg"
 const Options = () => {
   //States
   const navigate = useNavigate()
-  //todo Estado/context configure para mostrar configuraciones como sonido, etc.
 
   //Events
   const goBack = () => {

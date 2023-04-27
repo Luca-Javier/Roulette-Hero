@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { getTrullyKarma } from "../helpers/getTrullyKarma"
-import getItemById from "../helpers/getItemById"
-import generateWeaponId from "../helpers/generateWeaponId"
 
 const playerReducer = createSlice({
   name: "player",
@@ -11,31 +9,39 @@ const playerReducer = createSlice({
     money: 22,
     stones: 2,
     stats: {
-      health: 73,
+      health: 42,
       armor: 4,
-      attack: 3,
+      critic: 25,
+      dodge: 15,
       lucky: 2,
       karma: 1,
       trullyKarma: 1.5,
     },
     equipment: {
       helmet: null,
-      leftHand: null,
+      leftHand: {
+        src: "/src/assets/weapons/swords/simple-sword.svg",
+        quality: "common",
+        alt: "a simple common sword",
+        attack: 6,
+        passiveEffects: {},
+        activeEffects: {},
+      },
       chest: null,
       rightHand: null,
       pants: null,
       leftFoot: null,
       rightFoot: null,
     },
-    effects: {
+    passiveEffects: {
       luckyStatMultiplier: 0,
-      luckyHitMultiplier: 0,
-      healthSteal: 0,
-      attackMultiplier: 0,
-      hammerDamageMultiplier: 0,
-      rapierCritikMultiplier: 0,
-      reflectDamage: 0,
       armorMultiplier: 0,
+      reflectDamage: 0,
+      /* hammerDamageMultiplier: 0,
+      attackMultiplier: 0,
+      rapierCriticMultiplier: 0,
+      healthSteal: 0,
+      luckyHitMultiplier: 0, */
     },
     backpag: [],
   },

@@ -6,7 +6,7 @@ const userConfigReducer = createSlice({
   initialState: {
     music: 100,
     sound: 100,
-    unlockedCharacters: ["Default"],
+    unlockedCharacters: ["Default", "otherCharacter"],
   },
   reducers: {
     getMusicSoundFromStorage: (musicLevel, soundLevel) => {},

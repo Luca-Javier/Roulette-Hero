@@ -2,22 +2,24 @@ import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import Progressbar from "../../Progressbar"
 import playerIcon from "../../../assets/characters/Heart.svg"
-import getRandomEnemyImage from "../../../helpers/getRandomEnemy"
-import { startFight } from "../../../reducers/fightReducer"
-import { WHEEL_TAMPLATE_CRIT } from "../../../config/wheelTemplates"
+import {
+  prepareEnemyToFight,
+  preparePlayerToFight,
+} from "../../../reducers/fightReducer"
+import MyWheel from "../../MyWheel"
 
 const Fightin = ({ setSection }) => {
   //Imports
   const dispatch = useDispatch()
-  const playerStats = useSelector(state => state.player.stats)
+  const playerData = useSelector(state => state.player)
   const { numEvents } = useSelector(state => state.event)
-  const { enemy, player } = useSelector(state => state.fight)
+  const { enemy, player, animationClass } = useSelector(state => state.fight)
 
   //Effects
   useEffect(() => {
-    dispatch(startFight({ playerStats, numEvents }))
-
-    console.log(WHEEL_TAMPLATE_CRIT(player.critickProb))
+    if (enemy.src) return undefined
+    dispatch(prepareEnemyToFight({ playerData, numEvents }))
+    dispatch(preparePlayerToFight({ playerData }))
   }, [])
 
   return (
@@ -26,10 +28,13 @@ const Fightin = ({ setSection }) => {
         <Progressbar max={enemy.fullHealth} value={enemy.currentHealth} />
         <img src={enemy.src} alt="Enemy figure" className="mb-0" />
       </article>
-      {/* an absolute container for effects */}
+      <article className="fight-wheel-container">
+        <div className={`attack-animation ${animationClass}`}>Animation </div>
+        <MyWheel />
+      </article>
       <article>
         <img src={playerIcon} alt="Player figure" />
-        <Progressbar max={playerStats.health} value={player.currentHealth} />
+        <Progressbar max={player.fullHealth} value={player.currentHealth} />
       </article>
     </section>
   )
