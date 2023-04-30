@@ -101,7 +101,7 @@
         }
       },
       {
-        "src": "/src/assets/armor/helmets/simple-helmet.svg",
+        "src": "/src/assets/armors/helmets/simple-helmet.svg",
         "alt": "a simple rare helmet",
         "quality": "rare",
         "equipKey": "helmet",

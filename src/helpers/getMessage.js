@@ -6,7 +6,7 @@ import { EVENT } from "../config/eventsTypes"
  * @param {string} event
  * @return {string} message from event
  */
-const getMessage = event => {
+function getMessage(event) {
   if (event === EVENT.walking) return `you are walking...`
 
   if (event === EVENT.fight) return `an enemy found you!`

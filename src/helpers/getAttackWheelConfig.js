@@ -50,7 +50,7 @@ const getAttackWheelConfig = ({ item, playerData }) => {
     return {
       option: effectKey,
       optionSize: getProb(15 * realKarma),
-      ...getCustomOptionWheelStyle({ option: effectKey }),
+      style: getCustomOptionWheelStyle({ option: effectKey }),
     }
   })
 
@@ -68,18 +68,18 @@ const getAttackWheelConfig = ({ item, playerData }) => {
       {
         option: "critic",
         optionSize: getProb(criticProb * karmaFromItem),
-        ...getCustomOptionWheelStyle({ option: "critic" }),
+        style: getCustomOptionWheelStyle({ option: "critic" }),
       },
       {
         option: "fail",
         optionSize: getProb(5),
-        ...getCustomOptionWheelStyle({ option: "fail" }),
+        style: getCustomOptionWheelStyle({ option: "fail" }),
       },
       ...activeEffects,
       {
         option: "normal",
         optionSize: getProb(),
-        ...getCustomOptionWheelStyle({ option: "normal" }),
+        style: getCustomOptionWheelStyle({ option: "normal" }),
       },
     ],
     config: {

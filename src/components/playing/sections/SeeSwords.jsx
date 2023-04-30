@@ -2,7 +2,7 @@ import React from "react"
 import { useSelector } from "react-redux"
 import ItemInfo from "../../ItemInfo"
 
-const SeeSwords = ({}) => {
+function SeeSwords() {
   //Imports
   const { leftHand, rightHand } = useSelector(state => state.player.equipment)
 
@@ -13,4 +13,5 @@ const SeeSwords = ({}) => {
     </section>
   )
 }
+
 export default SeeSwords

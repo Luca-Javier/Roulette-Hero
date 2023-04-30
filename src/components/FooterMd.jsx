@@ -1,6 +1,6 @@
 import React from "react"
 
-const FooterMd = () => {
+function FooterMd() {
   return <footer>About</footer>
 }
 

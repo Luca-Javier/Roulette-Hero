@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { EVENT } from "../config/eventsTypes"
-import getRandomEvent from "../helpers/getRandomEvent"
+import { EVENT_PROBS } from "../config/eventProbabilities"
 
 const eventReducer = createSlice({
   name: "event",
@@ -16,7 +16,7 @@ const eventReducer = createSlice({
       state.event = action.payload
     },
     setRandomEvent: state => {
-      state.event = getRandomEvent()
+      state.event = EVENT_PROBS.peek()[0]
     },
     addEventNum: state => {
       state.numEvents++

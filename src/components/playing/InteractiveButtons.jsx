@@ -8,7 +8,7 @@ import { addMessage } from "../../reducers/eventReducer"
 import generateWeapon from "../../helpers/generateWeapon"
 import { addBackpag } from "../../reducers/playerReducer"
 
-const InteractiveButtons = () => {
+function InteractiveButtons() {
   //Imports
   const { event } = useSelector(state => state.event)
   const { trullyKarma } = useSelector(state => state.player.stats)

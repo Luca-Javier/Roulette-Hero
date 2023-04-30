@@ -1,16 +1,4 @@
-//@ts-check
-import {
-  QUALITY_ITEM_PROBS,
-  WEAPONS_VARIANT_PROBS,
-  WEAPON_PROBS,
-} from "../config/itemProbabilities"
-
-const qualityMultiplier = {
-  common: 1,
-  rare: 1.5,
-  epic: 2,
-  legendary: 3,
-}
+import getBasicItemTemplate from "./getBasicItemTemplate"
 
 /**@typedef {import("../types.ts").Weapon} Weapon */
 
@@ -23,25 +11,10 @@ const qualityMultiplier = {
  * @return {Weapon}
  */
 const generateWeapon = ({ trullyKarma }) => {
-  const type = WEAPON_PROBS.peek()[0],
-    variant = WEAPONS_VARIANT_PROBS.peek()[0],
-    quality = QUALITY_ITEM_PROBS.peek()[0]
+  const equipType = "weapon"
 
-  const getRandomStat = (min, max) => {
-    const maxForQuality = max * qualityMultiplier[quality],
-      minForQuality = min * qualityMultiplier[quality]
-
-    const minWithKarma = Math.round(
-      minForQuality + minForQuality * trullyKarma * 0.1
-    )
-
-    const maxCalculated = Math.round(Math.random() * maxForQuality)
-
-    return Math.max(minWithKarma, maxCalculated)
-  }
-
-  const src = `/src/assets/weapons/${type + "s"}/${variant}-${type}.svg`,
-    alt = `a ${variant} ${quality} ${type}`
+  const { type, variant, quality, getRandomStat, src, alt, qualityMultiplier } =
+    getBasicItemTemplate({ equipType, trullyKarma })
 
   const passiveEffects = {}
 
@@ -71,7 +44,7 @@ const generateWeapon = ({ trullyKarma }) => {
     src,
     alt,
     quality,
-    equipType: "weapon",
+    equipType,
     type,
     attack,
     passiveEffects,

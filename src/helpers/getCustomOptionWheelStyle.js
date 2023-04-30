@@ -5,7 +5,7 @@
  *
  * @returns {object}
  */
-export default function getCustomOptionWheelStyle({ option }) {
+function getCustomOptionWheelStyle({ option }) {
   let bgOptionColor
 
   if (option === "normal") bgOptionColor = "#e6dcdc"
@@ -13,5 +13,7 @@ export default function getCustomOptionWheelStyle({ option }) {
   else if (option === "critic") bgOptionColor = "#bd940f"
   else if (option === "lifeSteal") bgOptionColor = "#c21210"
 
-  return { style: { backgroundColor: bgOptionColor, textColor: "transparent" } }
+  return { backgroundColor: bgOptionColor, textColor: "transparent" }
 }
+
+export default getCustomOptionWheelStyle

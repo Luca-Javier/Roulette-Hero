@@ -13,14 +13,14 @@ export const WEAPON_PROBS = new WeightedList([
   ["pirate", 20],
 ])
 
-export const EQUIPMENT_PROBS = new WeightedList([
+export const ARMOR_PROBS = new WeightedList([
   ["helmet", 20],
   ["chest", 20],
   ["legs", 20],
   ["foot", 20],
 ])
 
-export const EQUIPMENT_VARIANTE_PROBS = new WeightedList([
+export const ARMOR_VARIANT_PROBS = new WeightedList([
   ["simple", 55],
   ["lucky", 15],
   ["pike", 15],

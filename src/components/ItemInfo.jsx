@@ -1,7 +1,7 @@
 import React from "react"
 import { useSelector } from "react-redux"
 
-const ItemInfo = ({ item, forje }) => {
+function ItemInfo({ item, forje }) {
   //Imports
   const { critic } = useSelector(state => state.player.stats)
   const itemInfo = item || useSelector(state => state.event.itemInfo)
@@ -35,4 +35,5 @@ const ItemInfo = ({ item, forje }) => {
     </article>
   )
 }
+
 export default ItemInfo

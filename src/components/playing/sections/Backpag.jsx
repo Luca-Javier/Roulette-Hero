@@ -1,7 +1,7 @@
 import React from "react"
 import { useSelector } from "react-redux"
 
-const Backpag = () => {
+function Backpag() {
   //Imports
   const { backpag } = useSelector(state => state.player)
 
@@ -24,4 +24,5 @@ const Backpag = () => {
     </section>
   )
 }
+
 export default Backpag

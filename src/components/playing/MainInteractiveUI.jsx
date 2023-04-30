@@ -36,7 +36,7 @@ const sections = {
   itemInfo: 4,
 }
 
-const MainInteractiveUI = () => {
+function MainInteractiveUI() {
   //Imports
   const { event } = useSelector(state => state.event)
   const dispatch = useDispatch()
@@ -71,7 +71,7 @@ const MainInteractiveUI = () => {
       <article className="interactive-per-section">
         {section === sections.userStats && <UserStats />}
         {section === sections.backpack && <Backpag />}
-        {section === sections.fighting && <Fightin setSection={setSection} />}
+        {section === sections.fighting && <Fightin />}
         {section === sections.seeSwords && <SeeSwords />}
         {section === sections.itemInfo && <ItemInfo forje={true} />}
       </article>
@@ -83,4 +83,5 @@ const MainInteractiveUI = () => {
     </section>
   )
 }
+
 export default MainInteractiveUI

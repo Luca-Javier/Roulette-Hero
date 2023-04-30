@@ -94,7 +94,7 @@ const fightReducer = createSlice({
           ? (state.animationClass = "player-dodged")
           : (state.animationClass = "player-attack")
       else
-        animationOptions.enemy.dodged
+        animationOptions.enemy?.dodged
           ? (state.animationClass = "enemy-dodged")
           : (state.animationClass = "enemy-attack")
 

@@ -8,7 +8,7 @@ import {
 } from "../../../reducers/fightReducer"
 import MyWheel from "../../MyWheel"
 
-const Fightin = ({ setSection }) => {
+function Fightin() {
   //Imports
   const dispatch = useDispatch()
   const playerData = useSelector(state => state.player)
@@ -39,4 +39,5 @@ const Fightin = ({ setSection }) => {
     </section>
   )
 }
+
 export default Fightin

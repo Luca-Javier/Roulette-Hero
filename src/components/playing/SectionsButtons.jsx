@@ -14,7 +14,7 @@ import swordsIcon from "../../assets/icons/sections/swords-section.svg"
  *
  * @returns {JSX.Element}
  */
-const SectionsButtons = ({ section, setSection, sections }) => {
+function SectionsButtons({ section, setSection, sections }) {
   return (
     <article className="interactive-sections">
       <button
