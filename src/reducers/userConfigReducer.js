@@ -1,12 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-//hacer un helper getter para unlockedCharacters
 const userConfigReducer = createSlice({
   name: "userConfig",
   initialState: {
     music: 100,
     sound: 100,
-    unlockedCharacters: ["Default", "otherCharacter"],
+    unlockedCharacters: ["Default", "otherCharacter", "Hammer Bro", "armored"],
   },
   reducers: {
     getMusicSoundFromStorage: (musicLevel, soundLevel) => {},

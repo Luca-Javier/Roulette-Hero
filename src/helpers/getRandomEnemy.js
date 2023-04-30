@@ -9,7 +9,7 @@ import enemies from "../config/enemies.json"
  *
  * @returns {Object} enemy
  */
-export default function getRandomEnemy({ playerStats, numEvents }) {
+function getRandomEnemy({ playerStats, numEvents }) {
   //Imports
   const enemy = enemies[Math.floor(Math.random() * enemies.length)]
   const { trullyKarma, health, armor, lucky } = playerStats
@@ -43,3 +43,5 @@ export default function getRandomEnemy({ playerStats, numEvents }) {
 
   return enemy
 }
+
+export default getRandomEnemy

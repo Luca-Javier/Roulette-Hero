@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import optionButtonImg from "/src/assets/icons/others/options-button.svg"
 
-const GameHeader = () => {
+function GameHeader() {
   //Imports
   const { name, className, money, stones } = useSelector(state => state.player)
 
@@ -26,4 +26,5 @@ const GameHeader = () => {
     </section>
   )
 }
+
 export default GameHeader

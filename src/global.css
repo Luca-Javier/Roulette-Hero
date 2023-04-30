@@ -432,8 +432,14 @@ progress[value]::-webkit-progress-bar {
 .between {
   justify-content: space-between;
 }
+.flex-wrap {
+  flex-wrap: wrap;
+}
 .gap-05 {
   gap: 0.5rem;
+}
+.gap-1 {
+  gap: 1rem;
 }
 .justify-center {
   justify-content: center;
@@ -448,11 +454,18 @@ progress[value]::-webkit-progress-bar {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.my-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
 .mb-0 {
   margin-bottom: 0 !important;
 }
 .w-50 {
   width: 50%;
+}
+w-90 {
+  width: 90%;
 }
 w-100 {
   width: 100%;

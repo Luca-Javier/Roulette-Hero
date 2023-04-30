@@ -1,7 +1,7 @@
 /**
+ * @file Roulette element
  * @requires module:react-custom-roulette
  * @deprecated  This package is builtin React ^16.13.1
- * @file Roulette element
  *
  */
 
@@ -9,7 +9,7 @@ import React, { useEffect } from "react"
 import { Wheel } from "react-custom-roulette"
 import useWheel from "../context/useWheel"
 
-const MyWheel = () => {
+function MyWheel() {
   //Imports
   const wheel = useWheel()
 

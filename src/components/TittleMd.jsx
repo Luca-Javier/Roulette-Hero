@@ -1,6 +1,6 @@
 import React from "react"
 
-const TittleMd = () => {
+function TittleMd() {
   return <h2 className="title second-font">Roulette Hero</h2>
 }
 

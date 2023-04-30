@@ -2,7 +2,7 @@ import React from "react"
 import FooterMd from "./FooterMd"
 import TittleMd from "./TittleMd"
 
-const Layout = ({ children }) => {
+function Layout({ children }) {
   return (
     <>
       <TittleMd />

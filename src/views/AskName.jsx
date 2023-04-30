@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { setName } from "../reducers/playerReducer"
 import Button from "../components/Button"
 
-const AskName = () => {
+function AskName() {
   //Imports
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -34,4 +34,5 @@ const AskName = () => {
     </div>
   )
 }
+
 export default AskName

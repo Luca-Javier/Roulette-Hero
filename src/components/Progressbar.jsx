@@ -1,6 +1,6 @@
 import React from "react"
 
-const Progressbar = ({ value, max }) => {
+function Progressbar({ value, max }) {
   return (
     <>
       <div className="progress-container">
@@ -12,4 +12,5 @@ const Progressbar = ({ value, max }) => {
     </>
   )
 }
+
 export default Progressbar

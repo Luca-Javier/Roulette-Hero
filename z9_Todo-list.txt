@@ -25,17 +25,23 @@ TODO LIST
 
 .Averiguar sobre redux-persist
 
-.CAMBIAR LA seccion de armas en fight a seccion tipo "ver info", cambiar el icono por una lupa y un componente de info de un item, quizas componentes para weapon y equipment
-
 .Crear la animacion en fightin
 
 .Terminar weaponInfo
 .Crear armorInfo
 
-.Analizar si mi manera de organizar los items está correcta y va a ser escalable
-.crear evento cofre
-.generar un item random
-
 .Mantener el scroll en bottom del chat y sacar el reverse
 
-.Hacer un modo god
+.Averiguar sobre el launch.json para el debugger
+
+.Usar phind
+
+.Probar StrictMode dandole como child la app
+
+.Corregir estilos de backpag, por ahí con una grid
+
+.crear un character con armadura completa
+.Probar efectos en armadura
+.Crear funcion para crear armadura
+
+.Usar el f1 para buscar archivos en ver de buscarlos por las carpetas

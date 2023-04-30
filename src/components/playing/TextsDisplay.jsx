@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import getMessage from "../../helpers/getMessage"
 
-const MainDisplay = () => {
+function MainDisplay() {
   //Imports
   const { event, customEventMessage, cleanChat } = useSelector(
     state => state.event

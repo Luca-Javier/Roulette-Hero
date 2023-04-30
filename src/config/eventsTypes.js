@@ -9,6 +9,7 @@ const EVENT = {
   fight: "fight",
   backFight: "backFight",
   fighting: "fighting",
+  chest: "chest",
 }
 
 export { EVENT }

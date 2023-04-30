@@ -1,16 +1,17 @@
 import React from "react"
 import { useSelector } from "react-redux"
-import WeaponInfo from "../../WeaponInfo"
+import ItemInfo from "../../ItemInfo"
 
-const SeeSwords = ({}) => {
+function SeeSwords() {
   //Imports
   const { leftHand, rightHand } = useSelector(state => state.player.equipment)
 
   return (
     <section className="flex flex-column between h-100">
-      {leftHand && <WeaponInfo item={leftHand} />}
-      {rightHand && <WeaponInfo item={rightHand} />}
+      {leftHand && <ItemInfo item={leftHand} />}
+      {rightHand && <ItemInfo item={rightHand} />}
     </section>
   )
 }
+
 export default SeeSwords

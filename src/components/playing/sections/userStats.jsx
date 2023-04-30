@@ -1,12 +1,12 @@
 import React from "react"
 import { useSelector } from "react-redux"
-import emptyHeadImg from "/src/assets/equipment/empty/head.svg"
-import emptyHandImg from "/src/assets/equipment/empty/hand.svg"
-import emptyChestImg from "/src/assets/equipment/empty/chest.svg"
-import emptyPantImg from "/src/assets/equipment/empty/pantalones.svg"
-import emptyFootImg from "/src/assets/equipment/empty/foots.svg"
+import emptyHeadImg from "/src/assets/armors/empty/head.svg"
+import emptyHandImg from "/src/assets/armors/empty/hand.svg"
+import emptyChestImg from "/src/assets/armors/empty/chest.svg"
+import emptyPantImg from "/src/assets/armors/empty/pantalones.svg"
+import emptyFootImg from "/src/assets/armors/empty/foots.svg"
 
-const UserStats = ({}) => {
+function UserStats() {
   //Imports
   const state = useSelector(state => state.player)
   const { health, armor, critic, dodge, karma, lucky } = state.stats,
@@ -81,4 +81,5 @@ const UserStats = ({}) => {
     </section>
   )
 }
+
 export default UserStats

@@ -7,7 +7,14 @@ import Fightin from "./displayEvents/Fightin"
 import { useDispatch, useSelector } from "react-redux"
 import SeeSwords from "./sections/seeSwords"
 import { EVENT } from "../../config/eventsTypes"
-import { cleanChat } from "../../reducers/eventReducer"
+import {
+  addEventNum,
+  addMessage,
+  cleanChat,
+  cleanItemInfo,
+  setRandomEvent,
+} from "../../reducers/eventReducer"
+import { getWalkTime } from "../../helpers/getWalkingTime"
 
 /**
  *  Enum of sections for know the current section
@@ -26,10 +33,10 @@ const sections = {
   backpack: 1,
   fighting: 2,
   seeSwords: 3,
+  itemInfo: 4,
 }
-// jajajaj
 
-const MainInteractiveUI = () => {
+function MainInteractiveUI() {
   //Imports
   const { event } = useSelector(state => state.event)
   const dispatch = useDispatch()
@@ -39,13 +46,21 @@ const MainInteractiveUI = () => {
 
   //Effects
   useEffect(() => {
-    if (event === EVENT.walking) dispatch(cleanChat())
-    else if (event === EVENT.fighting) setSection(sections.fighting)
+    if (event === EVENT.chest) {
+      dispatch(addMessage("You found a chest"))
+      return undefined
+    } else if (event === EVENT.fighting) setSection(sections.fighting)
     else if (
       event === EVENT.walking &&
       (section === sections.fighting || section === sections.seeSwords)
     )
       setSection(sections.userStats)
+
+    if (event !== EVENT.walking) return undefined
+    dispatch(cleanChat())
+    dispatch(cleanItemInfo())
+    dispatch(addEventNum())
+    setTimeout(() => dispatch(setRandomEvent()), getWalkTime())
   }, [event])
 
   return (
@@ -53,8 +68,9 @@ const MainInteractiveUI = () => {
       <article className="interactive-per-section">
         {section === sections.userStats && <UserStats />}
         {section === sections.backpack && <Backpag />}
-        {section === sections.fighting && <Fightin setSection={setSection} />}
+        {section === sections.fighting && <Fightin />}
         {section === sections.seeSwords && <SeeSwords />}
+        {section === sections.itemInfo && <ItemInfo forje={true} />}
       </article>
       <SectionsButtons
         section={section}
@@ -64,4 +80,5 @@ const MainInteractiveUI = () => {
     </section>
   )
 }
+
 export default MainInteractiveUI
