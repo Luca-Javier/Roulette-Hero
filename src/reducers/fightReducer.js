@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import getRandomEnemy from "../helpers/getRandomEnemy"
 import getAttackWheelConfig from "../helpers/getAttackWheelConfig"
-import getEnemyWheelConfig from "../helpers/getEnemyWheelConfig"
 
 const fightReducer = createSlice({
   name: "fight",
@@ -33,40 +32,35 @@ const fightReducer = createSlice({
 
       const enemy = getRandomEnemy({ playerStats, numEvents })
 
-      state.enemy = {
-        ...enemy,
-        /*  ...getEnemyWheelConfig({ enemy }), */
-      }
+      state.enemy = enemy
     },
     preparePlayerToFight: (state, action) => {
       const playerData = action.payload.playerData,
-        { trullyKarma, critic: criticProb, dodge } = playerData.stats,
         { leftHand, rightHand } = playerData.equipment
 
-      if (leftHand !== null) {
+      if (leftHand) {
         const { possibleAttacks, wheelConfig } = getAttackWheelConfig({
-          trullyKarma,
           item: leftHand,
-          criticProb,
+          playerData,
         })
 
-        state.player.dodge = dodge
         state.player.leftAttack = { possibleAttacks, wheelConfig }
       }
 
-      if (rightHand !== null) {
+      if (rightHand) {
         const { possibleAttacks, wheelConfig } = getAttackWheelConfig({
-          trullyKarma,
           item: rightHand,
-          criticProb,
+          playerData,
         })
 
         state.player.rightAttack = { possibleAttacks, wheelConfig }
       }
 
-      state.player.fullHealth = playerData.stats.health
-      state.player.currentHealth = playerData.stats.health
-      state.player.dodge = playerData.stats.dodge
+      const { health, dodge } = playerData.stats
+
+      state.player.fullHealth = health
+      state.player.currentHealth = health
+      state.player.dodge = dodge
     },
     attackEnemy: (state, action) => {
       const res = action.payload.res,
@@ -79,7 +73,8 @@ const fightReducer = createSlice({
         res === "dodged"
       )
         state.enemy.currentHealth -= attack
-      else if (res === "lifeSteal") {
+
+      if (res === "lifeSteal") {
         state.enemy.currentHealth -= attack.attack
 
         const lifeSteal = Math.floor(attack.attack * attack.effect)

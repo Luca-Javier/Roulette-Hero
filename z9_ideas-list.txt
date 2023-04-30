@@ -12,6 +12,12 @@ Categorías: lucky, bloody ,critik, strongest
 
 .Poner la funcionalidad getItemWheelConfig en fight reducer y luego acceder al config wheel y mandar el possible attacks por un nuevo config end, que sería un callback para cuando la rueda termine
 
+.Que la armadura sea una estadística que EJ: Tengo una armadura común completa y tengo 1 de armadura recién y me bloquea 1 de daño. O sea que si tengo 4 raros pero 1 común no tengo el beneficio de los raros, pero si tengo 2 epicos puedo tener 1 común y el beneficio de los raros
+.Sacarle la armdura a los enemigos
+
+.No generar las estadisitcas de los enemigos en base a las del jugador y usar numEvents
+
+.En tal número de eventos se desbloquan nuevos eventos tipo misiones y así hasta una boss. EJ: a los 20 eventos se desbloque una misión de matar a un dragón, pero yo hasta que la consigo no suma más eventos. y cuando lo consigo empiezo a sumar eventos hasta el proximo y así. Despues de cada evento puedo desbloquear cosas como mejores tiendas, mas probabilidad de items raros o directamente la posibilidad de conseguirlos
 
 Estructura de carpeta assets
 

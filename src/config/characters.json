@@ -9,14 +9,18 @@
       "critic": 25,
       "dodge": 25,
       "lucky": 2,
-      "karma": 1
+      "karma": 1,
+      "trullyKarma": 1.5
     },
+    "classEffects": {},
     "items": [
       {
         "src": "/src/assets/weapons/swords/simple-sword.svg",
         "alt": "a simple common sword",
         "quality": "common",
         "equipKey": "leftHand",
+        "equipType": "weapon",
+        "type": "sword",
         "attack": 6,
         "passiveEffects": {},
         "activeEffects": {}
@@ -38,12 +42,14 @@
       "lucky": 2,
       "karma": 1
     },
+    "classEffects": {},
     "items": [
       {
         "src": "/src/assets/weapons/swords/simple-sword.svg",
         "alt": "a bloody rare sword",
         "quality": "rare",
         "equipKey": "leftHand",
+        "type": "sword",
         "attack": 8,
         "passiveEffects": {},
         "activeEffects": {
@@ -55,10 +61,85 @@
         "alt": "a lucky epic sword",
         "quality": "epic",
         "equipKey": "rightHand",
+        "equipType": "weapon",
+        "type": "sword",
         "attack": 10,
         "passiveEffects": {
           "luckyHitMultiplier": 0.2
         },
+        "activeEffects": {}
+      }
+    ],
+    "description": "The default character",
+    "img": "/src/assets/characters/default.png"
+  },
+
+  {
+    "name": "armored",
+    "money": 10,
+    "stones": 4,
+    "stats": {
+      "health": 40,
+      "armor": 0,
+      "critic": 25,
+      "dodge": 25,
+      "lucky": 2,
+      "karma": 1
+    },
+    "classEffects": {},
+    "items": [
+      {
+        "src": "/src/assets/weapons/swords/simple-sword.svg",
+        "alt": "a bloody rare sword",
+        "quality": "rare",
+        "equipKey": "leftHand",
+        "type": "sword",
+        "attack": 8,
+        "passiveEffects": {},
+        "activeEffects": {
+          "lifeSteal": { "effect": 0.1 }
+        }
+      },
+      {
+        "src": "/src/assets/armor/helmets/simple-helmet.svg",
+        "alt": "a simple rare helmet",
+        "quality": "rare",
+        "equipKey": "helmet",
+        "equipType": "armor",
+        "type": "helmet",
+        "armor": 0.2,
+        "health": 5,
+        "passiveEffects": {}
+      }
+    ],
+    "description": "The default character",
+    "img": "/src/assets/characters/default.png"
+  },
+  {
+    "name": "Hammer Bro",
+    "money": 10,
+    "stones": 4,
+    "stats": {
+      "health": 40,
+      "armor": 4,
+      "critic": 25,
+      "dodge": 25,
+      "lucky": 2,
+      "karma": 1
+    },
+    "classEffects": {
+      "extraHammerDamage": 0.2
+    },
+    "items": [
+      {
+        "src": "/src/assets/weapons/hammers/simple-hammer.svg",
+        "alt": "a simple common hammer",
+        "quality": "rare",
+        "equipKey": "leftHand",
+        "equipType": "weapon",
+        "type": "hammer",
+        "attack": 8,
+        "passiveEffects": {},
         "activeEffects": {}
       }
     ],

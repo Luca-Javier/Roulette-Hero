@@ -1,6 +1,6 @@
 import React from "react"
 import { useSelector } from "react-redux"
-import WeaponInfo from "../../WeaponInfo"
+import ItemInfo from "../../ItemInfo"
 
 const SeeSwords = ({}) => {
   //Imports
@@ -8,8 +8,8 @@ const SeeSwords = ({}) => {
 
   return (
     <section className="flex flex-column between h-100">
-      {leftHand && <WeaponInfo item={leftHand} />}
-      {rightHand && <WeaponInfo item={rightHand} />}
+      {leftHand && <ItemInfo item={leftHand} />}
+      {rightHand && <ItemInfo item={rightHand} />}
     </section>
   )
 }

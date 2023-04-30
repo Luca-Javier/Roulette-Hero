@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import Button from "../components/Button"
 import MyWheel from "../components/MyWheel"
 
-export default function ErrorPage() {
+function ErrorPage() {
   //Imports
   const navigate = useNavigate()
 
@@ -23,3 +23,5 @@ export default function ErrorPage() {
     </div>
   )
 }
+
+export default ErrorPage

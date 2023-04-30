@@ -8,10 +8,12 @@ import { Provider } from "react-redux"
 import store from "./store"
 
 ReactDOM.render(
-  <WheelProvider>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </WheelProvider>,
+  <React.StrictMode>
+    <WheelProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </WheelProvider>
+  </React.StrictMode>,
   document.getElementById("root")
 )

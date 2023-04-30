@@ -4,7 +4,7 @@ import InteractiveButtons from "../components/playing/InteractiveButtons"
 import MainInteractiveUI from "../components/playing/MainInteractiveUI"
 import TextsDisplay from "../components/playing/TextsDisplay"
 
-const Playing = () => {
+function Playing() {
   return (
     <>
       <GameHeader />
@@ -14,4 +14,5 @@ const Playing = () => {
     </>
   )
 }
+
 export default Playing

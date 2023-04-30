@@ -1,10 +1,10 @@
 import React from "react"
 import { useSelector } from "react-redux"
-import emptyHeadImg from "/src/assets/equipment/empty/head.svg"
-import emptyHandImg from "/src/assets/equipment/empty/hand.svg"
-import emptyChestImg from "/src/assets/equipment/empty/chest.svg"
-import emptyPantImg from "/src/assets/equipment/empty/pantalones.svg"
-import emptyFootImg from "/src/assets/equipment/empty/foots.svg"
+import emptyHeadImg from "/src/assets/armor/empty/head.svg"
+import emptyHandImg from "/src/assets/armor/empty/hand.svg"
+import emptyChestImg from "/src/assets/armor/empty/chest.svg"
+import emptyPantImg from "/src/assets/armor/empty/pantalones.svg"
+import emptyFootImg from "/src/assets/armor/empty/foots.svg"
 
 const UserStats = ({}) => {
   //Imports

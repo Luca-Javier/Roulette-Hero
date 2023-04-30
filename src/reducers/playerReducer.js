@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { getTrullyKarma } from "../helpers/getTrullyKarma"
+import setArmorStats from "../helpers/setArmorStats"
 
 const playerReducer = createSlice({
   name: "player",
@@ -10,18 +11,21 @@ const playerReducer = createSlice({
     stones: 2,
     stats: {
       health: 42,
-      armor: 4,
+      armor: 0,
       critic: 25,
       dodge: 15,
       lucky: 2,
       karma: 1,
       trullyKarma: 1.5,
     },
+    classEffects: {},
     equipment: {
       helmet: null,
       leftHand: {
         src: "/src/assets/weapons/swords/simple-sword.svg",
         quality: "common",
+        equipType: "weapon",
+        type: "sword",
         alt: "a simple common sword",
         attack: 6,
         passiveEffects: {},
@@ -33,16 +37,17 @@ const playerReducer = createSlice({
       leftFoot: null,
       rightFoot: null,
     },
-    passiveEffects: {
+    /*  passiveEffects: {
       luckyStatMultiplier: 0,
-      armorMultiplier: 0,
+      armorMultiplier: 0, // o extraArmor
       reflectDamage: 0,
-      /* hammerDamageMultiplier: 0,
+      // division de los weapons
+      hammerDamageMultiplier: 0,
       attackMultiplier: 0,
       rapierCriticMultiplier: 0,
       healthSteal: 0,
-      luckyHitMultiplier: 0, */
-    },
+      luckyHitMultiplier: 0,
+    }, */
     backpag: [],
   },
   reducers: {
@@ -50,47 +55,22 @@ const playerReducer = createSlice({
       state.name = action.payload
     },
 
-    setInitialStats: (state, action) => {
-      const { name, stats, money, stones, items } = action.payload
-
-      const trullyKarma = getTrullyKarma(stats.karma, stats.lucky)
+    setInitialCharacterStats: (state, action) => {
+      const { name, stats, money, stones, items, classEffects } = action.payload
 
       state.className = name
       state.money = money
       state.stones = stones
+      state.classEffects = classEffects
+      state.stats = stats
 
-      items.forEach(item => (state.equipment[item.equipKey] = item))
-      /*
-      const generatedItems = items.map(item => {
-        const itemId = item.itemId
-        const trullyKarma = state.stats.trullyKarma.valueOf()
-
-        return getItemById({ itemId, trullyKarma })
-      })
-
-      generatedItems.forEach(item => {
-        if (item.equipKey === "hand") {
-          const leftHandIsEmpty =
-            Object.entries(state.equipment.leftHand).length === 0
-
-          if (leftHandIsEmpty) return (state.equipment.leftHand = item)
-          return (state.equipment.rightHand = item)
-        }
-
-        if (item.equipKey === "foot") {
-          const leftFootIsEmpty =
-            Object.entries(state.equipment.leftFoot).length === 0
-
-          if (leftFootIsEmpty) return (state.equipment.leftFoot = item)
-          return (state.equipment.rightFoot = item)
-        }
-
+      items.forEach(item => {
         state.equipment[item.equipKey] = item
+
+        if (item.equipType == "armor") setArmorStats(state, item)
       })
-*/
-      state.stats = { ...state.stats, ...stats, trullyKarma }
     },
-    updateAllFromItems: state => {
+    /* updateAllFromItems: state => {
       const playerEquips = state.equipment
 
       for (let equipKey in playerEquips) {
@@ -109,17 +89,25 @@ const playerReducer = createSlice({
           }
         }
       }
+    }, */
+    addBackpag: (state, action) => {
+      const { item } = action.payload
+
+      state.backpag.push(item)
     },
-    changeStats: (state, action) => {},
+    addStatsFromArmor: (state, action) => {
+      const { itemArmor } = action.payload
+
+      setArmorStats(state, itemArmor)
+    },
     equipArmor: () => {},
-    putBackpag: () => {},
     removeBackpag: () => {},
     changeMoney: () => {},
     changeStones: () => {},
   },
 })
 
-export const { setName, setInitialStats, updateAllFromItems } =
+export const { setName, setInitialCharacterStats, addBackpag } =
   playerReducer.actions
 
 export default playerReducer.reducer

@@ -3,22 +3,34 @@ import getCustomOptionWheelStyle from "./getCustomOptionWheelStyle"
 /**
  * Returns the possible attacks and the wheel config for the item
  *
- * @param {number} trullyKarma
  * @param {object} item
+ * @param {object} playerData
+ * @param {object} playerData.classEffect
+ * @param {{trueKarma, critic}} playerData.stats
  *
- * @returns {[ possibleAttacks:object, wheelConfig:object ]}
+ * @returns { possibleAttacks:object, wheelConfig:object }
  *
  * @example
  * getItemStats({ trullyKarma, item }): [ possibleAttacks, wheelConfig ]
  */
-const getAttackWheelConfig = ({ trullyKarma, item, criticProb }) => {
+const getAttackWheelConfig = ({ item, playerData }) => {
+  const { classEffects } = playerData,
+    { trullyKarma, critic: criticProb } = playerData.stats
+
   let karmaFromItem = 1 + item.passiveEffects?.luckyHitMultiplier || 1,
     attackFromItem = 1 + item.passiveEffects?.attackMultiplier || 1,
     attackFromHammerItem = 1 + item.passiveEffects?.hammerDamageMultiplier || 1,
     criticFromRapierItem = 1 + item.passiveEffects?.rapierCriticMultiplier || 1
 
+  let attackFromClass = 1
+
+  if (classEffects?.extraHammerDamage && item.type === "hammer")
+    attackFromClass += classEffects.extraHammerDamage
+
   let realKarma = trullyKarma * karmaFromItem,
-    realAttack = item.attack * attackFromItem * attackFromHammerItem
+    realAttack = Math.round(
+      item.attack * attackFromItem * attackFromHammerItem * attackFromClass
+    )
 
   let allProb = 100
 

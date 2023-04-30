@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom"
 import Button from "../components/Button"
 import closeIcon from "/src/assets/icons/others/close-options.svg"
 
-const Options = () => {
-  //States
+function Options() {
+  //Imports
   const navigate = useNavigate()
 
   //Events
@@ -16,7 +16,7 @@ const Options = () => {
     <>
       <div className="options-title">
         <h3 className="title txt-left">Options</h3>
-        <img src={closeIcon} alt="" onClick={goBack} />
+        <img src={closeIcon} alt="close options icon" onClick={goBack} />
       </div>
       <section className="options-menu">
         <Button text="Exit" to="/" />

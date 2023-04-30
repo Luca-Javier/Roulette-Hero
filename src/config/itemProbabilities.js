@@ -7,7 +7,7 @@ import WeightedList from "js-weighted-list"
 
 export const WEAPON_PROBS = new WeightedList([
   ["sword", 20],
-  ["hammer", 20],
+  ["hammer", 2000],
   ["rapier", 20],
   ["pickaxe", 20],
   ["pirate", 20],
@@ -28,11 +28,11 @@ export const EQUIPMENT_VARIANTE_PROBS = new WeightedList([
 ])
 
 export const WEAPONS_VARIANT_PROBS = new WeightedList([
-  ["simple", 50],
+  ["simple", 5000],
   ["lucky", 12.5],
   ["bloody", 12.5],
-  ["critik", 12.5],
-  ["strongest", 12.5],
+  ["superCritic", 12.5],
+  ["strongestAttack", 12.5],
 ])
 
 export const QUALITY_ITEM_PROBS = new WeightedList([
