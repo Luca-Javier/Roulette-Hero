@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useSelector } from "react-redux"
 import emptyHeadImg from "/src/assets/armors/empty/head.svg"
 import emptyHandImg from "/src/assets/armors/empty/hand.svg"
@@ -10,7 +10,7 @@ function UserStats() {
   //Imports
   const state = useSelector(state => state.player)
   const { health, armor, critic, dodge, karma, lucky } = state.stats,
-    { helmet, leftHand, chest, rightHand, pants, leftFoot, rightFoot } =
+    { helmet, leftHand, chest, rightHand, legs, leftFoot, rightFoot } =
       state.equipment
 
   //Variables
@@ -18,7 +18,7 @@ function UserStats() {
     leftHandAlt = "hand equipment",
     rightHandAlt = "hand equipment",
     chestAlt = "chestplate",
-    pantAlt = "pants equipment",
+    legsAlt = "legs equipment",
     footAlt = "foot equipment"
 
   return (
@@ -60,9 +60,9 @@ function UserStats() {
         </div>
         <div className="flex justify-center">
           <img
-            src={pants?.src || emptyPantImg}
-            alt={pantAlt}
-            className={`quality ${pants?.quality || ""}`}
+            src={legs?.src || emptyPantImg}
+            alt={legsAlt}
+            className={`quality ${legs?.quality || ""}`}
           />
         </div>
         <div className="flex gap-05 justify-center">

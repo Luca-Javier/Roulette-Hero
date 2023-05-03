@@ -6,15 +6,15 @@
 import WeightedList from "js-weighted-list"
 
 export const WEAPON_PROBS = new WeightedList([
-  ["sword", 20],
-  ["hammer", 2000],
+  ["sword", 20006],
+  ["hammer", 20],
   ["rapier", 20],
   ["pickaxe", 20],
   ["pirate", 20],
 ])
 
 export const ARMOR_PROBS = new WeightedList([
-  ["helmet", 20],
+  ["helmet", 2000],
   ["chest", 20],
   ["legs", 20],
   ["foot", 20],

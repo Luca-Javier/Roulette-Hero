@@ -1,6 +1,6 @@
 import React from "react"
 import { useSelector } from "react-redux"
-import ItemInfo from "../../ItemInfo"
+import ItemInfo from "./ItemInfo"
 
 function SeeSwords() {
   //Imports

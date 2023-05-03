@@ -27,21 +27,16 @@ TODO LIST
 
 .Crear la animacion en fightin
 
-.Terminar weaponInfo
-.Crear armorInfo
-
 .Mantener el scroll en bottom del chat y sacar el reverse
-
-.Averiguar sobre el launch.json para el debugger
 
 .Usar phind
 
-.Probar StrictMode dandole como child la app
-
 .Corregir estilos de backpag, por ahí con una grid
 
-.crear un character con armadura completa
-.Probar efectos en armadura
-.Crear funcion para crear armadura
+.Terminar weaponInfo
+.Crear armorInfo
+.Equipar items
+.Sacar stats de armaduras desequipadas
+.desequipar items
 
-.Usar el f1 para buscar archivos en ver de buscarlos por las carpetas
+.Agregar alias (rutas)

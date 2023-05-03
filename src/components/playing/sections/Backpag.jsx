@@ -1,12 +1,17 @@
 import React from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { setItemInfo } from "../../../reducers/eventReducer"
 
-function Backpag() {
+function Backpag({ setSection, sections }) {
   //Imports
   const { backpag } = useSelector(state => state.player)
+  const dispatch = useDispatch()
 
   //Event
-  const showItemInfo = item => {}
+  const showItemInfo = item => {
+    dispatch(setItemInfo(item))
+    setSection(sections.itemInfo)
+  }
 
   return (
     <section className="p-1 flex flex-wrap gap-1">

@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { getTrullyKarma } from "../helpers/getTrullyKarma"
 import setArmorStats from "../helpers/setArmorStats"
+import removeStatsFromArmor from "../helpers/removeAmorStats"
 
 const playerReducer = createSlice({
   name: "player",
@@ -22,6 +23,7 @@ const playerReducer = createSlice({
     equipment: {
       helmet: null,
       leftHand: {
+        id: 1,
         src: "/src/assets/weapons/swords/simple-sword.svg",
         quality: "common",
         equipType: "weapon",
@@ -33,21 +35,10 @@ const playerReducer = createSlice({
       },
       chest: null,
       rightHand: null,
-      pants: null,
+      legs: null,
       leftFoot: null,
       rightFoot: null,
     },
-    /*  passiveEffects: {
-      luckyStatMultiplier: 0,
-      armorMultiplier: 0, // o extraArmor
-      reflectDamage: 0,
-      // division de los weapons
-      hammerDamageMultiplier: 0,
-      attackMultiplier: 0,
-      rapierCriticMultiplier: 0,
-      healthSteal: 0,
-      luckyHitMultiplier: 0,
-    }, */
     backpag: [],
   },
   reducers: {
@@ -70,44 +61,47 @@ const playerReducer = createSlice({
         if (item.equipType == "armor") setArmorStats(state, item)
       })
     },
-    /* updateAllFromItems: state => {
-      const playerEquips = state.equipment
 
-      for (let equipKey in playerEquips) {
-        const equip = playerEquips[equipKey]
-
-        if (equip !== null) {
-          for (let keyStat in equip.stats) {
-            state.stats[keyStat] += equip.stats[keyStat]
-          }
-
-          const EquipHasEffects = Object.entries(equip.effects).length !== 0
-          if (EquipHasEffects) {
-            for (let effectKey in equip.effects) {
-              state.effects[effectKey] += equip.effects[effectKey]
-            }
-          }
-        }
-      }
-    }, */
     addBackpag: (state, action) => {
       const { item } = action.payload
 
-      state.backpag.push(item)
+      if (item) state.backpag.push(item)
     },
-    addStatsFromArmor: (state, action) => {
-      const { itemArmor } = action.payload
+    removeBackpag: (state, action) => {
+      const { item } = action.payload
 
-      setArmorStats(state, itemArmor)
+      const backpagWihtoutItem = state.backpag.filter(
+        backpagItem => backpagItem.id !== item.id
+      )
+
+      state.backpag = backpagWihtoutItem
     },
-    equipArmor: () => {},
-    removeBackpag: () => {},
+    updateStatsFromArmor: (state, action) => {
+      const { item, oldItem } = action.payload
+
+      if (oldItem) removeStatsFromArmor({ state, item: oldItem })
+
+      setArmorStats({ state, item })
+    },
+
+    equipItem: (state, action) => {
+      const { item } = action.payload
+
+      state.equipment[item.equipKey || item.type] = item
+    },
+
     changeMoney: () => {},
     changeStones: () => {},
   },
 })
 
-export const { setName, setInitialCharacterStats, addBackpag } =
-  playerReducer.actions
+export const {
+  setName,
+  setInitialCharacterStats,
+  addBackpag,
+  removeBackpag,
+  equipItem,
+  updateStatsFromArmor,
+} = playerReducer.actions
 
 export default playerReducer.reducer

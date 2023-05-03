@@ -2,6 +2,7 @@ import React from "react"
 import equipIcon from "../../assets/icons/sections/equipment.svg"
 import backpackIcon from "../../assets/icons/sections/backpack.svg"
 import swordsIcon from "../../assets/icons/sections/swords-section.svg"
+import loupeIcon from "../../assets/icons/sections/loupe-info.svg"
 
 /**@typedef {import("./MainInteractiveUI").Sections} Sections */
 
@@ -37,6 +38,13 @@ function SectionsButtons({ section, setSection, sections }) {
           alt="Backpack icon section"
         />
       </button>
+      <button className={section === sections.itemInfo ? "isActive" : "none"}>
+        <img
+          style={{ width: "15px" }}
+          src={loupeIcon}
+          alt="item info icon section"
+        />
+      </button>
       {(section === sections.fighting || section === sections.seeSwords) && (
         <>
           <button
@@ -59,4 +67,5 @@ function SectionsButtons({ section, setSection, sections }) {
     </article>
   )
 }
+
 export default SectionsButtons

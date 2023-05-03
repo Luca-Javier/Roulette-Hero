@@ -15,6 +15,7 @@ import {
   setRandomEvent,
 } from "../../reducers/eventReducer"
 import { getWalkTime } from "../../helpers/getWalkingTime"
+import ItemInfo from "./sections/ItemInfo"
 
 /**
  *  Enum of sections for know the current section
@@ -25,6 +26,7 @@ import { getWalkTime } from "../../helpers/getWalkingTime"
  * @property {number} backpack
  * @property {number} fighting
  * @property {number} seeSwords
+ * @property {number} itemInfo
  */
 
 /**@type {Sections} */
@@ -43,6 +45,9 @@ function MainInteractiveUI() {
 
   //States
   const [section, setSection] = useState(sections.userStats)
+
+  //Events
+  const resetSections = () => setSection(sections.userStats)
 
   //Effects
   useEffect(() => {
@@ -70,10 +75,14 @@ function MainInteractiveUI() {
     <section className="main-interactive-ui">
       <article className="interactive-per-section">
         {section === sections.userStats && <UserStats />}
-        {section === sections.backpack && <Backpag />}
+        {section === sections.backpack && (
+          <Backpag setSection={setSection} sections={sections} />
+        )}
         {section === sections.fighting && <Fightin />}
         {section === sections.seeSwords && <SeeSwords />}
-        {section === sections.itemInfo && <ItemInfo forje={true} />}
+        {section === sections.itemInfo && (
+          <ItemInfo forje={true} resetSections={resetSections} />
+        )}
       </article>
       <SectionsButtons
         section={section}

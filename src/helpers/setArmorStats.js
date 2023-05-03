@@ -1,4 +1,4 @@
-function setArmorStats(state, item) {
+function setArmorStats({ state, item }) {
   state.stats.health += item.health
   state.stats.armor += item.armor
 
@@ -6,6 +6,10 @@ function setArmorStats(state, item) {
 
   if (effects?.luckyStatMultiplier)
     state.stats.lucky *= 1 + effects.luckyStatMultiplier
+
+  if (effects?.extraArmor) state.stats.armor += effects.extraArmor
+
+  //if (effects?.reflectDamage) state.stats.lucky *= 1 + effects.reflectDamage
 }
 
 export default setArmorStats
