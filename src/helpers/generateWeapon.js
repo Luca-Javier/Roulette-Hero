@@ -1,4 +1,5 @@
 import getBasicItemTemplate from "./getBasicItemTemplate"
+import { v4 as uuid } from "uuid"
 
 /**@typedef {import("../types.ts").Weapon} Weapon */
 
@@ -19,28 +20,29 @@ const generateWeapon = ({ trullyKarma }) => {
   const passiveEffects = {}
 
   if (type === "hammer")
-    passiveEffects.hammerDamageMultiplier = 0.1 * qualityMultiplier[quality]
+    passiveEffects.hammerDamageMultiplier = (0.1 * qualityMultiplier).toFixed(2)
 
   if (type === "rapier")
-    passiveEffects.rapierCriticMultiplier = 0.1 * qualityMultiplier[quality]
+    passiveEffects.rapierCriticMultiplier = (0.1 * qualityMultiplier).toFixed(2)
 
   if (variant === "lucky")
-    passiveEffects.luckyHitMultiplier = 0.1 * qualityMultiplier[quality]
+    passiveEffects.luckyHitMultiplier = (0.1 * qualityMultiplier).toFixed(2)
 
   const activeEffects = {}
 
   if (variant === "bloody")
-    activeEffects.lifeSteal = 0.1 * qualityMultiplier[quality]
+    activeEffects.lifeSteal = (0.1 * qualityMultiplier).toFixed(2)
 
   if (variant === "superCritic")
-    activeEffects.superCritic = 0.2 * qualityMultiplier[quality]
+    activeEffects.superCritic = (0.2 * qualityMultiplier).toFixed(2)
 
   if (variant === "strongestAttack")
-    activeEffects.strongestAttack = 0.1 * qualityMultiplier[quality]
+    activeEffects.strongestAttack = (0.1 * qualityMultiplier).toFixed(2)
 
   const attack = getRandomStat(4, 7)
 
   const item = {
+    id: uuid(),
     src,
     alt,
     quality,

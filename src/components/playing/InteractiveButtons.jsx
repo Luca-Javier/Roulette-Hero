@@ -7,6 +7,7 @@ import FightingButton from "./FightingButton"
 import { addMessage } from "../../reducers/eventReducer"
 import generateWeapon from "../../helpers/generateWeapon"
 import { addBackpag } from "../../reducers/playerReducer"
+import generateArmor from "../../helpers/generateArmor"
 
 function InteractiveButtons() {
   //Imports
@@ -24,7 +25,11 @@ function InteractiveButtons() {
   }
 
   const openChest = () => {
-    const randomItem = generateWeapon({ trullyKarma })
+    const isArmor = Math.random() > 0.5
+
+    const randomItem = isArmor
+      ? generateArmor({ trullyKarma })
+      : generateWeapon({ trullyKarma })
 
     dispatch(addBackpag({ item: randomItem }))
 

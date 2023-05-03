@@ -1,5 +1,8 @@
 /**@typedef {import("../types.ts").Armor} Armor */
 
+import getBasicItemTemplate from "./getBasicItemTemplate.js"
+import { v4 as uuid } from "uuid"
+
 const qualityArmor = {
   common: 0.2,
   rare: 0.4,
@@ -36,6 +39,7 @@ function generateArmor({ trullyKarma }) {
     health = getRandomStat(4, 7)
 
   const item = {
+    id: uuid(),
     src,
     alt,
     quality,
