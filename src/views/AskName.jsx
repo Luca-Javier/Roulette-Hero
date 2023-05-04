@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { setName } from "../reducers/playerReducer"
-import Button from "../components/Button"
+import { setName } from "@reducers/playerReducer"
+import Button from "@components/Button"
 
 function AskName() {
   //Imports

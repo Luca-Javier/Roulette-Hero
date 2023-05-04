@@ -1,380 +1,390 @@
 /* *--------------------------------------Reset-------------------------------------- */
 :root {
-  --color-first: #000000;
-  --color-second: #ccc;
-  --width: 320px;
-  --height: 568px;
-  --color-text: #ffffff;
-  --color-grey_light: #f3f3f3;
-  --color-grey: #cccccc;
-  --color-grey_dark: #666666;
-  --color-black: #000000;
-  --color-white_alpha: rgba(255, 255, 255, 0.5);
-  --color-black_alpha: rgba(0, 0, 0, 0.5);
-  --font: "Arvo";
-  /* project variables */
-  --money: #ffd700;
-  --stone: #314c90;
-  --good: #00ff75;
-  --lucky-btn: conic-gradient(
-    from 180deg at 50% 50%,
-    rgba(221, 0, 255, 0.515152) 0deg,
-    #59009f 110.62deg,
-    rgba(221, 0, 255, 0.515152) 360deg
-  );
-  --lucky-btn-bg: linear-gradient(
-    180deg,
-    rgba(150, 44, 233, 0.470899) 0%,
-    rgba(62, 44, 233, 0.470899) 46.88%,
-    #4dc2b4 98.44%
-  );
-  /* project variables | icons */
-  --icon-money: url("./assets/icons/stats/money.svg") " ";
-  --icon-stone: url("./assets/icons/stats/stone.svg") " ";
-  --icon-health: url("./assets/icons/stats/heart.svg");
-  --icon-shield: url("./assets/icons/stats/armor.svg");
-  --icon-crtic: url("./assets/icons/stats/critick.svg");
-  --icon-dodge: url("./assets/icons/stats/dodge.svg");
-  --icon-attack: url("./assets/icons/stats/attack.svg");
-  --icon-karma: url("./assets/icons/stats/karma.svg");
-  --icon-lucky: url("./assets/icons/stats/lucky.svg");
+	--color-first: #000000;
+	--color-second: #ccc;
+	--width: 320px;
+	--height: 568px;
+	--color-text: #ffffff;
+	--color-grey_light: #f3f3f3;
+	--color-grey: #cccccc;
+	--color-grey_dark: #666666;
+	--color-black: #000000;
+	--color-white_alpha: rgba(255, 255, 255, 0.5);
+	--color-black_alpha: rgba(0, 0, 0, 0.5);
+	--font: "Arvo";
+	/* project variables */
+	--money: #ffd700;
+	--stone: #314c90;
+	--good: #00ff75;
+	--lucky-btn: conic-gradient(
+		from 180deg at 50% 50%,
+		rgba(221, 0, 255, 0.515152) 0deg,
+		#59009f 110.62deg,
+		rgba(221, 0, 255, 0.515152) 360deg
+	);
+	--lucky-btn-bg: linear-gradient(
+		180deg,
+		rgba(150, 44, 233, 0.470899) 0%,
+		rgba(62, 44, 233, 0.470899) 46.88%,
+		#4dc2b4 98.44%
+	);
+	/* project variables | icons */
+	--icon-money: url("./assets/icons/stats/money.svg") " ";
+	--icon-stone: url("./assets/icons/stats/stone.svg") " ";
+	--icon-health: url("./assets/icons/stats/heart.svg");
+	--icon-shield: url("./assets/icons/stats/armor.svg");
+	--icon-crtic: url("./assets/icons/stats/critick.svg");
+	--icon-dodge: url("./assets/icons/stats/dodge.svg");
+	--icon-attack: url("./assets/icons/stats/attack.svg");
+	--icon-karma: url("./assets/icons/stats/karma.svg");
+	--icon-lucky: url("./assets/icons/stats/lucky.svg");
 }
 html {
-  font-size: 16px;
-  color: var(--color-text);
-  background-color: var(--color-first);
+	font-size: 16px;
+	color: var(--color-text);
+	background-color: var(--color-first);
 }
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  font-family: var(--font);
+	box-sizing: border-box;
+	font-family: var(--font);
 }
 body {
-  margin: 0;
-  overflow-x: hidden;
+	margin: 0;
+	overflow-x: hidden;
 }
 
 img {
-  max-width: 100%;
+	max-width: 100%;
 }
 a {
-  text-decoration: none;
-  color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 /* *---------------------------------COMPONENTS--------------------------------- */
 /* *---------------------------------Buttons--------------------------------- */
 
 .flex-buttons {
-  margin: 1rem auto;
-  display: flex;
-  justify-content: center;
-  width: 90%;
-  gap: 1rem;
+	margin: 1rem auto;
+	display: flex;
+	justify-content: center;
+	width: 90%;
+	gap: 1rem;
 }
 .flex-buttons a {
-  flex-grow: 1;
+	flex-grow: 1;
 }
 .button {
-  text-align: center;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: var(--color-first);
-  border: medium solid var(--color-second);
-  border-radius: 20px;
-  padding: 0.5rem 1rem;
-  color: var(--color-text);
-  font: bold;
-  display: block;
-  flex-grow: 1;
-  width: 100%;
+	text-align: center;
+	font-size: 16px;
+	cursor: pointer;
+	background-color: var(--color-first);
+	border: medium solid var(--color-second);
+	border-radius: 20px;
+	padding: 0.5rem 1rem;
+	color: var(--color-text);
+	font: bold;
+	display: block;
+	flex-grow: 1;
+	width: 100%;
 }
 .button:disabled {
-  opacity: 0.5;
-  cursor: default;
+	opacity: 0.5;
+	cursor: default;
 }
-/* *-------------------------------lucky buttons------------------------------- */
+/* *-------------------------------luckyButtons------------------------------- */
 .lucky-btn {
-  background: var(--lucky-btn-bg);
+	background: var(--lucky-btn-bg);
 }
 .lucky-btn-text {
-  font-weight: bold;
-  margin: 0;
-  background: var(--lucky-btn);
-  color: transparent;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: var(--lucky-btn);
+	font-weight: bold;
+	margin: 0;
+	background: var(--lucky-btn);
+	color: transparent;
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: var(--lucky-btn);
 }
 
 /* *------------------------------------Wheel------------------------------------ */
 
 .wheel-container {
-  position: relative;
-  font-size: 2rem;
-  border-radius: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  height: 150px;
-  width: 150px;
-  margin: 1rem auto;
+	position: relative;
+	font-size: 2rem;
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	height: 150px;
+	width: 150px;
+	margin: 1rem auto;
 }
 .wheel-container > div {
-  height: 300px;
-  width: 300px;
-  transform: rotate(-45deg);
+	height: 300px;
+	width: 300px;
+	transform: rotate(-45deg);
 }
 /* *------------------------------form-ask-name------------------------------ */
 
 .form-ask-name {
-  border: medium solid var(--color-first);
-  font: italic;
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+	border: medium solid var(--color-first);
+	font: italic;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 }
 .form-ask-name > form {
-  border: medium solid var(--color-second);
-  border-radius: 25px;
-  padding: 1rem;
-  width: 70%;
+	border: medium solid var(--color-second);
+	border-radius: 25px;
+	padding: 1rem;
+	width: 70%;
 }
 .form-ask-name > form * {
-  margin: 0.5rem 0;
+	margin: 0.5rem 0;
 }
 /* *---------------------------------Header--------------------------------- */
 .header {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 1rem;
-  border-bottom: thin solid var(--color-second);
+	display: flex;
+	justify-content: space-between;
+	padding: 0 1rem;
+	border-bottom: thin solid var(--color-second);
 }
 .header-name {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 11px;
-  line-height: 0.3rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	font-size: 11px;
+	line-height: 0.3rem;
 }
 .header-name > p {
-  margin: 0.2rem;
+	margin: 0.2rem;
 }
 .options-btn {
-  margin: 0 1rem;
-  width: 2rem;
-  height: 100%;
-  display: flex;
-  align-items: center;
+	margin: 0 1rem;
+	width: 2rem;
+	height: 100%;
+	display: flex;
+	align-items: center;
 }
 .options-btn:hover {
-  transform: scale(1.02);
+	transform: scale(1.02);
 }
 /* *---------------------------------Options--------------------------------- */
 .options-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 1rem;
 }
 .options-title img {
-  width: 2.5rem;
-  height: 2.5rem;
-  cursor: pointer;
+	width: 2.5rem;
+	height: 2.5rem;
+	cursor: pointer;
 }
 
 .options-menu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  width: 60%;
-  flex-direction: column;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	width: 60%;
+	flex-direction: column;
 }
 .options-menu button {
-  margin: 0.5rem 0;
+	margin: 0.5rem 0;
 }
 .options-menu a {
-  width: 100%;
+	width: 100%;
 }
 /* *--------------------------------TextsDisplay-------------------------------- */
 
 .texts-display {
-  border: thin solid var(--color-second);
-  height: 9.3rem;
-  font-size: 11px;
-  margin: 1rem 1rem;
-  margin-bottom: 0;
-  overflow: hidden;
+	border: thin solid var(--color-second);
+	height: 9.3rem;
+	font-size: 11px;
+	margin: 1rem 1rem;
+	margin-bottom: 0;
+	overflow: hidden;
 }
 .texts-display ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  overflow: auto;
-  max-height: 100%;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	overflow: auto;
+	max-height: 100%;
 }
 .texts-display ul::-webkit-scrollbar {
-  background-color: transparent;
-  width: 0px;
+	background-color: transparent;
+	width: 0px;
 }
 .texts-display ul:hover::-webkit-scrollbar {
-  width: 8px;
+	width: 8px;
 }
 .texts-display ul:hover::-webkit-scrollbar-thumb {
-  background: var(--color-second);
-  border-radius: 4px;
+	background: var(--color-second);
+	border-radius: 4px;
 }
 .texts-display ul li {
-  padding: 0.2rem 0.5rem;
-  margin: 0;
-  border-top: thin solid var(--color-grey_dark);
+	padding: 0.2rem 0.5rem;
+	margin: 0;
+	border-top: thin solid var(--color-grey_dark);
 }
 .texts-display ul li:first-child {
-  border-top: none;
+	border-top: none;
 }
 /* *----------------------------MainInteractiveUI---------------------------- */
 .main-interactive-ui {
-  --height: 15.625rem;
-  border: thin solid var(--color-second);
-  border-bottom: none;
-  border-right: none;
-  margin: 2rem 1rem 0;
-  height: var(--height);
+	--height: 15.625rem;
+	border: thin solid var(--color-second);
+	border-bottom: none;
+	border-right: none;
+	margin: 2rem 1rem 0;
+	height: var(--height);
 }
 .interactive-sections {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 1.2rem;
-  margin-top: 0;
-  border-top: thin solid var(--color-second);
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 1.2rem;
+	margin-top: 0;
+	border-top: thin solid var(--color-second);
 }
 .interactive-sections > button {
-  color: var(--color-second);
-  background-color: var(--color-first);
-  z-index: 99;
-  padding: 0 1rem;
-  height: 1rem;
-  box-sizing: content-box;
-  border: thin solid var(--color-second);
+	color: var(--color-second);
+	background-color: var(--color-first);
+	z-index: 99;
+	padding: 0 1rem;
+	height: 1rem;
+	box-sizing: content-box;
+	border: thin solid var(--color-second);
+	border-top: none;
+	border-left: none;
 }
 .interactive-sections > button.isActive {
-  border-top: medium solid var(--color-first);
+	border-top: medium solid var(--color-first);
+	height: 1.05rem;
 }
 .interactive-sections button:disabled {
-  filter: grayscale(0.5);
+	filter: grayscale(0.5);
 }
 .interactive-per-section {
-  width: 100%;
-  height: calc(var(--height) - 1.2rem);
-  border-right: thin solid var(--color-second);
+	width: 100%;
+	height: calc(var(--height) - 1.2rem);
+	border-right: thin solid var(--color-second);
 }
 /* *----------------------------InteractiveButtons---------------------------- */
 .interactive-buttons {
-  height: 4rem;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+	height: 4rem;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
 .interactive-buttons button {
-  display: inline-block;
-  flex-grow: unset;
-  width: auto;
+	display: inline-block;
+	flex-grow: unset;
+	width: auto;
 }
 
 /* *----------------------------stat-equipment---------------------------- */
 
 /* Poner los pies absolutos con top x para poder hacer un padding */
 .stats-equipment-container {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: center;
-  margin-top: 0.2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	align-items: center;
+	justify-content: center;
+	margin-top: 0.2rem;
+	height: 100%;
+	margin: 0;
+	flex-grow: 1;
 }
 .stats-equipment-container img {
-  width: 25px;
-  height: 25px;
-  border: thin solid var(--color-second);
+	width: 35px;
+	height: 35px;
+	border: thin solid var(--color-second);
+}
+.stats-equipment-container img.rotate {
+	transform: scaleX(-1);
 }
 /* *---------------------------------Character--------------------------------- */
 
 .characters-btns {
-  display: flex;
-  width: 40%;
-  flex-direction: column;
-  justify-content: flex-start;
-  border: medium solid var(--color-second);
-  margin: 1rem;
-  border-radius: 15px;
-  height: 400px;
-  padding: 0.5rem;
+	display: flex;
+	width: 40%;
+	flex-direction: column;
+	justify-content: flex-start;
+	border: medium solid var(--color-second);
+	margin: 1rem;
+	border-radius: 15px;
+	height: 400px;
+	padding: 0.5rem;
 }
 .characters-btns button {
-  flex-grow: unset;
+	flex-grow: unset;
 }
 .character-info {
-  width: 60%;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  border: medium solid var(--color-second);
-  margin: 1rem;
-  border-radius: 15px;
-  height: 450px;
-  padding: 0.5rem;
+	width: 60%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	border: medium solid var(--color-second);
+	margin: 1rem;
+	border-radius: 15px;
+	height: 450px;
+	padding: 0.5rem;
 }
 .character-info .stat-icon {
-  margin: 0 0.5rem;
+	margin: 0 0.5rem;
 }
 .character-info button {
-  flex-grow: 0;
+	flex-grow: 0;
 }
 .character-fino-equip-img-container img {
-  width: 17px;
-  margin-right: 0.5rem;
+	width: 17px;
+	margin-right: 0.5rem;
 }
 /* *---------------------------------Fightin--------------------------------- */
 .fight-container {
-  padding: 1rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
+	padding: 1rem;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	position: relative;
 }
 .fight-container img {
-  max-width: 70px;
-  margin: 1rem;
+	max-width: 70px;
+	margin: 1rem;
 }
 .fight-enemy {
-  text-align: right;
+	text-align: right;
 }
 .fight-wheel-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  height: 100%;
-  left: 0;
-  top: 0;
-  width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	height: 100%;
+	left: 0;
+	top: 0;
+	width: 100%;
 }
 .attack-animation {
 }
 .attack-animation.player-dodged::after {
 }
 .attack-animation.player-attack::after {
-  content: "player attack";
+	content: "player attack";
 }
 .attack-animation.enemy-dodged::after {
 }
@@ -382,296 +392,296 @@ a {
 }
 /* *---------------------------------Progressbar--------------------------------- */
 .progress-container {
-  position: relative;
-  height: 15px;
-  width: 80%;
-  border-radius: 50px;
-  overflow: hidden;
-  border: 1px solid var(--color-second);
+	position: relative;
+	height: 15px;
+	width: 80%;
+	border-radius: 50px;
+	overflow: hidden;
+	border: 1px solid var(--color-second);
 }
 .progress-label {
-  position: absolute;
-  font-size: 11px;
-  font-weight: 500;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
+	position: absolute;
+	font-size: 11px;
+	font-weight: 500;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
 }
 progress {
-  appearance: inherit;
-  height: 20px;
-  width: 100%;
+	appearance: inherit;
+	height: 20px;
+	width: 100%;
 }
 progress::-webkit-progress-value {
-  background-color: red;
+	background-color: red;
 }
 progress[value]::-webkit-progress-bar {
-  background-color: black;
+	background-color: black;
 }
 /* *---------------------------------ItemInfo--------------------------------- */
 .item-info-img {
-  width: 50px;
+	width: 50px;
 }
 .info-effects-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
 }
 .info-effects-grid img {
-  height: 25px;
+	height: 25px;
 }
 .info-stats-grid {
-  margin-top: 1rem;
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-rows: 1fr 1fr;
-  gap: 0.5rem;
+	margin-top: 1rem;
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-rows: 1fr 1fr;
+	gap: 0.5rem;
 }
 .info-stats-grid p {
-  margin: 0;
+	margin: 0;
 }
 .select-side {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  gap: 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+	gap: 2rem;
 }
 .select-side img {
-  width: 50px;
-  cursor: pointer;
+	width: 50px;
+	cursor: pointer;
 }
 .select-side button {
-  flex-grow: unset;
-  width: auto;
+	flex-grow: unset;
+	width: auto;
 }
 /* *---------------------------------Utilities--------------------------------- */
 .title {
-  font-size: 2rem;
-  display: block;
-  text-align: center;
+	font-size: 2rem;
+	display: block;
+	text-align: center;
 }
 .grow-1 {
-  flex-grow: 1;
+	flex-grow: 1;
 }
 .flex {
-  display: flex;
+	display: flex;
 }
 .flex-column {
-  flex-direction: column;
+	flex-direction: column;
 }
 .between {
-  justify-content: space-between;
+	justify-content: space-between;
 }
 .space-around {
-  justify-content: space-around;
+	justify-content: space-around;
 }
 .flex-wrap {
-  flex-wrap: wrap;
+	flex-wrap: wrap;
 }
 .gap-05 {
-  gap: 0.5rem;
+	gap: 0.5rem;
 }
 .gap-1 {
-  gap: 1rem;
+	gap: 1rem;
 }
 .justify-center {
-  justify-content: center;
+	justify-content: center;
 }
 .align-center {
-  align-items: center;
+	align-items: center;
 }
 .m-center {
-  margin: 0 auto;
+	margin: 0 auto;
 }
 .my-1 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 }
 .my-auto {
-  margin-left: auto;
-  margin-right: auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 .mb-0 {
-  margin-bottom: 0 !important;
+	margin-bottom: 0 !important;
 }
 .w-50 {
-  width: 50%;
+	width: 50%;
 }
 .w-90 {
-  width: 90%;
+	width: 90%;
 }
 .w-100 {
-  width: 100%;
+	width: 100%;
 }
 .h-100 {
-  height: 100%;
+	height: 100%;
 }
 .p-1 {
-  padding: 1rem;
+	padding: 1rem;
 }
 .px-1 {
-  padding-left: 1rem;
-  padding-right: 1rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
 }
 .second-font {
-  font-family: "Arvo";
+	font-family: "Arvo";
 }
 .none {
-  display: none;
+	display: none;
 }
 .placeholder::placeholder {
-  color: var(--color-grey_dark);
+	color: var(--color-grey_dark);
 }
 .input {
-  border: 0;
-  padding: 0.5rem;
-  border-bottom: thin solid var(--color-second);
+	border: 0;
+	padding: 0.5rem;
+	border-bottom: thin solid var(--color-second);
 }
 .input:focus-visible {
-  outline: none;
+	outline: none;
 }
 .bg-blur {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  background-color: var(--color-black_alpha);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background-color: var(--color-black_alpha);
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .txt-left {
-  text-align: left;
+	text-align: left;
 }
 .txt-center {
-  text-align: center;
+	text-align: center;
 }
 .reset-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 .font-1 {
-  font-size: 1rem;
-  font-weight: initial;
+	font-size: 1rem;
+	font-weight: initial;
 }
 /* *--------------------------------Global Styles-------------------------------- */
 
 main {
-  width: var(--width);
-  max-height: var(--height);
-  flex-grow: 1;
-  border: medium solid var(--color-second);
-  border-radius: 15px;
+	width: var(--width);
+	max-height: var(--height);
+	flex-grow: 1;
+	border: medium solid var(--color-second);
+	border-radius: 15px;
 }
 #root {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 input {
-  background-color: var(--color-first);
-  color: var(--color-second);
+	background-color: var(--color-first);
+	color: var(--color-second);
 }
 .money {
-  color: var(--money);
+	color: var(--money);
 }
 .money:before {
-  content: var(--icon-money);
+	content: var(--icon-money);
 }
 .stone {
-  color: var(--stone);
+	color: var(--stone);
 }
 .stone::before {
-  content: var(--icon-stone);
+	content: var(--icon-stone);
 }
 .stat-icon {
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  margin-left: 0.5rem;
-  margin-bottom: 0.3rem;
+	font-size: 12px;
+	display: flex;
+	align-items: center;
+	margin-left: 0.5rem;
+	margin-bottom: 0.3rem;
 }
 .color-good {
-  color: var(--good);
-  font-weight: 400;
+	color: var(--good);
+	font-weight: 400;
 }
 .health::before {
-  width: 12px;
-  margin-right: 0.5rem;
-  content: var(--icon-health);
+	width: 12px;
+	margin-right: 0.5rem;
+	content: var(--icon-health);
 }
 .armor::before {
-  width: 12px;
-  height: 12px;
-  margin-right: 0.5rem;
-  content: var(--icon-shield);
+	width: 12px;
+	height: 12px;
+	margin-right: 0.5rem;
+	content: var(--icon-shield);
 }
 .attack::before {
-  width: 12px;
-  margin-right: 0.5rem;
-  content: var(--icon-attack);
+	width: 12px;
+	margin-right: 0.5rem;
+	content: var(--icon-attack);
 }
 .karma::before {
-  width: 12px;
-  margin-right: 0.5rem;
-  content: var(--icon-karma);
+	width: 12px;
+	margin-right: 0.5rem;
+	content: var(--icon-karma);
 }
 .lucky::before {
-  width: 12px;
-  margin-right: 0.5rem;
-  content: var(--icon-lucky);
+	width: 12px;
+	margin-right: 0.5rem;
+	content: var(--icon-lucky);
 }
 .critic::before {
-  width: 12px;
-  margin-right: 0.5rem;
-  content: var(--icon-crtic);
+	width: 12px;
+	margin-right: 0.5rem;
+	content: var(--icon-crtic);
 }
 .dodge::before {
-  width: 12px;
-  margin-right: 0.5rem;
-  content: var(--icon-dodge);
+	width: 12px;
+	margin-right: 0.5rem;
+	content: var(--icon-dodge);
 }
 .list-icons {
-  padding-inline-start: 1rem;
+	padding-inline-start: 1rem;
 }
 .quality {
-  border: thin solid var(--color-second);
-  padding: 2px;
+	border: thin solid var(--color-second);
+	padding: 2px;
 }
 .quality.rare {
-  border-color: green;
+	border-color: green;
 }
 .quality.epic {
-  border-color: #59009f;
+	border-color: #59009f;
 }
 .quality.legendary {
-  border-color: var(--money);
+	border-color: var(--money);
 }
 @keyframes walking-points {
-  0% {
-    content: "";
-  }
-  25% {
-    content: ".";
-  }
-  50% {
-    content: "..";
-  }
-  100% {
-    content: "...";
-  }
+	0% {
+		content: "";
+	}
+	25% {
+		content: ".";
+	}
+	50% {
+		content: "..";
+	}
+	100% {
+		content: "...";
+	}
 }
 .walking-animation::after {
-  font-size: 30px;
-  line-height: 0.01px;
-  content: "";
-  animation: walking-points 3s infinite 1s;
+	font-size: 30px;
+	line-height: 0.01px;
+	content: "";
+	animation: walking-points 3s infinite 1s;
 }

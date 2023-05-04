@@ -1,7 +1,7 @@
 import React from "react"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import getMessage from "../../helpers/getMessage"
+import getMessage from "@helpers/getMessage"
 
 function MainDisplay() {
   //Imports

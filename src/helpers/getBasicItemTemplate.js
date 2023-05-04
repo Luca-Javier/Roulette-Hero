@@ -4,7 +4,7 @@ import {
   QUALITY_ITEM_PROBS,
   WEAPONS_VARIANT_PROBS,
   WEAPON_PROBS,
-} from "../config/itemProbabilities"
+} from "@config/itemProbabilities"
 
 const qualityMultiplierDiccionary = {
   common: 1,

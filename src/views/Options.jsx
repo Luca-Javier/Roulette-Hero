@@ -1,7 +1,7 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
-import Button from "../components/Button"
-import closeIcon from "/src/assets/icons/others/close-options.svg"
+import Button from "@components/Button"
+import closeIcon from "@assets/icons/others/close-options.svg"
 
 function Options() {
   //Imports

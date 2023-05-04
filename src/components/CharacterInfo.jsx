@@ -2,7 +2,7 @@ import React from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import Button from "./Button"
-import { setInitialCharacterStats } from "../reducers/playerReducer"
+import { setInitialCharacterStats } from "@reducers/playerReducer"
 
 function CharacterInfo({ data }) {
   //Imports

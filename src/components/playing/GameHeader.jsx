@@ -1,7 +1,7 @@
 import React from "react"
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import optionButtonImg from "/src/assets/icons/others/options-button.svg"
+import optionButtonImg from "@assets/icons/others/options-button.svg"
 
 function GameHeader() {
   //Imports

@@ -1,64 +1,65 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
-import Button from "../Button"
-import { EVENT } from "../../config/eventsTypes"
-import { setEvent } from "../../reducers/eventReducer"
+import Button from "@components/Button"
+import { EVENT } from "@config/eventsTypes"
+import { setEvent } from "@reducers/eventReducer"
 import FightingButton from "./FightingButton"
-import { addMessage } from "../../reducers/eventReducer"
-import generateWeapon from "../../helpers/generateWeapon"
-import { addBackpag } from "../../reducers/playerReducer"
-import generateArmor from "../../helpers/generateArmor"
+import { addMessage } from "@reducers/eventReducer"
+import generateWeapon from "@helpers/generateWeapon"
+import { addBackpag } from "@reducers/playerReducer"
+import generateArmor from "@helpers/generateArmor"
 
 function InteractiveButtons() {
-  //Imports
-  const { event } = useSelector(state => state.event)
-  const { trullyKarma } = useSelector(state => state.player.stats)
-  const dispatch = useDispatch()
+	//Imports
+	const { event } = useSelector(state => state.event)
+	const { trullyKarma } = useSelector(state => state.player.stats)
+	const dispatch = useDispatch()
 
-  //Events
-  const walk = () => {
-    dispatch(setEvent(EVENT.walking))
-  }
+	//Events
+	const walk = () => {
+		dispatch(setEvent(EVENT.walking))
+	}
 
-  const fight = () => {
-    dispatch(setEvent(EVENT.fighting))
-  }
+	const fight = () => {
+		dispatch(setEvent(EVENT.fighting))
+	}
 
-  const openChest = () => {
-    const isArmor = Math.random() > 0.5
+	const openChest = () => {
+		const isArmor = Math.random() > 0.5
 
-    const randomItem = isArmor
-      ? generateArmor({ trullyKarma })
-      : generateWeapon({ trullyKarma })
+		const randomItem = isArmor
+			? generateArmor({ trullyKarma })
+			: generateWeapon({ trullyKarma })
 
-    dispatch(addBackpag({ item: randomItem }))
+		dispatch(addBackpag({ item: randomItem }))
 
-    dispatch(addMessage(`It is a ${randomItem.type}`))
+		dispatch(addMessage(`It is a ${randomItem.type}`))
 
-    dispatch(setEvent(EVENT.waiting))
-  }
+		dispatch(setEvent(EVENT.waiting))
+	}
 
-  return (
-    <section className="interactive-buttons">
-      {event === EVENT.waiting && <Button text="Walk" onClick={walk} />}
-      {event === EVENT.walking && (
-        <Button className="walking-animation" text="Walking" disabled />
-      )}
-      {event === EVENT.fight && <Button text="Fight" onClick={fight} />}
-      {event === EVENT.backFight && (
-        <>
-          {/* //todo must be attack and reduce the enemy health or maybe just a lucky shoot or fight  */}
+	return (
+		<section className="interactive-buttons">
+			{event === EVENT.waiting && <Button text="Walk" onClick={walk} />}
+			{event === EVENT.walking && (
+				<Button className="walking-animation" text="Walking" disabled />
+			)}
+			{event === EVENT.fight && <Button text="Fight" onClick={fight} />}
+			{event === EVENT.backFight && (
+				<>
+					{/* //todo must be attack and reduce the enemy health or maybe just a lucky shoot or fight  */}
 
-          <Button text="Fight" onClick={fight} />
-          <Button text="Run" />
-        </>
-      )}
+					<Button text="Fight" onClick={fight} />
+					<Button text="Run" />
+				</>
+			)}
 
-      {event === EVENT.fighting && <FightingButton />}
-      {event === EVENT.chest && (
-        <Button text="Open Chest" onClick={openChest} />
-      )}
-    </section>
-  )
+			{event === EVENT.fighting && <FightingButton />}
+			{event === EVENT.chest && (
+				<Button text="Open Chest" onClick={openChest} />
+			)}
+		</section>
+	)
 }
+
 export default InteractiveButtons

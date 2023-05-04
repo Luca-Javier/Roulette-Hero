@@ -2,8 +2,8 @@ import React from "react"
 import { useState } from "react"
 import allCharacters from "../config/characters.json"
 import { useSelector } from "react-redux"
-import Button from "../components/Button"
-import CharacterInfo from "../components/CharacterInfo"
+import Button from "@components/Button"
+import CharacterInfo from "@components/CharacterInfo"
 
 function Characters() {
   //Imports

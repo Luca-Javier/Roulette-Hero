@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { EVENT } from "../config/eventsTypes"
-import { EVENT_PROBS } from "../config/eventProbabilities"
+import { EVENT } from "@config/eventsTypes"
+import { EVENT_PROBS } from "@config/eventProbabilities"
 
 const eventReducer = createSlice({
   name: "event",

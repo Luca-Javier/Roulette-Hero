@@ -1,6 +1,6 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { setItemInfo } from "../../../reducers/eventReducer"
+import { setItemInfo } from "@reducers/eventReducer"
 
 function Backpag({ setSection, sections }) {
   //Imports

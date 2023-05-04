@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
-import Button from "../components/Button"
-import MyWheel from "../components/MyWheel"
+import Button from "@components/Button"
+import MyWheel from "@components/MyWheel"
 
 function ErrorPage() {
   //Imports

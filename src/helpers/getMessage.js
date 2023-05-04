@@ -1,4 +1,4 @@
-import { EVENT } from "../config/eventsTypes"
+import { EVENT } from "@config/eventsTypes"
 
 /**
  * Get message from event

@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import Button from "../Button"
-import LuckyButtons from "../LuckyButtons"
+import Button from "@components/Button"
+import LuckyButtons from "@components/LuckyButtons"
 import { useSelector } from "react-redux"
-import useFight from "../../hooks/useFight"
+import useFight from "@hooks/useFight"
 
 function FightingButton() {
   //Imports

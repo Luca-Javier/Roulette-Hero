@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getTrullyKarma } from "../helpers/getTrullyKarma"
-import setArmorStats from "../helpers/setArmorStats"
-import removeStatsFromArmor from "../helpers/removeAmorStats"
+import { getTrullyKarma } from "@helpers/getTrullyKarma"
+import setArmorStats from "@helpers/setArmorStats"
+import removeStatsFromArmor from "@helpers/removeAmorStats"
 
 const playerReducer = createSlice({
   name: "player",

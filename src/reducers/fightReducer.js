@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
-import getRandomEnemy from "../helpers/getRandomEnemy"
-import getAttackWheelConfig from "../helpers/getAttackWheelConfig"
+import getRandomEnemy from "@helpers/getRandomEnemy"
+import getAttackWheelConfig from "@helpers/getAttackWheelConfig"
 
 const fightReducer = createSlice({
   name: "fight",

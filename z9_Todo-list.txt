@@ -29,14 +29,8 @@ TODO LIST
 
 .Mantener el scroll en bottom del chat y sacar el reverse
 
-.Usar phind
-
 .Corregir estilos de backpag, por ahí con una grid
 
-.Terminar weaponInfo
-.Crear armorInfo
-.Equipar items
-.Sacar stats de armaduras desequipadas
-.desequipar items
+.Sacar innecesario obj.?
 
-.Agregar alias (rutas)
+.Hacer que el objeto generado, segun la mano, sea la imagen left o right

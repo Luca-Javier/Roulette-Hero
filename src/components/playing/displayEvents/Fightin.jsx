@@ -1,12 +1,12 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import Progressbar from "../../Progressbar"
-import playerIcon from "../../../assets/characters/Heart.svg"
+import Progressbar from "@components/Progressbar"
+import playerIcon from "@assets/characters/Heart.svg"
 import {
   prepareEnemyToFight,
   preparePlayerToFight,
-} from "../../../reducers/fightReducer"
-import MyWheel from "../../MyWheel"
+} from "@reducers/fightReducer"
+import MyWheel from "@components/MyWheel"
 
 function Fightin() {
   //Imports
