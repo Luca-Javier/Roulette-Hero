@@ -8,6 +8,7 @@ const eventReducer = createSlice({
 	name: "event",
 	initialState: {
 		event: EVENT.waiting,
+		lastEvent: "",
 		numEvents: 0,
 		customEventMessage: "",
 		cleanChat: "initial",
@@ -60,6 +61,10 @@ const eventReducer = createSlice({
 
 			state.shopItems = items
 		},
+
+		setLastEvent: (state, action) => {
+			state.lastEvent = action.payload
+		},
 	},
 })
 
@@ -73,6 +78,7 @@ export const {
 	cleanItemInfo,
 	createRandomShopItems,
 	removePuchasedItem,
+	setLastEvent,
 } = eventReducer.actions
 
 export default eventReducer.reducer

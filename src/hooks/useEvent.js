@@ -15,18 +15,18 @@ import useReward from "./useReward"
 import {
 	createRandomShopItems,
 	removePuchasedItem,
-} from "../reducers/eventReducer"
-import { addBackpag, updateMoney } from "../reducers/playerReducer"
+} from "@reducers/eventReducer"
+import { addBackpag, updateMoney } from "@reducers/playerReducer"
+import { setLastEvent } from "../reducers/eventReducer"
 
 function useEvent() {
 	//Imports
-	const { event } = useSelector(state => state.event)
+	const { event, lastEvent } = useSelector(state => state.event)
 	const { money, stats } = useSelector(state => state.player)
 	const { trullyKarma } = stats
 	const dispatch = useDispatch()
 	const { section, sections, setSection } = useSections()
 	const { getReward } = useReward()
-	//const lastEvent = useRef()
 
 	//Custom Events
 	const openChest = () => {
@@ -49,8 +49,8 @@ function useEvent() {
 	}
 
 	useEffect(() => {
-		/* if (lastEvent.current === event) return undefined
-		lastEvent.current = event */
+		if (lastEvent === event) return undefined
+		dispatch(setLastEvent(event))
 
 		if (event === EVENT.chest) {
 			dispatch(addMessage("You found a chest"))

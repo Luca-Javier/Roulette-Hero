@@ -17,6 +17,17 @@ function useEquip({ item }) {
 	//States
 	const [isSelectingSide, setIsSelectingSide] = useState("")
 
+	const doeEquipItem = (item, oldItem) => {
+		dispatch(equipItem({ item }))
+		dispatch(removeBackpag({ item }))
+		resetSections()
+
+		if (oldItem) dispatch(addBackpag({ item: oldItem }))
+
+		if (item.equipType === "armor")
+			dispatch(updateStatsFromArmor({ item, oldItem }))
+	}
+
 	//Events
 	const equip = () => {
 		if (item.equipType === "weapon") {
@@ -26,12 +37,7 @@ function useEquip({ item }) {
 
 			const oldItem = equipment[equipKey]
 
-			dispatch(equipItem({ item: { ...item, equipKey } }))
-			dispatch(removeBackpag({ item }))
-			dispatch(addBackpag({ item: oldItem }))
-			resetSections()
-
-			return
+			return doeEquipItem({ ...item, equipKey }, oldItem)
 		}
 
 		if (item.type === "foot") {
@@ -39,37 +45,18 @@ function useEquip({ item }) {
 
 			const equipKey = leftFoot ? "rightFoot" : "leftFoot"
 
-			dispatch(equipItem({ item: { ...item, equipKey } }))
-			dispatch(removeBackpag({ item }))
-
-			dispatch(addBackpag({ item: oldItem }))
-			dispatch(updateStatsFromArmor({ item }))
-			resetSections()
-
-			return
+			return doeEquipItem({ ...item, equipKey }, oldItem)
 		}
 
 		const oldItem = equipment[item.equipKey || item.type]
 
-		console.log(oldItem)
-		dispatch(equipItem({ item }))
-		dispatch(removeBackpag({ item }))
-		dispatch(addBackpag({ item: oldItem }))
-		dispatch(updateStatsFromArmor({ item, oldItem }))
-		resetSections()
+		doeEquipItem(item, oldItem)
 	}
 
 	const equipOnSide = equipKey => {
 		const oldItem = equipment[equipKey]
 
-		setIsSelectingSide("")
-		dispatch(equipItem({ item: { ...item, equipKey } }))
-		resetSections()
-
-		dispatch(removeBackpag({ item }))
-		dispatch(addBackpag({ item: oldItem }))
-		if (item.equipType === "armor")
-			dispatch(updateStatsFromArmor({ item, oldItem }))
+		doeEquipItem({ ...item, equipKey }, oldItem)
 	}
 
 	return { equip, equipOnSide, isSelectingSide, setIsSelectingSide, equipment }
