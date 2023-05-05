@@ -33,4 +33,25 @@ TODO LIST
 
 .Sacar innecesario obj.?
 
-.Hacer que el objeto generado, segun la mano, sea la imagen left o right
+.Crear shop
+
+.Fijarse como voy a administrar los eventos randoms
+
+.Fijarse como administrar las probabilidades de las listas
+
+.Terminar en mayo:
+❗ Lucky buttons
+❗ Item info y seeSwords
+❗ forje
+❗ Random event de obtener karma
+❗ Random event de obtener algo por karma
+❗ about
+❗ error
+✅ shop
+❗ sound
+❗ music
+❗ animations
+❗ Enemeys png
+❗ README
+❗ Enemy stats with numEvents
+❗ amor effect

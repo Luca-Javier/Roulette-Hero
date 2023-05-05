@@ -311,11 +311,9 @@ a {
 .stats-equipment-container img {
 	width: 35px;
 	height: 35px;
-	border: thin solid var(--color-second);
+	/* border: thin solid var(--color-second); */
 }
-.stats-equipment-container img.rotate {
-	transform: scaleX(-1);
-}
+
 /* *---------------------------------Character--------------------------------- */
 
 .characters-btns {
@@ -459,6 +457,26 @@ progress[value]::-webkit-progress-bar {
 	flex-grow: unset;
 	width: auto;
 }
+/* *---------------------------------Shop--------------------------------- */
+
+.shop-items {
+	display: flex;
+	justify-content: space-around;
+	cursor: default;
+}
+
+.shop-items strong {
+	padding-top: 0.5rem;
+	display: block;
+	text-align: center;
+	border-top: none;
+	color: var(--money);
+}
+
+/* .shop-items > div:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+} */
 /* *---------------------------------Utilities--------------------------------- */
 .title {
 	font-size: 2rem;
@@ -467,6 +485,9 @@ progress[value]::-webkit-progress-bar {
 }
 .grow-1 {
 	flex-grow: 1;
+}
+.ds-block {
+	display: block;
 }
 .flex {
 	display: flex;
@@ -495,6 +516,9 @@ progress[value]::-webkit-progress-bar {
 .align-center {
 	align-items: center;
 }
+.m-0 {
+	margin: 0;
+}
 .m-center {
 	margin: 0 auto;
 }
@@ -520,6 +544,9 @@ progress[value]::-webkit-progress-bar {
 }
 .h-100 {
 	height: 100%;
+}
+.h-50 {
+	height: 50%;
 }
 .p-1 {
 	padding: 1rem;
@@ -568,6 +595,9 @@ progress[value]::-webkit-progress-bar {
 .font-1 {
 	font-size: 1rem;
 	font-weight: initial;
+}
+.rotate {
+	transform: scaleX(-1);
 }
 /* *--------------------------------Global Styles-------------------------------- */
 
@@ -656,14 +686,17 @@ input {
 	border: thin solid var(--color-second);
 	padding: 2px;
 }
-.quality.rare {
+.rare {
 	border-color: green;
+	color: green;
 }
-.quality.epic {
+.epic {
 	border-color: #59009f;
+	color: #59009f;
 }
-.quality.legendary {
+.legendary {
 	border-color: var(--money);
+	color: var(--money);
 }
 @keyframes walking-points {
 	0% {

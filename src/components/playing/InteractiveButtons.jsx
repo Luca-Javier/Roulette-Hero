@@ -1,42 +1,21 @@
 import React from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import Button from "@components/Button"
 import { EVENT } from "@config/eventsTypes"
-import { setEvent } from "@reducers/eventReducer"
 import FightingButton from "./FightingButton"
-import { addMessage } from "@reducers/eventReducer"
-import generateWeapon from "@helpers/generateWeapon"
-import { addBackpag } from "@reducers/playerReducer"
-import generateArmor from "@helpers/generateArmor"
+import useEvent from "@hooks/useEvent"
+import ShopButtons from "../ShopButtons"
+import useSections from "@hooks/useSections"
+import ItemInfoButtons from "../ItemInfoButtons"
 
 function InteractiveButtons() {
 	//Imports
 	const { event } = useSelector(state => state.event)
-	const { trullyKarma } = useSelector(state => state.player.stats)
-	const dispatch = useDispatch()
+	const { walk, fight, openChest } = useEvent()
+	const { section, sections } = useSections()
 
-	//Events
-	const walk = () => {
-		dispatch(setEvent(EVENT.walking))
-	}
-
-	const fight = () => {
-		dispatch(setEvent(EVENT.fighting))
-	}
-
-	const openChest = () => {
-		const isArmor = Math.random() > 0.5
-
-		const randomItem = isArmor
-			? generateArmor({ trullyKarma })
-			: generateWeapon({ trullyKarma })
-
-		dispatch(addBackpag({ item: randomItem }))
-
-		dispatch(addMessage(`It is a ${randomItem.type}`))
-
-		dispatch(setEvent(EVENT.waiting))
-	}
+	if (section === sections.itemInfo)
+		return <ItemInfoButtons sell={event === EVENT.shop} />
 
 	return (
 		<section className="interactive-buttons">
@@ -50,7 +29,7 @@ function InteractiveButtons() {
 					{/* //todo must be attack and reduce the enemy health or maybe just a lucky shoot or fight  */}
 
 					<Button text="Fight" onClick={fight} />
-					<Button text="Run" />
+					<Button text="Walk" onClick={walk} />
 				</>
 			)}
 
@@ -58,6 +37,8 @@ function InteractiveButtons() {
 			{event === EVENT.chest && (
 				<Button text="Open Chest" onClick={openChest} />
 			)}
+
+			{event === EVENT.shop && <ShopButtons />}
 		</section>
 	)
 }

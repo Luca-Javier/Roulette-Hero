@@ -12,15 +12,13 @@ import useSections from "@hooks/useSections"
 import ItemImage from "../../ItemImage"
 import useEquip from "../../../hooks/useEquip"
 
-function ItemInfo({ forje, shop, sell }) {
+function ItemInfoTest({ forje, shop, sell }) {
 	//Imports
 	const item = useSelector(state => state.event.itemInfo)
-	const { equip, equipOnSide, isSelectingSide, setIsSelectingSide, equipment } =
-		useEquip({
-			item,
-		})
-
+	const equipment = useSelector(state => state.player.equipment)
 	const { leftHand, rightHand, leftFoot, rightFoot } = equipment
+
+	const { equip, equipOnSide, isSelectingSide, setIsSelectingSide } = useEquip()
 
 	return (
 		<article className="p-1 flex flex-column between h-100">
@@ -50,11 +48,11 @@ function ItemInfo({ forje, shop, sell }) {
 							<>
 								<ItemImage
 									className="rotate"
-									onClick={() => equipOnSide("leftHand")}
+									onClick={() => equipOnSide("leftHand", leftHand)}
 									item={leftHand}
 								/>
 								<ItemImage
-									onClick={() => equipOnSide("rightHand")}
+									onClick={() => equipOnSide("rightHand", rightHand)}
 									item={rightHand}
 								/>
 							</>
@@ -81,7 +79,7 @@ function ItemInfo({ forje, shop, sell }) {
 	)
 }
 
-export default ItemInfo
+export default ItemInfoTest
 
 function WeaponInfo({ item }) {
 	//Imports

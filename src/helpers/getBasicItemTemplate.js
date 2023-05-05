@@ -1,16 +1,17 @@
 import {
-  ARMOR_PROBS,
-  ARMOR_VARIANT_PROBS,
-  QUALITY_ITEM_PROBS,
-  WEAPONS_VARIANT_PROBS,
-  WEAPON_PROBS,
+	ARMOR_PROBS,
+	ARMOR_VARIANT_PROBS,
+	QUALITY_ITEM_PROBS,
+	WEAPONS_VARIANT_PROBS,
+	WEAPON_PROBS,
 } from "@config/itemProbabilities"
+import { v4 as uuid } from "uuid"
 
-const qualityMultiplierDiccionary = {
-  common: 1,
-  rare: 1.5,
-  epic: 2,
-  legendary: 3,
+const qualityMultiplierDictionary = {
+	common: 1,
+	rare: 1.5,
+	epic: 2,
+	legendary: 3,
 }
 
 /**
@@ -21,36 +22,64 @@ const qualityMultiplierDiccionary = {
  * @param {number} props.trullyKarma
  */
 function getBasicItemTemplate({ equipType, trullyKarma }) {
-  let type, variant
+	let type, variant
 
-  if (equipType === "weapon") {
-    type = WEAPON_PROBS.peek()[0]
-    variant = WEAPONS_VARIANT_PROBS.peek()[0]
-  } else {
-    type = ARMOR_PROBS.peek()[0]
-    variant = ARMOR_VARIANT_PROBS.peek()[0]
-  }
+	if (equipType === "weapon") {
+		type = WEAPON_PROBS.peek()[0]
+		variant = WEAPONS_VARIANT_PROBS.peek()[0]
+	} else {
+		type = ARMOR_PROBS.peek()[0]
+		variant = ARMOR_VARIANT_PROBS.peek()[0]
+	}
 
-  const quality = QUALITY_ITEM_PROBS.peek()[0],
-    qualityMultiplier = qualityMultiplierDiccionary[quality]
+	const quality = QUALITY_ITEM_PROBS.peek()[0]
 
-  const getRandomStat = (min, max) => {
-    const maxForQuality = max * qualityMultiplier,
-      minForQuality = min * qualityMultiplier
+	const qualityMultiplier = stat =>
+		+(stat * qualityMultiplierDictionary[quality]).toFixed(2)
 
-    const minWithKarma = Math.round(
-      minForQuality + minForQuality * trullyKarma * 0.1
-    )
+	const getRandomStat = (min, max) => {
+		const maxForQuality = qualityMultiplier(max),
+			minForQuality = qualityMultiplier(min)
 
-    const maxCalculated = Math.round(Math.random() * maxForQuality)
+		const minWithKarma = minForQuality + minForQuality * trullyKarma * 0.1
 
-    return Math.max(minWithKarma, maxCalculated)
-  }
+		const maxCalculated = Math.random() * maxForQuality
 
-  const src = `/src/assets/${equipType}s/${type + "s"}/${variant}-${type}.svg`,
-    alt = `a ${variant} ${quality} ${type}`
+		return Math.round(Math.max(minWithKarma, maxCalculated))
+	}
 
-  return { type, variant, quality, getRandomStat, src, alt, qualityMultiplier }
+	const src = `/src/assets/${equipType}s/${type + "s"}/${variant}-${type}.svg`,
+		alt = `a ${variant} ${quality} ${type}`
+
+	const getMoneyForQuality = quality => {
+		const prices = {
+			common: 15,
+			rare: 45,
+			epic: 60,
+			legendary: 100,
+		}
+
+		const cost = prices[quality]
+
+		//todo afectar esto con suerte
+		const randomVariant = Math.max(0.8, Math.random() * 1.2)
+
+		return Math.floor(cost * randomVariant)
+	}
+
+	const price = getMoneyForQuality(quality)
+
+	return {
+		id: uuid(),
+		price,
+		type,
+		variant,
+		quality,
+		getRandomStat,
+		src,
+		alt,
+		qualityMultiplier,
+	}
 }
 
 export default getBasicItemTemplate

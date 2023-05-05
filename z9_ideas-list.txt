@@ -7,6 +7,8 @@
 
 .No generar las estadisitcas de los enemigos en base a las del jugador y usar numEvents
 
+.Sacar los botones de waponInfo y ponerlos en interactive buttons
+
 .En tal número de eventos se desbloquan nuevos eventos tipo misiones y así hasta una boss. EJ: a los 20 eventos se desbloque una misión de matar a un dragón, pero yo hasta que la consigo no suma más eventos. y cuando lo consigo empiezo a sumar eventos hasta el proximo y así. Despues de cada evento puedo desbloquear cosas como mejores tiendas, mas probabilidad de items raros o directamente la posibilidad de conseguirlos
 
 Estructura de carpeta assets

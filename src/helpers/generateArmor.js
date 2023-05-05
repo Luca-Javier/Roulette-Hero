@@ -1,13 +1,12 @@
 /**@typedef {import("../types.ts").Armor} Armor */
 
 import getBasicItemTemplate from "./getBasicItemTemplate.js"
-import { v4 as uuid } from "uuid"
 
 const qualityArmor = {
-  common: 0.2,
-  rare: 0.4,
-  epic: 0.6,
-  legendary: 0.8,
+	common: 0.2,
+	rare: 0.4,
+	epic: 0.6,
+	legendary: 0.8,
 }
 
 /**
@@ -19,38 +18,46 @@ const qualityArmor = {
  * @return {Armor}
  */
 function generateArmor({ trullyKarma }) {
-  const equipType = "armor"
+	const equipType = "armor"
 
-  const { type, variant, quality, getRandomStat, src, alt, qualityMultiplier } =
-    getBasicItemTemplate({ equipType, trullyKarma })
+	const {
+		type,
+		variant,
+		quality,
+		getRandomStat,
+		src,
+		alt,
+		qualityMultiplier,
+		price,
+		id,
+	} = getBasicItemTemplate({ equipType, trullyKarma })
 
-  const passiveEffects = {}
+	const passiveEffects = {}
 
-  if (variant === "lucky")
-    passiveEffects.luckyStatMultiplier = 0.1 * qualityMultiplier[quality]
+	if (variant === "lucky")
+		passiveEffects.luckyStatMultiplier = qualityMultiplier(0.1)
 
-  if (variant === "pike")
-    passiveEffects.reflectDamage = 0.1 * qualityMultiplier[quality]
+	if (variant === "pike") passiveEffects.reflectDamage = qualityMultiplier(0.1)
 
-  if (variant === "armored")
-    passiveEffects.extraArmor = 0.1 * qualityMultiplier[quality]
+	if (variant === "armored") passiveEffects.extraArmor = qualityMultiplier(0.1)
 
-  const armor = qualityArmor[quality],
-    health = getRandomStat(4, 7)
+	const armor = qualityArmor[quality],
+		health = getRandomStat(4, 7)
 
-  const item = {
-    id: uuid(),
-    src,
-    alt,
-    quality,
-    equipType,
-    type,
-    armor,
-    health,
-    passiveEffects,
-  }
+	const item = {
+		id,
+		price,
+		src,
+		alt,
+		quality,
+		equipType,
+		type,
+		armor,
+		health,
+		passiveEffects,
+	}
 
-  return item
+	return item
 }
 
 export default generateArmor

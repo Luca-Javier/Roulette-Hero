@@ -3,19 +3,17 @@ import equipIcon from "@assets/icons/sections/equipment.svg"
 import backpackIcon from "@assets/icons/sections/backpack.svg"
 import swordsIcon from "@assets/icons/sections/swords-section.svg"
 import loupeIcon from "@assets/icons/sections/loupe-info.svg"
+import shopIcon from "@assets/icons/sections/shop.svg"
+import useSections from "@hooks/useSections"
+import { EVENT } from "@config/eventsTypes"
+import { useSelector } from "react-redux"
 
-/**@typedef {import("./MainInteractiveUI").Sections} Sections */
+function SectionsButtons() {
+	const { section, setSection, sections } = useSections()
+	const { event } = useSelector(state => state.event)
 
-/**
- *
- * @param {object} props
- * @param {number} props.section Current section
- * @param {function} props.setSection Set new current section
- * @param {Sections} props.sections Enum of sections
- *
- * @returns {JSX.Element}
- */
-function SectionsButtons({ section, setSection, sections }) {
+	//todo crear un componente para icons
+
 	return (
 		<article className="interactive-sections">
 			<button
@@ -63,6 +61,18 @@ function SectionsButtons({ section, setSection, sections }) {
 						/>
 					</button>
 				</>
+			)}
+
+			{event === EVENT.shop && (
+				<button
+					className={section === sections.shop ? "isActive" : ""}
+					onClick={() => setSection(sections.shop)}>
+					<img
+						style={{ width: "15px" }}
+						src={shopIcon}
+						alt="Shop icon section"
+					/>
+				</button>
 			)}
 		</article>
 	)
