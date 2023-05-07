@@ -6,12 +6,16 @@ import emptyChestImg from "@assets/armors/empty/chest.svg"
 import emptyPantImg from "@assets/armors/empty/pantalones.svg"
 import emptyFootImg from "@assets/armors/empty/foot.svg"
 
+import useSections from "@hooks/useSections"
+
 function UserStats() {
 	//Imports
-	const state = useSelector(state => state.player)
-	const { health, armor, critic, dodge, karma, lucky } = state.stats,
+	const { stats, equipment } = useSelector(state => state.player)
+	const { health, armor, critic, dodge, karma, lucky } = stats,
 		{ helmet, leftHand, chest, rightHand, legs, leftFoot, rightFoot } =
-			state.equipment
+			equipment
+
+	const { showItemInfo } = useSections()
 
 	//Variables
 	const headAlt = "head equipment",
@@ -20,6 +24,11 @@ function UserStats() {
 		chestAlt = "chestplate",
 		legsAlt = "legs equipment",
 		footAlt = "foot equipment"
+
+	//Events
+	/* const showItemInfoFilter = item => {
+		if (item) showItemInfo(item)
+	} */
 
 	return (
 		<section className="flex gap-1 between h-100 align-center">
@@ -39,6 +48,7 @@ function UserStats() {
 						src={helmet?.src || emptyHeadImg}
 						alt={headAlt}
 						className={`quality  ${helmet?.quality || ""}`}
+						onClick={() => showItemInfo(helmet)}
 					/>
 				</div>
 				<div className="flex gap-1">
@@ -46,16 +56,19 @@ function UserStats() {
 						src={leftHand?.src || emptyHandImg}
 						alt={leftHandAlt}
 						className={`quality rotate ${leftHand?.quality || ""}`}
+						onClick={() => showItemInfo(leftHand)}
 					/>
 					<img
 						src={chest?.src || emptyChestImg}
 						alt={chestAlt}
 						className={`quality ${chest?.quality || ""}`}
+						onClick={() => showItemInfo(chest)}
 					/>
 					<img
 						src={rightHand?.src || emptyHandImg}
 						alt={rightHandAlt}
 						className={`quality  ${rightHand?.quality || ""}`}
+						onClick={() => showItemInfo(rightHand)}
 					/>
 				</div>
 				<div className="flex justify-center gap-1">
@@ -63,6 +76,7 @@ function UserStats() {
 						src={legs?.src || emptyPantImg}
 						alt={legsAlt}
 						className={`quality ${legs?.quality || ""}`}
+						onClick={() => showItemInfo(legs)}
 					/>
 				</div>
 				<div className="flex gap-1 justify-center">
@@ -70,11 +84,13 @@ function UserStats() {
 						src={leftFoot?.src || emptyFootImg}
 						alt={footAlt}
 						className={`quality ${leftFoot?.quality || ""}`}
+						onClick={() => showItemInfo(leftFoot)}
 					/>
 					<img
 						src={rightFoot?.src || emptyFootImg}
 						alt={footAlt}
 						className={`quality rotate ${rightFoot?.quality || ""}`}
+						onClick={() => showItemInfo(rightFoot)}
 					/>
 				</div>
 			</article>

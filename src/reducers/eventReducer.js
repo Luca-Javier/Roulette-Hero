@@ -34,14 +34,14 @@ const eventReducer = createSlice({
 		setItemInfo: (state, action) => {
 			state.itemInfo = action.payload
 		},
+		cleanItemInfo: state => {
+			state.itemInfo = null
+		},
 		removePuchasedItem: (state, action) => {
 			const { item } = action.payload
 			state.shopItems = state.shopItems.filter(
 				shopItem => shopItem.id !== item.id
 			)
-		},
-		cleanItemInfo: state => {
-			state.itemInfo = null
 		},
 
 		createRandomShopItems: (state, action) => {

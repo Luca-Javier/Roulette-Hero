@@ -40,7 +40,9 @@ export type Sections = {
 	fighting: number
 	seeSwords: number
 	itemInfo: number
+	selectingItem: number
 	shop: number
+	forje: number
 }
 
 /* export type Events = {

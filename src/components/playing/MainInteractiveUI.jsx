@@ -5,13 +5,17 @@ import SectionsButtons from "./SectionsButtons"
 import Fightin from "./displayEvents/Fightin"
 import SeeSwords from "./sections/SeeSwords"
 import ItemInfo from "./sections/ItemInfo"
-import useEvent from "../../hooks/useEvent"
-import useSections from "../../hooks/useSections"
-import { useSelector } from "react-redux"
+import useSections from "@hooks/useSections"
 import Shop from "./sections/Shop"
+import SelectingItem from "./sections/SelectingItem"
+import Forje from "./sections/Forje"
+
+/**@typedef {import("../../types").Sections} Sections */
 
 function MainInteractiveUI() {
 	//Imports
+
+	/**@type {{section:number,sections:Sections}} */
 	const { section, sections } = useSections()
 
 	return (
@@ -21,8 +25,10 @@ function MainInteractiveUI() {
 				{section === sections.backpack && <Backpag />}
 				{section === sections.fighting && <Fightin />}
 				{section === sections.seeSwords && <SeeSwords />}
-				{section === sections.itemInfo && <ItemInfo forje={true} />}
+				{section === sections.itemInfo && <ItemInfo />}
+				{section === sections.selectingItem && <SelectingItem />}
 				{section === sections.shop && <Shop />}
+				{section === sections.forje && <Forje />}
 			</article>
 			<SectionsButtons section={section} sections={sections} />
 		</section>

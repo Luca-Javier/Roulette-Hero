@@ -3,6 +3,7 @@ import Button from "@components/Button"
 import LuckyButtons from "@components/LuckyButtons"
 import { useSelector } from "react-redux"
 import useFight from "@hooks/useFight"
+import ItemImage from "@components/ItemImage"
 
 function FightingButton() {
 	//Imports
@@ -35,27 +36,17 @@ function FightingButton() {
 		<>
 			{/* //todo PROBAR el <itemImage/> */}
 			<Button text="<-" onClick={() => setIsAttacking(false)} />
-			{leftHand?.src && (
+			{leftHand && (
 				<Button onClick={() => attack(player.leftAttack)}>
 					<div className="h-100 w-100 flex justify-center">
-						<img
-							className={`quality ${leftHand.quality}`}
-							style={{ width: "20px" }}
-							src={leftHand.src}
-							alt="Left Sword"
-						/>
+						<ItemImage item={leftHand} width={20} />
 					</div>
 				</Button>
 			)}
-			{rightHand?.src && (
+			{rightHand && (
 				<Button onClick={() => attack(player.rightAttack)}>
 					<div className="h-100 w-100 flex justify-center">
-						<img
-							className={`quality ${rightHand.quality}`}
-							style={{ width: "20px" }}
-							src={rightHand.src}
-							alt="Right Sword"
-						/>
+						<ItemImage item={rightHand} width={20} />
 					</div>
 				</Button>
 			)}

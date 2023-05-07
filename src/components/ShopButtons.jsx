@@ -27,8 +27,8 @@ function ShopButtons() {
 				<>
 					<Button text="⬅️" onClick={resetSection} />
 					{shopItems.map(item => (
-						<Button key={item.id}>
-							<ItemImage width={20} item={item} onClick={() => buyItem(item)} />
+						<Button key={item.id} onClick={() => buyItem(item)}>
+							<ItemImage width={20} item={item} />
 						</Button>
 					))}
 				</>

@@ -33,15 +33,15 @@ TODO LIST
 
 .Sacar innecesario obj.?
 
-.Crear shop
-
 .Fijarse como voy a administrar los eventos randoms
 
 .Fijarse como administrar las probabilidades de las listas
 
 .Terminar en mayo:
 ❗ Lucky buttons
-❗ Item info y seeSwords
+✅ Item info 
+✅ seeSwords
+❗ item info design
 ❗ forje
 ❗ Random event de obtener karma
 ❗ Random event de obtener algo por karma
@@ -50,8 +50,10 @@ TODO LIST
 ✅ shop
 ❗ sound
 ❗ music
+❗ roulette sound
 ❗ animations
 ❗ Enemeys png
 ❗ README
 ❗ Enemy stats with numEvents
-❗ amor effect
+❗ armor effect
+❗ logros

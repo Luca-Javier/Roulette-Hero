@@ -7,6 +7,7 @@ import useEvent from "@hooks/useEvent"
 import ShopButtons from "../ShopButtons"
 import useSections from "@hooks/useSections"
 import ItemInfoButtons from "../ItemInfoButtons"
+import ForjeButtons from "../ForjeButtons"
 
 function InteractiveButtons() {
 	//Imports
@@ -16,6 +17,8 @@ function InteractiveButtons() {
 
 	if (section === sections.itemInfo)
 		return <ItemInfoButtons sell={event === EVENT.shop} />
+
+	if (section === sections.forje) return <ForjeButtons />
 
 	return (
 		<section className="interactive-buttons">

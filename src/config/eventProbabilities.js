@@ -6,9 +6,9 @@ import { EVENT } from "./eventsTypes"
 import WeightedList from "js-weighted-list"
 
 const EVENT_PROBS = new WeightedList([
-	[EVENT.fight, 20],
+	[EVENT.fight, 2000],
 	[EVENT.backFight, 25],
-	[EVENT.shop, 2500],
+	[EVENT.shop, 25],
 	[EVENT.chest, 10],
 ])
 

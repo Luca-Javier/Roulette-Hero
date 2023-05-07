@@ -89,6 +89,7 @@ a {
 	display: block;
 	flex-grow: 1;
 	width: 100%;
+	user-select: none;
 }
 .button:disabled {
 	opacity: 0.5;
@@ -422,12 +423,20 @@ progress[value]::-webkit-progress-bar {
 .item-info-img {
 	width: 50px;
 }
-.info-effects-grid {
+.info-passive-effects {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 1rem;
 }
-.info-effects-grid img {
+.info-passive-effects img {
+	height: 25px;
+}
+.info-active-effects {
+	padding: 1rem;
+	display: flex;
+	gap: 1rem;
+}
+.info-active-effects img {
 	height: 25px;
 }
 .info-stats-grid {
@@ -439,6 +448,9 @@ progress[value]::-webkit-progress-bar {
 }
 .info-stats-grid p {
 	margin: 0;
+}
+.info-stats-grid span {
+	color: var(--good);
 }
 .select-side {
 	display: flex;

@@ -8,7 +8,7 @@ const playerReducer = createSlice({
 		name: "Name",
 		className: "Default",
 		money: 22000,
-		stones: 2,
+		stones: 200,
 		stats: {
 			health: 42,
 			armor: 0,
@@ -57,7 +57,7 @@ const playerReducer = createSlice({
 			items.forEach(item => {
 				state.equipment[item.equipKey] = item
 
-				if (item.equipType == "armor") setArmorStats(state, item)
+				if (item.equipType == "armor") setArmorStats({ state, item })
 			})
 		},
 

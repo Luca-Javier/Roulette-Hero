@@ -1,9 +1,19 @@
+/**@typedef {import("../types.ts").Sections} Sections  */
+
 import { useDispatch, useSelector } from "react-redux"
 import { setSection as st } from "@reducers/sectionReducer"
+import { setItemInfo } from "@reducers/eventReducer"
 
+/**
+ *
+ * @returns {{sections:Sections}}
+ */
 function useSections() {
 	//Imports
-	const { section, sections } = useSelector(state => state.section)
+
+	/**@type {{sections:Sections,section:number}} */
+	const { sections, section } = useSelector(state => state.section)
+
 	const dispatch = useDispatch()
 
 	//Events
@@ -11,7 +21,14 @@ function useSections() {
 
 	const resetSections = () => dispatch(st(sections.userStats))
 
-	return { section, sections, setSection, resetSections }
+	const showItemInfo = item => {
+		if (!item) return null
+
+		dispatch(setItemInfo(item))
+		dispatch(st(sections.itemInfo))
+	}
+
+	return { section, sections, setSection, resetSections, showItemInfo }
 }
 
 export default useSections

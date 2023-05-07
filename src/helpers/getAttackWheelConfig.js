@@ -17,6 +17,7 @@ const getAttackWheelConfig = ({ item, playerData }) => {
 	const { classEffects } = playerData,
 		{ trullyKarma, critic: criticProb } = playerData.stats
 
+	//? Está bien esto??
 	let karmaFromItem = 1 + item.passiveEffects.luckyHitMultiplier || 1,
 		attackFromItem = 1 + item.passiveEffects.attackMultiplier || 1,
 		attackFromHammerItem = 1 + item.passiveEffects.hammerDamageMultiplier || 1,
@@ -83,7 +84,6 @@ const getAttackWheelConfig = ({ item, playerData }) => {
 			},
 		],
 		config: {
-			hidden: false,
 			width: 110,
 			height: 110,
 			left: 120,
