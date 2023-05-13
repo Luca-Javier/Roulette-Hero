@@ -13,6 +13,8 @@ const EVENT = {
 	backFight: "backFight",
 	fighting: "fighting",
 	chest: "chest",
+	getKarma: "getKarma",
+	changeKarma: "changeKarma",
 }
 
 export { EVENT }

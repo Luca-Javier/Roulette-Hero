@@ -1,13 +1,19 @@
 function removeStatsFromArmor({ state, item }) {
-  state.stats.health -= item.health
-  state.stats.armor -= item.armor
+	const armor = Math.round(state.stats.armor - item.armor)
 
-  const effects = item.passiveEffects
+	state.stats.health -= item.health
+	state.stats.armor = armor
 
-  if (effects?.luckyStatMultiplier)
-    state.stats.lucky /= 1 + effects.luckyStatMultiplier
+	const effects = item.passiveEffects
 
-  if (effects?.extraArmor) state.stats.armor -= effects.extraArmor
+	if (effects.luckyStatMultiplier) {
+		const lucky = Math.round(
+			state.stats.lucky / (1 + effects.luckyStatMultiplier)
+		)
+		state.stats.lucky = lucky
+	}
+
+	if (effects.extraArmor) state.stats.armor -= effects.extraArmor
 }
 
 export default removeStatsFromArmor

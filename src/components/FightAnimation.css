@@ -1,0 +1,135 @@
+@keyframes shake {
+	69% {
+		transform: translateX(0);
+	}
+
+	70% {
+		transform: translateX(-10px);
+	}
+
+	80% {
+		transform: translateX(10px);
+	}
+
+	90% {
+		transform: translateX(-10px);
+	}
+
+	100% {
+		transform: translateX(10px);
+	}
+}
+
+@keyframes player-hit {
+	0% {
+		transform: rotate(10deg) translateX(0);
+	}
+
+	99% {
+		transform: rotate(10deg) translate(100px, -50px);
+	}
+
+	100% {
+		transform: rotate(10deg) translateX(-10000px);
+	}
+}
+
+@keyframes hurt-enemy {
+	49% {
+		transform: translateX(-10000px);
+	}
+
+	50% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(100px);
+	}
+}
+
+@keyframes enemy-hit {
+	0% {
+		transform: translate(100px, -50px);
+	}
+
+	99% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(-10000px);
+	}
+}
+
+@keyframes hurt-player {
+	49% {
+		transform: translateX(-10000px);
+	}
+
+	50% {
+		transform: translate(-50px, 80px);
+	}
+
+	100% {
+		transform: translate(-130px, 80px);
+	}
+}
+
+.hit {
+	position: absolute;
+	bottom: 60px;
+	left: 60px;
+	width: 15px;
+	transform: translateX(-10000px);
+}
+
+.hurt {
+	position: absolute;
+	top: 70px;
+	right: 80px;
+	width: 50px;
+	transform: translateX(-10000px);
+}
+
+.fight-animations {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	place-content: 0;
+}
+
+/* player attack */
+.fight-animations.player-attack .hit {
+	animation: player-hit 0.5s;
+}
+
+.fight-animations.player-attack .hurt {
+	animation: hurt-enemy 1.4s;
+}
+
+.fight-enemy.enemy-attack [alt="Player figure"] {
+	animation: shake 1.4s;
+}
+
+/* enemy attack */
+.fight-animations.enemy-attack .hit {
+	animation: enemy-hit 0.5s;
+}
+
+.fight-animations.enemy-attack .hurt {
+	animation: hurt-player 1.4s;
+}
+
+.fight-enemy.player-attack img {
+	animation: shake 1.4s;
+}
+
+/*  dodges */
+.fight-animations.player-dodged {
+	animation: enemy-hit 0.5s;
+}
+
+.fight-animations.enemy-dodged {
+	animation: player-hit 0.5s;
+}

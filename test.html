@@ -1,93 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    .div1 {
-      height: 300px;
-      overflow: hidden;
-      border: 1px solid black;
-      overflow: hidden;
 
-    }
-
-    .div2 {
-      max-height: 100%;
-      overflow-y: auto;
-      overflow-x: hidden;
-    }
-
-    .div2::-webkit-scrollbar {
-      background-color: transparent;
-      width: 0px;
-    }
-
-    .div2:hover::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    .div2:hover::-webkit-scrollbar-thumb {
-      background: #b3b3b3;
-      border-radius: 4px;
-      width: 8px;
-    }
-
-  </style>
 </head>
+
+<style>
+  div {
+    background-color: black;
+    height: 250px;
+    width: 280px;
+    position: relative;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -2;
+  }
+
+  /* div p {
+    z-index: 999;
+  } */
+
+  video {
+    width: 100%;
+    position: absolute;
+    place-content: 0;
+    z-index: -1;
+
+  }
+
+  .none {
+    display: none;
+  }
+
+  @keyframes shake {
+    0% {
+      transform: translateX(0);
+    }
+
+    25% {
+      transform: translateX(10px);
+    }
+
+    50% {
+      transform: translateX(0);
+    }
+
+    75% {
+      transform: translateX(-10px);
+    }
+
+    100% {
+      transform: translateX(0);
+      display: none;
+    }
+  }
+
+  @keyframes hit-translate {
+    0% {
+      transform: translate(-90px, 90px);
+    }
+
+    100% {
+      transform: translate(50px, -50px)
+    }
+  }
+
+  .move {
+    animation: shake 1s;
+  }
+
+  .animate-hit {
+
+    width: 20px;
+    animation: hit-translate 1s;
+  }
+
+  @keyframes hurt-translate {
+    0% {
+      transform: translate(30px, -50px)
+    }
+
+
+
+    100% {
+      transform: translate(80px, -50px)
+    }
+  }
+
+  .animate-hurt {
+    width: 20px;
+    animation: hurt-translate 1s ease-in;
+  }
+</style>
 
 <body>
 
-  <div class="div1">
-    <div class="div2">
-      <ul>
-        <li>hola</li>
-        <li>hola</li>
-        <li>holaddddddddddddddddddddddddddddddddddddddddddddddddddd</li>
-        <li>hola</li>
-        <li>hola</li>
-        <li>hola</li>
-        <li>hola</li>
-        <li>hola</li>
-        <li>hola</li>
-        <li>hola</li>
-        <li>hola</li>
-        <li>hola</li>
-        <li>hola</li>
-        <li>hola</li>
-        <li>hola</li>
-        <li>hola</li>
-        <li>hola</li>
-        <li>hola</li>
-        <li>hola</li>
-        <li>hola</li>
-      </ul>
-    </div>
+
+  <div>
+    <p class="none">hola que tal</p>
+
+    <img class="hurt none" src="./hurt-animation.svg" alt="">
+    <img class="hit none" src="./hit-animation.svg" alt="">
   </div>
 
 
-  <div style="width: 200px; background-color: gray;">
+  <button>Play</button>
 
-    <img src="src/assets/weapons/hammers/simple-hammer.svg" alt="">
-    </svg>
+  <script>
+
+    const $p = document.querySelector('p'),
+      $button = document.querySelector('button'),
+      $hit = document.querySelector('.hit'),
+      $hurt = document.querySelector('.hurt')
+
+    $button.addEventListener('click', () => {
+
+      /* $p.classList.remove("none")
+      $p.classList.add("move") */
+
+      $hit.classList.remove("none")
+      $hit.classList.add("animate-hit")
 
 
 
 
+      setTimeout(() => {
+        $hurt.classList.remove("none")
+        $hurt.classList.add("animate-hurt")
+        $hit.classList.add("none")
+        $hit.classList.remove("animate-hit")
+        $p.classList.remove("move")
+        $p.classList.add("none")
+      }, 1000)
+    })
 
+    setTimeout(() => {
+      $hurt.classList.add("none")
+      $hurt.classList.remove("animate-hurt")
+    }, 2500)
 
-
-
-
-
-
-
-  </div>
-
-
+  </script>
 
 </body>
 

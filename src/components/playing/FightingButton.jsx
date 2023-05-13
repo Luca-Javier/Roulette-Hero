@@ -8,7 +8,8 @@ import ItemImage from "@components/ItemImage"
 function FightingButton() {
 	//Imports
 	const { leftHand, rightHand } = useSelector(state => state.player.equipment)
-	const { isFightDone, attack, player, enemy, walk, returnIndex } = useFight()
+	const { isFightDone, attack, player, enemy, walk, returnIndex, luckyAttack } =
+		useFight()
 
 	//State
 	const [isAttacking, setIsAttacking] = useState(false)
@@ -18,7 +19,10 @@ function FightingButton() {
 			<>
 				<Button text="Attack" onClick={() => setIsAttacking(true)} />
 				<Button text="Run" />
-				<LuckyButtons text="Lucky Shoot" />
+				<LuckyButtons
+					text="Lucky Shoot"
+					onClick={() => luckyAttack([player.leftAttack, player.rightAttack])}
+				/>
 			</>
 		)
 

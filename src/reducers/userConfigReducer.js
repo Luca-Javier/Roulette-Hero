@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit"
 const userConfigReducer = createSlice({
 	name: "userConfig",
 	initialState: {
-		music: 100,
-		sound: 100,
+		music: 0,
+		sounds: 100,
 		unlockedCharacters: [
 			"Default",
 			"otherCharacter",
@@ -14,9 +14,12 @@ const userConfigReducer = createSlice({
 		],
 	},
 	reducers: {
-		getMusicSoundFromStorage: (musicLevel, soundLevel) => {},
-		setMusic: musicLevel => {},
-		setSound: soundLevel => {},
+		setMusic: (state, action) => {
+			state.music = action.payload
+		},
+		setSound: (state, action) => {
+			state.sounds = action.payload
+		},
 		unlockCharacter: characters => {},
 	},
 })

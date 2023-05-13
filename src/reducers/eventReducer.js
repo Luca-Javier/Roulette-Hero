@@ -44,6 +44,12 @@ const eventReducer = createSlice({
 			)
 		},
 
+		updateShopItems: (state, action) => {
+			const { items } = action.payload
+
+			state.shopItems = items
+		},
+
 		createRandomShopItems: (state, action) => {
 			const { trullyKarma } = action.payload
 
@@ -79,6 +85,7 @@ export const {
 	createRandomShopItems,
 	removePuchasedItem,
 	setLastEvent,
+	updateShopItems,
 } = eventReducer.actions
 
 export default eventReducer.reducer

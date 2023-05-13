@@ -1,3 +1,5 @@
+import getCustomOptionWheelStyle from "./getCustomOptionWheelStyle"
+
 function getForjeConfigWheel({ quality }) {
 	const percentByQuality = {
 		common: 75,
@@ -7,15 +9,22 @@ function getForjeConfigWheel({ quality }) {
 
 	return {
 		data: [
-			{ option: "forje", optionSize: percentByQuality[quality] },
-			{ option: "fail", optionSize: 100 - percentByQuality[quality] },
+			{
+				option: "forje",
+				optionSize: percentByQuality[quality],
+				style: getCustomOptionWheelStyle({ option: "forje" }),
+			},
+			{
+				option: "fail",
+				optionSize: 100 - percentByQuality[quality],
+				style: getCustomOptionWheelStyle({ option: "fail" }),
+			},
 		],
 		config: {
-			hidden: true,
 			width: 110,
 			height: 110,
-			left: 120,
-			top: 99,
+			left: 136,
+			top: 114,
 			pointerHeight: 50,
 		},
 	}

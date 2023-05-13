@@ -38,22 +38,28 @@ TODO LIST
 .Fijarse como administrar las probabilidades de las listas
 
 .Terminar en mayo:
-❗ Lucky buttons
+✅ Lucky buttons
 ✅ Item info 
 ✅ seeSwords
 ❗ item info design
-❗ forje
-❗ Random event de obtener karma
-❗ Random event de obtener algo por karma
+✅ forje
+✅ Random event de obtener karma
+✅ Random event de obtener algo por karma
 ❗ about
-❗ error
+✅ error
 ✅ shop
-❗ sound
-❗ music
-❗ roulette sound
+✅ music
 ❗ animations
 ❗ Enemeys png
 ❗ README
 ❗ Enemy stats with numEvents
 ❗ armor effect
 ❗ logros
+❗ basic wheel with text style
+❗ random textos
+
+After beta
+❗ actualizar dependencias
+❗ usar baseURL y sacar los alias
+❗ sounds
+❗ roulette sound

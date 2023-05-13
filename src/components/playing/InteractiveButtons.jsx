@@ -12,7 +12,7 @@ import ForjeButtons from "../ForjeButtons"
 function InteractiveButtons() {
 	//Imports
 	const { event } = useSelector(state => state.event)
-	const { walk, fight, openChest } = useEvent()
+	const { walk, fight, simpleEventCallback } = useEvent()
 	const { section, sections } = useSections()
 
 	if (section === sections.itemInfo)
@@ -38,7 +38,23 @@ function InteractiveButtons() {
 
 			{event === EVENT.fighting && <FightingButton />}
 			{event === EVENT.chest && (
-				<Button text="Open Chest" onClick={openChest} />
+				<Button text="Open Chest" onClick={simpleEventCallback} />
+			)}
+
+			{/* //todo Componente de simple envets o un componente con el boton walk y los que les pasemos como children */}
+
+			{event === EVENT.changeKarma && (
+				<>
+					<Button text="Take" onClick={simpleEventCallback} />
+					<Button text="Walk" onClick={walk} />
+				</>
+			)}
+
+			{event === EVENT.getKarma && (
+				<>
+					<Button text="Give" onClick={simpleEventCallback} />
+					<Button text="Walk" onClick={walk} />
+				</>
 			)}
 
 			{event === EVENT.shop && <ShopButtons />}

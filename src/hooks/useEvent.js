@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { EVENT } from "@config/eventsTypes"
 import {
@@ -18,6 +18,7 @@ import {
 } from "@reducers/eventReducer"
 import { addBackpag, updateMoney } from "@reducers/playerReducer"
 import { setLastEvent } from "../reducers/eventReducer"
+import { updateKarma } from "../reducers/playerReducer"
 
 function useEvent() {
 	//Imports
@@ -28,9 +29,11 @@ function useEvent() {
 	const { section, sections, setSection } = useSections()
 	const { getReward } = useReward()
 
+	const [customCallback, setCustomCallback] = useState()
+
 	//Custom Events
-	const openChest = () => {
-		getReward()
+	const simpleEventCallback = () => {
+		customCallback()
 		dispatch(setEvent(EVENT.waiting))
 	}
 
@@ -54,12 +57,61 @@ function useEvent() {
 
 		if (event === EVENT.chest) {
 			dispatch(addMessage("You found a chest"))
+
+			setCustomCallback(() => () => {
+				getReward()
+			})
+
 			return undefined
 		}
 
+		if (event === EVENT.changeKarma) {
+			const possibleRewards = ["money", "stones", "item"][
+				Math.floor(Math.random() * 3)
+			]
+
+			setCustomCallback(() => () => {
+				getReward(possibleRewards)
+				dispatch(updateKarma(-0.2))
+			})
+
+			let customMessage
+
+			if (possibleRewards === "money")
+				customMessage = "You found some money below a ladder"
+
+			if (possibleRewards === "stones")
+				customMessage = "You found some stones below a ladder"
+
+			if (possibleRewards === "item")
+				customMessage =
+					"You found a <b class='color-good'>item</b> below a ladder"
+
+			dispatch(
+				addMessage(`${customMessage} <b class="color-wrong">(-0.2 karma)</b>`)
+			)
+
+			return undefined
+		}
+
+		if (event === EVENT.getKarma) {
+			const money = Math.floor(Math.random() * 33) + 10
+
+			setCustomCallback(() => () => {
+				dispatch(updateKarma(0.2))
+				dispatch(updateMoney(-money))
+			})
+
+			dispatch(
+				addMessage(
+					`You found a homeless. Would you give him <b class='money'>${money}</b> ? <b class='color-good'>(+ 0.2 karma)</b>`
+				)
+			)
+		}
 		if (event === EVENT.shop) {
 			setSection(sections.shop)
 			dispatch(createRandomShopItems({ trullyKarma }))
+
 			return undefined
 		}
 
@@ -78,7 +130,7 @@ function useEvent() {
 		setTimeout(() => dispatch(setRandomEvent()), getWalkTime())
 	}, [event])
 
-	return { walk, fight, openChest, buyItem }
+	return { walk, fight, buyItem, simpleEventCallback }
 }
 
 export default useEvent

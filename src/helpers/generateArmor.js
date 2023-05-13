@@ -1,6 +1,7 @@
 /**@typedef {import("../types.ts").Armor} Armor */
 
 import getBasicItemTemplate from "./getBasicItemTemplate.js"
+import getWeaponEffects from "./getWeaponEffects.js"
 
 const qualityArmor = {
 	common: 0.2,
@@ -32,14 +33,11 @@ function generateArmor({ trullyKarma }) {
 		id,
 	} = getBasicItemTemplate({ equipType, trullyKarma })
 
-	const passiveEffects = {}
-
-	if (variant === "lucky")
-		passiveEffects.luckyStatMultiplier = qualityMultiplier(0.1)
-
-	if (variant === "pike") passiveEffects.reflectDamage = qualityMultiplier(0.1)
-
-	if (variant === "armored") passiveEffects.extraArmor = qualityMultiplier(0.1)
+	const passiveEffects = getWeaponEffects({
+		type,
+		variant,
+		multiplier: qualityMultiplier,
+	})
 
 	const armor = qualityArmor[quality],
 		health = getRandomStat(4, 7)

@@ -63,4 +63,6 @@ export type Events = {
 	backFight: string
 	fighting: string
 	chest: string
+	getKarma: string
+	changeKarma: string
 }

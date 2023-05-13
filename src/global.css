@@ -16,6 +16,8 @@
 	--money: #ffd700;
 	--stone: #314c90;
 	--good: #00ff75;
+	--lucky: #962ce9;
+	--wrong: #ff3333;
 	--lucky-btn: conic-gradient(
 		from 180deg at 50% 50%,
 		rgba(221, 0, 255, 0.515152) 0deg,
@@ -24,7 +26,7 @@
 	);
 	--lucky-btn-bg: linear-gradient(
 		180deg,
-		rgba(150, 44, 233, 0.470899) 0%,
+		#962ce978 0%,
 		rgba(62, 44, 233, 0.470899) 46.88%,
 		#4dc2b4 98.44%
 	);
@@ -360,6 +362,7 @@ a {
 	flex-direction: column;
 	justify-content: space-between;
 	position: relative;
+	z-index: 1;
 }
 .fight-container img {
 	max-width: 70px;
@@ -377,6 +380,9 @@ a {
 	left: 0;
 	top: 0;
 	width: 100%;
+}
+
+.one-shot-animation {
 }
 .attack-animation {
 }
@@ -489,6 +495,44 @@ progress[value]::-webkit-progress-bar {
 	cursor: pointer;
 	transform: scale(1.1);
 } */
+/* *---------------------------------input-range--------------------------------- */
+.input-range {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+	margin: 1rem auto;
+}
+.input-range label {
+	text-align: left;
+	width: 100%;
+	margin-bottom: 1rem;
+}
+.input-range input {
+	-webkit-appearance: none;
+	width: 100%;
+	height: 10px;
+	border-radius: 5px;
+	background: var(--color-white_alpha);
+	outline: none;
+}
+.input-range input::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 1rem;
+	height: 1rem;
+	border-radius: 50%;
+	background: var(--color-second);
+	cursor: pointer;
+}
+
+.input-range input::-moz-range-thumb {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background: #4caf50;
+	cursor: pointer;
+}
 /* *---------------------------------Utilities--------------------------------- */
 .title {
 	font-size: 2rem;
@@ -632,6 +676,7 @@ input {
 	background-color: var(--color-first);
 	color: var(--color-second);
 }
+
 .money {
 	color: var(--money);
 }
@@ -651,9 +696,15 @@ input {
 	margin-left: 0.5rem;
 	margin-bottom: 0.3rem;
 }
+.color-wrong {
+	color: var(--wrong);
+}
+.color-lucky {
+	color: var(--lucky);
+}
 .color-good {
 	color: var(--good);
-	font-weight: 400;
+	/* font-weight: 400; */
 }
 .health::before {
 	width: 12px;

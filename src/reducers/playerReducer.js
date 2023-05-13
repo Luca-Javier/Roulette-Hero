@@ -20,7 +20,20 @@ const playerReducer = createSlice({
 		},
 		classEffects: {},
 		equipment: {
-			helmet: null,
+			helmet: {
+				id: 3,
+				src: "/src/assets/armors/helmets/lucky-helmet.svg",
+				alt: "a lucky rare helmet",
+				quality: "rare",
+				equipKey: "helmet",
+				equipType: "armor",
+				type: "helmet",
+				armor: 0.4,
+				health: 5,
+				passiveEffects: {
+					luckyStatMultiplier: 0.2,
+				},
+			},
 			leftHand: {
 				id: 1,
 				src: "/src/assets/weapons/swords/simple-sword.svg",
@@ -82,7 +95,35 @@ const playerReducer = createSlice({
 
 			if (oldItem) removeStatsFromArmor({ state, item: oldItem })
 
-			setArmorStats({ state, item })
+			if (item) setArmorStats({ state, item })
+		},
+
+		replaceItem: (state, action) => {
+			const { newItem } = action.payload
+
+			let found = false
+
+			Object.keys(state.equipment).forEach(key => {
+				if (state.equipment[key]?.id !== newItem.id) return
+
+				console.log(key)
+
+				if (newItem.equipType == "armor") {
+					removeStatsFromArmor({ state, item: state.equipment[key] })
+					setArmorStats({ state, item: newItem })
+				}
+
+				found = true
+				state.equipment[key] = newItem
+			})
+
+			if (found) return
+
+			const newItemIndex = state.backpag.findIndex(
+				item => item.id === newItem.id
+			)
+
+			state.backpag[newItemIndex] = newItem
 		},
 
 		equipItem: (state, action) => {
@@ -98,6 +139,19 @@ const playerReducer = createSlice({
 		updateStones: (state, action) => {
 			state.stones += action.payload
 		},
+
+		updateKarma: (state, action) => {
+			const karma = state.stats.karma,
+				lucky = state.stats.lucky
+
+			state.stats.karma = +(karma + action.payload).toFixed(1)
+
+			const karmaFromLucky = karma * (lucky * 0.25)
+
+			console.log(+(karma + karmaFromLucky).toFixed(1))
+
+			state.stats.trullyKarma = karma + karmaFromLucky
+		},
 	},
 })
 
@@ -110,6 +164,8 @@ export const {
 	updateStatsFromArmor,
 	updateMoney,
 	updateStones,
+	replaceItem,
+	updateKarma,
 } = playerReducer.actions
 
 export default playerReducer.reducer

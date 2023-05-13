@@ -149,8 +149,8 @@
 	},
 	{
 		"name": "effects",
-		"money": 10,
-		"stones": 4,
+		"money": 2000,
+		"stones": 200,
 		"stats": {
 			"health": 40,
 			"armor": 0,
@@ -164,6 +164,7 @@
 		},
 		"items": [
 			{
+				"id": 1,
 				"src": "/src/assets/weapons/hammers/critic-hammer.svg",
 				"alt": "a critic rare hammer",
 				"quality": "rare",
@@ -179,6 +180,7 @@
 				}
 			},
 			{
+				"id": 2,
 				"src": "/src/assets/weapons/rapiers/strongest-rapier.svg",
 				"alt": "a strongest rare rapie",
 				"quality": "rare",
@@ -194,19 +196,21 @@
 				}
 			},
 			{
+				"id": 3,
 				"src": "/src/assets/armors/helmets/lucky-helmet.svg",
 				"alt": "a lucky rare helmet",
 				"quality": "rare",
 				"equipKey": "helmet",
 				"equipType": "armor",
 				"type": "helmet",
-				"armor": 0.2,
+				"armor": 0.4,
 				"health": 5,
 				"passiveEffects": {
 					"luckyStatMultiplier": 0.2
 				}
 			},
 			{
+				"id": 4,
 				"src": "/src/assets/armors/foots/simple-foot.svg",
 				"alt": "a simple rare foot",
 				"quality": "rare",
@@ -220,6 +224,7 @@
 				}
 			},
 			{
+				"id": 5,
 				"src": "/src/assets/armors/legs/simple-legs.svg",
 				"alt": "a simple rare leg",
 				"quality": "rare",
