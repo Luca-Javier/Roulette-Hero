@@ -20,6 +20,18 @@
 	}
 }
 
+@keyframes dodge {
+	18% {
+		transform: translateX(0);
+	}
+	50% {
+		transform: translateX(30px);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
 @keyframes player-hit {
 	0% {
 		transform: rotate(10deg) translateX(0);
@@ -108,7 +120,7 @@
 	animation: hurt-enemy 1.4s;
 }
 
-.fight-enemy.enemy-attack [alt="Player figure"] {
+.fight-player.enemy-attack img {
 	animation: shake 1.4s;
 }
 
@@ -126,10 +138,16 @@
 }
 
 /*  dodges */
-.fight-animations.player-dodged {
-	animation: enemy-hit 0.5s;
+.fight-animations.player-dodged .hit {
+	animation: player-hit 0.5s;
+}
+.fight-enemy.player-dodged img {
+	animation: dodge 1.5s;
 }
 
-.fight-animations.enemy-dodged {
-	animation: player-hit 0.5s;
+.fight-animations.enemy-dodged .hit {
+	animation: enemy-hit 0.5s;
+}
+.fight-player.enemy-dodged img {
+	animation: dodge 1.5s;
 }

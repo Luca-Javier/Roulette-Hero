@@ -34,7 +34,7 @@ function Fightin() {
 				<FightAnimation className={animationClass} />
 				<MyWheel />
 			</article>
-			<article>
+			<article className={`fight-player ${animationClass}`}>
 				<img src={playerIcon} alt="Player figure" />
 				<Progressbar max={player.fullHealth} value={player.currentHealth} />
 			</article>

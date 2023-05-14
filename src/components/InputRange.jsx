@@ -1,7 +1,7 @@
-import React from "react"
+import React, { useId } from "react"
 
 function InputRange({ value, title, onChange }) {
-	const id = Date.now()
+	const id = useId()
 
 	return (
 		<div className="input-range">

@@ -20,7 +20,6 @@
 				}
 			],
 			"config": {
-				"hidden": false,
 				"width": 110,
 				"height": 110,
 				"left": 120,
@@ -50,7 +49,6 @@
 				}
 			],
 			"config": {
-				"hidden": false,
 				"width": 110,
 				"height": 110,
 				"left": 120,

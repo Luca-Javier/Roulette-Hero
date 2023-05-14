@@ -14,6 +14,20 @@ import { EVENT } from "../config/eventsTypes"
 import { useNavigate } from "react-router-dom"
 import { WHEEL_LUCKY_SHOOT } from "../config/wheelTemplates"
 
+const animationAttacks = {
+	player: {
+		normal: "player-attack",
+		dodge: "player-dodged",
+		fail: "player-fail",
+		kill: "one-shot",
+	},
+	enemy: {
+		normal: "enemy-attack",
+		dodge: "enemy-dodged",
+		fail: "enemy-fail",
+	},
+}
+
 function useFight() {
 	// Imports
 	const { handleSpin, configWheel } = useWheel()
@@ -80,7 +94,7 @@ function useFight() {
 				dispatch(addMessage(`You <b class='color-wrong'>failed</b>...`))
 			else dispatch(addMessage(`You perfomed a ${res} attack`))
 
-			const attackDodged = Math.random() * 100 < enemy.dodge
+			const attackDodged = Math.random() * 100 < 100
 
 			dispatch(setAnimation({ player: { dodged: attackDodged } }))
 			setTimeout(() => {
@@ -94,7 +108,9 @@ function useFight() {
 				if (res !== "fail")
 					dispatch(
 						res !== "dodged"
-							? addMessage(`You did ${attackDamage} damage`)
+							? addMessage(
+									`You did <b class='color-good'>${attackDamage}</b> damage`
+							  )
 							: addMessage(
 									"The enemy <b class='color-wrong'>dodged</b> your attack"
 							  )
@@ -120,7 +136,7 @@ function useFight() {
 				dispatch(addMessage(`The enemy <b class='color-good'>failed</b>`))
 			else dispatch(addMessage(`The enemy performed a ${res} attack`))
 
-			const attackDodged = Math.random() * 100 < player.dodge
+			const attackDodged = Math.random() * 100 < 100
 
 			dispatch(setAnimation({ enemy: { dodged: attackDodged } }))
 
@@ -142,7 +158,9 @@ function useFight() {
 				if (res !== "fail")
 					dispatch(
 						res !== "dodged"
-							? addMessage(`The enemy did you ${attackDamage} damage`)
+							? addMessage(
+									`The enemy did you <b class="color-wrong">${attackDamage}</b> damage`
+							  )
 							: addMessage("You dodged the attack")
 					)
 
