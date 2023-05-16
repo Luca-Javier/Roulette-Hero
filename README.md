@@ -22,15 +22,15 @@ If you found any issue, bug, recommendation or whatever, please, let me know by 
 
 - :ledger: [Report issue](https://github.com/Luca-Javier/Roulette-Hero/issues)
 - 🔵 [Linkedin](https://www.linkedin.com/in/luca-javier-a103a2231/)
-- [Instagram](https://www.instagram.com/luca_javier15/)
-- [Gmail](mailto:luca.jav45@gmail.com)
+- :purple_circle: [Instagram](https://www.instagram.com/luca_javier15/)
+- 🔴 [Gmail](mailto:luca.jav45@gmail.com)
 
 # Future updates
 
-- [] Missions
-- [] Bosses
-- [] Sound effects
-- [] Better assets
+- [ ] Missions
+- [ ] Bosses
+- [ ] Sound effects
+- [ ] Better assets
 
 # Thanks
 
