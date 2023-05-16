@@ -2,10 +2,29 @@
  * @file Contains the predefined wheel configs to generate the wheel
  */
 
-import getCustomOptionWheelStyle from "../helpers/getCustomOptionWheelStyle"
+import getCustomOptionWheelStyle from "@helpers/getCustomOptionWheelStyle"
 
 export const WHEEL_TEMPLATE_BEGINNING = {
-	data: [{ option: "Play" }, { option: "Character" }, { option: "Options" }],
+	data: [
+		{
+			option: "Play",
+			style: getCustomOptionWheelStyle({
+				option: "Play",
+			}),
+		},
+		{
+			option: "Character",
+			style: getCustomOptionWheelStyle({
+				option: "Character",
+			}),
+		},
+		{
+			option: "Options",
+			style: getCustomOptionWheelStyle({
+				option: "Options",
+			}),
+		},
+	],
 	config: { hidden: true },
 }
 
@@ -38,8 +57,16 @@ export const WHEEL_LUCKY_SHOOT = {
 
 export const WHEEL_ERROR_PAGE = {
 	data: [
-		{ option: "Return", optionSize: 75 },
-		{ option: "Stay", optionSize: 25 },
+		{
+			option: "Return",
+			optionSize: 75,
+			style: getCustomOptionWheelStyle({ option: "Character" }),
+		},
+		{
+			option: "Stay",
+			optionSize: 25,
+			style: getCustomOptionWheelStyle({ option: "Options" }),
+		},
 	],
 }
 

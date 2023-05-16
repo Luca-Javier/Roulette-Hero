@@ -15,6 +15,7 @@ function getRandomEnemy({ playerStats, numEvents }) {
 		{},
 		enemies[Math.floor(Math.random() * enemies.length)]
 	)
+
 	const { trullyKarma, health, armor, lucky } = playerStats
 
 	//Functions

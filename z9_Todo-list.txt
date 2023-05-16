@@ -45,21 +45,25 @@ TODO LIST
 ✅ forje
 ✅ Random event de obtener karma
 ✅ Random event de obtener algo por karma
-❗ about
+✅ about
 ✅ error
 ✅ shop
 ✅ music
-❗ animations
-❗ Enemeys png
+✅ animations
+✅ Enemeys png
 ❗ README
 ❗ Enemy stats with numEvents
 ❗ armor effect
 ❗ logros
-❗ basic wheel with text style
+✅ basic wheel with text style
 ❗ random textos
 
+❗ reward al ganar fight
+❗ disabled buttons en fight y en cualquiera rueda (con disabled={spin})
+
 After beta
-❗ actualizar dependencias
+❗ portfolio de about link
+✅ actualizar dependencias
 ❗ usar baseURL y sacar los alias
 ❗ sounds
 ❗ roulette sound

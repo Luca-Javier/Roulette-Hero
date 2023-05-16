@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 
 function Home() {
 	//Imports
-	const { handleSpin, configWheel } = useWheel()
+	const { handleSpin, configWheel, spin } = useWheel()
 	const navigate = useNavigate()
 
 	//Effects
@@ -39,11 +39,11 @@ function Home() {
 			</article>
 			<article>
 				<div className="flex-buttons">
-					<Button text="Play" onClick={goPlay} />
+					<Button text="Play" onClick={goPlay} disabled={spin} />
 				</div>
 				<div className="flex-buttons">
-					<Button text="Character" onClick={goCharacter} />
-					<Button text="Options" onClick={goOptions} />
+					<Button text="Character" onClick={goCharacter} disabled={spin} />
+					<Button text="Options" onClick={goOptions} disabled={spin} />
 				</div>
 			</article>
 		</section>

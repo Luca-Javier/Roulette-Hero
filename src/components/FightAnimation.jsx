@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react"
 import { useSelector } from "react-redux"
 import "./FightAnimation.css"
 
-function FightAnimation({ className }) {
+function FightAnimation() {
 	const { animationClass } = useSelector(state => state.fight)
 
 	return (

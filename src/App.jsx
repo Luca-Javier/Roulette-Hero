@@ -17,13 +17,13 @@ export default () => {
 			<Music src="/src/assets/enviroment.mp3" />
 			<HashRouter>
 				<Routes>
-					<Route path="/" element={<Home />}></Route>
-					<Route path="/characters" element={<Characters />}></Route>
-					<Route path="/options" element={<Options />}></Route>
-					<Route path="/ask-name" element={<AskName />}></Route>
-					<Route path="/playing" element={<Playing />}></Route>
-					<Route path="/about" element={<About />}></Route>
-					<Route path="*" element={<ErrorPage />}></Route>
+					<Route path="/" element={<Home />} />
+					<Route path="/characters" element={<Characters />} />
+					<Route path="/options" element={<Options />} />
+					<Route path="/ask-name" element={<AskName />} />
+					<Route path="/playing" element={<Playing />} />
+					<Route path="/about" element={<About />} />
+					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 			</HashRouter>
 		</Layout>

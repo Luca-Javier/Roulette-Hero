@@ -88,18 +88,7 @@ const fightReducer = createSlice({
 			if (state.enemy.currentHealth < 0) state.enemy.currentHealth = 0
 		},
 		setAnimation: (state, action) => {
-			const animationOptions = action.payload
-
-			if (animationOptions.player) {
-				if (animationOptions.player.oneShot) state.animationClass = "one-shot"
-				else
-					animationOptions.player?.dodged
-						? (state.animationClass = "player-dodged")
-						: (state.animationClass = "player-attack")
-			} else
-				animationOptions.enemy.dodged
-					? (state.animationClass = "enemy-dodged")
-					: (state.animationClass = "enemy-attack")
+			state.animationClass = action.payload
 
 			//todo o hacer un redux de endAnimation o que la animación termine y ya sea invisible
 			//state.animationClass = setTimeout(() => "none", 1000)

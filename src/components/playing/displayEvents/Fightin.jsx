@@ -30,8 +30,7 @@ function Fightin() {
 				<img src={enemy.src} alt="Enemy figure" className="mb-0" />
 			</article>
 			<article className="fight-wheel-container">
-				{/* <div className={`attack-animation ${animationClass}`}>Animation </div> */}
-				<FightAnimation className={animationClass} />
+				<FightAnimation />
 				<MyWheel />
 			</article>
 			<article className={`fight-player ${animationClass}`}>

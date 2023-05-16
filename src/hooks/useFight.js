@@ -9,7 +9,7 @@ import {
 	setAnimation,
 	toggleIsEnemyAttacking,
 } from "../reducers/fightReducer"
-import { addMessage } from "../reducers/eventReducer"
+import { addMessage, setEvent } from "../reducers/eventReducer"
 import { EVENT } from "../config/eventsTypes"
 import { useNavigate } from "react-router-dom"
 import { WHEEL_LUCKY_SHOOT } from "../config/wheelTemplates"
@@ -17,13 +17,15 @@ import { WHEEL_LUCKY_SHOOT } from "../config/wheelTemplates"
 const animationAttacks = {
 	player: {
 		normal: "player-attack",
-		dodge: "player-dodged",
+		critic: "player-attack",
+		dodged: "player-dodged",
 		fail: "player-fail",
 		kill: "one-shot",
 	},
 	enemy: {
 		normal: "enemy-attack",
-		dodge: "enemy-dodged",
+		critic: "enemy-attack",
+		dodged: "enemy-dodged",
 		fail: "enemy-fail",
 	},
 }
@@ -38,6 +40,7 @@ function useFight() {
 	// States
 	const [selectedAttack, setSelectedAttack] = useState(null)
 	const [isFightDone, setIsFightDone] = useState(false)
+	const [isDisabled, setIsDisabled] = useState(false)
 
 	// Events
 	const attack = attack => {
@@ -65,14 +68,22 @@ function useFight() {
 	}
 
 	const oneShot = () => {
-		dispatch(setAnimation({ player: { oneShot: true } }))
+		configWheel(enemy.wheelConfig)
+		dispatch(setAnimation(animationAttacks.player.kill))
 
 		setTimeout(() => {
+			dispatch(endAnimation())
 			dispatch(
 				addMessage(`<b class='color-lucky'>YOU ONE SHOTED THE ENEMY!!</b>`)
 			)
 			dispatch(attackEnemy({ res: "kill", attackDamage: 9999 }))
+
+			setSelectedAttack(null)
 		}, 1000)
+
+		setTimeout(() => {
+			dispatch(toggleIsEnemyAttacking())
+		}, 2000)
 	}
 
 	const walk = () => dispatch(setEvent(EVENT.walking))
@@ -82,11 +93,15 @@ function useFight() {
 	//Player Attack
 	useEffect(() => {
 		if (selectedAttack === null) return undefined
+
+		setIsDisabled(true)
 		;(async () => {
 			let res = await handleSpin()
+			configWheel(enemy.wheelConfig)
 
 			if (res === "kill") {
 				oneShot()
+
 				return undefined
 			}
 
@@ -94,12 +109,14 @@ function useFight() {
 				dispatch(addMessage(`You <b class='color-wrong'>failed</b>...`))
 			else dispatch(addMessage(`You perfomed a ${res} attack`))
 
-			const attackDodged = Math.random() * 100 < 100
+			const attackDodged =
+				res !== "fail" ? Math.random() * 100 < enemy.dodge : false
 
-			dispatch(setAnimation({ player: { dodged: attackDodged } }))
+			if (attackDodged) res = "dodged"
+
+			dispatch(setAnimation(animationAttacks.player[res]))
 			setTimeout(() => {
 				dispatch(endAnimation())
-				if (attackDodged) res = "dodged"
 
 				const attackDamage = selectedAttack.possibleAttacks[res]
 
@@ -120,7 +137,6 @@ function useFight() {
 			}, 1000)
 
 			setTimeout(() => {
-				configWheel(enemy.wheelConfig)
 				dispatch(toggleIsEnemyAttacking())
 			}, 2000)
 		})()
@@ -132,17 +148,21 @@ function useFight() {
 		;(async () => {
 			let res = await handleSpin()
 
+			console.log({ res })
+
 			if (res === "fail")
 				dispatch(addMessage(`The enemy <b class='color-good'>failed</b>`))
 			else dispatch(addMessage(`The enemy performed a ${res} attack`))
 
-			const attackDodged = Math.random() * 100 < 100
+			const attackDodged =
+				res !== "fail" ? Math.random() * 100 < player.dodge : false
 
-			dispatch(setAnimation({ enemy: { dodged: attackDodged } }))
+			if (attackDodged) res = "dodged"
+
+			dispatch(setAnimation(animationAttacks.enemy[res]))
 
 			setTimeout(() => {
 				dispatch(endAnimation())
-				if (attackDodged) res = "dodged"
 
 				const possibleAttacks = {
 					normal: enemy.attack,
@@ -165,6 +185,7 @@ function useFight() {
 					)
 
 				dispatch(toggleIsEnemyAttacking())
+				setIsDisabled(false)
 			}, 1000)
 		})()
 	}, [isEnemyAttacking])
@@ -177,10 +198,20 @@ function useFight() {
 			dispatch(addMessage("You win"))
 		} else return undefined
 
+		setIsDisabled(false)
 		setIsFightDone(true)
 	}, [player.currentHealth, enemy.currentHealth])
 
-	return { isFightDone, attack, player, enemy, walk, returnIndex, luckyAttack }
+	return {
+		isFightDone,
+		attack,
+		player,
+		enemy,
+		walk,
+		returnIndex,
+		luckyAttack,
+		isDisabled,
+	}
 }
 
 export default useFight

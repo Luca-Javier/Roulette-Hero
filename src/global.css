@@ -40,6 +40,7 @@
 	--icon-attack: url("./assets/icons/stats/attack.svg");
 	--icon-karma: url("./assets/icons/stats/karma.svg");
 	--icon-lucky: url("./assets/icons/stats/lucky.svg");
+	--icon-github: url("./assets/icons/social/github.svg");
 }
 html {
 	font-size: 16px;
@@ -208,6 +209,51 @@ a {
 .options-menu a {
 	width: 100%;
 }
+/* *--------------------------------About-------------------------------- */
+
+.about-cantainer {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	text-align: center;
+	height: 100%;
+	position: relative;
+}
+
+.about-wheel-container {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.reset-list li {
+	margin-bottom: 1rem;
+}
+.reset-list li:last-child {
+	margin-bottom: 0;
+}
+.reset-list img {
+	width: 20px;
+}
+.reset-list a {
+	display: flex;
+	align-items: center;
+	gap: 0 1rem;
+}
+.github img {
+	width: 20px;
+}
+.github {
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	gap: 0 1rem;
+	justify-self: right;
+}
+
 /* *--------------------------------TextsDisplay-------------------------------- */
 
 .texts-display {
@@ -582,6 +628,14 @@ progress[value]::-webkit-progress-bar {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 }
+.my-2 {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+.reset-list {
+	list-style: none;
+	padding-left: 0;
+}
 .my-auto {
 	margin-left: auto;
 	margin-right: auto;
@@ -618,6 +672,9 @@ progress[value]::-webkit-progress-bar {
 	display: none;
 }
 .placeholder::placeholder {
+	color: var(--color-grey_dark);
+}
+.color-placeholder {
 	color: var(--color-grey_dark);
 }
 .input {
@@ -780,4 +837,23 @@ input {
 	line-height: 0.01px;
 	content: "";
 	animation: walking-points 3s infinite 1s;
+}
+
+@keyframes paper-please-title {
+	40% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(5px);
+	}
+	90% {
+		transform: translateY(5px);
+	}
+	100% {
+	}
+}
+
+.brand-title {
+	/* font-family: "Press Start 2P"; */
+	animation: paper-please-title 3s infinite;
 }

@@ -6,7 +6,7 @@
  * @returns {object}
  */
 function getCustomOptionWheelStyle({ option }) {
-	let bgOptionColor
+	let bgOptionColor, textColor
 
 	if (option === "normal") bgOptionColor = "#e6dcdc"
 	else if (option === "fail") bgOptionColor = "#3a373b"
@@ -14,8 +14,20 @@ function getCustomOptionWheelStyle({ option }) {
 	else if (option === "lifeSteal") bgOptionColor = "#c21210"
 	else if (option === "forje") bgOptionColor = "#314c90"
 	else if (option === "lucky") bgOptionColor = "#962ce9"
+	else if (option === "Play") {
+		bgOptionColor = "#7f8084"
+		textColor = "black"
+	} else if (option === "Character") {
+		bgOptionColor = "#afb2b7"
+		textColor = "black"
+	} else if (option === "Options") {
+		bgOptionColor = "#d7d8da"
+		textColor = "black"
+	}
 
-	return { backgroundColor: bgOptionColor, textColor: "transparent" }
+	textColor ??= "transparent"
+
+	return { backgroundColor: bgOptionColor, textColor }
 }
 
 export default getCustomOptionWheelStyle

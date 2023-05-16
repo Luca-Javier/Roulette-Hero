@@ -88,6 +88,33 @@
 	}
 }
 
+@keyframes player-fail {
+	0% {
+		transform: rotate(10deg) translateX(0);
+	}
+
+	99% {
+		transform: rotate(10deg) translate(50px, -100px);
+	}
+
+	100% {
+		transform: rotate(10deg) translateX(-10000px);
+	}
+}
+@keyframes enemy-fail {
+	0% {
+		transform: translate(100px, -40px);
+	}
+
+	99% {
+		transform: translate(10px, 50px);
+	}
+
+	100% {
+		transform: translateX(-10000px);
+	}
+}
+
 .hit {
 	position: absolute;
 	bottom: 60px;
@@ -137,7 +164,7 @@
 	animation: shake 1.4s;
 }
 
-/*  dodges */
+/*  player attack dodged */
 .fight-animations.player-dodged .hit {
 	animation: player-hit 0.5s;
 }
@@ -145,9 +172,46 @@
 	animation: dodge 1.5s;
 }
 
+/*  enemy attack dodged */
 .fight-animations.enemy-dodged .hit {
 	animation: enemy-hit 0.5s;
 }
 .fight-player.enemy-dodged img {
 	animation: dodge 1.5s;
+}
+
+/* player attack failed */
+.fight-animations.player-fail .hit {
+	animation: player-fail 0.5s;
+}
+
+/* enemy attack failed */
+.fight-animations.enemy-fail .hit {
+	animation: enemy-fail 0.5s;
+}
+
+@keyframes blackout {
+	0% {
+		z-index: 9999;
+		background-color: white;
+		opacity: 0;
+	}
+	30% {
+		opacity: 1;
+	}
+	55% {
+		opacity: 1;
+	}
+	100% {
+		background-color: white;
+		opacity: 0;
+		z-index: 9999;
+	}
+}
+
+.fight-animations.one-shot .hit {
+	animation: player-hit 0.5s;
+}
+.fight-animations.one-shot {
+	animation: blackout 2s;
 }

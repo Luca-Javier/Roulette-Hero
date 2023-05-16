@@ -37,7 +37,7 @@ function Options() {
 					<>
 						<Button text="Exit" to="/" />
 						<Button text="Resume" onClick={goBack} />
-						<Button text="Info" to="/about" />
+						<Button text="About" to="/about" />
 						<Button text="Configure" onClick={() => setSection("configure")} />
 					</>
 				)}
