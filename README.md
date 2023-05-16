@@ -6,7 +6,7 @@ A WEB game to play for free where all depends on your luck.
 
 You can be both a kind and fortunate person, as well as a rude, arrogant, and unfortunate one
 
-[Click here to play](https://SOOOOOON)
+🕹️ [Click here to play](https://SOOOOOON)
 
 # Docs
 
@@ -20,7 +20,8 @@ Also you can see the tests for understand better the code.
 
 If you found any issue, bug, recommendation or whatever, please, let me know by creating an issue in this repository or conctacing me.
 
-- [Linkedin](https://www.linkedin.com/in/luca-javier-a103a2231/)
+- :ledger: [Report issue](https://github.com/Luca-Javier/Roulette-Hero/issues)
+- 🔵 [Linkedin](https://www.linkedin.com/in/luca-javier-a103a2231/)
 - [Instagram](https://www.instagram.com/luca_javier15/)
 - [Gmail](mailto:luca.jav45@gmail.com)
 
