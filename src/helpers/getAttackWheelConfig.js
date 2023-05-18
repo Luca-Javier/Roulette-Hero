@@ -1,3 +1,4 @@
+import getActiveEffectAttack from "./getActiveEffectAttack"
 import getCustomOptionWheelStyle from "./getCustomOptionWheelStyle"
 
 /**
@@ -46,11 +47,16 @@ const getAttackWheelConfig = ({ item, playerData }) => {
 	const activeEffects = Object.keys(item.activeEffects).map(effectKey => {
 		const effectItem = item.activeEffects[effectKey]
 
-		possibleEffectsAttacks[effectKey] = { ...effectItem, attack: realAttack }
+		const { size, attack } = getActiveEffectAttack({
+			effectKey,
+			baseDamage: realAttack,
+		})
+
+		possibleEffectsAttacks[effectKey] = { ...effectItem, attack }
 
 		return {
 			option: effectKey,
-			optionSize: getProb(15 * realKarma),
+			optionSize: getProb(size * realKarma),
 			style: getCustomOptionWheelStyle({ option: effectKey }),
 		}
 	})

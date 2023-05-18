@@ -41,7 +41,7 @@ TODO LIST
 ✅ Lucky buttons
 ✅ Item info 
 ✅ seeSwords
-❗ item info design
+✅ item info design
 ✅ forje
 ✅ Random event de obtener karma
 ✅ Random event de obtener algo por karma
@@ -51,15 +51,23 @@ TODO LIST
 ✅ music
 ✅ animations
 ✅ Enemeys png
-❗ README
-❗ Enemy stats with numEvents
-❗ armor effect
+✅ README
+✅ Enemy stats with numEvents
+✅ armor effect  (reduce damage)
+❗ Repasar todos los efectos y comprobar que todo anda
+❗ Jugar varias partidas y equilibrar las cosas
+✅ Agregar characters
+✅ Agregar un character developer con todos los items y items en la mochila
 ❗ logros
 ✅ basic wheel with text style
+❗ refactoring
 ❗ random textos
-
 ❗ reward al ganar fight
-❗ disabled buttons en fight y en cualquiera rueda (con disabled={spin})
+✅ disabled buttons en fight y en cualquiera rueda (con disabled={spin})
+❗ Performance con lazy load, web vitals 
+❗ SEO 
+❗ Accesibilidad
+❗ SVG manual para un loader que sea una ruleta girando
 
 After beta
 ❗ portfolio de about link
@@ -67,3 +75,4 @@ After beta
 ❗ usar baseURL y sacar los alias
 ❗ sounds
 ❗ roulette sound
+

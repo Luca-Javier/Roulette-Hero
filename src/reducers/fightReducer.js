@@ -1,37 +1,44 @@
 import { createSlice } from "@reduxjs/toolkit"
-import getRandomEnemy from "@helpers/getRandomEnemy"
+import getRandomEnemy from "@helpers/getRandomEnemy2"
 import getAttackWheelConfig from "@helpers/getAttackWheelConfig"
+
+const initialState = {
+	enemy: {
+		src: "",
+		fullHealth: null,
+		currentHealth: null,
+		armor: null,
+		attack: null,
+		critickProb: null,
+		dodge: null,
+		wheelConfig: null,
+	},
+	player: {
+		fullHealth: null,
+		currentHealth: null,
+		dodge: null,
+		leftAttack: { possibleAttacks: null, wheelConfig: null },
+		rightAttack: { possibleAttacks: null, wheelConfig: null },
+	},
+	isFighting: false,
+	animationClass: "",
+	isEnemyAttacking: false,
+}
 
 const fightReducer = createSlice({
 	name: "fight",
-	initialState: {
-		enemy: {
-			src: "",
-			fullHealth: null,
-			currentHealth: null,
-			armor: null,
-			attack: null,
-			critickProb: null,
-			dodge: null,
-			wheelConfig: null,
-		},
-		player: {
-			fullHealth: null,
-			currentHealth: null,
-			dodge: null,
-			leftAttack: { possibleAttacks: null, wheelConfig: null },
-			rightAttack: { possibleAttacks: null, wheelConfig: null },
-		},
-		animationClass: "",
-		isEnemyAttacking: false,
-	},
+	initialState,
 	reducers: {
+		resetFightStore: state => {
+			Object.assign(state, initialState)
+		},
 		prepareEnemyToFight: (state, action) => {
 			const playerStats = action.payload.playerData.stats,
 				numEvents = action.payload.numEvents
 
 			const enemy = getRandomEnemy({ playerStats, numEvents })
 
+			state.isFighting = true
 			state.enemy = enemy
 		},
 		preparePlayerToFight: (state, action) => {
@@ -97,14 +104,18 @@ const fightReducer = createSlice({
 			state.animationClass = ""
 		},
 		toggleIsEnemyAttacking: state => {
-			state.isEnemyAttacking = !state.isEnemyAttacking
+			if (state.isFighting) state.isEnemyAttacking = !state.isEnemyAttacking
 		},
 		doEnemyAttack: (state, action) => {
 			const { attackDamage } = action.payload
 
-			state.player.currentHealth -= attackDamage
+			state.player.currentHealth -= attackDamage //+ Math.floor(state.player.armor)
 
 			if (state.player.currentHealth < 0) state.player.currentHealth = 0
+		},
+		endFight: state => {
+			state.isFighting = false
+			state.isEnemyAttacking = false
 		},
 	},
 })
@@ -117,6 +128,8 @@ export const {
 	endAnimation,
 	toggleIsEnemyAttacking,
 	doEnemyAttack,
+	endFight,
+	resetFightStore,
 } = fightReducer.actions
 
 export default fightReducer.reducer

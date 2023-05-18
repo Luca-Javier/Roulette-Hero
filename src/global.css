@@ -271,23 +271,27 @@ a {
 	overflow: auto;
 	max-height: 100%;
 }
-.texts-display ul::-webkit-scrollbar {
+.scroll {
+	overflow: hidden;
+	overflow-y: scroll;
+}
+.scroll::-webkit-scrollbar {
 	background-color: transparent;
 	width: 0px;
 }
-.texts-display ul:hover::-webkit-scrollbar {
+.scroll:hover::-webkit-scrollbar {
 	width: 8px;
 }
-.texts-display ul:hover::-webkit-scrollbar-thumb {
+.scroll:hover::-webkit-scrollbar-thumb {
 	background: var(--color-second);
 	border-radius: 4px;
 }
-.texts-display ul li {
-	padding: 0.2rem 0.5rem;
+.scroll li {
+	padding: 0.35rem 0.5rem;
 	margin: 0;
 	border-top: thin solid var(--color-grey_dark);
 }
-.texts-display ul li:first-child {
+.scroll li:first-child {
 	border-top: none;
 }
 /* *----------------------------MainInteractiveUI---------------------------- */
@@ -642,6 +646,12 @@ progress[value]::-webkit-progress-bar {
 }
 .mb-0 {
 	margin-bottom: 0 !important;
+}
+.mb-2 {
+	margin-bottom: 2rem;
+}
+.mt-0 {
+	margin-top: 0;
 }
 .w-50 {
 	width: 50%;

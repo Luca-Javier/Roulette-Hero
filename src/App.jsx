@@ -12,6 +12,8 @@ import About from "./views/About"
 import Music from "./components/Music"
 
 export default () => {
+	//todo Playing lazy load
+
 	return (
 		<Layout>
 			<Music src="/src/assets/enviroment.mp3" />

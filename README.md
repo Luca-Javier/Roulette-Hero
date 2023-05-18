@@ -31,9 +31,10 @@ If you found any issue, bug, recommendation or whatever, please, let me know by 
 - [ ] Bosses
 - [ ] Sound effects
 - [ ] Better assets
+- [ ] More item effects
 
 # Thanks
 
 Thanks for playing and reading this. I hope you enjoy it.
 
-This is my first own project of moderate scale and I'am happy to share it
+This is my first own project of moderate scale and I'am happy to share it :nerd_face:

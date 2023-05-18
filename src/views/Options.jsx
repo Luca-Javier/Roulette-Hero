@@ -5,12 +5,14 @@ import closeIcon from "@assets/icons/others/close-options.svg"
 import InputRange from "@components/InputRange"
 import { setMusic, setSound } from "@reducers/userConfigReducer"
 import { useDispatch, useSelector } from "react-redux"
+import useResetApp from "../hooks/useResetApp"
 
 function Options() {
 	//Imports
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const { music, sounds } = useSelector(state => state.userConfig)
+	const { reset } = useResetApp()
 
 	//State
 	const [section, setSection] = useState("initial")
@@ -35,7 +37,7 @@ function Options() {
 			<section className="options-menu">
 				{section === "initial" && (
 					<>
-						<Button text="Exit" to="/" />
+						<Button text="Exit" to="/" onClick={reset} />
 						<Button text="Resume" onClick={goBack} />
 						<Button text="About" to="/about" />
 						<Button text="Configure" onClick={() => setSection("configure")} />

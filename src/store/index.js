@@ -8,10 +8,10 @@ import sectionReducer from "../reducers/sectionReducer"
 const store = configureStore({
 	reducer: {
 		player: playerReducer,
-		userConfig: userConfigReducer,
 		event: eventReducer,
 		fight: fightReducer,
 		section: sectionReducer,
+		userConfig: userConfigReducer,
 	},
 })
 

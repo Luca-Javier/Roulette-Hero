@@ -6,13 +6,14 @@ import {
 	attackEnemy,
 	doEnemyAttack,
 	endAnimation,
+	endFight,
 	setAnimation,
 	toggleIsEnemyAttacking,
 } from "../reducers/fightReducer"
 import { addMessage, setEvent } from "../reducers/eventReducer"
 import { EVENT } from "../config/eventsTypes"
 import { useNavigate } from "react-router-dom"
-import { WHEEL_LUCKY_SHOOT } from "../config/wheelTemplates"
+import { WHEEL_LUCKY_SHOOT, WHEEL_RUN } from "../config/wheelTemplates"
 
 const animationAttacks = {
 	player: {
@@ -30,10 +31,12 @@ const animationAttacks = {
 	},
 }
 
+console.log("useFight renderizado")
 function useFight() {
 	// Imports
 	const { handleSpin, configWheel } = useWheel()
 	const { player, enemy, isEnemyAttacking } = useSelector(state => state.fight)
+	const { armor } = useSelector(state => state.player.stats)
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
@@ -41,11 +44,17 @@ function useFight() {
 	const [selectedAttack, setSelectedAttack] = useState(null)
 	const [isFightDone, setIsFightDone] = useState(false)
 	const [isDisabled, setIsDisabled] = useState(false)
+	const [isRunning, setIsRunning] = useState(false)
 
 	// Events
 	const attack = attack => {
 		setSelectedAttack(attack)
 		configWheel(attack.wheelConfig)
+	}
+
+	const run = () => {
+		configWheel(WHEEL_RUN)
+		setIsRunning(true)
 	}
 
 	const luckyAttack = attacks => {
@@ -86,9 +95,32 @@ function useFight() {
 		}, 2000)
 	}
 
-	const walk = () => dispatch(setEvent(EVENT.walking))
+	const walk = () => {
+		dispatch(endFight())
+		dispatch(setEvent(EVENT.walking))
+
+		setTimeout(() => {
+			dispatch(endFight())
+		}, 2000)
+	}
 
 	const returnIndex = () => navigate("/")
+
+	useEffect(() => {
+		if (!isRunning) return undefined
+		;(async () => {
+			const res = await handleSpin()
+			configWheel(enemy.wheelConfig)
+
+			if (res === "run") walk()
+			else {
+				setTimeout(() => {
+					dispatch(toggleIsEnemyAttacking())
+				}, 2000)
+			}
+			setIsRunning(false)
+		})()
+	}, [isRunning])
 
 	//Player Attack
 	useEffect(() => {
@@ -133,6 +165,7 @@ function useFight() {
 							  )
 					)
 
+				//? no hace falta
 				setSelectedAttack(null)
 			}, 1000)
 
@@ -148,8 +181,6 @@ function useFight() {
 		;(async () => {
 			let res = await handleSpin()
 
-			console.log({ res })
-
 			if (res === "fail")
 				dispatch(addMessage(`The enemy <b class='color-good'>failed</b>`))
 			else dispatch(addMessage(`The enemy performed a ${res} attack`))
@@ -164,9 +195,11 @@ function useFight() {
 			setTimeout(() => {
 				dispatch(endAnimation())
 
+				const playerDefense = Math.floor(armor)
+
 				const possibleAttacks = {
-					normal: enemy.attack,
-					critic: enemy.attack * 2,
+					normal: enemy.attack - playerDefense,
+					critic: enemy.attack * 2 - playerDefense,
 					fail: 0,
 					dodged: 0,
 				}
@@ -200,6 +233,7 @@ function useFight() {
 
 		setIsDisabled(false)
 		setIsFightDone(true)
+		//if (isEnemyAttacking) dispatch(toggleIsEnemyAttacking())
 	}, [player.currentHealth, enemy.currentHealth])
 
 	return {
@@ -211,6 +245,7 @@ function useFight() {
 		returnIndex,
 		luckyAttack,
 		isDisabled,
+		run,
 	}
 }
 

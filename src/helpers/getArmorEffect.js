@@ -3,7 +3,7 @@ function getArmorEffects({ type, variant, multiplier }) {
 
 	if (variant === "lucky") passiveEffects.luckyStatMultiplier = multiplier(0.1)
 
-	if (variant === "pike") passiveEffects.reflectDamage = multiplier(0.1)
+	//if (variant === "pike") passiveEffects.reflectDamage = multiplier(0.1)
 
 	if (variant === "armored") passiveEffects.extraArmor = multiplier(0.1)
 

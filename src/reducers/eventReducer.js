@@ -4,18 +4,23 @@ import { EVENT_PROBS } from "@config/eventProbabilities"
 import generateArmor from "@helpers/generateArmor"
 import generateWeapon from "@helpers/generateWeapon"
 
+const initialState = {
+	event: EVENT.waiting,
+	lastEvent: "",
+	numEvents: 0,
+	customEventMessage: "",
+	cleanChat: "initial",
+	itemInfo: null,
+	shopItems: [],
+}
+
 const eventReducer = createSlice({
 	name: "event",
-	initialState: {
-		event: EVENT.waiting,
-		lastEvent: "",
-		numEvents: 0,
-		customEventMessage: "",
-		cleanChat: "initial",
-		itemInfo: null,
-		shopItems: [],
-	},
+	initialState,
 	reducers: {
+		resetEventStore: state => {
+			Object.assign(state, initialState)
+		},
 		setEvent: (state, action) => {
 			state.event = action.payload
 		},
@@ -86,6 +91,7 @@ export const {
 	removePuchasedItem,
 	setLastEvent,
 	updateShopItems,
+	resetEventStore,
 } = eventReducer.actions
 
 export default eventReducer.reducer

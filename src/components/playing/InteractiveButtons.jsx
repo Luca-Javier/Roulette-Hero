@@ -15,6 +15,8 @@ function InteractiveButtons() {
 	const { walk, fight, simpleEventCallback } = useEvent()
 	const { section, sections } = useSections()
 
+	if (section === sections.seeSwords) return
+
 	if (section === sections.itemInfo)
 		return <ItemInfoButtons sell={event === EVENT.shop} />
 

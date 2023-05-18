@@ -16,7 +16,7 @@ function About() {
 	const goBack = async () => {
 		const res = await handleSpin()
 
-		if (res === "Return") navigate("/")
+		if (res === "Return") navigate(-1)
 	}
 
 	useEffect(() => {

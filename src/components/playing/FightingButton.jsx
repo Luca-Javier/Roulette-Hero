@@ -18,6 +18,7 @@ function FightingButton() {
 		returnIndex,
 		luckyAttack,
 		isDisabled,
+		run,
 	} = useFight()
 	const { spin } = useWheel()
 
@@ -48,7 +49,7 @@ function FightingButton() {
 					onClick={() => setIsAttacking(true)}
 					disabled={isDisabled}
 				/>
-				<Button text="Run" disabled={isDisabled} />
+				<Button text="Run" onClick={run} disabled={isDisabled} />
 				<LuckyButtons
 					text="Lucky Shoot"
 					onClick={() => luckyAttack([player.leftAttack, player.rightAttack])}

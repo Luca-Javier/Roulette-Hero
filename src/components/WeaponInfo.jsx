@@ -31,10 +31,8 @@ function WeaponInfo({ item }) {
 	const realAttack = Math.round(attack * attackFromClass * attackFromEffect)
 
 	return (
-		<div className="flex flex-column w-100">
-			<h3 className="grow-1 font-1" style={{ marginTop: 0 }}>
-				{alt}
-			</h3>
+		<div className="flex flex-column w-100 mb-2">
+			<h3 className="grow-1 font-1 mt-0">{alt}</h3>
 			<div className="flex between">
 				<img
 					className={`item-info-img quality ${quality}`}
@@ -44,6 +42,7 @@ function WeaponInfo({ item }) {
 				<article className="info-passive-effects">
 					<PassiveEffects effects={passiveEffects} />
 					<ClassEffects effects={classEffects} />
+					<ActiveEffects effects={activeEffects} />
 				</article>
 			</div>
 			<article className="info-stats-grid">
@@ -53,9 +52,8 @@ function WeaponInfo({ item }) {
 				</p>
 				<p className="stat-icon critic">{critic}</p>
 			</article>
-			<article className="info-active-effects">
-				<ActiveEffects effects={activeEffects} />
-			</article>
+			{/* <article className="info-active-effects">
+			</article> */}
 		</div>
 	)
 }

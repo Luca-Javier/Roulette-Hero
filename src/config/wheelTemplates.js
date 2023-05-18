@@ -87,3 +87,25 @@ export const WHEEL_SEDUCE_SHOP = {
 		pointerHeight: 50,
 	},
 }
+
+export const WHEEL_RUN = {
+	data: [
+		{
+			option: "stay",
+			optionSize: 75,
+			style: getCustomOptionWheelStyle({ option: "fail" }),
+		},
+		{
+			option: "run",
+			optionSize: 25,
+			style: getCustomOptionWheelStyle({ option: "normal" }),
+		},
+	],
+	config: {
+		width: 110,
+		height: 110,
+		left: 120,
+		top: 99,
+		pointerHeight: 50,
+	},
+}

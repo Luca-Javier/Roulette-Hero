@@ -17,19 +17,22 @@ function SectionsButtons() {
 
 	//todo crear un componente para icons
 
+	const disabledInFight =
+		section === sections.fighting || section === sections.seeSwords
+
 	return (
 		<article className="interactive-sections">
 			<button
 				className={section === sections.userStats ? "isActive" : ""}
 				onClick={() => setSection(sections.userStats)}
-				disabled={section === sections.fighting}>
+				disabled={disabledInFight}>
 				<EquipIcon />
 			</button>
 
 			<button
 				className={section === sections.backpack ? "isActive" : ""}
 				onClick={() => setSection(sections.backpack)}
-				disabled={section === sections.fighting}>
+				disabled={disabledInFight}>
 				<BackpackIcon />
 			</button>
 

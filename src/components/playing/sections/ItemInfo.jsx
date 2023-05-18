@@ -1,7 +1,7 @@
 import React from "react"
 import { useSelector } from "react-redux"
-import WeaponInfo from "../../WeaponInfo"
-import ArmorInfo from "../../ArmorInfo"
+import WeaponInfo from "@components/WeaponInfo"
+import ArmorInfo from "@components/ArmorInfo"
 
 function ItemInfo() {
 	//Imports

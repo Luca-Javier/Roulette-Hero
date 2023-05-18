@@ -6,9 +6,11 @@ import { useEffect } from "react"
 import { WHEEL_ERROR_PAGE } from "../config/wheelTemplates"
 
 function ErrorPage() {
+	console.log("erro page")
+
 	//Imports
 	const navigate = useNavigate()
-	const { configWheel, handleSpin } = useWheel()
+	const { configWheel, handleSpin, spin } = useWheel()
 
 	//Events
 	const goHome = async () => {
@@ -32,6 +34,7 @@ function ErrorPage() {
 			<MyWheel />
 			<div className="flex justify-center">
 				<Button
+					disabled={spin}
 					text="return"
 					onClick={goHome}
 					style={{ flexGrow: "unset", width: "auto" }}

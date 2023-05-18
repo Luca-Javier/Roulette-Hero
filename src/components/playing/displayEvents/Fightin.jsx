@@ -8,20 +8,24 @@ import {
 } from "@reducers/fightReducer"
 import MyWheel from "@components/MyWheel"
 import FightAnimation from "../../FightAnimation"
+import { EVENT } from "@config/eventsTypes"
 
 function Fightin() {
 	//Imports
 	const dispatch = useDispatch()
 	const playerData = useSelector(state => state.player)
-	const { numEvents } = useSelector(state => state.event)
-	const { enemy, player, animationClass } = useSelector(state => state.fight)
+	const { numEvents, event } = useSelector(state => state.event)
+	const { enemy, player, animationClass, isFighting } = useSelector(
+		state => state.fight
+	)
 
 	//Effects
 	useEffect(() => {
-		if (enemy.src) return undefined
+		if (isFighting) return undefined
+
 		dispatch(prepareEnemyToFight({ playerData, numEvents }))
 		dispatch(preparePlayerToFight({ playerData }))
-	}, [])
+	}, [isFighting])
 
 	return (
 		<section className="fight-container">

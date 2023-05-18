@@ -34,7 +34,7 @@ function MainDisplay() {
 
 	return (
 		<section className="texts-display">
-			<ul>
+			<ul className="scroll">
 				{messagesHistory.length !== 0 &&
 					messagesHistory
 						.reverse()

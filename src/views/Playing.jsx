@@ -5,14 +5,14 @@ import MainInteractiveUI from "@components/playing/MainInteractiveUI"
 import TextsDisplay from "@components/playing/TextsDisplay"
 
 function Playing() {
-  return (
-    <>
-      <GameHeader />
-      <MainInteractiveUI />
-      <TextsDisplay />
-      <InteractiveButtons />
-    </>
-  )
+	return (
+		<>
+			<GameHeader />
+			<MainInteractiveUI />
+			<TextsDisplay />
+			<InteractiveButtons />
+		</>
+	)
 }
 
 export default Playing

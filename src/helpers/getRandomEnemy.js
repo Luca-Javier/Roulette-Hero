@@ -1,4 +1,4 @@
-import enemies from "../config/enemies.json"
+import enemies from "@config/enemies.json"
 
 /**
  * Generates a random enemy with calculated stats using player stats and numEvents
