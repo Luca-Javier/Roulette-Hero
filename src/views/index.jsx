@@ -4,11 +4,13 @@ import MyWheel from "../components/MyWheel"
 import useWheel from "../context/useWheel"
 import { WHEEL_TEMPLATE_BEGINNING } from "@config/wheelTemplates"
 import { useNavigate } from "react-router-dom"
+import useTranslates from "../hooks/useTranslates"
 
 function Home() {
 	//Imports
 	const { handleSpin, configWheel, spin } = useWheel()
 	const navigate = useNavigate()
+	useTranslates()
 
 	//Effects
 	useEffect(() => {

@@ -5,18 +5,17 @@ import "@fontsource/arvo"
 import "@fontsource/press-start-2p"
 import { WheelProvider } from "./context/useWheel"
 import { Provider } from "react-redux"
-import store from "./store"
+import { store, persistor } from "./store"
 import { createRoot } from "react-dom/client"
+import { PersistGate } from "redux-persist/integration/react"
 
-const container = document.getElementById("root")
-
-const root = createRoot(container) // createRoot(container!) if you use TypeScript
-
-root.render(
+createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
 		<WheelProvider>
 			<Provider store={store}>
-				<App />
+				<PersistGate loading={null} persistor={persistor}>
+					<App />
+				</PersistGate>
 			</Provider>
 		</WheelProvider>
 	</React.StrictMode>

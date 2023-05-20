@@ -2,13 +2,6 @@ import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { setName } from "@reducers/playerReducer"
 import Button from "@components/Button"
-import { resetEventStore, setEvent } from "../reducers/eventReducer"
-import { rootReducer } from "../store"
-import { useEffect } from "react"
-import { configureStore, createStore } from "@reduxjs/toolkit"
-import { setSection } from "../reducers/sectionReducer"
-import { resetFightStore } from "../reducers/fightReducer"
-import { resetPlayerStore } from "../reducers/playerReducer"
 
 function AskName() {
 	//Imports

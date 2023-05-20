@@ -14,6 +14,7 @@ import { addMessage, setEvent } from "../reducers/eventReducer"
 import { EVENT } from "../config/eventsTypes"
 import { useNavigate } from "react-router-dom"
 import { WHEEL_LUCKY_SHOOT, WHEEL_RUN } from "../config/wheelTemplates"
+import useReward from "./useReward"
 
 const animationAttacks = {
 	player: {
@@ -39,6 +40,7 @@ function useFight() {
 	const { armor } = useSelector(state => state.player.stats)
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
+	const { getReward } = useReward()
 
 	// States
 	const [selectedAttack, setSelectedAttack] = useState(null)
@@ -214,7 +216,7 @@ function useFight() {
 							? addMessage(
 									`The enemy did you <b class="color-wrong">${attackDamage}</b> damage`
 							  )
-							: addMessage("You dodged the attack")
+							: addMessage("You <b class='color-good'>dodged</b> the attack")
 					)
 
 				dispatch(toggleIsEnemyAttacking())
@@ -229,6 +231,7 @@ function useFight() {
 			dispatch(addMessage("You died..."))
 		} else if (enemy.currentHealth === 0) {
 			dispatch(addMessage("You win"))
+			getReward()
 		} else return undefined
 
 		setIsDisabled(false)

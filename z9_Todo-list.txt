@@ -54,20 +54,23 @@ TODO LIST
 ✅ README
 ✅ Enemy stats with numEvents
 ✅ armor effect  (reduce damage)
-❗ Repasar todos los efectos y comprobar que todo anda
-❗ Jugar varias partidas y equilibrar las cosas
 ✅ Agregar characters
 ✅ Agregar un character developer con todos los items y items en la mochila
-❗ logros
 ✅ basic wheel with text style
-❗ refactoring
-❗ random textos
-❗ reward al ganar fight
+✅ reward al ganar fight
 ✅ disabled buttons en fight y en cualquiera rueda (con disabled={spin})
+❗ translate
+❗ random textos
+❗ Repasar todos los efectos y comprobar que todo anda
+❗ Jugar varias partidas y equilibrar las cosas
+❗ logros
+❗ refactoring
 ❗ Performance con lazy load, web vitals 
 ❗ SEO 
 ❗ Accesibilidad
 ❗ SVG manual para un loader que sea una ruleta girando
+❗ boton abandonar en options con el reset
+❗ que el boton exit valla al index y el boton play sea continuar (quizas poner una view de "seguro que quiere continuar?")
 
 After beta
 ❗ portfolio de about link
@@ -75,4 +78,5 @@ After beta
 ❗ usar baseURL y sacar los alias
 ❗ sounds
 ❗ roulette sound
+❗ probar localForage con el redux-persist
 
