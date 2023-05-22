@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 import setArmorStats from "@functions/setArmorStats"
 import removeStatsFromArmor from "@functions/removeAmorStats"
-import allCharacter from "@constants/characters"
+import allCharacters from "@constants/characters"
 import i18n from "@i18n"
 import { i18n_alt } from "@functions/translators"
 
@@ -61,7 +61,7 @@ const playerReducer = createSlice({
 	initialState,
 	reducers: {
 		resetPlayerStore: state => {
-			const characterInitialState = allCharacter.find(
+			const characterInitialState = allCharacters().find(
 				character => character.name == state.className
 			)
 

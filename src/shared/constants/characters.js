@@ -236,7 +236,7 @@ export default () => {
 					alt: i18n_alt({
 						type: "sword",
 						quality: "common",
-						variant: "critic",
+						variant: "superCritic",
 					}),
 					quality: "common",
 					equipKey: "rightHand",
@@ -291,7 +291,7 @@ export default () => {
 					alt: i18n_alt({
 						type: "sword",
 						quality: "rare",
-						variant: "strongest",
+						variant: "strongestAttack",
 					}),
 					quality: "rare",
 					equipType: "weapon",
