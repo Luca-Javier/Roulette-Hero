@@ -26,7 +26,7 @@ function Forje({}) {
 			style={{ position: "relative" }}>
 			<div className="flex space-around my-1">
 				<ItemImage item={item} width={70} />
-				<p className="flex align-center">➡️</p>
+				<p className="flex align-center">➡</p>
 				<ItemImage item={{ ...item, quality: newQuality }} width={70} />
 			</div>
 			<article className="fight-wheel-container">

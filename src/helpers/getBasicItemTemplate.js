@@ -6,6 +6,7 @@ import {
 	WEAPON_PROBS,
 } from "@config/itemProbabilities"
 import { v4 as uuid } from "uuid"
+import { i18n_alt } from "../shared/translates/translators"
 
 const qualityMultiplierDictionary = {
 	common: 1,
@@ -50,7 +51,7 @@ function getBasicItemTemplate({ equipType, trullyKarma, selectedQuality }) {
 	}
 
 	const src = `/src/assets/${equipType}s/${type + "s"}/${variant}-${type}.svg`,
-		alt = `a ${variant} ${quality} ${type}`
+		alt = i18n_alt({ type, quality, variant })
 
 	const getMoneyForQuality = quality => {
 		const prices = {

@@ -4,10 +4,12 @@ import generateArmor from "@helpers/generateArmor"
 import generateWeapon from "@helpers/generateWeapon"
 import { addMessage } from "@reducers/eventReducer"
 import { addBackpag, updateMoney, updateStones } from "@reducers/playerReducer"
+import { useTranslation } from "react-i18next"
 
 function useReward() {
 	const { trullyKarma } = useSelector(state => state.player.stats)
 	const dispatch = useDispatch()
+	const { t } = useTranslation("messages", { keyPrefix: "reward" })
 
 	const rewards = new WeightedList([
 		["money", 42.5],
@@ -25,7 +27,7 @@ function useReward() {
 	}
 
 	const getStones = () => {
-		const defaultStones = Math.random() * 2 + 1
+		const defaultStones = Math.random() * 3 + 2
 
 		const stones = defaultStones + defaultStones * (trullyKarma - 1)
 
@@ -48,21 +50,21 @@ function useReward() {
 		if (reward == "money") {
 			const money = Math.floor(getMoney())
 
-			dispatch(addMessage(`You got <b class="money">${money}</b> coins`))
+			dispatch(addMessage(t("get money", { money })))
 			dispatch(updateMoney(money))
 		}
 
 		if (reward == "stones") {
 			const stones = Math.floor(getStones())
 
-			dispatch(addMessage(`You got <b class="stone">${stones}</b> stones`))
+			dispatch(addMessage(t("get stones", { stones })))
 			dispatch(updateStones(stones))
 		}
 
 		if (reward == "item") {
 			const item = getRandomItem()
 
-			dispatch(addMessage(`You got <b class="${item.quality}">${item.alt}</b>`))
+			dispatch(addMessage(t("get item", item)))
 			dispatch(addBackpag({ item }))
 		}
 	}

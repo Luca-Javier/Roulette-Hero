@@ -3,9 +3,8 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
 	music: 0,
 	sounds: 100,
-	unlockedCharacters: !import.meta.env.DEV
-		? ["Default"]
-		: ["Default", "Hammer Bro", "Knight", "Developer"],
+	unlockedCharacters: !import.meta.env.DEV ? [1] : [1, 2, 3, 99],
+	language: "",
 }
 
 const userConfigReducer = createSlice({
@@ -15,14 +14,15 @@ const userConfigReducer = createSlice({
 		setMusic: (state, action) => {
 			state.music = action.payload
 		},
-		setSound: (state, action) => {
-			state.sounds = action.payload
-		},
+
 		unlockCharacter: characters => {},
+		setLanguage: (state, action) => {
+			state.language = action.payload
+		},
 	},
 })
 
-export const { setMusic, setSound, getMusicSoundFromStorage } =
+export const { setMusic, getMusicSoundFromStorage, setLanguage } =
 	userConfigReducer.actions
 
 export default userConfigReducer.reducer

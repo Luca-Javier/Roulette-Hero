@@ -4,33 +4,41 @@ import MyWheel from "../components/MyWheel"
 import useWheel from "../context/useWheel"
 import { WHEEL_TEMPLATE_BEGINNING } from "@config/wheelTemplates"
 import { useNavigate } from "react-router-dom"
-import useTranslates from "../hooks/useTranslates"
+import { useTranslation } from "react-i18next"
+import { useSelector } from "react-redux"
 
 function Home() {
 	//Imports
-	const { handleSpin, configWheel, spin } = useWheel()
 	const navigate = useNavigate()
-	useTranslates()
+	const { handleSpin, configWheel, spin } = useWheel()
+	const { numEvents } = useSelector(state => state.event)
+	const { t, i18n } = useTranslation("pages", { keyPrefix: "index" })
 
 	//Effects
 	useEffect(() => {
-		configWheel(WHEEL_TEMPLATE_BEGINNING)
+		configWheel(WHEEL_TEMPLATE_BEGINNING(i18n.language))
+
+		import("./Characters")
+		import("./Options")
+		if (!numEvents) import("./AskName")
+		import("./Playing").then(() => import("./AskName"))
 	}, [])
 
 	//Events
 	const goCharacter = async () => {
-		const res = await handleSpin(1)
-		if (res) navigate("/characters")
+		await handleSpin(1)
+		navigate("/characters")
 	}
 
 	const goPlay = async () => {
-		const res = await handleSpin(0)
-		if (res) navigate("/ask-name")
+		await handleSpin(0)
+		if (numEvents) return navigate("/playing")
+		navigate("/ask-name")
 	}
 
 	const goOptions = async () => {
-		const res = await handleSpin(2)
-		if (res) navigate("/options")
+		await handleSpin(2)
+		navigate("/options")
 	}
 
 	return (
@@ -39,13 +47,22 @@ function Home() {
 			<article className="grow-1">
 				<MyWheel />
 			</article>
+
 			<article>
 				<div className="flex-buttons">
-					<Button text="Play" onClick={goPlay} disabled={spin} />
+					<Button
+						text={numEvents ? t("continue") : t("play")}
+						onClick={goPlay}
+						disabled={spin}
+					/>
 				</div>
 				<div className="flex-buttons">
-					<Button text="Character" onClick={goCharacter} disabled={spin} />
-					<Button text="Options" onClick={goOptions} disabled={spin} />
+					<Button
+						text={t("characters")}
+						onClick={goCharacter}
+						disabled={spin}
+					/>
+					<Button text={t("options")} onClick={goOptions} disabled={spin} />
 				</div>
 			</article>
 		</section>

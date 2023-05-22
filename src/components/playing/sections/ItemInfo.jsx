@@ -4,7 +4,6 @@ import WeaponInfo from "@components/WeaponInfo"
 import ArmorInfo from "@components/ArmorInfo"
 
 function ItemInfo() {
-	//Imports
 	const item = useSelector(state => state.event.itemInfo)
 
 	return (

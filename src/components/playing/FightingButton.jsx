@@ -4,7 +4,7 @@ import LuckyButtons from "@components/LuckyButtons"
 import { useSelector } from "react-redux"
 import useFight from "@hooks/useFight"
 import ItemImage from "@components/ItemImage"
-import useWheel from "../../context/useWheel"
+import { useTranslation } from "react-i18next"
 
 function FightingButton() {
 	//Imports
@@ -20,7 +20,7 @@ function FightingButton() {
 		isDisabled,
 		run,
 	} = useFight()
-	const { spin } = useWheel()
+	const { t } = useTranslation("buttons")
 
 	//State
 	const [isAttacking, setIsAttacking] = useState(false)
@@ -34,9 +34,11 @@ function FightingButton() {
 	if (isFightDone)
 		return (
 			<>
-				{enemy.currentHealth === 0 && <Button text="Walk" onClick={walk} />}
+				{enemy.currentHealth === 0 && (
+					<Button text={t("walk")} onClick={walk} />
+				)}
 				{player.currentHealth === 0 && (
-					<Button text="End" onClick={returnIndex} />
+					<Button text={t("end")} onClick={returnIndex} />
 				)}
 			</>
 		)
@@ -45,13 +47,13 @@ function FightingButton() {
 		return (
 			<>
 				<Button
-					text="Attack"
+					text={t("attack")}
 					onClick={() => setIsAttacking(true)}
 					disabled={isDisabled}
 				/>
-				<Button text="Run" onClick={run} disabled={isDisabled} />
+				<Button text={t("run")} onClick={run} disabled={isDisabled} />
 				<LuckyButtons
-					text="Lucky Shoot"
+					text={t("lucky shoot")}
 					onClick={() => luckyAttack([player.leftAttack, player.rightAttack])}
 					disabled={isDisabled}
 				/>
@@ -61,7 +63,7 @@ function FightingButton() {
 	return (
 		<>
 			{/* //todo PROBAR el <itemImage/> */}
-			<Button text="<-" onClick={() => setIsAttacking(false)} />
+			<Button text="⬅" onClick={() => setIsAttacking(false)} />
 			{leftHand && (
 				<Button onClick={() => handleAttack(player.leftAttack)}>
 					<div className="h-100 w-100 flex justify-center">

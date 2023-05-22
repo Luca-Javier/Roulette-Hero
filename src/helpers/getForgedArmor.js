@@ -1,5 +1,6 @@
 import getArmorEffects from "./getArmorEffect"
 import getBasicItemTemplate from "./getBasicItemTemplate"
+import { i18n_alt } from "../shared/translates/translators"
 
 const qualityArmor = {
 	common: 0.2,
@@ -32,7 +33,7 @@ function getForgedArmor({ item, trullyKarma }) {
 		multiplier: qualityMultiplier,
 	})
 
-	const alt = `a ${variant} ${newQuality} ${type}`
+	const alt = i18n_alt({ type, quality: newQuality, variant })
 
 	const armor = qualityArmor[newQuality],
 		health = getRandomStat(4, 7)

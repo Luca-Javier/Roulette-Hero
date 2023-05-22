@@ -7,6 +7,8 @@ import LuckyButtons from "./LuckyButtons"
 import useWheel from "../context/useWheel"
 import { WHEEL_SEDUCE_SHOP } from "../config/wheelTemplates"
 import { addMessage, updateShopItems } from "../reducers/eventReducer"
+import { useTranslation } from "react-i18next"
+import { i18n_random } from "../shared/translates/translators"
 
 function ShopButtons() {
 	const [shopSection, setShopSection] = useState("initial")
@@ -14,6 +16,7 @@ function ShopButtons() {
 	const { walk, buyItem } = useEvent()
 	const { shopItems } = useSelector(state => state.event)
 	const { handleSpin, configWheel } = useWheel()
+	const { t } = useTranslation("buttons")
 
 	useEffect(() => {
 		configWheel(WHEEL_SEDUCE_SHOP)
@@ -42,8 +45,8 @@ function ShopButtons() {
 
 		const message =
 			res === "seduce"
-				? "The seller is <b class='color-lucky'>happy</b>"
-				: "You complimented the seller for his hair, <b class='color-wrong'>he is bald</b>"
+				? i18n_random({ ns: "messages", key: "shop.seduce" })
+				: i18n_random({ ns: "messages", key: "shop.seduce fail" })
 
 		dispatch(addMessage(message))
 	}
@@ -52,14 +55,14 @@ function ShopButtons() {
 		<>
 			{shopSection === "initial" && (
 				<>
-					<Button text="Walk" onClick={walk} />
-					<Button text="Buy" onClick={sectionBuy} />
-					<LuckyButtons text="Seduce" onClick={seduce} />
+					<Button text={t("walk")} onClick={walk} />
+					<Button text={t("buy")} onClick={sectionBuy} />
+					<LuckyButtons text={t("seduce")} onClick={seduce} />
 				</>
 			)}
 			{shopSection === "buy" && (
 				<>
-					<Button text="⬅️" onClick={resetSection} />
+					<Button text="⬅" onClick={resetSection} />
 					{shopItems.map(item => (
 						<Button key={item.id} onClick={() => buyItem(item)}>
 							<ItemImage width={20} item={item} />

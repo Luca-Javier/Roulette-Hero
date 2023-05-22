@@ -1,15 +1,13 @@
 import React from "react"
-import FooterMd from "./FooterMd"
-import TittleMd from "./TittleMd"
+import Tittle from "./Tittle"
 
 function Layout({ children }) {
 	return (
 		<>
-			<TittleMd />
-			<main className="border border-3 border-white rounded-4 flex-grow-1 ">
+			<Tittle />
+			<main className="border border-3 border-white rounded-4 flex-grow-1 overflow-hidden">
 				{children}
 			</main>
-			{/* <FooterMd /> */}
 		</>
 	)
 }

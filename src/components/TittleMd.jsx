@@ -1,7 +1,7 @@
 import React from "react"
 
-function TittleMd() {
-	return <h2 className="title second-font brand-title">Roulette Hero</h2>
+function Tittle() {
+	return <h2 className="title second-font brand-title mt-0">Roulette Hero</h2>
 }
 
-export default TittleMd
+export default Tittle

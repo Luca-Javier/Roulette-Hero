@@ -9,6 +9,7 @@ function ItemImage({ item, width, className, ...args }) {
 			style={styles}
 			src={item.src}
 			alt={item.alt}
+			title={item.alt}
 			{...args}
 		/>
 	)

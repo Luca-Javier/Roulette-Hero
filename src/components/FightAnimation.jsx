@@ -1,6 +1,5 @@
 import hitSvgSrc from "@assets/animations/hit-animation.svg"
 import hurtSvgSrc from "@assets/animations/hurt-animation.svg"
-import { useEffect, useRef } from "react"
 import { useSelector } from "react-redux"
 import "./FightAnimation.css"
 

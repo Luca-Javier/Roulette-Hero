@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { EVENT } from "@config/eventsTypes"
 import {
@@ -18,7 +18,9 @@ import {
 } from "@reducers/eventReducer"
 import { addBackpag, updateMoney } from "@reducers/playerReducer"
 import { setLastEvent } from "../reducers/eventReducer"
-import { updateKarma } from "../reducers/playerReducer"
+import { updateKarma, updateLucky } from "../reducers/playerReducer"
+import { useTranslation } from "react-i18next"
+import { i18n_random } from "../shared/translates/translators"
 
 function useEvent() {
 	//Imports
@@ -28,6 +30,7 @@ function useEvent() {
 	const dispatch = useDispatch()
 	const { section, sections, setSection } = useSections()
 	const { getReward } = useReward()
+	const { t } = useTranslation("messages")
 
 	const [customCallback, setCustomCallback] = useState()
 
@@ -37,13 +40,17 @@ function useEvent() {
 		dispatch(setEvent(EVENT.waiting))
 	}
 
-	const walk = () => dispatch(setEvent(EVENT.walking))
+	const walk = () => {
+		dispatch(setEvent(EVENT.walking))
+
+		setSection(sections.userStats)
+	}
 
 	const fight = () => dispatch(setEvent(EVENT.fighting))
 
 	const buyItem = item => {
-		if (money < item.price)
-			return dispatch(addMessage("You don't have enough money"))
+		if (money < item.price * 2)
+			return dispatch(addMessage(t("shop.not enough money")))
 
 		dispatch(removePuchasedItem({ item }))
 
@@ -56,7 +63,7 @@ function useEvent() {
 		dispatch(setLastEvent(event))
 
 		if (event === EVENT.chest) {
-			dispatch(addMessage("You found a chest"))
+			dispatch(addMessage(t("chest.found")))
 
 			setCustomCallback(() => () => {
 				getReward()
@@ -72,24 +79,45 @@ function useEvent() {
 
 			setCustomCallback(() => () => {
 				getReward(possibleRewards)
-				dispatch(updateKarma(-0.2))
+				dispatch(updateKarma(-0.3))
 			})
 
-			let customMessage
+			let key = "changeKarma."
 
-			if (possibleRewards === "money")
-				customMessage = "You found some money below a ladder"
+			if (possibleRewards === "money") key += "money"
 
-			if (possibleRewards === "stones")
-				customMessage = "You found some stones below a ladder"
+			if (possibleRewards === "stones") key += "stones"
 
-			if (possibleRewards === "item")
-				customMessage =
-					"You found a <b class='color-good'>item</b> below a ladder"
+			if (possibleRewards === "item") key += "item"
 
-			dispatch(
-				addMessage(`${customMessage} <b class="color-wrong">(-0.2 karma)</b>`)
-			)
+			const customMessage = i18n_random({ ns: "messages", key })
+
+			dispatch(addMessage(t("changeKarma.price", { customMessage })))
+
+			return undefined
+		}
+
+		if (event === EVENT.changeLucky) {
+			const possibleRewards = ["money", "stones", "item"][
+				Math.floor(Math.random() * 3)
+			]
+
+			setCustomCallback(() => () => {
+				getReward(possibleRewards)
+				dispatch(updateLucky(-2))
+			})
+
+			let key = "changeLucky."
+
+			if (possibleRewards === "money") key += "money"
+
+			if (possibleRewards === "stones") key += "stones"
+
+			if (possibleRewards === "item") key += "item"
+
+			const customMessage = i18n_random({ ns: "messages", key })
+
+			dispatch(addMessage(t("changeLucky.price", { customMessage })))
 
 			return undefined
 		}
@@ -104,9 +132,33 @@ function useEvent() {
 
 			dispatch(
 				addMessage(
-					`You found a homeless. Would you give him <b class='money'>${money}</b> ? <b class='color-good'>(+ 0.2 karma)</b>`
+					i18n_random({
+						ns: "messages",
+						key: "getKarma",
+						interpolations: { money },
+					})
 				)
 			)
+			return undefined
+		}
+		if (event === EVENT.getLucky) {
+			const money = Math.floor(Math.random() * 19) + 10
+
+			setCustomCallback(() => () => {
+				dispatch(updateLucky(1))
+				dispatch(updateMoney(-money))
+			})
+
+			dispatch(
+				addMessage(
+					i18n_random({
+						ns: "messages",
+						key: "getLucky",
+						interpolations: { money },
+					})
+				)
+			)
+			return undefined
 		}
 		if (event === EVENT.shop) {
 			setSection(sections.shop)

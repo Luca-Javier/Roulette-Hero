@@ -3,11 +3,13 @@ import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import Button from "./Button"
 import { setInitialCharacterStats } from "@reducers/playerReducer"
+import { useTranslation } from "react-i18next"
 
 function CharacterInfo({ data }) {
 	//Imports
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
+	const { t } = useTranslation("pages", { keyPrefix: "characters" })
 
 	//Variables
 	const { img, stats, items, money, stones, description } = data
@@ -19,15 +21,17 @@ function CharacterInfo({ data }) {
 	}
 
 	return (
-		<>
+		<div className="scroll invisible-scroll">
 			<img src={img} alt={description} style={{ maxHeight: 140 }} />
 			<div className="flex between">
 				<div>
-					{Object.keys(stats).map(key => (
-						<p key={key} className={`stat-icon ${key}`}>
-							{stats[key]}
-						</p>
-					))}
+					{Object.keys(stats).map(key =>
+						key !== "trullyKarma" ? (
+							<p key={key} className={`stat-icon ${key}`}>
+								{stats[key]}
+							</p>
+						) : null
+					)}
 				</div>
 				<div className="character-fino-equip-img-container">
 					{items.map(({ src, alt, quality }) => (
@@ -46,8 +50,8 @@ function CharacterInfo({ data }) {
 				<p className="stone">{stones}</p>
 			</div>
 			<p>{description}</p>
-			<Button text="Select" onClick={() => selectCharacter(data)} />
-		</>
+			<Button text={t("select")} onClick={() => selectCharacter(data)} />
+		</div>
 	)
 }
 

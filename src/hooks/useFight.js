@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import useWheel from "../context/useWheel"
 import { useState } from "react"
@@ -15,6 +15,7 @@ import { EVENT } from "../config/eventsTypes"
 import { useNavigate } from "react-router-dom"
 import { WHEEL_LUCKY_SHOOT, WHEEL_RUN } from "../config/wheelTemplates"
 import useReward from "./useReward"
+import { useTranslation } from "react-i18next"
 
 const animationAttacks = {
 	player: {
@@ -32,7 +33,7 @@ const animationAttacks = {
 	},
 }
 
-console.log("useFight renderizado")
+//💀💀💀💀💀💀
 function useFight() {
 	// Imports
 	const { handleSpin, configWheel } = useWheel()
@@ -41,6 +42,7 @@ function useFight() {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 	const { getReward } = useReward()
+	const { t } = useTranslation("messages", { keyPrefix: "fight" })
 
 	// States
 	const [selectedAttack, setSelectedAttack] = useState(null)
@@ -60,15 +62,12 @@ function useFight() {
 	}
 
 	const luckyAttack = attacks => {
-		// Pones possibles attacks en selctedAttack
-
 		const attack =
 			attacks.lenght > 1 ? attacks[Math.round(Math.random())] : attacks[0]
 
 		const { normal } = attack.possibleAttacks
 
 		const possibleAttacks = {
-			//kill: 9999,
 			normal: normal,
 			fail: 0,
 			dodged: 0,
@@ -84,9 +83,7 @@ function useFight() {
 
 		setTimeout(() => {
 			dispatch(endAnimation())
-			dispatch(
-				addMessage(`<b class='color-lucky'>YOU ONE SHOTED THE ENEMY!!</b>`)
-			)
+			dispatch(addMessage(t("one shot")))
 			dispatch(attackEnemy({ res: "kill", attackDamage: 9999 }))
 
 			setSelectedAttack(null)
@@ -139,9 +136,8 @@ function useFight() {
 				return undefined
 			}
 
-			if (res === "fail")
-				dispatch(addMessage(`You <b class='color-wrong'>failed</b>...`))
-			else dispatch(addMessage(`You perfomed a ${res} attack`))
+			if (res === "fail") dispatch(addMessage(t("player fail")))
+			else dispatch(addMessage(t("player attack", { attack: res })))
 
 			const attackDodged =
 				res !== "fail" ? Math.random() * 100 < enemy.dodge : false
@@ -159,12 +155,8 @@ function useFight() {
 				if (res !== "fail")
 					dispatch(
 						res !== "dodged"
-							? addMessage(
-									`You did <b class='color-good'>${attackDamage}</b> damage`
-							  )
-							: addMessage(
-									"The enemy <b class='color-wrong'>dodged</b> your attack"
-							  )
+							? addMessage(t("player attack damage", { damage: attackDamage }))
+							: addMessage(t("enemy dodged"))
 					)
 
 				//? no hace falta
@@ -183,9 +175,8 @@ function useFight() {
 		;(async () => {
 			let res = await handleSpin()
 
-			if (res === "fail")
-				dispatch(addMessage(`The enemy <b class='color-good'>failed</b>`))
-			else dispatch(addMessage(`The enemy performed a ${res} attack`))
+			if (res === "fail") dispatch(addMessage(t("enemy failed")))
+			else dispatch(addMessage(t("enemy attack", { attack: res })))
 
 			const attackDodged =
 				res !== "fail" ? Math.random() * 100 < player.dodge : false
@@ -213,10 +204,8 @@ function useFight() {
 				if (res !== "fail")
 					dispatch(
 						res !== "dodged"
-							? addMessage(
-									`The enemy did you <b class="color-wrong">${attackDamage}</b> damage`
-							  )
-							: addMessage("You <b class='color-good'>dodged</b> the attack")
+							? addMessage(t("enemy attack damage", { damage: attackDamage }))
+							: addMessage(t("player dodged"))
 					)
 
 				dispatch(toggleIsEnemyAttacking())
@@ -228,9 +217,9 @@ function useFight() {
 	//End fight
 	useEffect(() => {
 		if (player.currentHealth === 0) {
-			dispatch(addMessage("You died..."))
+			dispatch(addMessage(t("die")))
 		} else if (enemy.currentHealth === 0) {
-			dispatch(addMessage("You win"))
+			dispatch(addMessage(t("win")))
 			getReward()
 		} else return undefined
 

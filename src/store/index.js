@@ -26,8 +26,14 @@ const persistedReducer = persistReducer(persisteConfig, reducers)
 
 const store = configureStore({
 	reducer: persistedReducer,
+	middleware: getDefaultMiddleware =>
+		getDefaultMiddleware({
+			serializableCheck: { ignoredActions: ["persist/PERSIST"] },
+		}),
 })
 
 const persistor = persistStore(store)
 
 export { store, persistor }
+
+//persistor.purge()

@@ -59,18 +59,24 @@ TODO LIST
 ✅ basic wheel with text style
 ✅ reward al ganar fight
 ✅ disabled buttons en fight y en cualquiera rueda (con disabled={spin})
-❗ translate
-❗ random textos
+✅ translate
+✅ random textos
 ❗ Repasar todos los efectos y comprobar que todo anda
 ❗ Jugar varias partidas y equilibrar las cosas
 ❗ logros
 ❗ refactoring
-❗ Performance con lazy load, web vitals 
+✅ Performance con lazy load
+❗ web vitals 
 ❗ SEO 
 ❗ Accesibilidad
 ❗ SVG manual para un loader que sea una ruleta girando
-❗ boton abandonar en options con el reset
-❗ que el boton exit valla al index y el boton play sea continuar (quizas poner una view de "seguro que quiere continuar?")
+✅ boton abandonar en options con el reset
+✅ que el boton exit valla al index y el boton play sea continuar (quizas poner una view de "seguro que quiere continuar?")
+✅ Agregar opcion cambiar idioma
+❗ refactorizar estilos characters
+❗ Que se puedan vender items equipados
+❗ Que no se pueda vender tu unica arma equipada
+❗ lucky forje
 
 After beta
 ❗ portfolio de about link

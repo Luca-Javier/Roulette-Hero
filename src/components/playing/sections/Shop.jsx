@@ -3,7 +3,7 @@ import ItemImage from "../../ItemImage"
 import sellerImage from "@assets/npcs/seller.png"
 import MyWheel from "@components/MyWheel"
 
-function Shop({}) {
+function Shop() {
 	const { shopItems } = useSelector(state => state.event)
 
 	return (

@@ -1,11 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit"
 import setArmorStats from "@helpers/setArmorStats"
 import removeStatsFromArmor from "@helpers/removeAmorStats"
-import allCharacter from "@config/characters.json"
+import allCharacter from "@config/characters"
+import i18n from "../shared/translates/i18n"
+import { i18n_alt } from "../shared/translates/translators"
+
+const t = i18n.getFixedT(i18n.language, "characters", "default")
 
 const initialState = {
-	name: "",
-	className: "Default",
+	name: "name",
+	className: t("name"),
 	money: 22,
 	stones: 2,
 	stats: {
@@ -21,8 +25,8 @@ const initialState = {
 	equipment: {
 		helmet: {
 			id: 3,
-			src: "/src/assets/armors/helmets/lucky-helmet.svg",
-			alt: "a lucky common helmet",
+			src: "/src/assets/armors/helmets/simple-helmet.svg",
+			alt: i18n_alt({ type: "helmet", quality: "common", variant: "simple" }),
 			quality: "common",
 			equipKey: "helmet",
 			equipType: "armor",
@@ -34,12 +38,11 @@ const initialState = {
 		leftHand: {
 			id: 1,
 			src: "/src/assets/weapons/swords/simple-sword.svg",
-			alt: "a simple common sword",
+			alt: i18n_alt({ type: "sword", quality: "common", variant: "simple" }),
 			quality: "common",
 			equipKey: "leftHand",
 			equipType: "weapon",
 			type: "sword",
-			alt: "a simple common sword",
 			attack: 3,
 			passiveEffects: {},
 			activeEffects: {},
@@ -77,6 +80,7 @@ const playerReducer = createSlice({
 			state.stones = stones
 			state.classEffects = classEffects
 			state.stats = stats
+
 			if (backpag) state.backpag = backpag
 
 			items.forEach(item => {
@@ -156,11 +160,23 @@ const playerReducer = createSlice({
 			const karma = state.stats.karma,
 				lucky = state.stats.lucky
 
-			state.stats.karma = +(karma + action.payload).toFixed(1)
+			const newKarma = +(karma + action.payload).toFixed(1)
 
-			const karmaFromLucky = karma * (lucky * 0.25)
+			state.stats.karma = newKarma
 
-			console.log(+(karma + karmaFromLucky).toFixed(1))
+			const karmaFromLucky = newKarma * (lucky * 0.25)
+
+			state.stats.trullyKarma = newKarma + karmaFromLucky
+		},
+		updateLucky: (state, action) => {
+			const karma = state.stats.karma,
+				lucky = state.stats.lucky
+
+			const newLucky = +(lucky + action.payload).toFixed(1)
+
+			state.stats.lucky = newLucky
+
+			const karmaFromLucky = karma * (newLucky * 0.25)
 
 			state.stats.trullyKarma = karma + karmaFromLucky
 		},
@@ -179,6 +195,7 @@ export const {
 	replaceItem,
 	updateKarma,
 	resetPlayerStore,
+	updateLucky,
 } = playerReducer.actions
 
 export default playerReducer.reducer

@@ -7,6 +7,7 @@ import extraHammerDamageIcon from "@assets/icons/effects/class-hammer.ico"
 import superCriticIcon from "@assets/icons/effects/super-critic.svg"
 import strongestIcon from "@assets/icons/effects/strongest-attack.svg"
 import { useSelector } from "react-redux"
+import ItemImage from "./ItemImage"
 
 function WeaponInfo({ item }) {
 	//Imports
@@ -34,11 +35,7 @@ function WeaponInfo({ item }) {
 		<div className="flex flex-column w-100 mb-2">
 			<h3 className="grow-1 font-1 mt-0">{alt}</h3>
 			<div className="flex between">
-				<img
-					className={`item-info-img quality ${quality}`}
-					src={src}
-					alt={alt}
-				/>
+				<ItemImage item={item} className={"item-info-img quality"} />
 				<article className="info-passive-effects">
 					<PassiveEffects effects={passiveEffects} />
 					<ClassEffects effects={classEffects} />

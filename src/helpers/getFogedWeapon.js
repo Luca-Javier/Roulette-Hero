@@ -1,3 +1,4 @@
+import { i18n_alt } from "../shared/translates/translators"
 import getBasicItemTemplate from "./getBasicItemTemplate"
 import getWeaponEffects from "./getWeaponEffects"
 
@@ -26,7 +27,7 @@ function getForgedWeapon({ item, trullyKarma }) {
 		multiplier: qualityMultiplier,
 	})
 
-	const alt = `a ${variant} ${newQuality} ${type}`
+	const alt = i18n_alt({ type, quality: newQuality, variant })
 
 	const attack = getRandomStat(4, 7)
 

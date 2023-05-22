@@ -10,7 +10,6 @@ import { useState } from "react"
 
 function useEquip({ item }) {
 	const dispatch = useDispatch()
-
 	const { resetSections, setSection, sections } = useSections()
 	const equipment = useSelector(state => state.player.equipment)
 	const { leftHand, rightHand, leftFoot, rightFoot } = equipment

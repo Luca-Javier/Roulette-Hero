@@ -1,33 +1,37 @@
-import React from "react"
+import React, { useRef } from "react"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import getMessage from "@helpers/getMessage"
+import { decode } from "html-entities"
+import { useTranslation } from "react-i18next"
 
 function MainDisplay() {
-	//Imports
 	const { event, customEventMessage, cleanChat } = useSelector(
 		state => state.event
 	)
+	const { t } = useTranslation("messages", { keyPrefix: "walking" })
 
 	//States
 	const [messagesHistory, setMessagesHistory] = useState([])
+	const lastCleanChat = useRef("initial")
 
 	//Effects
 	useEffect(() => {
-		const message = getMessage(event)
+		const message = t(event)
 
-		if (!(message === undefined))
+		if (message.slice(0, 8) !== "walking.")
 			setMessagesHistory([...messagesHistory, message])
 	}, [event])
 
 	useEffect(() => {
 		if (!customEventMessage) return undefined
 
-		setMessagesHistory([...messagesHistory, customEventMessage])
+		setMessagesHistory([...messagesHistory, decode(customEventMessage)])
 	}, [customEventMessage])
 
 	useEffect(() => {
-		if (cleanChat === "initial") return undefined
+		if (cleanChat === lastCleanChat.current) return undefined
+		console.log("clean")
+		lastCleanChat.current = cleanChat
 
 		setMessagesHistory([])
 	}, [cleanChat])

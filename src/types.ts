@@ -45,16 +45,6 @@ export type Sections = {
 	forje: number
 }
 
-/* export type Events = {
-	waiting: "waiting"
-	walking: "walking"
-	shop: "shop"
-	fight: "fight"
-	backFight: "backFight"
-	fighting: "fighting"
-	chest: "chest"
-} */
-
 export type Events = {
 	waiting: string
 	walking: string
@@ -63,6 +53,8 @@ export type Events = {
 	backFight: string
 	fighting: string
 	chest: string
+	getLucky: string
 	getKarma: string
 	changeKarma: string
+	changeLucky: string
 }

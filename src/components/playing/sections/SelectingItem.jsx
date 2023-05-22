@@ -3,7 +3,7 @@ import useEquip from "@hooks/useEquip"
 import ItemImage from "../../ItemImage"
 import Button from "../../Button"
 
-function SelectingItem({}) {
+function SelectingItem() {
 	const item = useSelector(state => state.event.itemInfo)
 	const { equipOnSide, equipment } = useEquip({ item })
 

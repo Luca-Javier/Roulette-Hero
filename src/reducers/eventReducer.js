@@ -36,6 +36,7 @@ const eventReducer = createSlice({
 		cleanChat: state => {
 			state.cleanChat = !state.cleanChat
 		},
+
 		setItemInfo: (state, action) => {
 			state.itemInfo = action.payload
 		},

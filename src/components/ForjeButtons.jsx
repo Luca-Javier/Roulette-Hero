@@ -4,17 +4,11 @@ import LuckyButtons from "./LuckyButtons"
 import useWheel from "../context/useWheel"
 import { useEffect } from "react"
 import getForjeConfigWheel from "../helpers/getForjeConfigWheel"
-import getForgedItem from "../helpers/getFogedWeapon"
 import getForgedWeapon from "../helpers/getFogedWeapon"
-import {
-	addBackpag,
-	removeBackpag,
-	replaceItem,
-	updateStatsFromArmor,
-	updateStones,
-} from "../reducers/playerReducer"
+import { replaceItem, updateStones } from "../reducers/playerReducer"
 import useSections from "../hooks/useSections"
 import getForgedArmor from "../helpers/getForgedArmor"
+import { useTranslation } from "react-i18next"
 
 const upgradePriceQuality = {
 	common: 6,
@@ -22,8 +16,7 @@ const upgradePriceQuality = {
 	epic: 16,
 }
 
-function ForjeButtons({}) {
-	//Imports
+function ForjeButtons() {
 	const {
 		stones,
 		stats: { trullyKarma },
@@ -32,6 +25,7 @@ function ForjeButtons({}) {
 	const { handleSpin, configWheel } = useWheel()
 	const dispatch = useDispatch()
 	const { setSection, sections } = useSections()
+	const { t } = useTranslation("buttons")
 
 	const canForje = stones >= upgradePriceQuality[item.quality]
 
@@ -59,8 +53,8 @@ function ForjeButtons({}) {
 
 	return (
 		<section className="interactive-buttons">
-			<Button text="Forje" disabled={!canForje} onClick={forje} />
-			<LuckyButtons text="Forje" />
+			<Button text={t("forje")} disabled={!canForje} onClick={forje} />
+			<LuckyButtons text={t("forje")} />
 		</section>
 	)
 }

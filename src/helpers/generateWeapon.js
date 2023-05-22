@@ -1,5 +1,4 @@
 import getBasicItemTemplate from "./getBasicItemTemplate"
-import { v4 as uuid } from "uuid"
 import getWeaponEffects from "./getWeaponEffects"
 
 /**@typedef {import("../types.ts").Weapon} Weapon */

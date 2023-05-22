@@ -14,7 +14,9 @@ const EVENT = {
 	fighting: "fighting",
 	chest: "chest",
 	getKarma: "getKarma",
+	getLucky: "getLucky",
 	changeKarma: "changeKarma",
+	changeLucky: "changeLucky",
 }
 
 export { EVENT }

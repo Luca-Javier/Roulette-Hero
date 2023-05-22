@@ -2,10 +2,11 @@ import React from "react"
 import luckyHitMultiplierIcon from "@assets/icons/effects/lucky-hit-multiplier.svg"
 import reflectDamageIcon from "@assets/icons/effects/reflect-damage.ico"
 import extraArmorIcon from "@assets/icons/effects/extra-armor.svg"
+import ItemImage from "./ItemImage"
 
 function ArmorInfo({ item }) {
 	//Variables
-	const { src, alt, quality, health, armor, passiveEffects } = item
+	const { alt, health, armor, passiveEffects } = item
 
 	let armorFromEffect = 0
 
@@ -17,11 +18,7 @@ function ArmorInfo({ item }) {
 		<div className="flex flex-column w-100 mb-2">
 			<h3 className="grow-1 font-1 mt-0">{alt}</h3>
 			<div className="flex between">
-				<img
-					className={`item-info-img quality ${quality}`}
-					src={src}
-					alt={alt}
-				/>
+				<ItemImage item={item} className={"item-info-img quality"} />
 				<article className="info-passive-effects">
 					<PassiveEffects effects={passiveEffects} />
 				</article>

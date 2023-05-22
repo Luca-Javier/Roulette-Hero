@@ -1,33 +1,43 @@
-/** @file Routing of all pages */
-
 import Layout from "./components/Layout"
 import { HashRouter, Routes, Route } from "react-router-dom"
 import Home from "./views/index"
-import Characters from "./views/Characters"
-import Playing from "./views/Playing"
-import ErrorPage from "./views/ErrorPage"
-import AskName from "./views/AskName"
-import Options from "./views/Options"
-import About from "./views/About"
 import Music from "./components/Music"
+import { Suspense, lazy, useEffect } from "react"
+import { useSelector } from "react-redux"
+import { useTranslation } from "react-i18next"
+import Loader from "./components/Loader"
 
 export default () => {
-	//todo Playing lazy load
+	const { language } = useSelector(state => state.userConfig)
+	const { i18n } = useTranslation()
+
+	useEffect(() => {
+		if (language) i18n.changeLanguage(language)
+	}, [])
+
+	const LazyCharacters = lazy(() => import("./views/Characters")),
+		LazyOptions = lazy(() => import("./views/Options")),
+		LazyAbout = lazy(() => import("./views/About")),
+		LazyAskName = lazy(() => import("./views/AskName")),
+		LazyPlaying = lazy(() => import("./views/Playing")),
+		LazyErrorPage = lazy(() => import("./views/ErrorPage"))
 
 	return (
 		<Layout>
-			<Music src="/src/assets/enviroment.mp3" />
-			<HashRouter>
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/characters" element={<Characters />} />
-					<Route path="/options" element={<Options />} />
-					<Route path="/ask-name" element={<AskName />} />
-					<Route path="/playing" element={<Playing />} />
-					<Route path="/about" element={<About />} />
-					<Route path="*" element={<ErrorPage />} />
-				</Routes>
-			</HashRouter>
+			<Suspense fallback={<Loader />}>
+				<Music src="/src/assets/enviroment.mp3" />
+				<HashRouter>
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/characters" element={<LazyCharacters />} />
+						<Route path="/options" element={<LazyOptions />} />
+						<Route path="/ask-name" element={<LazyAskName />} />
+						<Route path="/playing" element={<LazyPlaying />} />
+						<Route path="/about" element={<LazyAbout />} />
+						<Route path="*" element={<LazyErrorPage />} />
+					</Routes>
+				</HashRouter>
+			</Suspense>
 		</Layout>
 	)
 }

@@ -1,16 +1,10 @@
 import React from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { setItemInfo } from "@reducers/eventReducer"
+import { useSelector } from "react-redux"
 import useSections from "@hooks/useSections"
-import useEquip from "../../../hooks/useEquip"
 
 function Backpag() {
-	//Imports
 	const { backpag } = useSelector(state => state.player)
-	const dispatch = useDispatch()
-	const { sections, setSection, showItemInfo } = useSections()
-
-	//Event
+	const { showItemInfo } = useSections()
 
 	return (
 		<section className="p-1 flex flex-wrap gap-1">

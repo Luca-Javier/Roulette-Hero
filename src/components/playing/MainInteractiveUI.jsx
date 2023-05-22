@@ -13,8 +13,6 @@ import Forje from "./sections/Forje"
 /**@typedef {import("../../types").Sections} Sections */
 
 function MainInteractiveUI() {
-	//Imports
-
 	/**@type {{section:number,sections:Sections}} */
 	const { section, sections } = useSections()
 

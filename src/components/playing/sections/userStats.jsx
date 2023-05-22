@@ -15,8 +15,6 @@ function UserStats() {
 		{ helmet, leftHand, chest, rightHand, legs, leftFoot, rightFoot } =
 			equipment
 
-	const { showItemInfo } = useSections()
-
 	//Variables
 	const headAlt = "head equipment",
 		leftHandAlt = "hand equipment",
@@ -44,53 +42,48 @@ function UserStats() {
 			</article>
 			<article className="stats-equipment-container">
 				<div className="flex justify-center gap-1">
-					<img
-						src={helmet?.src || emptyHeadImg}
-						alt={headAlt}
-						className={`quality  ${helmet?.quality || ""}`}
-						onClick={() => showItemInfo(helmet)}
+					<ItemStatsImage
+						item={helmet}
+						emptyAlt={headAlt}
+						emptyImg={emptyHeadImg}
 					/>
 				</div>
 				<div className="flex gap-1">
-					<img
-						src={leftHand?.src || emptyHandImg}
-						alt={leftHandAlt}
-						className={`quality rotate ${leftHand?.quality || ""}`}
-						onClick={() => showItemInfo(leftHand)}
+					<ItemStatsImage
+						rotate={true}
+						item={leftHand}
+						emptyAlt={leftHandAlt}
+						emptyImg={emptyHandImg}
 					/>
-					<img
-						src={chest?.src || emptyChestImg}
-						alt={chestAlt}
-						className={`quality ${chest?.quality || ""}`}
-						onClick={() => showItemInfo(chest)}
+					<ItemStatsImage
+						item={chest}
+						emptyAlt={chestAlt}
+						emptyImg={emptyChestImg}
 					/>
-					<img
-						src={rightHand?.src || emptyHandImg}
-						alt={rightHandAlt}
-						className={`quality  ${rightHand?.quality || ""}`}
-						onClick={() => showItemInfo(rightHand)}
+					<ItemStatsImage
+						item={rightHand}
+						emptyAlt={rightHandAlt}
+						emptyImg={emptyHandImg}
 					/>
 				</div>
 				<div className="flex justify-center gap-1">
-					<img
-						src={legs?.src || emptyPantImg}
-						alt={legsAlt}
-						className={`quality ${legs?.quality || ""}`}
-						onClick={() => showItemInfo(legs)}
+					<ItemStatsImage
+						item={legs}
+						emptyAlt={legsAlt}
+						emptyImg={emptyPantImg}
 					/>
 				</div>
 				<div className="flex gap-1 justify-center">
-					<img
-						src={leftFoot?.src || emptyFootImg}
-						alt={footAlt}
-						className={`quality ${leftFoot?.quality || ""}`}
-						onClick={() => showItemInfo(leftFoot)}
+					<ItemStatsImage
+						item={leftFoot}
+						emptyAlt={footAlt}
+						emptyImg={emptyFootImg}
 					/>
-					<img
-						src={rightFoot?.src || emptyFootImg}
-						alt={footAlt}
-						className={`quality rotate ${rightFoot?.quality || ""}`}
-						onClick={() => showItemInfo(rightFoot)}
+					<ItemStatsImage
+						rotate={true}
+						item={rightFoot}
+						emptyAlt={footAlt}
+						emptyImg={emptyFootImg}
 					/>
 				</div>
 			</article>
@@ -99,3 +92,17 @@ function UserStats() {
 }
 
 export default UserStats
+
+function ItemStatsImage({ item, emptyImg, emptyAlt, rotate }) {
+	const { showItemInfo } = useSections()
+
+	return (
+		<img
+			src={item?.src || emptyImg}
+			alt={item?.alt || emptyAlt}
+			title={item?.alt || emptyAlt}
+			className={`quality ${item?.quality || ""} ${rotate ? "rotate" : ""}`}
+			onClick={() => showItemInfo(item)}
+		/>
+	)
+}
