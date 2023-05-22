@@ -1,14 +1,14 @@
 import React from "react"
-import GameHeader from "@components/playing/GameHeader"
-import InteractiveButtons from "@components/playing/InteractiveButtons"
-import MainInteractiveUI from "@components/playing/MainInteractiveUI"
-import TextsDisplay from "@components/playing/TextsDisplay"
+import GameHeader from "../app/GameHeader"
+import InteractiveButtons from "../app/InteractiveButtons"
+import MainDisplay from "../app/MainDisplay"
+import TextsDisplay from "../app/TextsDisplay"
 
 function Playing() {
 	return (
 		<>
 			<GameHeader />
-			<MainInteractiveUI />
+			<MainDisplay />
 			<TextsDisplay />
 			<InteractiveButtons />
 		</>

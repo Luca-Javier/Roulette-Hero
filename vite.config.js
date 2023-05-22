@@ -15,20 +15,35 @@ export default defineConfig({
 				},
 				{
 					find: "@components",
-					replacement: path.resolve(__dirname, "./src/components"),
+					replacement: path.resolve(__dirname, "./src/shared/components"),
 				},
 				{
 					find: "@reducers",
-					replacement: path.resolve(__dirname, "./src/reducers"),
+					replacement: path.resolve(__dirname, "./src/state/reducers"),
 				},
 				{
-					find: "@helpers",
-					replacement: path.resolve(__dirname, "./src/helpers"),
+					find: "@functions",
+					replacement: path.resolve(__dirname, "./src/shared/utils/functions"),
 				},
-				{ find: "@hooks", replacement: path.resolve(__dirname, "./src/hooks") },
 				{
-					find: "@config",
-					replacement: path.resolve(__dirname, "./src/config"),
+					find: "@hooks",
+					replacement: path.resolve(__dirname, "./src/shared/utils/hooks"),
+				},
+				{
+					find: "@constants",
+					replacement: path.resolve(__dirname, "./src/shared/constants"),
+				},
+				{
+					find: "@i18n",
+					replacement: path.resolve(__dirname, "./src/translates/i18n.js"),
+				},
+				{
+					find: "@contexts",
+					replacement: path.resolve(__dirname, "./src/state/contexts"),
+				},
+				{
+					find: "@types",
+					replacement: path.resolve(__dirname, "./src/shared/types"),
 				},
 			],
 		}),

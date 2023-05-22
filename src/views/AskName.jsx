@@ -2,13 +2,13 @@ import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { setName } from "@reducers/playerReducer"
 import Button from "@components/Button"
+import { useTranslation } from "react-i18next"
 
 function AskName() {
-	//Imports
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
+	const { t } = useTranslation("pages", { keyPrefix: "askName" })
 
-	//Events
 	const handleSubmit = e => {
 		e.preventDefault()
 		dispatch(setName(e.target.name.value))
@@ -18,7 +18,7 @@ function AskName() {
 	return (
 		<div className="form-ask-name">
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="name">What is your name traveler?</label>
+				<label htmlFor="name">{t("ask name")}</label>
 				<input
 					defaultValue={import.meta.env.DEV ? "Developer" : ""}
 					pattern="^[A-Za-z0-9ÑñÁáÉéÍíÓóÚúÜü\s_-]+$"
@@ -27,9 +27,9 @@ function AskName() {
 					className="input placeholder"
 					type="text"
 					name="name"
-					placeholder="Name..."
+					placeholder="Andrew..."
 				/>
-				<Button text="Ready" />
+				<Button text={t("ready")} />
 			</form>
 		</div>
 	)

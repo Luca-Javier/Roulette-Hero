@@ -133,6 +133,7 @@ a {
 	width: 300px;
 	transform: rotate(-45deg);
 }
+
 /* *------------------------------form-ask-name------------------------------ */
 
 .form-ask-name {
@@ -294,6 +295,9 @@ a {
 .scroll li:first-child {
 	border-top: none;
 }
+.invisible-scroll:hover::-webkit-scrollbar {
+	width: 0px;
+}
 /* *----------------------------MainInteractiveUI---------------------------- */
 .main-interactive-ui {
 	--height: 15.625rem;
@@ -376,12 +380,15 @@ a {
 	justify-content: flex-start;
 	border: medium solid var(--color-second);
 	margin: 1rem;
+	margin-right: 0;
 	border-radius: 15px;
-	height: 400px;
+
 	padding: 0.5rem;
 }
 .characters-btns button {
 	flex-grow: unset;
+	overflow: hidden;
+	word-wrap: break-word;
 }
 .character-info {
 	width: 60%;
@@ -391,7 +398,7 @@ a {
 	border: medium solid var(--color-second);
 	margin: 1rem;
 	border-radius: 15px;
-	height: 450px;
+
 	padding: 0.5rem;
 }
 .character-info .stat-icon {
@@ -430,20 +437,6 @@ a {
 	left: 0;
 	top: 0;
 	width: 100%;
-}
-
-.one-shot-animation {
-}
-.attack-animation {
-}
-.attack-animation.player-dodged::after {
-}
-.attack-animation.player-attack::after {
-	content: "player attack";
-}
-.attack-animation.enemy-dodged::after {
-}
-.attack-animation.enemy-attack::after {
 }
 /* *---------------------------------Progressbar--------------------------------- */
 .progress-container {
@@ -559,6 +552,7 @@ progress[value]::-webkit-progress-bar {
 	margin-bottom: 1rem;
 }
 .input-range input {
+	appearance: none;
 	-webkit-appearance: none;
 	width: 100%;
 	height: 10px;
@@ -610,6 +604,9 @@ progress[value]::-webkit-progress-bar {
 .flex-wrap {
 	flex-wrap: wrap;
 }
+.overflow-hidden {
+	overflow: hidden;
+}
 .gap-05 {
 	gap: 0.5rem;
 }
@@ -627,6 +624,10 @@ progress[value]::-webkit-progress-bar {
 }
 .m-center {
 	margin: 0 auto;
+}
+.my-0 {
+	margin-top: 0;
+	margin-bottom: 0;
 }
 .my-1 {
 	margin-top: 1rem;
@@ -773,6 +774,12 @@ input {
 	color: var(--good);
 	/* font-weight: 400; */
 }
+.color-stones {
+	color: var(--stone);
+}
+.color-money {
+	color: var(--money);
+}
 .health::before {
 	width: 12px;
 	margin-right: 0.5rem;
@@ -846,7 +853,7 @@ input {
 	font-size: 30px;
 	line-height: 0.01px;
 	content: "";
-	animation: walking-points 3s infinite 1s;
+	animation: walking-points 3s infinite 4s;
 }
 
 @keyframes paper-please-title {
@@ -866,4 +873,27 @@ input {
 .brand-title {
 	/* font-family: "Press Start 2P"; */
 	animation: paper-please-title 3s infinite;
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.loader {
+	animation: rotate 1.5s linear infinite;
+	display: flex;
+	justify-self: center;
+	align-self: center;
+}
+.loader-text::after {
+	font-size: 30px;
+	line-height: 0.01px;
+	content: "";
+	animation: walking-points 3s infinite 4s;
 }

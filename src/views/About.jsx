@@ -8,31 +8,30 @@ import useWheel from "../context/useWheel"
 import MyWheel from "../components/MyWheel"
 import { useNavigate } from "react-router-dom"
 import { WHEEL_ERROR_PAGE } from "../config/wheelTemplates"
+import { useTranslation } from "react-i18next"
 
 function About() {
 	const { configWheel, handleSpin, spin } = useWheel()
 	const navigate = useNavigate()
+	const { t, i18n } = useTranslation("pages", { keyPrefix: "about" })
 
 	const goBack = async () => {
 		const res = await handleSpin()
 
-		if (res === "Return") navigate(-1)
+		if (res === t("return")) navigate(-1)
 	}
 
 	useEffect(() => {
-		configWheel(WHEEL_ERROR_PAGE)
+		configWheel(WHEEL_ERROR_PAGE(i18n.language))
 	}, [])
 
 	return (
 		<section className="about-cantainer">
 			<div>
 				<h1 className="m-0">Roulette Hero</h1>
-				<p className="color-placeholder m-0">My first developed web game</p>
+				<p className="color-placeholder m-0">{t("description")}</p>
 			</div>
-			<p className="my-2">
-				If you have a suggestion, question, found some error or just want to
-				contact me, do not hesitate to do so.
-			</p>
+			<p className="my-2">{t("issues text")}</p>
 
 			<ul className="reset-list">
 				<li>
@@ -70,7 +69,7 @@ function About() {
 			</div>
 
 			<div className="grow-1 flex align-center">
-				<Button text="Return" onClick={goBack} disabled={spin} />
+				<Button text={t("return")} onClick={goBack} disabled={spin} />
 			</div>
 
 			<a
@@ -79,7 +78,7 @@ function About() {
 				target="_blank"
 				rel="noopener">
 				<img src={githubIcon} alt="GitHub Icon" />
-				<span>Source Code</span>
+				<span>{t("source code")}</span>
 			</a>
 		</section>
 	)

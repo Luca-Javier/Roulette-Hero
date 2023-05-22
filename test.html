@@ -1,147 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: #c2c2c2;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
 
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+
+    }
+
+    /* svg {
+      animation: rotate 4s linear infinite;
+      display: flex;
+      justify-self: center;
+      align-self: center;
+    } */
+  </style>
 </head>
-
-<style>
-  div {
-    background-color: black;
-    height: 250px;
-    width: 280px;
-    position: relative;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: -2;
-  }
-
-  /* div p {
-    z-index: 999;
-  } */
-
-  video {
-    width: 100%;
-    position: absolute;
-    place-content: 0;
-    z-index: -1;
-
-  }
-
-  .none {
-    display: none;
-  }
-
-  @keyframes shake {
-    0% {
-      transform: translateX(0);
-    }
-
-    25% {
-      transform: translateX(10px);
-    }
-
-    50% {
-      transform: translateX(0);
-    }
-
-    75% {
-      transform: translateX(-10px);
-    }
-
-    100% {
-      transform: translateX(0);
-      display: none;
-    }
-  }
-
-  @keyframes hit-translate {
-    0% {
-      transform: translate(-90px, 90px);
-    }
-
-    100% {
-      transform: translate(50px, -50px)
-    }
-  }
-
-  .move {
-    animation: shake 1s;
-  }
-
-  .animate-hit {
-
-    width: 20px;
-    animation: hit-translate 1s;
-  }
-
-  @keyframes hurt-translate {
-    0% {
-      transform: translate(30px, -50px)
-    }
-
-
-
-    100% {
-      transform: translate(80px, -50px)
-    }
-  }
-
-  .animate-hurt {
-    width: 20px;
-    animation: hurt-translate 1s ease-in;
-  }
-</style>
 
 <body>
 
 
-  <div>
-    <p class="none">hola que tal</p>
 
-    <img class="hurt none" src="./hurt-animation.svg" alt="">
-    <img class="hit none" src="./hit-animation.svg" alt="">
-  </div>
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="50" r="40" fill="#afb2b7" stroke="black" stroke-width="3" />
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+    <defs>
+      <mask id="circle-mask">
+        <circle cx="100" cy="100" r="50" fill="#7f8084" />
+      </mask>
+    </defs>
 
+    <circle cx="100" cy="100" r="50" fill="#7f8084" stroke="black" stroke-width="2" />
 
-  <button>Play</button>
+    <path d="M100,10 L100,100 L190,100 Z" fill="#afb2b7" mask="url(#circle-mask)" />
+    <path d="M100,100 L10,100 L100,190 Z" fill="#d7d8da" mask="url(#circle-mask)" />
+    <path d="M100,100 L100,10 L10,100 Z" fill="#e6dcdc" mask="url(#circle-mask)" />
 
-  <script>
-
-    const $p = document.querySelector('p'),
-      $button = document.querySelector('button'),
-      $hit = document.querySelector('.hit'),
-      $hurt = document.querySelector('.hurt')
-
-    $button.addEventListener('click', () => {
-
-      /* $p.classList.remove("none")
-      $p.classList.add("move") */
-
-      $hit.classList.remove("none")
-      $hit.classList.add("animate-hit")
+    <path d="M50,100 L150,100 Z" fill="#afb2b7" stroke="black" stroke-width="2" />
+    <path d="M100,50 L100,150 Z" fill="#afb2b7" stroke="black" stroke-width="2" />
+  </svg>
 
 
-
-
-      setTimeout(() => {
-        $hurt.classList.remove("none")
-        $hurt.classList.add("animate-hurt")
-        $hit.classList.add("none")
-        $hit.classList.remove("animate-hit")
-        $p.classList.remove("move")
-        $p.classList.add("none")
-      }, 1000)
-    })
-
-    setTimeout(() => {
-      $hurt.classList.add("none")
-      $hurt.classList.remove("animate-hurt")
-    }, 2500)
-
-  </script>
 
 </body>
 

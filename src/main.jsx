@@ -3,11 +3,12 @@ import App from "./App"
 import "./global.css"
 import "@fontsource/arvo"
 import "@fontsource/press-start-2p"
-import { WheelProvider } from "./context/useWheel"
+import { WheelProvider } from "./state/contexts/useWheel"
 import { Provider } from "react-redux"
-import { store, persistor } from "./store"
+import { store, persistor } from "./state/store"
 import { createRoot } from "react-dom/client"
 import { PersistGate } from "redux-persist/integration/react"
+import "@i18n"
 
 createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
