@@ -43,7 +43,6 @@ function effects() {
 	const navigate = useNavigate()
 	const { getReward } = useReward()
 	const { t } = useTranslation("messages", { keyPrefix: "fight" })
-
 	const { leftHand, rightHand } = useSelector(state => state.player.equipment)
 
 	// States

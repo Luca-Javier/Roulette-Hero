@@ -1,0 +1,28 @@
+{
+	"alt": "{{variant}} {{quality}} {{type}}",
+	"variant": {
+		"simple": "Simple",
+		"lucky": "Lucky",
+		"armored": "Armored",
+		"bloody": "Bloody",
+		"superCritic": "Lethal",
+		"strongestAttack": "Strong"
+	},
+	"quality": {
+		"common": "common",
+		"rare": "rare",
+		"epic": "epic",
+		"legendary": "legendary"
+	},
+	"type": {
+		"sword": "sword",
+		"hammer": "hammer",
+		"rapier": "rapier",
+		"pickaxe": "pickaxe",
+		"pirate": "sable",
+		"helmet": "helmet",
+		"chest": "chest",
+		"legs": "legs",
+		"foot": "boots"
+	}
+}

@@ -1,0 +1,18 @@
+{
+	"default": {
+		"name": "Predeterminado",
+		"description": "Un aventurero debil"
+	},
+	"hammerBro": {
+		"name": "Martillero",
+		"description": "Un especialista en martillos"
+	},
+	"knight": {
+		"name": "Caballero",
+		"description": "Un honorado y armado caballero"
+	},
+	"developer": {
+		"name": "Desarrollador",
+		"description": "Desarrollador React promedio"
+	}
+}
