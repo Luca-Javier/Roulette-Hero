@@ -36,4 +36,4 @@ const persistor = persistStore(store)
 
 export { store, persistor }
 
-//persistor.purge()
+persistor.purge()

@@ -64,16 +64,16 @@ TODO LIST
 ❗ Repasar todos los efectos y comprobar que todo anda
 ❗ Jugar varias partidas y equilibrar las cosas
 ❗ logros
-❗ refactoring
+✅ refactoring
 ✅ Performance con lazy load
 ❗ web vitals 
 ❗ SEO 
 ❗ Accesibilidad
-❗ SVG manual para un loader que sea una ruleta girando
+✅ SVG manual para un loader que sea una ruleta girando
 ✅ boton abandonar en options con el reset
 ✅ que el boton exit valla al index y el boton play sea continuar (quizas poner una view de "seguro que quiere continuar?")
 ✅ Agregar opcion cambiar idioma
-❗ refactorizar estilos characters
+✅ refactorizar estilos characters
 ❗ Que se puedan vender items equipados
 ❗ Que no se pueda vender tu unica arma equipada
 ❗ lucky forje

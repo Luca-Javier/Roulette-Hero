@@ -390,27 +390,40 @@ a {
 	overflow: hidden;
 	word-wrap: break-word;
 }
-.character-info {
-	width: 60%;
-	overflow: hidden;
+.character-info-img {
 	display: flex;
-	flex-direction: column;
-	border: medium solid var(--color-second);
-	margin: 1rem;
-	border-radius: 15px;
+	justify-content: center;
+	max-height: 40%;
+	padding: 1rem;
+}
+.character-info-img img {
+	/* height: 60%; */
+}
 
-	padding: 0.5rem;
+.character-info-stats {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	width: 50%;
+	padding: 1rem;
 }
-.character-info .stat-icon {
-	margin: 0 0.5rem;
-}
-.character-info button {
-	flex-grow: 0;
+
+.character-fino-equip-img-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	width: 50%;
+	padding: 1rem;
 }
 .character-fino-equip-img-container img {
-	width: 17px;
+	width: 25px;
 	margin-right: 0.5rem;
 }
+.character-info-money {
+	padding: 1rem;
+	width: 50%;
+	display: flex;
+	justify-content: space-around;
+}
+
 /* *---------------------------------Fightin--------------------------------- */
 .fight-container {
 	padding: 1rem;
