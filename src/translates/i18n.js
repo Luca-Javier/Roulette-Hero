@@ -10,6 +10,8 @@ import itemsEn from "./en/items.json"
 import itemsEs from "./es/items.json"
 import messagesEn from "./en/messages"
 import messagesEs from "./es/messages"
+import achievesEn from "./en/achieves.json"
+import achievesEs from "./es/achieves.json"
 
 const resources = {
 	en: {
@@ -18,6 +20,7 @@ const resources = {
 		buttons: buttonsEn,
 		items: itemsEn,
 		messages: messagesEn,
+		achieves: achievesEn,
 	},
 	es: {
 		pages: pagesEs,
@@ -25,6 +28,7 @@ const resources = {
 		buttons: buttonsEs,
 		items: itemsEs,
 		messages: messagesEs,
+		achieves: achievesEs,
 	},
 }
 

@@ -23,6 +23,7 @@ import {
 } from "@reducers/playerReducer"
 import { useTranslation } from "react-i18next"
 import { i18n_random } from "@functions/translators"
+import useAchieve from "./useAchieves"
 
 function useEvent() {
 	//Imports
@@ -33,6 +34,7 @@ function useEvent() {
 	const { section, sections, setSection } = useSections()
 	const { getReward } = useReward()
 	const { t } = useTranslation("messages")
+	const { unlockAchieve } = useAchieve()
 
 	const [customCallback, setCustomCallback] = useState()
 
@@ -53,6 +55,8 @@ function useEvent() {
 	const buyItem = item => {
 		if (money < item.price * 2)
 			return dispatch(addMessage(t("shop.not enough money")))
+
+		if (item.type === "hammer") unlockAchieve(ACHIEVES["hammer bro"])
 
 		dispatch(removePuchasedItem({ item }))
 

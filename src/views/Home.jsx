@@ -2,10 +2,11 @@ import { useEffect } from "react"
 import Button from "@components/Button"
 import MyWheel from "@components/MyWheel"
 import useWheel from "@contexts/useWheel"
-import { WHEEL_TEMPLATE_BEGINNING } from "@constants/wheelTemplates"
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
+import { GET_WHEEL_TEMPLATE_BEGINNING } from "@constants/wheelTemplates"
+import useResetApp from "@hooks/useResetApp"
 
 function Home() {
 	//Imports
@@ -13,10 +14,11 @@ function Home() {
 	const { handleSpin, configWheel, spin } = useWheel()
 	const { numEvents } = useSelector(state => state.event)
 	const { t, i18n } = useTranslation("pages", { keyPrefix: "index" })
+	const { reset } = useResetApp()
 
 	//Effects
 	useEffect(() => {
-		configWheel(WHEEL_TEMPLATE_BEGINNING(i18n.language))
+		configWheel(GET_WHEEL_TEMPLATE_BEGINNING(i18n.language))
 
 		import("./Characters")
 		import("./Options")
@@ -28,6 +30,7 @@ function Home() {
 	const goCharacter = async () => {
 		await handleSpin(1)
 		navigate("/characters")
+		reset()
 	}
 
 	const goPlay = async () => {
@@ -47,7 +50,6 @@ function Home() {
 			<article className="grow-1">
 				<MyWheel />
 			</article>
-
 			<article>
 				<div className="flex-buttons">
 					<Button

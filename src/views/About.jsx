@@ -1,14 +1,14 @@
 import React, { useEffect } from "react"
 import Button from "@components/Button"
-import githubIcon from "../assets/icons/social/github.svg"
-import gmailIcon from "../assets/icons/social/gmail.svg"
-import portfolioIcon from "../assets/icons/social/portfolio.svg"
-import linkedinIcon from "../assets/icons/social/linkedin.svg"
-import useWheel from "../context/useWheel"
-import MyWheel from "../components/MyWheel"
+import githubIcon from "@assets/icons/social/github.svg"
+import gmailIcon from "@assets/icons/social/gmail.svg"
+import portfolioIcon from "@assets/icons/social/portfolio.svg"
+import linkedinIcon from "@assets/icons/social/linkedin.svg"
+import useWheel from "@contexts/useWheel"
+import MyWheel from "@components/MyWheel"
 import { useNavigate } from "react-router-dom"
-import { WHEEL_ERROR_PAGE } from "../config/wheelTemplates"
 import { useTranslation } from "react-i18next"
+import { GET_WHEEL_RETURN } from "@constants/wheelTemplates"
 
 function About() {
 	const { configWheel, handleSpin, spin } = useWheel()
@@ -22,7 +22,7 @@ function About() {
 	}
 
 	useEffect(() => {
-		configWheel(WHEEL_ERROR_PAGE(i18n.language))
+		configWheel(GET_WHEEL_RETURN(i18n.language))
 	}, [])
 
 	return (

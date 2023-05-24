@@ -9,16 +9,14 @@ const effects = () => {
 	)
 	const { t } = useTranslation("messages", { keyPrefix: "walking" })
 
-	//States
 	const [messagesHistory, setMessagesHistory] = useState([])
 	const lastCleanChat = useRef("initial")
 
-	//Effects
 	useEffect(() => {
+		if (event === "waiting") return
 		const message = t(event)
 
-		if (message.slice(0, 8) !== "walking.")
-			setMessagesHistory([...messagesHistory, message])
+		setMessagesHistory([...messagesHistory, message])
 	}, [event])
 
 	useEffect(() => {
@@ -29,7 +27,6 @@ const effects = () => {
 
 	useEffect(() => {
 		if (cleanChat === lastCleanChat.current) return undefined
-		console.log("clean")
 		lastCleanChat.current = cleanChat
 
 		setMessagesHistory([])

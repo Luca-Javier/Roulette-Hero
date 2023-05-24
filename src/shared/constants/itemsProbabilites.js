@@ -4,40 +4,46 @@
  */
 
 import WeightedList from "js-weighted-list"
+import {
+	ARMORS,
+	WEAPONS,
+	WEAPON_VARIANTS,
+	ARMOR_VARIANTS,
+	QUALITY_ITEMS,
+} from "./items"
 
 export const WEAPON_PROBS = new WeightedList([
-	["sword", 20006],
-	["hammer", 20],
-	["rapier", 20],
-	["pickaxe", 20],
-	["pirate", 20],
+	[WEAPONS.sword, 20],
+	[WEAPONS.hammer, 200],
+	[WEAPONS.rapier, 20],
+	[WEAPONS.pickaxe, 20],
+	[WEAPONS.sable, 20],
 ])
 
 export const ARMOR_PROBS = new WeightedList([
-	["helmet", 2000],
-	["chest", 20],
-	["legs", 20],
-	["foot", 20],
+	[ARMORS.helmet, 2000],
+	[ARMORS.chest, 20],
+	[ARMORS.legs, 20],
+	[ARMORS.foot, 20],
+])
+
+export const WEAPON_VARIANT_PROBS = new WeightedList([
+	[WEAPON_VARIANTS.simple, 55],
+	[WEAPON_VARIANTS.lucky, 22.5],
+	[WEAPON_VARIANTS.bloody, 22.5],
+	[WEAPON_VARIANTS.superCritic, 22.5],
+	[WEAPON_VARIANTS.strongestAttack, 22.5],
 ])
 
 export const ARMOR_VARIANT_PROBS = new WeightedList([
-	["simple", 55],
-	["lucky", 22.5],
-	// ["pike", 15],
-	["armored", 22.5],
-])
-
-export const WEAPONS_VARIANT_PROBS = new WeightedList([
-	["simple", 5000],
-	["lucky", 12.5],
-	["bloody", 12.5],
-	["superCritic", 12.5],
-	["strongestAttack", 12.5],
+	[ARMOR_VARIANTS.simple, 55],
+	[ARMOR_VARIANTS.lucky, 22.5],
+	[ARMOR_VARIANTS.armored, 22.5],
 ])
 
 export const QUALITY_ITEM_PROBS = new WeightedList([
-	["common", 40],
-	["rare", 30],
-	["epic", 20],
-	["legendary", 10],
+	[QUALITY_ITEMS.common, 40],
+	[QUALITY_ITEMS.rare, 30],
+	[QUALITY_ITEMS.epic, 20],
+	[QUALITY_ITEMS.legendary, 10],
 ])

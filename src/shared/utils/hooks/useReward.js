@@ -5,11 +5,14 @@ import generateWeapon from "@functions/generateWeapon"
 import { addMessage } from "@reducers/eventReducer"
 import { addBackpag, updateMoney, updateStones } from "@reducers/playerReducer"
 import { useTranslation } from "react-i18next"
+import useAchieve from "./useAchieves"
+import { ACHIEVES } from "../../constants/achieves"
 
 function useReward() {
 	const { trullyKarma } = useSelector(state => state.player.stats)
 	const dispatch = useDispatch()
 	const { t } = useTranslation("messages", { keyPrefix: "reward" })
+	const { unlockAchieve } = useAchieve()
 
 	const rewards = new WeightedList([
 		["money", 42.5],
@@ -63,6 +66,8 @@ function useReward() {
 
 		if (reward == "item") {
 			const item = getRandomItem()
+
+			if (item.type === "hammer") unlockAchieve(ACHIEVES["hammer bro"])
 
 			dispatch(addMessage(t("get item", item)))
 			dispatch(addBackpag({ item }))

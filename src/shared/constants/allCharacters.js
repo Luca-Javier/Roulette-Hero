@@ -1,6 +1,16 @@
 import i18n from "@i18n"
 import { i18n_alt } from "@functions/translators"
 
+const equipmentTemplate = {
+	helmet: null,
+	leftHand: null,
+	chest: null,
+	rightHand: null,
+	legs: null,
+	leftFoot: null,
+	rightFoot: null,
+}
+
 export default () => {
 	const t = i18n.getFixedT(i18n.language, "characters")
 
@@ -9,7 +19,7 @@ export default () => {
 			id: 1,
 			description: t("default.description"),
 			img: "/src/assets/characters/default.svg",
-			name: t("default.name"),
+			className: t("default.name"),
 			money: 22,
 			stones: 2,
 			stats: {
@@ -19,27 +29,30 @@ export default () => {
 				dodge: 15,
 				lucky: 1,
 				karma: 0.5,
-				trullyKarma: 0.5,
+				trullyKarma: 0.625,
 			},
 			classEffects: {},
-			items: [
-				{
+			equipment: {
+				...equipmentTemplate,
+				helmet: {
 					id: 3,
-					src: "/src/assets/armors/helmets/lucky-helmet.svg",
+					src: "/src/assets/armors/helmets/simple-helmet.svg",
 					alt: i18n_alt({
 						type: "helmet",
 						quality: "common",
-						variant: "lucky",
+						variant: "simple",
 					}),
 					quality: "common",
-					equipKey: "helmet",
+					//equipKey: "helmet",
 					equipType: "armor",
 					type: "helmet",
+					variant: "simple",
+					price: 17,
 					armor: 0.2,
 					health: 2,
 					passiveEffects: {},
 				},
-				{
+				leftHand: {
 					id: 1,
 					src: "/src/assets/weapons/swords/simple-sword.svg",
 					alt: i18n_alt({
@@ -48,21 +61,23 @@ export default () => {
 						variant: "simple",
 					}),
 					quality: "common",
-					equipKey: "leftHand",
+					//equipKey: "leftHand",
 					equipType: "weapon",
 					type: "sword",
+					variant: "simple",
+					price: 18,
 					attack: 3,
 					passiveEffects: {},
 					activeEffects: {},
 				},
-			],
+			},
 		},
 
 		{
 			id: 2,
 			description: t("knight.description"),
 			img: "/src/assets/characters/knight.svg",
-			name: t("knight.name"),
+			className: t("knight.name"),
 			money: 12,
 			stones: 4,
 			stats: {
@@ -72,10 +87,12 @@ export default () => {
 				dodge: 25,
 				lucky: 2,
 				karma: 1,
+				trullyKarma: 1.5,
 			},
 			classEffects: {},
-			items: [
-				{
+			equipment: {
+				...equipmentTemplate,
+				leftHand: {
 					id: 1,
 					src: "/src/assets/weapons/swords/simple-sword.svg",
 					alt: i18n_alt({
@@ -84,13 +101,16 @@ export default () => {
 						variant: "simple",
 					}),
 					quality: "common",
-					equipKey: "leftHand",
+					//equipKey: "leftHand",
+					equipType: "weapon",
 					type: "sword",
+					variant: "simple",
+					price: 16,
 					attack: 3,
 					passiveEffects: {},
 					activeEffects: {},
 				},
-				{
+				helmet: {
 					id: 2,
 					src: "/src/assets/armors/helmets/simple-helmet.svg",
 					alt: i18n_alt({
@@ -99,14 +119,16 @@ export default () => {
 						variant: "simple",
 					}),
 					quality: "common",
-					equipKey: "helmet",
+					//equipKey: "helmet",
 					equipType: "armor",
 					type: "helmet",
+					variant: "simple",
+					price: 15,
 					armor: 0.2,
 					health: 3,
 					passiveEffects: {},
 				},
-				{
+				chest: {
 					id: 3,
 					src: "/src/assets/armors/chests/simple-chest.svg",
 					alt: i18n_alt({
@@ -115,32 +137,36 @@ export default () => {
 						variant: "simple",
 					}),
 					quality: "common",
-					equipKey: "chest",
+					//equipKey: "chest",
 					equipType: "armor",
 					type: "chest",
+					variant: "simple",
+					price: 17,
 					armor: 0.2,
 					health: 5,
 					passiveEffects: {},
 				},
-				{
+				legs: {
 					id: 4,
 					src: "/src/assets/armors/legs/simple-legs.svg",
 					alt: i18n_alt({ type: "legs", quality: "common", variant: "simple" }),
 					quality: "common",
-					equipKey: "legs",
+					//equipKey: "legs",
 					equipType: "armor",
 					type: "legs",
+					variant: "simple",
+					price: 16,
 					armor: 0.2,
 					health: 4,
 					passiveEffects: {},
 				},
-			],
+			},
 		},
 		{
 			id: 3,
 			description: t("hammerBro.description"),
 			img: "/src/assets/characters/hammer-bro.svg",
-			name: t("hammerBro.name"),
+			className: t("hammerBro.name"),
 			money: 32,
 			stones: 4,
 			stats: {
@@ -150,12 +176,14 @@ export default () => {
 				dodge: 25,
 				lucky: 2,
 				karma: 1,
+				trullyKarma: 1.5,
 			},
 			classEffects: {
 				extraHammerDamage: 0.2,
 			},
-			items: [
-				{
+			equipment: {
+				...equipmentTemplate,
+				leftHand: {
 					id: 1,
 					src: "/src/assets/weapons/hammers/lucky-hammer.svg",
 					alt: i18n_alt({
@@ -164,16 +192,18 @@ export default () => {
 						variant: "lucky",
 					}),
 					quality: "rare",
-					equipKey: "leftHand",
+					//equipKey: "leftHand",
 					equipType: "weapon",
 					type: "hammer",
+					variant: "lucky",
+					price: 14,
 					attack: 4,
 					passiveEffects: {
 						hammerDamageMultiplier: 0.1,
 					},
 					activeEffects: {},
 				},
-				{
+				chest: {
 					id: 2,
 					src: "/src/assets/armors/chests/simple-chest.svg",
 					alt: i18n_alt({
@@ -182,21 +212,23 @@ export default () => {
 						variant: "simple",
 					}),
 					quality: "common",
-					equipKey: "chest",
+					//equipKey: "chest",
 					equipType: "armor",
 					type: "chest",
+					variant: "simple",
+					price: 15,
 					health: 5,
 					armor: 0.2,
 					passiveEffects: {},
 				},
-			],
+			},
 		},
 
 		{
 			id: 99,
 			description: t("developer.description"),
 			img: "/src/assets/characters/dev.svg",
-			name: t("developer.name"),
+			className: t("developer.name"),
 			money: 2000,
 			stones: 2000,
 			stats: {
@@ -206,10 +238,12 @@ export default () => {
 				dodge: 25,
 				lucky: 2,
 				karma: 1,
+				trullyKarma: 1.5,
 			},
 			classEffects: { extraHammerDamage: 0.2 },
-			items: [
-				{
+			equipment: {
+				...equipmentTemplate,
+				leftHand: {
 					id: 1,
 					src: "/src/assets/weapons/hammers/bloody-hammer.svg",
 					alt: i18n_alt({
@@ -218,9 +252,11 @@ export default () => {
 						variant: "bloody",
 					}),
 					quality: "common",
-					equipKey: "leftHand",
+					//equipKey: "leftHand",
 					equipType: "weapon",
 					type: "hammer",
+					variant: "bloody",
+					price: 16,
 					attack: 3,
 					passiveEffects: {
 						hammerDamageMultiplier: 0.1,
@@ -230,7 +266,7 @@ export default () => {
 						lifeSteal: 0.2,
 					},
 				},
-				{
+				rightHand: {
 					id: 2,
 					src: "/src/assets/weapons/swords/critic-sword.svg",
 					alt: i18n_alt({
@@ -239,9 +275,11 @@ export default () => {
 						variant: "superCritic",
 					}),
 					quality: "common",
-					equipKey: "rightHand",
+					//equipKey: "rightHand",
 					equipType: "weapon",
 					type: "sword",
+					variant: "superCritic",
+					price: 15,
 					attack: 3,
 					passiveEffects: {
 						luckyHitMultiplier: 0.1,
@@ -250,22 +288,23 @@ export default () => {
 						superCritic: 0.2,
 					},
 				},
-
-				{
+				legs: {
 					id: 4,
 					src: "/src/assets/armors/legs/simple-legs.svg",
 					alt: i18n_alt({ type: "legs", quality: "common", variant: "simple" }),
 					quality: "common",
-					equipKey: "legs",
+					//equipKey: "legs",
 					equipType: "armor",
 					type: "legs",
+					variant: "simple",
+					price: 16,
 					armor: 0.2,
 					health: 4,
 					passiveEffects: {
 						luckyStatMultiplier: 0.1,
 					},
 				},
-				{
+				chest: {
 					id: 5,
 					src: "/src/assets/armors/chests/simple-chest.svg",
 					alt: i18n_alt({
@@ -274,16 +313,18 @@ export default () => {
 						variant: "simple",
 					}),
 					quality: "common",
-					equipKey: "chest",
+					//equipKey: "chest",
 					equipType: "armor",
 					type: "chest",
+					variant: "simple",
+					price: 17,
 					armor: 0.2,
 					health: 4,
 					passiveEffects: {
 						extraArmor: 0.1,
 					},
 				},
-			],
+			},
 			backpag: [
 				{
 					id: 3,
@@ -296,6 +337,8 @@ export default () => {
 					quality: "rare",
 					equipType: "weapon",
 					type: "sword",
+					variant: "strongestAttack",
+					price: 47,
 					attack: 5,
 					passiveEffects: {
 						luckyHitMultiplier: 0.1,

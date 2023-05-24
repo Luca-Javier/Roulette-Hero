@@ -1,17 +1,14 @@
 import { i18n_alt } from "./translators"
 import getBasicItemTemplate from "./getBasicItemTemplate"
 import getWeaponEffects from "./getWeaponEffects"
+import { UPDGRADE_QUALITY, DOWNGRADE_QUALITY } from "@constants/forjeItems"
 
-const upgradeQuality = {
-	common: "rare",
-	rare: "epic",
-	epic: "legendary",
-}
-
-function getForgedWeapon({ item, trullyKarma }) {
+function getForgedWeapon({ item, trullyKarma, downgrade }) {
 	const { id, type, variant, src, equipType, quality } = item
 
-	const newQuality = upgradeQuality[quality]
+	const newQuality = downgrade
+		? DOWNGRADE_QUALITY[quality]
+		: UPDGRADE_QUALITY[quality]
 
 	const { qualityMultiplier, getMoneyForQuality, getRandomStat } =
 		getBasicItemTemplate({
@@ -20,7 +17,6 @@ function getForgedWeapon({ item, trullyKarma }) {
 			quality: newQuality,
 		})
 
-	// active effects
 	const { passiveEffects, activeEffects } = getWeaponEffects({
 		type,
 		variant,
@@ -29,7 +25,7 @@ function getForgedWeapon({ item, trullyKarma }) {
 
 	const alt = i18n_alt({ type, quality: newQuality, variant })
 
-	const attack = getRandomStat(4, 7)
+	const attack = getRandomStat(3, 7)
 
 	return {
 		id,
@@ -39,6 +35,7 @@ function getForgedWeapon({ item, trullyKarma }) {
 		quality: newQuality,
 		equipType,
 		type,
+		variant,
 		attack,
 		passiveEffects,
 		activeEffects,

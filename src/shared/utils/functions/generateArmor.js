@@ -1,14 +1,8 @@
 /**@typedef {import("../types.ts").Armor} Armor */
 
+import { ARMOR_FOR_QUALITY } from "@constants/forjeItems.js"
 import getBasicItemTemplate from "./getBasicItemTemplate.js"
 import getWeaponEffects from "./getWeaponEffects.js"
-
-const qualityArmor = {
-	common: 0.2,
-	rare: 0.4,
-	epic: 0.6,
-	legendary: 0.8,
-}
 
 /**
  * Generates a random weapon with random stats based on trullyKarma
@@ -39,7 +33,7 @@ function generateArmor({ trullyKarma }) {
 		multiplier: qualityMultiplier,
 	})
 
-	const armor = qualityArmor[quality],
+	const armor = ARMOR_FOR_QUALITY[quality],
 		health = getRandomStat(4, 7)
 
 	const item = {
@@ -50,6 +44,7 @@ function generateArmor({ trullyKarma }) {
 		quality,
 		equipType,
 		type,
+		variant,
 		armor,
 		health,
 		passiveEffects,

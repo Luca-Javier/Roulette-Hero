@@ -42,6 +42,7 @@ const generateWeapon = ({ trullyKarma }) => {
 		quality,
 		equipType,
 		type,
+		variant,
 		attack,
 		passiveEffects,
 		activeEffects,

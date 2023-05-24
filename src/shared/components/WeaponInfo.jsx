@@ -17,7 +17,7 @@ function WeaponInfo({ item }) {
 	} = useSelector(state => state.player)
 
 	//Variables
-	const { src, alt, quality, attack, passiveEffects, activeEffects } = item
+	const { alt, attack, passiveEffects, activeEffects, price } = item
 
 	let attackFromClass = 1
 
@@ -42,12 +42,13 @@ function WeaponInfo({ item }) {
 					<ActiveEffects effects={activeEffects} />
 				</article>
 			</div>
-			<article className="info-stats-grid">
+			<article className="info-stats">
 				<p className="stat-icon attack">
 					{attack}
 					{attack !== realAttack && <span> = {realAttack}</span>}
 				</p>
 				<p className="stat-icon critic">{critic}</p>
+				<p className=" money">{price}</p>
 			</article>
 			{/* <article className="info-active-effects">
 			</article> */}

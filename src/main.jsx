@@ -9,15 +9,18 @@ import { store, persistor } from "./state/store"
 import { createRoot } from "react-dom/client"
 import { PersistGate } from "redux-persist/integration/react"
 import "@i18n"
+import { NotificationProvider } from "./state/contexts/useNotification"
 
 createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
 		<WheelProvider>
-			<Provider store={store}>
-				<PersistGate loading={null} persistor={persistor}>
-					<App />
-				</PersistGate>
-			</Provider>
+			<NotificationProvider>
+				<Provider store={store}>
+					<PersistGate loading={null} persistor={persistor}>
+						<App />
+					</PersistGate>
+				</Provider>
+			</NotificationProvider>
 		</WheelProvider>
 	</React.StrictMode>
 )

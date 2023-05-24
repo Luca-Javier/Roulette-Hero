@@ -1,6 +1,6 @@
 import React, { useCallback } from "react"
 import { useState } from "react"
-import allCharacters from "@constants/characters"
+import getAllCharacters from "@constants/allCharacters"
 import { useDispatch, useSelector } from "react-redux"
 import Button from "@components/Button"
 import CharacterInfo from "./CharacterInfo"
@@ -17,7 +17,7 @@ function Characters() {
 	const [charactersIndex, setCharactersIndex] = useState(0)
 
 	const characters = useCallback(
-		allCharacters().filter(character =>
+		getAllCharacters().filter(character =>
 			unlockedCharacters.includes(character.id)
 		),
 		[unlockedCharacters]
@@ -35,6 +35,7 @@ function Characters() {
 
 	const selectCharacter = character => {
 		dispatch(setInitialCharacterStats(character))
+
 		navigate("/")
 	}
 

@@ -1,59 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit"
 import setArmorStats from "@functions/setArmorStats"
 import removeStatsFromArmor from "@functions/removeAmorStats"
-import allCharacters from "@constants/characters"
-import i18n from "@i18n"
-import { i18n_alt } from "@functions/translators"
+import getAllCharacters from "@constants/allCharacters"
+import { EQUIPTYPE } from "../../shared/constants/items"
 
-const t = i18n.getFixedT(i18n.language, "characters", "default")
+const characters = getAllCharacters()
 
 const initialState = {
-	name: "name",
-	className: t("name"),
-	money: 22,
-	stones: 2,
-	stats: {
-		health: 16,
-		armor: 1.2,
-		critic: 25,
-		dodge: 15,
-		lucky: 1,
-		karma: 0.5,
-		trullyKarma: 0.5,
-	},
-	classEffects: {},
-	equipment: {
-		helmet: {
-			id: 3,
-			src: "/src/assets/armors/helmets/simple-helmet.svg",
-			alt: i18n_alt({ type: "helmet", quality: "common", variant: "simple" }),
-			quality: "common",
-			equipKey: "helmet",
-			equipType: "armor",
-			type: "helmet",
-			armor: 0.2,
-			health: 2,
-			passiveEffects: {},
-		},
-		leftHand: {
-			id: 1,
-			src: "/src/assets/weapons/swords/simple-sword.svg",
-			alt: i18n_alt({ type: "sword", quality: "common", variant: "simple" }),
-			quality: "common",
-			equipKey: "leftHand",
-			equipType: "weapon",
-			type: "sword",
-			attack: 3,
-			passiveEffects: {},
-			activeEffects: {},
-		},
-		chest: null,
-		rightHand: null,
-		legs: null,
-		leftFoot: null,
-		rightFoot: null,
-	},
+	name: "player name",
 	backpag: [],
+	...characters[0],
 }
 
 const playerReducer = createSlice({
@@ -61,34 +17,23 @@ const playerReducer = createSlice({
 	initialState,
 	reducers: {
 		resetPlayerStore: state => {
-			const characterInitialState = allCharacters().find(
+			const characterInitialState = characters.find(
 				character => character.name == state.className
 			)
 
-			if (!characterInitialState.backpag) characterInitialState.backpag = []
-
-			Object.assign(state, characterInitialState)
+			Object.assign(state, {
+				backpag: [],
+				...characterInitialState,
+			})
 		},
 		setName: (state, action) => {
 			state.name = action.payload
 		},
 
 		setInitialCharacterStats: (state, action) => {
-			const { name, stats, money, stones, items, classEffects, backpag } =
-				action.payload
-
-			state.className = name
-			state.money = money
-			state.stones = stones
-			state.classEffects = classEffects
-			state.stats = stats
-
-			if (backpag) state.backpag = backpag
-
-			items.forEach(item => {
-				state.equipment[item.equipKey] = item
-
-				if (item.equipType == "armor") setArmorStats({ state, item })
+			Object.assign(state, {
+				backpag: [],
+				...action.payload,
 			})
 		},
 
@@ -98,14 +43,25 @@ const playerReducer = createSlice({
 			if (item) state.backpag.push(item)
 		},
 
-		removeBackpag: (state, action) => {
-			const { item } = action.payload
+		removeItem: (state, action) => {
+			const { id } = action.payload
 
 			const backpagWihtoutItem = state.backpag.filter(
-				backpagItem => backpagItem.id !== item.id
+				backpagItem => backpagItem.id !== id
 			)
 
-			state.backpag = backpagWihtoutItem
+			if (backpagWihtoutItem.length !== state.backpag.length)
+				state.backpag = backpagWihtoutItem
+			else
+				Object.keys(state.equipment).forEach(key => {
+					if (state.equipment[key]?.id !== id) return
+
+					if (state.equipment[key].equipType == EQUIPTYPE.armor) {
+						removeStatsFromArmor({ state, item: state.equipment[key] })
+					}
+
+					state.equipment[key] = null
+				})
 		},
 
 		updateStatsFromArmor: (state, action) => {
@@ -189,7 +145,7 @@ export const {
 	setName,
 	setInitialCharacterStats,
 	addBackpag,
-	removeBackpag,
+	removeItem,
 	equipItem,
 	updateStatsFromArmor,
 	updateMoney,

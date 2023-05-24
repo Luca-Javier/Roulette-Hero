@@ -501,17 +501,17 @@ progress[value]::-webkit-progress-bar {
 .info-active-effects img {
 	height: 25px;
 }
-.info-stats-grid {
+.info-stats {
 	margin-top: 1rem;
-	display: grid;
-	grid-auto-flow: column;
-	grid-template-rows: 1fr 1fr;
+	display: flex;
+	flex-direction: column;
 	gap: 0.5rem;
 }
-.info-stats-grid p {
+.info-stats p {
+	font-size: 12px;
 	margin: 0;
 }
-.info-stats-grid span {
+.info-stats span {
 	color: var(--good);
 }
 .select-side {

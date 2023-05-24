@@ -1,24 +1,13 @@
 import { useSelector } from "react-redux"
-import ItemImage from "../../../shared/components/ItemImage"
+import ItemImage from "@components/ItemImage"
 import forjeIcon from "@assets/icons/sections/forje.svg"
-import MyWheel from "../../../shared/components/MyWheel"
+import MyWheel from "@components/MyWheel"
+import { FORJE_ASCENDAT_QUALITY, FORJE_PRICE } from "@constants/forjeItems"
 
 function Forje({}) {
 	const item = useSelector(state => state.event.itemInfo)
 
-	const ascendantQualitys = {
-		common: "rare",
-		rare: "epic",
-		epic: "legendary",
-	}
-
-	const upgradeQuality = {
-		common: 6,
-		rare: 11,
-		epic: 17,
-	}
-
-	const newQuality = ascendantQualitys[item.quality]
+	const newQuality = FORJE_ASCENDAT_QUALITY[item.quality]
 
 	return (
 		<section
@@ -34,7 +23,7 @@ function Forje({}) {
 			</article>
 			<div className="flex flex-column align-center">
 				<img src={forjeIcon} alt="Forje icon section" style={{ width: 50 }} />
-				<p className="stone">{upgradeQuality[item.quality]}</p>
+				<p className="stone">{FORJE_PRICE[item.quality]}</p>
 			</div>
 		</section>
 	)

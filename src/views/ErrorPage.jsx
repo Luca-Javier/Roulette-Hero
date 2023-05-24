@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom"
 import Button from "@components/Button"
 import MyWheel from "@components/MyWheel"
-import useWheel from "../context/useWheel"
+import useWheel from "@contexts/useWheel"
 import { useEffect } from "react"
-import { WHEEL_ERROR_PAGE } from "../config/wheelTemplates"
 import { useTranslation } from "react-i18next"
+import { GET_WHEEL_RETURN } from "@constants/wheelTemplates"
 
 function ErrorPage() {
 	const navigate = useNavigate()
@@ -18,7 +18,7 @@ function ErrorPage() {
 	}
 
 	useEffect(() => {
-		configWheel(WHEEL_ERROR_PAGE(i18n.language))
+		configWheel(GET_WHEEL_RETURN(i18n.language))
 	}, [])
 
 	return (

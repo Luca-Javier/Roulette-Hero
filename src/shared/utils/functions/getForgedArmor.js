@@ -1,31 +1,24 @@
+import {
+	ARMOR_FOR_QUALITY,
+	DOWNGRADE_QUALITY,
+	UPDGRADE_QUALITY,
+} from "@constants/forjeItems"
 import getArmorEffects from "./getArmorEffect"
 import getBasicItemTemplate from "./getBasicItemTemplate"
 import { i18n_alt } from "./translators"
 
-const qualityArmor = {
-	common: 0.2,
-	rare: 0.4,
-	epic: 0.6,
-	legendary: 0.8,
-}
-
-const upgradeQuality = {
-	common: "rare",
-	rare: "epic",
-	epic: "legendary",
-}
-
-function getForgedArmor({ item, trullyKarma }) {
+function getForgedArmor({ item, trullyKarma, downgrade }) {
 	const { id, type, variant, src, equipType, quality } = item
 
-	const newQuality = upgradeQuality[quality]
+	const newQuality = downgrade
+		? DOWNGRADE_QUALITY[quality]
+		: UPDGRADE_QUALITY[quality]
 
-	const { qualityMultiplier, getMoneyForQuality, getRandomStat } =
-		getBasicItemTemplate({
-			equipType,
-			trullyKarma,
-			quality: newQuality,
-		})
+	const { qualityMultiplier, price, getRandomStat } = getBasicItemTemplate({
+		equipType,
+		trullyKarma,
+		quality: newQuality,
+	})
 
 	const passiveEffects = getArmorEffects({
 		type,
@@ -35,19 +28,18 @@ function getForgedArmor({ item, trullyKarma }) {
 
 	const alt = i18n_alt({ type, quality: newQuality, variant })
 
-	const armor = qualityArmor[newQuality],
+	const armor = ARMOR_FOR_QUALITY[newQuality],
 		health = getRandomStat(4, 7)
-
-	console.log(health)
 
 	return {
 		id,
-		price: getMoneyForQuality(newQuality),
+		price,
 		src,
 		alt,
 		quality: newQuality,
 		equipType,
 		type,
+		variant,
 		armor,
 		health,
 		passiveEffects,

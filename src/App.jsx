@@ -6,6 +6,7 @@ import { useSelector } from "react-redux"
 import { useTranslation } from "react-i18next"
 import Loader from "@components/Loader"
 import Tittle from "@components/Tittle"
+import NotificationContainer from "./shared/components/NotificationContainer/NotificationContainer"
 
 export default () => {
 	const { language } = useSelector(state => state.userConfig)
@@ -26,6 +27,7 @@ export default () => {
 		<Layout>
 			<Suspense fallback={<Loader />}>
 				<Music src="/src/assets/enviroment.mp3" />
+				<NotificationContainer />
 				<HashRouter>
 					<Routes>
 						<Route path="/" element={<Home />} />
@@ -46,7 +48,9 @@ function Layout({ children }) {
 	return (
 		<>
 			<Tittle />
-			<main className="border border-3 border-white rounded-4 flex-grow-1 overflow-hidden">
+			<main
+				className="border border-3 border-white rounded-4 flex-grow-1 overflow-hidden"
+				style={{ position: "relative" }}>
 				{children}
 			</main>
 		</>

@@ -6,6 +6,8 @@ import { WHEEL_SEDUCE_SHOP } from "@constants/wheelTemplates"
 import { addMessage, updateShopItems } from "@reducers/eventReducer"
 import { useTranslation } from "react-i18next"
 import { i18n_random } from "@functions/translators"
+import useSections from "../../../shared/utils/hooks/useSections"
+import { SECTIONS } from "../../../shared/constants/sections"
 
 const effects = () => {
 	const [shopSection, setShopSection] = useState("initial")
@@ -14,6 +16,7 @@ const effects = () => {
 	const { shopItems } = useSelector(state => state.event)
 	const { handleSpin, configWheel } = useWheel()
 	const { t } = useTranslation("buttons")
+	const { setSection } = useSections()
 
 	useEffect(() => {
 		configWheel(WHEEL_SEDUCE_SHOP)
@@ -21,7 +24,10 @@ const effects = () => {
 
 	const resetSection = () => setShopSection("initial")
 
-	const sectionBuy = () => setShopSection("buy")
+	const sectionBuy = () => {
+		setShopSection("buy")
+		setSection(SECTIONS.shop)
+	}
 
 	const seduce = async () => {
 		const res = await handleSpin()

@@ -17,7 +17,7 @@ function useSections() {
 	const dispatch = useDispatch()
 
 	//Events
-	const setSection = event => dispatch(st(event))
+	const setSection = newSection => dispatch(st(newSection))
 
 	const resetSections = () => dispatch(st(sections.userStats))
 

@@ -4,8 +4,12 @@
 
 import getCustomOptionWheelStyle from "@functions/getCustomOptionWheelStyle"
 import i18n from "@i18n"
+import {
+	FORJE_PERCENT_BY_QUALITY,
+	LUCKY_FORJE_PERCENT_BY_QUALITY,
+} from "./forjeItems"
 
-export const WHEEL_TEMPLATE_BEGINNING = lng => {
+export const GET_WHEEL_TEMPLATE_BEGINNING = lng => {
 	const t = i18n.getFixedT(lng, "pages", "wheel")
 
 	return {
@@ -60,7 +64,7 @@ export const WHEEL_LUCKY_SHOOT = {
 	},
 }
 
-export const WHEEL_ERROR_PAGE = lng => {
+export const GET_WHEEL_RETURN = lng => {
 	const t = i18n.getFixedT(lng, "pages", "wheel")
 
 	return {
@@ -118,3 +122,52 @@ export const WHEEL_RUN = {
 		pointerHeight: 50,
 	},
 }
+
+export const GET_FORJE_WHEEL = quality => ({
+	data: [
+		{
+			option: "forje",
+			optionSize: FORJE_PERCENT_BY_QUALITY[quality],
+			style: getCustomOptionWheelStyle({ option: "forje" }),
+		},
+		{
+			option: "fail",
+			optionSize: 100 - FORJE_PERCENT_BY_QUALITY[quality],
+			style: getCustomOptionWheelStyle({ option: "fail" }),
+		},
+	],
+	config: {
+		width: 110,
+		height: 110,
+		left: 136,
+		top: 114,
+		pointerHeight: 50,
+	},
+})
+
+export const GET_LUCKY_FORJE_WHEEL = quality => ({
+	data: [
+		{
+			option: "forje",
+			optionSize: LUCKY_FORJE_PERCENT_BY_QUALITY[quality],
+			style: getCustomOptionWheelStyle({ option: "lucky" }),
+		},
+		{
+			option: "fail",
+			optionSize: 75 - LUCKY_FORJE_PERCENT_BY_QUALITY[quality],
+			style: getCustomOptionWheelStyle({ option: "normal" }),
+		},
+		{
+			option: "downgrade",
+			optionSize: 25,
+			style: getCustomOptionWheelStyle({ option: "fail" }),
+		},
+	],
+	config: {
+		width: 110,
+		height: 110,
+		left: 136,
+		top: 114,
+		pointerHeight: 50,
+	},
+})

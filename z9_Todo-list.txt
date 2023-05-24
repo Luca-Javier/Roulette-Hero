@@ -74,9 +74,9 @@ TODO LIST
 ✅ que el boton exit valla al index y el boton play sea continuar (quizas poner una view de "seguro que quiere continuar?")
 ✅ Agregar opcion cambiar idioma
 ✅ refactorizar estilos characters
-❗ Que se puedan vender items equipados
-❗ Que no se pueda vender tu unica arma equipada
-❗ lucky forje
+✅ Que se puedan vender items equipados
+✅ Que no se pueda vender tu unica arma equipada
+✅ lucky forje
 
 After beta
 ❗ portfolio de about link

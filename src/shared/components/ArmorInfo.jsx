@@ -6,7 +6,7 @@ import ItemImage from "./ItemImage"
 
 function ArmorInfo({ item }) {
 	//Variables
-	const { alt, health, armor, passiveEffects } = item
+	const { alt, health, armor, passiveEffects, price } = item
 
 	let armorFromEffect = 0
 
@@ -23,12 +23,13 @@ function ArmorInfo({ item }) {
 					<PassiveEffects effects={passiveEffects} />
 				</article>
 			</div>
-			<article className="info-stats-grid">
+			<article className="info-stats">
 				<p className="stat-icon health">{health}</p>
 				<p className="stat-icon armor">
 					{armor}
 					{realArmor !== armor && <span> = {realArmor}</span>}
 				</p>
+				<p className="money">{price}</p>
 			</article>
 		</div>
 	)

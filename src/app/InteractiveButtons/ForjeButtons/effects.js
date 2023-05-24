@@ -1,19 +1,14 @@
 import { useDispatch, useSelector } from "react-redux"
-
 import useWheel from "@contexts/useWheel"
-import { useEffect } from "react"
-import getForjeConfigWheel from "@functions/getForjeConfigWheel"
-import getForgedWeapon from "@functions/getFogedWeapon"
+import { useEffect, useState } from "react"
+import getForgedWeapon from "@functions/getForgedWeapon"
 import { replaceItem, updateStones } from "@reducers/playerReducer"
 import useSections from "@hooks/useSections"
 import getForgedArmor from "@functions/getForgedArmor"
 import { useTranslation } from "react-i18next"
-
-const upgradePriceQuality = {
-	common: 6,
-	rare: 10,
-	epic: 16,
-}
+import { FORJE_ASCENDAT_QUALITY, FORJE_PRICE } from "@constants/forjeItems"
+import { GET_FORJE_WHEEL } from "@constants/wheelTemplates"
+import { GET_LUCKY_FORJE_WHEEL } from "@constants/wheelTemplates"
 
 const effects = () => {
 	const {
@@ -21,36 +16,58 @@ const effects = () => {
 		stats: { trullyKarma },
 	} = useSelector(state => state.player)
 	const item = useSelector(state => state.event.itemInfo)
-	const { handleSpin, configWheel } = useWheel()
+	const { handleSpin, configWheel, spin } = useWheel()
 	const dispatch = useDispatch()
 	const { setSection, sections } = useSections()
 	const { t } = useTranslation("buttons")
 
-	const canForje = stones >= upgradePriceQuality[item.quality]
+	const [price, setPrice] = useState()
 
-	useEffect(() => {
-		configWheel(getForjeConfigWheel({ quality: item.quality }))
-	}, [])
+	const canForje =
+		stones >= FORJE_PRICE[item.quality] && item.quality !== "legendary" && !spin
+	const canLuckyForje =
+		stones >= 1 &&
+		item.quality !== "common" &&
+		item.quality !== "legendary" &&
+		!spin
 
 	const forje = async () => {
-		const res = await handleSpin()
+		configWheel(GET_FORJE_WHEEL(item.quality))
+		setPrice(FORJE_PRICE[item.quality])
+	}
 
-		dispatch(updateStones(-upgradePriceQuality[item.quality] / 2))
+	const luckyForje = async () => {
+		configWheel(GET_LUCKY_FORJE_WHEEL(item.quality))
+		setPrice(1)
+	}
 
-		if (res === "fail") return
-
-		const upgradedItem =
+	const saveForjeItem = ({ downgrade }) => {
+		const forjedItem =
 			item.equipType === "weapon"
-				? getForgedWeapon({ item, trullyKarma })
-				: getForgedArmor({ item, trullyKarma })
+				? getForgedWeapon({ item, trullyKarma, downgrade })
+				: getForgedArmor({ item, trullyKarma, downgrade })
 
-		dispatch(replaceItem({ newItem: upgradedItem }))
+		dispatch(replaceItem({ newItem: forjedItem }))
 
-		dispatch(updateStones(-upgradePriceQuality[item.quality] / 2))
 		setSection(sections.userStats)
 	}
 
-	return { t, canForje, forje }
+	useEffect(() => {
+		if (!price) return
+		;(async () => {
+			const res = await handleSpin()
+
+			dispatch(updateStones(-price))
+			setPrice(null)
+
+			if (res === "fail") return
+
+			if (res === "downgrade") saveForjeItem({ downgrade: true })
+			else saveForjeItem({ downgrade: false })
+		})()
+	}, [price])
+
+	return { t, canForje, forje, luckyForje, canLuckyForje }
 }
 
 export default effects

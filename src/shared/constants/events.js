@@ -19,10 +19,10 @@ const EVENT = {
 export { EVENT }
 
 const EVENT_PROBS = new WeightedList([
-	[EVENT.fight, 200],
+	[EVENT.fight, 20],
 	[EVENT.backFight, 25],
 	[EVENT.shop, 25],
-	[EVENT.chest, 10],
+	[EVENT.chest, 1000],
 	[EVENT.getKarma, 10],
 	[EVENT.getLucky, 10],
 	[EVENT.changeKarma, 10],

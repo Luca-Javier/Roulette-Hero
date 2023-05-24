@@ -2,10 +2,12 @@ import { useSelector } from "react-redux"
 import useEquip from "@hooks/useEquip"
 import ItemImage from "@components/ItemImage"
 import Button from "@components/Button"
+import useSections from "@hooks/useSections"
 
 function SelectingItem() {
 	const item = useSelector(state => state.event.itemInfo)
 	const { equipOnSide, equipment } = useEquip({ item })
+	const { setSection, sections } = useSections()
 
 	const { leftHand, rightHand, leftFoot, rightFoot } = equipment
 
@@ -40,7 +42,7 @@ function SelectingItem() {
 				)}
 			</div>
 			<div className="flex justify-center w-100">
-				<Button text="<-" onClick={() => setIsSelectingSide("")} />
+				<Button text="<-" onClick={() => setSection(sections.itemInfo)} />
 			</div>
 		</article>
 	)
