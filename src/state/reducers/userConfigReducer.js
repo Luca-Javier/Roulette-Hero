@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { ACHIEVES } from "../../shared/constants/achieves"
+import { ACHIEVES } from "@constants/achieves"
 
 const initialState = {
 	music: 0,

@@ -63,7 +63,7 @@ TODO LIST
 ✅ random textos
 ❗ Repasar todos los efectos y comprobar que todo anda
 ❗ Jugar varias partidas y equilibrar las cosas
-❗ logros
+✅ logros
 ✅ refactoring
 ✅ Performance con lazy load
 ❗ web vitals 

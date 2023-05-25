@@ -9,8 +9,8 @@ export const WEAPON_VARIANTS = {
 	simple: "simple",
 	lucky: "lucky",
 	bloody: "bloody",
-	superCritic: "superCritic",
-	strongestAttack: "strongestAttack",
+	lethal: "lethal",
+	strong: "strong",
 }
 
 export const ARMOR_VARIANTS = {
@@ -44,4 +44,13 @@ export const QUALITY_ITEMS = {
 export const EQUIPTYPE = {
 	weapon: "weapon",
 	armor: "armor",
+}
+
+export const ACTIVE_EFFECTS = {
+	lifeSteal: "lifeSteal",
+	superCritic: "superCritic",
+	strongestAttack: "strongestAttack",
+	luckyHit: "luckyHit",
+	stoleMoney: "stoleMoney",
+	stoleStones: "stoleStones",
 }

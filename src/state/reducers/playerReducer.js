@@ -18,7 +18,7 @@ const playerReducer = createSlice({
 	reducers: {
 		resetPlayerStore: state => {
 			const characterInitialState = characters.find(
-				character => character.name == state.className
+				character => character.id == state.id
 			)
 
 			Object.assign(state, {

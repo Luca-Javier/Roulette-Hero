@@ -7,7 +7,7 @@ const initialState = {
 		src: "",
 		fullHealth: null,
 		currentHealth: null,
-		armor: null,
+		//armor: null,
 		attack: null,
 		critickProb: null,
 		dodge: null,

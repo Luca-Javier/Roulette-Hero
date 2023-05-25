@@ -14,6 +14,9 @@ function getCustomOptionWheelStyle({ option }) {
 	else if (option === "lifeSteal") bgOptionColor = "#c21210"
 	else if (option === "forje") bgOptionColor = "#314c90"
 	else if (option === "lucky") bgOptionColor = "#962ce9"
+	else if (option === "stoleMoney") bgOptionColor = "#ebe534"
+	else if (option === "superCritic") bgOptionColor = "#eba234"
+	else if (option === "strongestAttack") bgOptionColor = "#612d05"
 	else if (option === "Play") {
 		bgOptionColor = "#7f8084"
 		textColor = "black"

@@ -5,8 +5,8 @@
 		"lucky": "Lucky",
 		"armored": "Armored",
 		"bloody": "Bloody",
-		"superCritic": "Lethal",
-		"strongestAttack": "Strong"
+		"lethal": "Lethal",
+		"strong": "Strong"
 	},
 	"quality": {
 		"common": "common",
@@ -19,7 +19,7 @@
 		"hammer": "hammer",
 		"rapier": "rapier",
 		"pickaxe": "pickaxe",
-		"pirate": "sable",
+		"sable": "sable",
 		"helmet": "helmet",
 		"chest": "chest",
 		"legs": "legs",

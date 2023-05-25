@@ -18,8 +18,7 @@ const getAttackWheelConfig = ({ item, playerData }) => {
 	const { classEffects } = playerData,
 		{ trullyKarma, critic: criticProb } = playerData.stats
 
-	//? Está bien esto??
-	let karmaFromItem = 1 + item.passiveEffects.luckyHitMultiplier || 1,
+	const karmaFromItem = 1 + item.passiveEffects.luckyHitMultiplier || 1,
 		attackFromItem = 1 + item.passiveEffects.attackMultiplier || 1,
 		attackFromHammerItem = 1 + item.passiveEffects.hammerDamageMultiplier || 1,
 		criticFromRapierItem = 1 + item.passiveEffects.rapierCriticMultiplier || 1
@@ -29,7 +28,7 @@ const getAttackWheelConfig = ({ item, playerData }) => {
 	if (classEffects?.extraHammerDamage && item.type === "hammer")
 		attackFromClass += classEffects.extraHammerDamage
 
-	let realKarma = trullyKarma * karmaFromItem,
+	const realKarma = trullyKarma * karmaFromItem,
 		realAttack = Math.round(
 			item.attack * attackFromItem * attackFromHammerItem * attackFromClass
 		)
@@ -38,21 +37,21 @@ const getAttackWheelConfig = ({ item, playerData }) => {
 
 	const getProb = prob => {
 		if (!prob) return allProb
-		allProb -= prob
-		return prob
+		allProb -= Math.round(prob)
+		return Math.round(prob)
 	}
 
 	const possibleEffectsAttacks = {}
 
 	const activeEffects = Object.keys(item.activeEffects).map(effectKey => {
-		const effectItem = item.activeEffects[effectKey]
+		const effect = item.activeEffects[effectKey]
 
 		const { size, attack } = getActiveEffectAttack({
 			effectKey,
 			baseDamage: realAttack,
 		})
 
-		possibleEffectsAttacks[effectKey] = { ...effectItem, attack }
+		possibleEffectsAttacks[effectKey] = { effect, attack }
 
 		return {
 			option: effectKey,
@@ -61,6 +60,13 @@ const getAttackWheelConfig = ({ item, playerData }) => {
 		}
 	})
 
+	/* const { attackData, possibleAttack } = getActiveEffectAttackFromType({
+		type: item.type,
+		baseDamage: realAttack,
+		karma: realKarma,
+	})
+	if (attackData.length > 0) getProb(attackData.optionSize) */
+
 	//Possible attacks as keys and the damage as values
 	const possibleAttacks = {
 		normal: realAttack,
@@ -68,6 +74,7 @@ const getAttackWheelConfig = ({ item, playerData }) => {
 		fail: 0,
 		dodged: 0,
 		...possibleEffectsAttacks,
+		//...possibleAttack,
 	}
 
 	const wheelConfig = {
@@ -83,6 +90,7 @@ const getAttackWheelConfig = ({ item, playerData }) => {
 				style: getCustomOptionWheelStyle({ option: "fail" }),
 			},
 			...activeEffects,
+			//...attackData,
 			{
 				option: "normal",
 				optionSize: getProb(),

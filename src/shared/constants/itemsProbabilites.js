@@ -31,8 +31,8 @@ export const WEAPON_VARIANT_PROBS = new WeightedList([
 	[WEAPON_VARIANTS.simple, 55],
 	[WEAPON_VARIANTS.lucky, 22.5],
 	[WEAPON_VARIANTS.bloody, 22.5],
-	[WEAPON_VARIANTS.superCritic, 22.5],
-	[WEAPON_VARIANTS.strongestAttack, 22.5],
+	[WEAPON_VARIANTS.lethal, 22.5],
+	[WEAPON_VARIANTS.strong, 22.5],
 ])
 
 export const ARMOR_VARIANT_PROBS = new WeightedList([

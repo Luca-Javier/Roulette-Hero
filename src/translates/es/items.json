@@ -5,8 +5,8 @@
 		"lucky": "de la suerte",
 		"armored": "resistente",
 		"bloody": "chupa sangre",
-		"superCritic": "letal",
-		"strongestAttack": "fuerte"
+		"lethal": "letal",
+		"strong": "fuerte"
 	},
 	"quality": {
 		"common": "común",
@@ -19,7 +19,7 @@
 		"hammer": "Martillo",
 		"rapier": "Estoque",
 		"pickaxe": "Pico",
-		"pirate": "sable",
+		"sable": "sable",
 		"helmet": "Casco",
 		"chest": "Peto",
 		"legs": "Pantalones",
