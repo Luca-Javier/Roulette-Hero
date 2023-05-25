@@ -34,10 +34,9 @@ const resources = {
 
 i18n.use(initReactI18next).init({
 	lng: "en",
-	debug: true,
-	returnNull: true,
+	debug: Boolean(import.meta.env.VITE_DEBUG_I18N),
+	//returnNull: true,
 	fallbackLng: "en",
-
 	resources,
 })
 

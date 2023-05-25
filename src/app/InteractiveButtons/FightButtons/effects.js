@@ -16,18 +16,20 @@ import { useNavigate } from "react-router-dom"
 import { WHEEL_LUCKY_SHOOT, WHEEL_RUN } from "@constants/wheelTemplates"
 import useReward from "@hooks/useReward"
 import { useTranslation } from "react-i18next"
+import { ACTIVE_EFFECTS } from "@constants/items"
+import { updateMoney, updateStones } from "@reducers/playerReducer"
 
 const animationAttacks = {
 	player: {
 		normal: "player-attack",
-		critic: "player-attack",
+		//critic: "player-attack",
 		dodged: "player-dodged",
 		fail: "player-fail",
 		kill: "one-shot",
 	},
 	enemy: {
 		normal: "enemy-attack",
-		critic: "enemy-attack",
+		//critic: "enemy-attack",
 		dodged: "enemy-dodged",
 		fail: "enemy-fail",
 	},
@@ -132,7 +134,9 @@ function effects() {
 
 		setIsDisabled(true)
 		;(async () => {
-			let res = await handleSpin()
+			let res = await handleSpin(
+				import.meta.env.VITE_SELECTED_ATTACK_FIGHT || undefined
+			)
 			configWheel(enemy.wheelConfig)
 
 			if (res === "kill") {
@@ -149,11 +153,24 @@ function effects() {
 
 			if (attackDodged) res = "dodged"
 
-			dispatch(setAnimation(animationAttacks.player[res]))
+			dispatch(setAnimation(animationAttacks.player[res] || "player-attack"))
+
+			if (import.meta.env.VITE_DEBUG_FIGHT)
+				console.log({
+					res,
+					leftData: player.leftAttack.wheelConfig.data,
+					rightData: player.rightAttack.wheelConfig.data,
+					player,
+					enemy,
+				})
+
 			setTimeout(() => {
 				dispatch(endAnimation())
 
-				const attackDamage = selectedAttack.possibleAttacks[res]
+				const attackDamage =
+					typeof selectedAttack.possibleAttacks[res] !== "object"
+						? selectedAttack.possibleAttacks[res]
+						: selectedAttack.possibleAttacks[res].attack
 
 				dispatch(attackEnemy({ res, attackDamage }))
 
@@ -164,7 +181,20 @@ function effects() {
 							: addMessage(t("enemy dodged"))
 					)
 
-				//? no hace falta
+				if (res === ACTIVE_EFFECTS.stoleMoney) {
+					const money = selectedAttack.possibleAttacks[res].effect
+
+					dispatch(addMessage(t("stole money", { money })))
+					dispatch(updateMoney(money))
+				}
+
+				if (res === ACTIVE_EFFECTS.stoleStones) {
+					const stones = selectedAttack.possibleAttacks[res].effect
+
+					dispatch(addMessage(t("stole stones", { stones })))
+					dispatch(updateStones(stones))
+				}
+
 				setSelectedAttack(null)
 			}, 1000)
 
@@ -188,7 +218,7 @@ function effects() {
 
 			if (attackDodged) res = "dodged"
 
-			dispatch(setAnimation(animationAttacks.enemy[res]))
+			dispatch(setAnimation(animationAttacks.enemy[res] || "enemy-attack"))
 
 			setTimeout(() => {
 				dispatch(endAnimation())

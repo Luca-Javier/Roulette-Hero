@@ -11,9 +11,9 @@ import {
 	removePuchasedItem,
 	setLastEvent,
 	setEvent,
+	setSection,
 } from "@reducers/eventReducer"
 import { getWalkTime } from "@functions/getWalkingTime"
-import useSections from "./useSections"
 import useReward from "./useReward"
 import {
 	addBackpag,
@@ -24,21 +24,20 @@ import {
 import { useTranslation } from "react-i18next"
 import { i18n_random } from "@functions/translators"
 import useAchieve from "./useAchieves"
+import { SECTIONS } from "@constants/sections"
 
 function useEvent() {
-	//Imports
-	const { event, lastEvent } = useSelector(state => state.event)
+	const { event, lastEvent, section } = useSelector(state => state.event)
 	const { money, stats } = useSelector(state => state.player)
 	const { trullyKarma } = stats
 	const dispatch = useDispatch()
-	const { section, sections, setSection } = useSections()
 	const { getReward } = useReward()
 	const { t } = useTranslation("messages")
 	const { unlockAchieve } = useAchieve()
 
 	const [customCallback, setCustomCallback] = useState()
 
-	//Custom Events
+	//Events which are just click the button or not
 	const simpleEventCallback = () => {
 		customCallback()
 		dispatch(setEvent(EVENT.waiting))
@@ -46,8 +45,7 @@ function useEvent() {
 
 	const walk = () => {
 		dispatch(setEvent(EVENT.walking))
-
-		setSection(sections.userStats)
+		setSection(SECTIONS.userStats)
 	}
 
 	const fight = () => dispatch(setEvent(EVENT.fighting))
@@ -167,19 +165,19 @@ function useEvent() {
 			return undefined
 		}
 		if (event === EVENT.shop) {
-			setSection(sections.shop)
+			setSection(SECTIONS.shop)
 			dispatch(createRandomShopItems({ trullyKarma }))
 
 			return undefined
 		}
 
-		if (event === EVENT.fighting) setSection(sections.fighting)
+		if (event === EVENT.fighting) setSection(SECTIONS.fighting)
 
 		const wasInFight =
 			event === EVENT.walking &&
-			(section === sections.fighting || section === sections.seeSwords)
+			(section === SECTIONS.fighting || section === SECTIONS.seeSwords)
 
-		if (wasInFight) setSection(sections.userStats)
+		if (wasInFight) setSection(SECTIONS.userStats)
 
 		if (event !== EVENT.walking) return undefined
 		dispatch(cleanChat())

@@ -6,7 +6,7 @@ import { useSelector } from "react-redux"
 import { useTranslation } from "react-i18next"
 import Loader from "@components/Loader"
 import Tittle from "@components/Tittle"
-import NotificationContainer from "./shared/components/NotificationContainer/NotificationContainer"
+import NotificationContainer from "@components/NotificationContainer/NotificationContainer"
 
 export default () => {
 	const { language } = useSelector(state => state.userConfig)

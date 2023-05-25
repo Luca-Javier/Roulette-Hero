@@ -37,6 +37,8 @@ export default {
 		"player dodged": `You ${c("good", "dodged")} the attack`,
 		win: "You win!",
 		die: "You died...",
+		"stole money": `You stoled ${money} coins from the enemy`,
+		"stole stones": `You stoled <b class='stones'>{{stones}}</b> stones from the enemy`,
 	},
 	reward: {
 		"get money": `You got ${money} coins`,

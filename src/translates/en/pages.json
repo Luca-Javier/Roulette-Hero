@@ -27,7 +27,8 @@
 	},
 	"askName": {
 		"ask name": "What is your name traveler?",
-		"ready": "Ready"
+		"ready": "Ready",
+		"title": "Only letter and numbers are valid"
 	},
 	"error": {
 		"title": "Oops!",

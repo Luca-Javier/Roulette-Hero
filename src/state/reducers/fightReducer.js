@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 import getRandomEnemy from "@functions/getRandomEnemy2"
 import getAttackWheelConfig from "@functions/getAttackWheelConfig"
+import { ACTIVE_EFFECTS } from "../../shared/constants/items"
 
 const initialState = {
 	enemy: {
@@ -78,11 +79,13 @@ const fightReducer = createSlice({
 				res === "fail" ||
 				res === "critic" ||
 				res === "dodged" ||
-				res === "kill"
+				res === "kill" ||
+				res === ACTIVE_EFFECTS.stoleMoney ||
+				res === ACTIVE_EFFECTS.stoleStones
 			)
 				state.enemy.currentHealth -= attack
 
-			if (res === "lifeSteal") {
+			if (res === ACTIVE_EFFECTS.lifeSteal) {
 				state.enemy.currentHealth -= attack.attack
 
 				const lifeSteal = Math.floor(attack.attack * attack.effect)
@@ -91,6 +94,12 @@ const fightReducer = createSlice({
 					state.player.currentHealth = state.player.fullHealth
 				else state.player.currentHealth += lifeSteal
 			}
+
+			if (
+				res === ACTIVE_EFFECTS.strongestAttack ||
+				res === ACTIVE_EFFECTS.superCritic
+			)
+				state.enemy.currentHealth -= attack.attack * attack.effect
 
 			if (state.enemy.currentHealth < 0) state.enemy.currentHealth = 0
 		},

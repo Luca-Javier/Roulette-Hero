@@ -7,20 +7,24 @@ function useAchieve() {
 	const dispatch = useDispatch()
 	const { achieves } = useSelector(state => state.userConfig)
 	const { notificate } = useNotification()
+	const equipment = useSelector(state => state.player.equipment)
 
-	const unlockAchieve = achieve => {
-		if (achieves.includes(achieve)) return
+	const unlockHammerBro = () => {
+		if (achieves.includes(ACHIEVES["hammer bro"])) return
 
-		notificate(ACHIEVES_MESSAGES[achieve])
-
-		if (achieve === ACHIEVES["hammer bro"])
-			return dispatch(unlockCharacter({ id: 3, achieve: "hammer bro" }))
-
-		if (achieve === ACHIEVES["knight"])
-			return dispatch(unlockCharacter({ id: 2, achieve: "knight" }))
+		notificate(ACHIEVES_MESSAGES["hammer bro"])
+		dispatch(unlockCharacter({ id: 3, achieve: "hammer bro" }))
 	}
 
-	return { unlockAchieve }
+	const unlockKnight = () => {
+		if (achieves.includes(ACHIEVES["knight"])) return
+		if (Object.values(equipment).includes(null)) return
+
+		notificate(ACHIEVES_MESSAGES["knight"])
+		dispatch(unlockCharacter({ id: 2, achieve: "knight" }))
+	}
+
+	return { unlockHammerBro, unlockKnight }
 }
 
 export default useAchieve

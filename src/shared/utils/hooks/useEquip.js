@@ -8,16 +8,14 @@ import useSections from "@hooks/useSections"
 import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react"
 import useAchieve from "./useAchieves"
-import { ACHIEVES } from "../../constants/achieves"
 
 function useEquip({ item }) {
 	const dispatch = useDispatch()
 	const { resetSections, setSection, sections } = useSections()
 	const equipment = useSelector(state => state.player.equipment)
 	const { leftHand, rightHand, leftFoot, rightFoot } = equipment
-	const { unlockAchieve } = useAchieve()
+	const { unlockKnight } = useAchieve()
 
-	//States
 	const [isSelectingSide, setIsSelectingSide] = useState("")
 
 	//Logic
@@ -41,8 +39,7 @@ function useEquip({ item }) {
 
 			const oldItem = equipment[equipKey]
 
-			if (!Object.values(equipment).includes(null))
-				unlockAchieve(ACHIEVES["knight"])
+			unlockKnight()
 
 			return doeEquipItem({ ...item, equipKey }, oldItem)
 		}

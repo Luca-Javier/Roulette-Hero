@@ -34,6 +34,8 @@ export default {
 		"player dodged": `Has ${c("good", "esquivado")} el ataque`,
 		win: "Ganaste!",
 		die: "Moriste...",
+		"stole money": `Robaste ${money} monedas del enemigo`,
+		"stole stones": `Robaste <b class='stones'>{{stones}}</b> piedras del enemigo`,
 	},
 	reward: {
 		"get money": `Obtuviste ${money} monedas`,

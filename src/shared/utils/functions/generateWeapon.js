@@ -1,3 +1,4 @@
+import { EQUIPTYPE } from "../../constants/items"
 import getBasicItemTemplate from "./getBasicItemTemplate"
 import getWeaponEffects from "./getWeaponEffects"
 
@@ -12,7 +13,7 @@ import getWeaponEffects from "./getWeaponEffects"
  * @return {Weapon}
  */
 const generateWeapon = ({ trullyKarma }) => {
-	const equipType = "weapon"
+	const equipType = EQUIPTYPE.weapon
 
 	const {
 		type,

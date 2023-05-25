@@ -1,5 +1,10 @@
 import i18n from "@i18n"
 import { i18n_alt } from "@functions/translators"
+import {
+	ACTIVE_EFFECTS,
+	ARMOR_PASSIVE_EFFECTS,
+	WEAPON_PASSIVE_EFFECTS,
+} from "./items"
 
 const equipmentTemplate = {
 	helmet: null,
@@ -194,7 +199,7 @@ export default () => {
 					price: 14,
 					attack: 4,
 					passiveEffects: {
-						hammerDamageMultiplier: 0.1,
+						[WEAPON_PASSIVE_EFFECTS.hammerDamageMultiplier]: 0.1,
 					},
 					activeEffects: {},
 				},
@@ -252,11 +257,11 @@ export default () => {
 					price: 16,
 					attack: 3,
 					passiveEffects: {
-						hammerDamageMultiplier: 0.1,
-						luckyHitMultiplier: 0.1,
+						[WEAPON_PASSIVE_EFFECTS.hammerDamageMultiplier]: 0.1,
+						[WEAPON_PASSIVE_EFFECTS.luckyHitMultiplier]: 0.1,
 					},
 					activeEffects: {
-						lifeSteal: 0.2,
+						[ACTIVE_EFFECTS.lifeSteal]: 0.2,
 					},
 				},
 				rightHand: {
@@ -274,15 +279,13 @@ export default () => {
 					variant: "lethal",
 					price: 15,
 					attack: 3,
-					passiveEffects: {
-						luckyHitMultiplier: 0.1,
-					},
+					passiveEffects: {},
 					activeEffects: {
-						superCritic: 0.2,
+						[ACTIVE_EFFECTS.superCritic]: 0.2,
 					},
 				},
 				legs: {
-					id: 4,
+					id: 3,
 					src: "/src/assets/armors/legs/simple-legs.svg",
 					alt: i18n_alt({ type: "legs", quality: "common", variant: "simple" }),
 					quality: "common",
@@ -294,11 +297,11 @@ export default () => {
 					armor: 0.2,
 					health: 4,
 					passiveEffects: {
-						luckyStatMultiplier: 0.1,
+						[ARMOR_PASSIVE_EFFECTS.luckyStatMultiplier]: 0.1,
 					},
 				},
 				chest: {
-					id: 5,
+					id: 4,
 					src: "/src/assets/armors/chests/simple-chest.svg",
 					alt: i18n_alt({
 						type: "chest",
@@ -314,13 +317,13 @@ export default () => {
 					armor: 0.2,
 					health: 4,
 					passiveEffects: {
-						extraArmor: 0.1,
+						[ARMOR_PASSIVE_EFFECTS.extraArmor]: 0.1,
 					},
 				},
 			},
 			backpag: [
 				{
-					id: 3,
+					id: 5,
 					src: "/src/assets/weapons/swords/strongest-sword.svg",
 					alt: i18n_alt({
 						type: "sword",
@@ -334,10 +337,10 @@ export default () => {
 					price: 47,
 					attack: 5,
 					passiveEffects: {
-						luckyHitMultiplier: 0.1,
+						[WEAPON_PASSIVE_EFFECTS.luckyHitMultiplier]: 0.1,
 					},
 					activeEffects: {
-						strongestAttack: 0.2,
+						[ACTIVE_EFFECTS.strongestAttack]: 0.2,
 					},
 				},
 				{
@@ -356,8 +359,27 @@ export default () => {
 					attack: 5,
 					passiveEffects: {},
 					activeEffects: {
-						stoleMoney: 3,
-						strongestAttack: 0.2,
+						[ACTIVE_EFFECTS.stoleMoney]: 3,
+						[ACTIVE_EFFECTS.strongestAttack]: 0.2,
+					},
+				},
+				{
+					id: 7,
+					src: "/src/assets/weapons/pickaxes/simple-pickaxe.svg",
+					alt: i18n_alt({
+						type: "pickaxe",
+						quality: "rare",
+						variant: "simple",
+					}),
+					quality: "rare",
+					equipType: "weapon",
+					type: "pickaxe",
+					variant: "simple",
+					price: 47,
+					attack: 6,
+					passiveEffects: {},
+					activeEffects: {
+						[ACTIVE_EFFECTS.stoleStones]: 1,
 					},
 				},
 			],

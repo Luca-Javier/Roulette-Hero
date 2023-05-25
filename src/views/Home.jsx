@@ -9,14 +9,12 @@ import { GET_WHEEL_TEMPLATE_BEGINNING } from "@constants/wheelTemplates"
 import useResetApp from "@hooks/useResetApp"
 
 function Home() {
-	//Imports
 	const navigate = useNavigate()
 	const { handleSpin, configWheel, spin } = useWheel()
 	const { numEvents } = useSelector(state => state.event)
 	const { t, i18n } = useTranslation("pages", { keyPrefix: "index" })
 	const { reset } = useResetApp()
 
-	//Effects
 	useEffect(() => {
 		configWheel(GET_WHEEL_TEMPLATE_BEGINNING(i18n.language))
 
@@ -26,7 +24,6 @@ function Home() {
 		import("./Playing").then(() => import("./AskName"))
 	}, [])
 
-	//Events
 	const goCharacter = async () => {
 		await handleSpin(1)
 		navigate("/characters")

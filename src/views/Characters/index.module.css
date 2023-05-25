@@ -1,0 +1,46 @@
+.characters-btns {
+	display: flex;
+	width: 40%;
+	flex-direction: column;
+	justify-content: flex-start;
+	border: medium solid var(--color-second);
+	margin: 1rem;
+	margin-right: 0;
+	border-radius: 15px;
+	padding: 0.5rem;
+}
+.characters-btns button {
+	flex-grow: unset;
+	overflow: hidden;
+	word-wrap: break-word;
+}
+.character-info-img {
+	display: flex;
+	justify-content: center;
+	max-height: 40%;
+	padding: 1rem;
+}
+
+.character-info-stats {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	width: 50%;
+	padding: 1rem;
+}
+
+.character-info-equip-img-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	width: 50%;
+	padding: 1rem;
+}
+.character-info-equip-img-container img {
+	width: 25px;
+	margin-right: 0.5rem;
+}
+.character-info-money {
+	padding: 1rem;
+	width: 50%;
+	display: flex;
+	justify-content: space-around;
+}

@@ -32,7 +32,6 @@ function About() {
 				<p className="color-placeholder m-0">{t("description")}</p>
 			</div>
 			<p className="my-2">{t("issues text")}</p>
-
 			<ul className="reset-list">
 				<li>
 					<a href="mailto: luca.jav45@gmail.com" target="_blank" rel="noopener">

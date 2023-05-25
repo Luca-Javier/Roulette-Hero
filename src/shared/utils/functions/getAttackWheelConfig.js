@@ -1,4 +1,4 @@
-import getActiveEffectAttack from "./getActiveEffectAttack"
+import getActiveEffectSize from "./getActiveEffectSize"
 import getCustomOptionWheelStyle from "./getCustomOptionWheelStyle"
 
 /**
@@ -46,12 +46,12 @@ const getAttackWheelConfig = ({ item, playerData }) => {
 	const activeEffects = Object.keys(item.activeEffects).map(effectKey => {
 		const effect = item.activeEffects[effectKey]
 
-		const { size, attack } = getActiveEffectAttack({
+		possibleEffectsAttacks[effectKey] = { effect, attack: realAttack }
+
+		const size = getActiveEffectSize({
 			effectKey,
 			baseDamage: realAttack,
 		})
-
-		possibleEffectsAttacks[effectKey] = { effect, attack }
 
 		return {
 			option: effectKey,
@@ -60,13 +60,6 @@ const getAttackWheelConfig = ({ item, playerData }) => {
 		}
 	})
 
-	/* const { attackData, possibleAttack } = getActiveEffectAttackFromType({
-		type: item.type,
-		baseDamage: realAttack,
-		karma: realKarma,
-	})
-	if (attackData.length > 0) getProb(attackData.optionSize) */
-
 	//Possible attacks as keys and the damage as values
 	const possibleAttacks = {
 		normal: realAttack,
@@ -74,7 +67,6 @@ const getAttackWheelConfig = ({ item, playerData }) => {
 		fail: 0,
 		dodged: 0,
 		...possibleEffectsAttacks,
-		//...possibleAttack,
 	}
 
 	const wheelConfig = {
@@ -90,7 +82,7 @@ const getAttackWheelConfig = ({ item, playerData }) => {
 				style: getCustomOptionWheelStyle({ option: "fail" }),
 			},
 			...activeEffects,
-			//...attackData,
+
 			{
 				option: "normal",
 				optionSize: getProb(),

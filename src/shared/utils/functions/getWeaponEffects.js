@@ -1,4 +1,4 @@
-import { WEAPONS, WEAPON_VARIANTS } from "../../constants/items"
+import { ACTIVE_EFFECTS, WEAPONS, WEAPON_VARIANTS } from "@constants/items"
 
 function getWeaponEffects({ type, variant, multiplier }) {
 	const passiveEffects = {}
@@ -23,7 +23,7 @@ function getWeaponEffects({ type, variant, multiplier }) {
 		activeEffects.superCritic = multiplier(0.2)
 
 	if (variant === WEAPON_VARIANTS.strong)
-		activeEffects.strongestAttack = multiplier(0.1)
+		activeEffects[ACTIVE_EFFECTS.strongestAttack] = multiplier(0.1)
 
 	return { passiveEffects, activeEffects }
 }

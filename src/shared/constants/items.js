@@ -49,8 +49,18 @@ export const EQUIPTYPE = {
 export const ACTIVE_EFFECTS = {
 	lifeSteal: "lifeSteal",
 	superCritic: "superCritic",
-	strongestAttack: "strongestAttack",
+	strongestAttack: "strongest",
 	luckyHit: "luckyHit",
-	stoleMoney: "stoleMoney",
-	stoleStones: "stoleStones",
+	stoleMoney: "stole",
+	stoleStones: "mining",
+}
+
+export const WEAPON_PASSIVE_EFFECTS = {
+	luckyHitMultiplier: "luckyHitMultiplier",
+	hammerDamageMultiplier: "hammerDamageMultiplier",
+}
+
+export const ARMOR_PASSIVE_EFFECTS = {
+	extraArmor: "extraArmor",
+	luckyStatMultiplier: "luckyStatMultiplier",
 }

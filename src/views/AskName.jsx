@@ -21,7 +21,9 @@ function AskName() {
 				<label htmlFor="name">{t("ask name")}</label>
 				<input
 					defaultValue={import.meta.env.DEV ? "Developer" : ""}
-					pattern="^[A-Za-z0-9ÑñÁáÉéÍíÓóÚúÜü\s_-]+$"
+					pattern="[A-Za-z0-9ÑñÁáÉéÍíÓóÚúÜü\s]+"
+					maxLength={13}
+					title={t("title")}
 					required
 					autoComplete="off"
 					className="input placeholder"

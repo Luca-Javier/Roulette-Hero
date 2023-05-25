@@ -1,3 +1,4 @@
+import styles from "./index.module.css"
 import React from "react"
 
 function CharacterInfo({ data }) {
@@ -6,11 +7,11 @@ function CharacterInfo({ data }) {
 	return (
 		<section className="h-100 flex flex-column">
 			<h3 className="my-0 txt-center">{className}</h3>
-			<div className="character-info-img">
+			<div className={styles.characterInfoImg}>
 				{<img src={img} alt={description} style={{ height: 130 }} />}
 			</div>
 			<div className="flex">
-				<article className="character-info-stats">
+				<article className={styles.characterInfoStats}>
 					{Object.keys(stats).map(key =>
 						key !== "trullyKarma" ? (
 							<p key={key} className={`stat-icon ${key}`}>
@@ -20,7 +21,7 @@ function CharacterInfo({ data }) {
 					)}
 				</article>
 
-				<div className="character-fino-equip-img-container">
+				<div className={styles.characterInfoEquipImgContainer}>
 					<p className="money">{money}</p>
 					<p className="stone">{stones}</p>
 

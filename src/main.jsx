@@ -1,15 +1,15 @@
-import React, { Suspense } from "react"
+import React from "react"
 import App from "./App"
 import "./global.css"
 import "@fontsource/arvo"
 import "@fontsource/press-start-2p"
-import { WheelProvider } from "./state/contexts/useWheel"
+import { WheelProvider } from "@contexts/useWheel"
 import { Provider } from "react-redux"
 import { store, persistor } from "./state/store"
 import { createRoot } from "react-dom/client"
 import { PersistGate } from "redux-persist/integration/react"
 import "@i18n"
-import { NotificationProvider } from "./state/contexts/useNotification"
+import { NotificationProvider } from "@contexts/useNotification"
 
 createRoot(document.getElementById("root")).render(
 	<React.StrictMode>

@@ -27,7 +27,8 @@
 	},
 	"askName": {
 		"ask name": "Cuál es tu nombre viajero?",
-		"ready": "Listo"
+		"ready": "Listo",
+		"title": "Solo letras y numeros son válidos"
 	},
 	"error": {
 		"title": "Oops!",
