@@ -12,6 +12,8 @@ export type Weapon = {
 		luckyHitMultiplier?: number
 	}
 	activeEffects: {
+		stole?: number
+		mining?: number
 		lifeSteal?: number
 		superCritic?: number
 		strongestAttack?: number
@@ -20,17 +22,18 @@ export type Weapon = {
 
 export type Armor = {
 	id: number
-	price: number
 	src: string
 	alt: string
 	quality: string
-	equipKey?: string
 	equipType: string | "armor"
 	type: string
+	price: number
+	variant: string
 	armor: number
 	health: number
 	passiveEffects: {
 		luckyStatMultiplier?: number
+		extraArmor?: number
 	}
 }
 

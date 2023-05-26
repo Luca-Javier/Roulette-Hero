@@ -1,7 +1,7 @@
-import enemies from "@config/enemies.json"
+import enemies from "@constants/enemies.json"
 
 /**
- * Generates a random enemy with calculated stats using player stats and numEvents
+ * Generates a random enemy with calculated stats using numEvents
  *
  * @param {Object} props
  * @param {Object} props.playerStats
@@ -10,37 +10,27 @@ import enemies from "@config/enemies.json"
  * @returns {Object} enemy
  */
 function getRandomEnemy({ playerStats, numEvents }) {
-	//Imports
 	const enemy = Object.assign(
 		{},
 		enemies[Math.floor(Math.random() * enemies.length)]
 	)
 
-	const { trullyKarma, health, armor, lucky } = playerStats
+	const { lucky } = playerStats
 
-	//Functions
-	const calculateStatByKarma = valueStat => {
-		const reduceByCantEvents = numEvents < 10 ? 0.8 + numEvents * 0.02 : 1
+	const scalability = scale => {
+		const min = 0.75 * scale * numEvents,
+			randomMax = Math.random() * scale * numEvents
 
-		const maxValue = valueStat * 1.8 * reduceByCantEvents,
-			karmaMultiplier = trullyKarma > 0 ? 1 + trullyKarma * 0.05 : 1,
-			statMultiplier = valueStat * 0.5
-
-		const calculatedValue =
-			maxValue - Math.random() * statMultiplier * karmaMultiplier
-
-		return Math.floor(calculatedValue)
+		return Math.round(Math.max(min, randomMax))
 	}
 
-	//Variables
-	const calculatedHealth = calculateStatByKarma(health)
+	const health = scalability(15)
 	const specialMovesProbs = lucky > 0 ? 15 : 15 + lucky * -1.5
-	const attack = health / 7
 
-	enemy.fullHealth = calculatedHealth
-	enemy.currentHealth = calculatedHealth
-	enemy.armor = calculateStatByKarma(armor)
-	enemy.attack = calculateStatByKarma(attack)
+	enemy.fullHealth = health
+	enemy.currentHealth = health
+	enemy.armor = scalability(0.1)
+	enemy.attack = scalability(3)
 	enemy.critickProb = specialMovesProbs
 	enemy.dodge = specialMovesProbs
 

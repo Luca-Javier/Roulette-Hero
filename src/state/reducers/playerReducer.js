@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 import setArmorStats from "@functions/setArmorStats"
 import removeStatsFromArmor from "@functions/removeAmorStats"
 import getAllCharacters from "@constants/allCharacters"
-import { EQUIPTYPE } from "../../shared/constants/items"
+import { EQUIPTYPE } from "@constants/items"
 
 const characters = getAllCharacters()
 
@@ -82,7 +82,7 @@ const playerReducer = createSlice({
 
 				console.log(key)
 
-				if (newItem.equipType == "armor") {
+				if (newItem.equipType == EQUIPTYPE.armor) {
 					removeStatsFromArmor({ state, item: state.equipment[key] })
 					setArmorStats({ state, item: newItem })
 				}

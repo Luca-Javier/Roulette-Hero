@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
-import getRandomEnemy from "@functions/getRandomEnemy2"
+import getRandomEnemy from "@functions/getRandomEnemy"
 import getAttackWheelConfig from "@functions/getAttackWheelConfig"
-import { ACTIVE_EFFECTS } from "../../shared/constants/items"
+import { ACTIVE_EFFECTS } from "@constants/items"
 
 const initialState = {
 	enemy: {

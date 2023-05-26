@@ -1,12 +1,11 @@
 import React from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import emptyHeadImg from "@assets/armors/empty/head.svg"
 import emptyHandImg from "@assets/armors/empty/hand.svg"
 import emptyChestImg from "@assets/armors/empty/chest.svg"
 import emptyPantImg from "@assets/armors/empty/pantalones.svg"
 import emptyFootImg from "@assets/armors/empty/foot.svg"
-
-import useSections from "@hooks/useSections"
+import { showItemInfo } from "@reducers/eventReducer"
 
 function UserStats() {
 	const { stats, equipment } = useSelector(state => state.player)
@@ -87,7 +86,7 @@ function UserStats() {
 export default UserStats
 
 function ItemStatsImage({ item, emptyImg, emptyAlt, rotate }) {
-	const { showItemInfo } = useSections()
+	const dispatch = useDispatch()
 
 	return (
 		<img
@@ -95,7 +94,7 @@ function ItemStatsImage({ item, emptyImg, emptyAlt, rotate }) {
 			alt={item?.alt || emptyAlt}
 			title={item?.alt || emptyAlt}
 			className={`quality ${item?.quality || ""} ${rotate ? "rotate" : ""}`}
-			onClick={() => showItemInfo(item)}
+			onClick={() => dispatch(showItemInfo(item))}
 		/>
 	)
 }

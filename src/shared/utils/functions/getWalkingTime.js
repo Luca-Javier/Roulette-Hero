@@ -1,4 +1,4 @@
-export function getWalkTime() {
+export default function getWalkTime() {
 	if (import.meta.env.DEV) return 500
 
 	const randomTime = Math.random() * 7000

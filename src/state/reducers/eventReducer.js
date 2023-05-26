@@ -51,10 +51,16 @@ const eventReducer = createSlice({
 			)
 		},
 
-		updateShopItems: (state, action) => {
-			const { items } = action.payload
+		updateShopItemsPrice: (state, action) => {
+			const { isSeduced } = action.payload
 
-			state.shopItems = items
+			const updatedItems = shopItems.map(item => {
+				const newPrice = isSeduced ? item.price * 0.8 : item.price * 1.2
+
+				return { ...item, price: Math.round(newPrice) }
+			})
+
+			state.shopItems = updatedItems
 		},
 
 		createRandomShopItems: (state, action) => {
@@ -106,7 +112,7 @@ export const {
 	createRandomShopItems,
 	removePuchasedItem,
 	setLastEvent,
-	updateShopItems,
+	updateShopItemsPrice,
 	resetEventStore,
 	setSection,
 	resetSection,

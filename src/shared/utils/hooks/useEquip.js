@@ -4,25 +4,25 @@ import {
 	removeItem,
 	updateStatsFromArmor,
 } from "@reducers/playerReducer"
-import useSections from "@hooks/useSections"
 import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react"
 import useAchieve from "./useAchieves"
+import { SECTIONS } from "@constants/sections"
+import { resetSection, setSection } from "@reducers/eventReducer"
 
 function useEquip({ item }) {
 	const dispatch = useDispatch()
-	const { resetSections, setSection, sections } = useSections()
 	const equipment = useSelector(state => state.player.equipment)
 	const { leftHand, rightHand, leftFoot, rightFoot } = equipment
 	const { unlockKnight } = useAchieve()
 
-	const [isSelectingSide, setIsSelectingSide] = useState("")
+	//const [isSelectingSide, setIsSelectingSide] = useState("")
 
 	//Logic
 	const doeEquipItem = (item, oldItem) => {
 		dispatch(equipItem({ item }))
 		dispatch(removeItem({ id: item.id }))
-		resetSections()
+		dispatch(resetSection())
 
 		if (oldItem) dispatch(addBackpag({ item: oldItem }))
 
@@ -33,7 +33,8 @@ function useEquip({ item }) {
 	//Events
 	const equip = () => {
 		if (item.equipType === "weapon") {
-			if (leftHand && rightHand) return setSection(sections.selectingItem)
+			if (leftHand && rightHand)
+				return dispatch(setSection(SECTIONS.selectingItem))
 
 			const equipKey = leftHand ? "rightHand" : "leftHand"
 
@@ -45,7 +46,7 @@ function useEquip({ item }) {
 		}
 
 		if (item.type === "foot") {
-			if (leftFoot && rightFoot) return setIsSelectingSide("foot")
+			if (leftFoot && rightFoot) return //setIsSelectingSide("foot")
 
 			const equipKey = leftFoot ? "rightFoot" : "leftFoot"
 
@@ -66,8 +67,8 @@ function useEquip({ item }) {
 	return {
 		equip,
 		equipOnSide,
-		isSelectingSide,
-		setIsSelectingSide,
+		//isSelectingSide,
+		//setIsSelectingSide,
 		equipment,
 	}
 }

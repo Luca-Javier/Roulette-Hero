@@ -43,5 +43,8 @@
 		"return": "Volver",
 		"stay": "Quedarse",
 		"run": "Correr"
+	},
+	"playing": {
+		"select side question": "Por cual lo quieres reemplazar?"
 	}
 }

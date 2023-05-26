@@ -4,7 +4,7 @@ import forjeIcon from "@assets/icons/sections/forje.svg"
 import MyWheel from "@components/MyWheel"
 import { FORJE_ASCENDAT_QUALITY, FORJE_PRICE } from "@constants/forjeItems"
 
-function Forje({}) {
+function Forje() {
 	const item = useSelector(state => state.event.itemInfo)
 
 	const newQuality = FORJE_ASCENDAT_QUALITY[item.quality]

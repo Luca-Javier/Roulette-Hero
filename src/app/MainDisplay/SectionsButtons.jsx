@@ -1,7 +1,6 @@
 import React from "react"
-import useSections from "@hooks/useSections"
 import { EVENT } from "@constants/events"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import {
 	BackpackIcon,
 	EquipIcon,
@@ -10,63 +9,72 @@ import {
 	ShopIcon,
 	SwordsIcon,
 } from "@components/Icons"
+import { SECTIONS } from "@constants/sections"
+import { setSection } from "@reducers/eventReducer"
 
 function SectionsButtons() {
-	const { section, setSection, sections } = useSections()
-	const { event } = useSelector(state => state.event)
-
-	const disabledInFight =
-		section === sections.fighting || section === sections.seeSwords
+	const { section, event } = useSelector(state => state.event)
 
 	return (
 		<article className="interactive-sections">
-			<button
-				className={section === sections.userStats ? "isActive" : ""}
-				onClick={() => setSection(sections.userStats)}
-				disabled={disabledInFight}>
+			<SectionBtn section={SECTIONS.userStats} disabledInFight={true}>
 				<EquipIcon />
-			</button>
+			</SectionBtn>
 
-			<button
-				className={section === sections.backpack ? "isActive" : ""}
-				onClick={() => setSection(sections.backpack)}
-				disabled={disabledInFight}>
+			<SectionBtn section={SECTIONS.backpack} disabledInFight={true}>
 				<BackpackIcon />
-			</button>
+			</SectionBtn>
 
-			<button className={section === sections.itemInfo ? "isActive" : "none"}>
-				<LopueIcon />
-			</button>
+			{(section === SECTIONS.itemInfo ||
+				section === SECTIONS.selectingItem) && (
+				<button className="isActive">
+					<LopueIcon />
+				</button>
+			)}
 
-			<button className={section === sections.forje ? "isActive" : "none"}>
-				<ForjeIcon />
-			</button>
+			{section === SECTIONS.forje && (
+				<button className="isActive">
+					<ForjeIcon />
+				</button>
+			)}
 
-			{(section === sections.fighting || section === sections.seeSwords) && (
+			{(section === SECTIONS.fighting || section === SECTIONS.seeSwords) && (
 				<>
-					<button
-						className={section === sections.fighting ? "isActive" : ""}
-						onClick={() => setSection(sections.fighting)}>
+					<SectionBtn section={SECTIONS.fighting}>
 						<b>VS</b>
-					</button>
+					</SectionBtn>
 
-					<button
-						className={section === sections.seeSwords ? "isActive" : ""}
-						onClick={() => setSection(sections.seeSwords)}>
+					<SectionBtn section={SECTIONS.seeSwords}>
 						<SwordsIcon />
-					</button>
+					</SectionBtn>
 				</>
 			)}
 
 			{event === EVENT.shop && (
-				<button
-					className={section === sections.shop ? "isActive" : ""}
-					onClick={() => setSection(sections.shop)}>
+				<SectionBtn section={SECTIONS.shop}>
 					<ShopIcon />
-				</button>
+				</SectionBtn>
 			)}
 		</article>
 	)
 }
 
 export default SectionsButtons
+
+function SectionBtn({ section, children, disabledInFight }) {
+	const { section: s } = useSelector(state => state.event)
+	const dispatch = useDispatch()
+
+	return (
+		<button
+			className={s === section ? "isActive" : ""}
+			onClick={() => dispatch(setSection(section))}
+			disabled={
+				disabledInFight
+					? section === SECTIONS.fighting || section === SECTIONS.seeSwords
+					: false
+			}>
+			{children}
+		</button>
+	)
+}

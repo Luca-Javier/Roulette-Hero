@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from "react-redux"
 import useEquip from "@hooks/useEquip"
-import useSections from "@hooks/useSections"
 import Button from "@components/Button"
 import { useTranslation } from "react-i18next"
 import { QUALITY_ITEMS } from "@constants/items"
 import { removeItem, updateMoney } from "@reducers/playerReducer"
+import { SECTIONS } from "@constants/sections"
+import { setSection } from "@reducers/eventReducer"
 
 function ItemInfoButtons({ sell }) {
 	const dispatch = useDispatch()
-	const { setSection, sections } = useSections()
 	const { equipment } = useSelector(state => state.player)
 	const item = useSelector(state => state.event.itemInfo)
 	const { equip } = useEquip({ item })
@@ -27,14 +27,17 @@ function ItemInfoButtons({ sell }) {
 	const sellItem = () => {
 		dispatch(removeItem({ id: item.id }))
 		dispatch(updateMoney(item.price))
-		setSection(sections.userStats)
+		dispatch(setSection(SECTIONS.userStats))
 	}
 
 	return (
 		<section className="interactive-buttons">
 			{!isEquiped && <Button text={t("equip")} onClick={equip} />}
 			{!isLegendary && (
-				<Button text={t("forje")} onClick={() => setSection(sections.forje)} />
+				<Button
+					text={t("forje")}
+					onClick={() => dispatch(setSection(SECTIONS.forje))}
+				/>
 			)}
 			{sell && !isUniqueWeapon && (
 				<Button text={t("sell")} onClick={sellItem} />

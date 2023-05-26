@@ -5,7 +5,6 @@ import extraArmorIcon from "@assets/icons/effects/extra-armor.svg"
 import ItemImage from "./ItemImage"
 
 function ArmorInfo({ item }) {
-	//Variables
 	const { alt, health, armor, passiveEffects, price } = item
 
 	let armorFromEffect = 0

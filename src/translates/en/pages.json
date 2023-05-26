@@ -43,5 +43,8 @@
 		"return": "Return",
 		"stay": "Stay",
 		"run": "Run"
+	},
+	"playing": {
+		"select side question": "Which one want to replace?"
 	}
 }

@@ -58,9 +58,10 @@ export const ACTIVE_EFFECTS = {
 export const WEAPON_PASSIVE_EFFECTS = {
 	luckyHitMultiplier: "luckyHitMultiplier",
 	hammerDamageMultiplier: "hammerDamageMultiplier",
+	rapierCriticMultiplier: "rapierCriticMultiplier",
 }
 
-export const ARMOR_PASSIVE_EFFECTS = {
+export const ARMOR_EFFECTS = {
 	extraArmor: "extraArmor",
 	luckyStatMultiplier: "luckyStatMultiplier",
 }

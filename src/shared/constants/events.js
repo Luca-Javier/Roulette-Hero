@@ -1,7 +1,5 @@
 import WeightedList from "js-weighted-list"
-/**@typedef {import("../types.ts").Events} Events*/
 
-/**@type {Events} */
 const EVENT = {
 	waiting: "waiting",
 	walking: "walking",
@@ -19,9 +17,9 @@ const EVENT = {
 export { EVENT }
 
 const EVENT_PROBS = new WeightedList([
-	[EVENT.fight, 2000],
+	[EVENT.fight, 20],
 	[EVENT.backFight, 25],
-	[EVENT.shop, 25],
+	[EVENT.shop, 2500],
 	[EVENT.chest, 10],
 	[EVENT.getKarma, 10],
 	[EVENT.getLucky, 10],

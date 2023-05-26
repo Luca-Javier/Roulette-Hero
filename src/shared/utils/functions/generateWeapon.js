@@ -1,4 +1,4 @@
-import { EQUIPTYPE } from "../../constants/items"
+import { EQUIPTYPE } from "@constants/items"
 import getBasicItemTemplate from "./getBasicItemTemplate"
 import getWeaponEffects from "./getWeaponEffects"
 

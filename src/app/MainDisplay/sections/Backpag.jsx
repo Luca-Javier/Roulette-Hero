@@ -1,22 +1,20 @@
 import React from "react"
-import { useSelector } from "react-redux"
-import useSections from "@hooks/useSections"
+import { useDispatch, useSelector } from "react-redux"
+import { showItemInfo } from "@reducers/eventReducer"
+import ItemImage from "@components/ItemImage"
 
 function Backpag() {
 	const { backpag } = useSelector(state => state.player)
-	const { showItemInfo } = useSections()
+	const dispatch = useDispatch()
 
 	return (
 		<section className="p-1 flex flex-wrap gap-1">
 			{backpag.map((item, i) => (
-				<img
-					onClick={() => showItemInfo(item)}
-					title={item.alt}
-					alt={item.alt}
+				<ItemImage
+					item={item}
+					width={35}
+					onClick={() => dispatch(showItemInfo(item))}
 					key={i}
-					src={item.src}
-					className={`quality ${item.quality}`}
-					style={{ width: 35 }}
 				/>
 			))}
 		</section>

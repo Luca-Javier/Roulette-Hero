@@ -13,7 +13,7 @@ import {
 	setEvent,
 	setSection,
 } from "@reducers/eventReducer"
-import { getWalkTime } from "@functions/getWalkingTime"
+import getWalkTime from "@functions/getWalkingTime"
 import useReward from "./useReward"
 import {
 	addBackpag,
@@ -45,7 +45,7 @@ function useEvent() {
 
 	const walk = () => {
 		dispatch(setEvent(EVENT.walking))
-		setSection(SECTIONS.userStats)
+		dispatch(setSection(SECTIONS.userStats))
 	}
 
 	const fight = () => dispatch(setEvent(EVENT.fighting))
@@ -165,19 +165,20 @@ function useEvent() {
 			return undefined
 		}
 		if (event === EVENT.shop) {
-			setSection(SECTIONS.shop)
+			console.log("hola")
+			dispatch(setSection(SECTIONS.shop))
 			dispatch(createRandomShopItems({ trullyKarma }))
 
 			return undefined
 		}
 
-		if (event === EVENT.fighting) setSection(SECTIONS.fighting)
+		if (event === EVENT.fighting) dispatch(setSection(SECTIONS.fighting))
 
 		const wasInFight =
 			event === EVENT.walking &&
 			(section === SECTIONS.fighting || section === SECTIONS.seeSwords)
 
-		if (wasInFight) setSection(SECTIONS.userStats)
+		if (wasInFight) dispatch(setSection(SECTIONS.userStats))
 
 		if (event !== EVENT.walking) return undefined
 		dispatch(cleanChat())

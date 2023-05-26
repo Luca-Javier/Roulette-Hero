@@ -1,12 +1,12 @@
 import React from "react"
-import Button from "../../../shared/components/Button"
-import ItemImage from "../../../shared/components/ItemImage"
-import LuckyButtons from "../../../shared/components/LuckyButtons"
+import Button from "@components/Button"
+import ItemImage from "@components/ItemImage"
+import LuckyButtons from "@components/LuckyButtons"
 import effects from "./effects"
 
 function ShopButtons() {
 	const {
-		shopSection,
+		isBuying,
 		t,
 		walk,
 		sectionBuy,
@@ -18,14 +18,13 @@ function ShopButtons() {
 
 	return (
 		<>
-			{shopSection === "initial" && (
+			{!isBuying ? (
 				<>
 					<Button text={t("walk")} onClick={walk} />
 					<Button text={t("buy")} onClick={sectionBuy} />
 					<LuckyButtons text={t("seduce")} onClick={seduce} />
 				</>
-			)}
-			{shopSection === "buy" && (
+			) : (
 				<>
 					<Button text="⬅" onClick={resetSection} />
 					{shopItems.map(item => (

@@ -5,30 +5,28 @@ import SectionsButtons from "./SectionsButtons"
 import Fightin from "./sections/Fighting"
 import SeeSwords from "./sections/SeeSwords"
 import ItemInfo from "./sections/ItemInfo"
-import useSections from "@hooks/useSections"
 import Shop from "./sections/Shop"
 import SelectingItem from "./sections/SelectingItem"
 import Forje from "./sections/Forje"
-
-/**@typedef {import("../../types").Sections} Sections */
+import { useSelector } from "react-redux"
+import { SECTIONS } from "@constants/sections"
 
 function MainDisplay() {
-	/**@type {{section:number,sections:Sections}} */
-	const { section, sections } = useSections()
+	const { section } = useSelector(state => state.event)
 
 	return (
 		<section className="main-interactive-ui">
 			<article className="interactive-per-section">
-				{section === sections.userStats && <UserStats />}
-				{section === sections.backpack && <Backpag />}
-				{section === sections.fighting && <Fightin />}
-				{section === sections.seeSwords && <SeeSwords />}
-				{section === sections.itemInfo && <ItemInfo />}
-				{section === sections.selectingItem && <SelectingItem />}
-				{section === sections.shop && <Shop />}
-				{section === sections.forje && <Forje />}
+				{section === SECTIONS.userStats && <UserStats />}
+				{section === SECTIONS.backpack && <Backpag />}
+				{section === SECTIONS.fighting && <Fightin />}
+				{section === SECTIONS.seeSwords && <SeeSwords />}
+				{section === SECTIONS.itemInfo && <ItemInfo />}
+				{section === SECTIONS.selectingItem && <SelectingItem />}
+				{section === SECTIONS.shop && <Shop />}
+				{section === SECTIONS.forje && <Forje />}
 			</article>
-			<SectionsButtons section={section} sections={sections} />
+			<SectionsButtons />
 		</section>
 	)
 }

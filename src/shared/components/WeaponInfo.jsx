@@ -10,13 +10,11 @@ import { useSelector } from "react-redux"
 import ItemImage from "./ItemImage"
 
 function WeaponInfo({ item }) {
-	//Imports
 	const {
 		stats: { critic },
 		classEffects,
 	} = useSelector(state => state.player)
 
-	//Variables
 	const { alt, attack, passiveEffects, activeEffects, price } = item
 
 	let attackFromClass = 1

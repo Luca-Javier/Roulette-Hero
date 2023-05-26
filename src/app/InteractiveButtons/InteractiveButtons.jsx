@@ -5,23 +5,25 @@ import { EVENT } from "@constants/events"
 import FightingButton from "./FightButtons"
 import useEvent from "@hooks/useEvent"
 import ShopButtons from "./ShopButtons"
-import useSections from "@hooks/useSections"
 import ItemInfoButtons from "./ItemInfoButtons"
 import ForjeButtons from "./ForjeButtons"
 import { useTranslation } from "react-i18next"
+import { SECTIONS } from "@constants/sections"
+import SelectingSideButtons from "./SelectingSideButtons"
 
 function InteractiveButtons() {
-	const { event } = useSelector(state => state.event)
-	const { walk, fight, simpleEventCallback } = useEvent()
-	const { section, sections } = useSections()
+	const { event, section } = useSelector(state => state.event)
+	const { walk, fight } = useEvent()
 	const { t } = useTranslation("buttons")
 
-	if (section === sections.seeSwords) return
+	if (section === SECTIONS.seeSwords) return
 
-	if (section === sections.itemInfo)
+	if (section === SECTIONS.itemInfo)
 		return <ItemInfoButtons sell={event === EVENT.shop} />
 
-	if (section === sections.forje) return <ForjeButtons />
+	if (section === SECTIONS.forje) return <ForjeButtons />
+
+	if (section === SECTIONS.selectingItem) return <SelectingSideButtons />
 
 	return (
 		<section className="interactive-buttons">
@@ -40,39 +42,15 @@ function InteractiveButtons() {
 			)}
 
 			{event === EVENT.fighting && <FightingButton />}
-			{event === EVENT.chest && (
-				<Button text={t("open chest")} onClick={simpleEventCallback} />
-			)}
+			{event === EVENT.chest && <SimpleEventButtons text={t("open chest")} />}
 
-			{/* //todo Componente de simple envets o un componente con el boton walk y los que les pasemos como children */}
+			{event === EVENT.changeKarma && <SimpleEventButtons text={t("take")} />}
 
-			{event === EVENT.changeKarma && (
-				<>
-					<Button text={t("take")} onClick={simpleEventCallback} />
-					<Button text={t("walk")} onClick={walk} />
-				</>
-			)}
+			{event === EVENT.changeLucky && <SimpleEventButtons text={t("take")} />}
 
-			{event === EVENT.changeLucky && (
-				<>
-					<Button text={t("take")} onClick={simpleEventCallback} />
-					<Button text={t("walk")} onClick={walk} />
-				</>
-			)}
+			{event === EVENT.getKarma && <SimpleEventButtons text={t("give")} />}
 
-			{event === EVENT.getKarma && (
-				<>
-					<Button text={t("give")} onClick={simpleEventCallback} />
-					<Button text={t("walk")} onClick={walk} />
-				</>
-			)}
-
-			{event === EVENT.getLucky && (
-				<>
-					<Button text={t("take")} onClick={simpleEventCallback} />
-					<Button text={t("walk")} onClick={walk} />
-				</>
-			)}
+			{event === EVENT.getLucky && <SimpleEventButtons text={t("give")} />}
 
 			{event === EVENT.shop && <ShopButtons />}
 		</section>
@@ -80,3 +58,14 @@ function InteractiveButtons() {
 }
 
 export default InteractiveButtons
+
+function SimpleEventButtons({ text }) {
+	const { walk, simpleEventCallback } = useEvent()
+
+	return (
+		<>
+			<Button text={text} onClick={simpleEventCallback} />
+			<Button text={t("walk")} onClick={walk} />
+		</>
+	)
+}

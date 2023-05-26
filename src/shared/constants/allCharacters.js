@@ -1,10 +1,6 @@
 import i18n from "@i18n"
 import { i18n_alt } from "@functions/translators"
-import {
-	ACTIVE_EFFECTS,
-	ARMOR_PASSIVE_EFFECTS,
-	WEAPON_PASSIVE_EFFECTS,
-} from "./items"
+import { ACTIVE_EFFECTS, ARMOR_EFFECTS, WEAPON_PASSIVE_EFFECTS } from "./items"
 
 const equipmentTemplate = {
 	helmet: null,
@@ -66,7 +62,6 @@ export default () => {
 						variant: "simple",
 					}),
 					quality: "common",
-
 					equipType: "weapon",
 					type: "sword",
 					variant: "simple",
@@ -297,7 +292,7 @@ export default () => {
 					armor: 0.2,
 					health: 4,
 					passiveEffects: {
-						[ARMOR_PASSIVE_EFFECTS.luckyStatMultiplier]: 0.1,
+						[ARMOR_EFFECTS.luckyStatMultiplier]: 0.1,
 					},
 				},
 				chest: {
@@ -317,7 +312,7 @@ export default () => {
 					armor: 0.2,
 					health: 4,
 					passiveEffects: {
-						[ARMOR_PASSIVE_EFFECTS.extraArmor]: 0.1,
+						[ARMOR_EFFECTS.extraArmor]: 0.1,
 					},
 				},
 			},

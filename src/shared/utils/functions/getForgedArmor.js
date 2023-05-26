@@ -3,7 +3,7 @@ import {
 	DOWNGRADE_QUALITY,
 	UPDGRADE_QUALITY,
 } from "@constants/forjeItems"
-import getArmorEffects from "./getArmorEffect"
+import getArmorEffects from "./getArmorEffects"
 import getBasicItemTemplate from "./getBasicItemTemplate"
 import { i18n_alt } from "./translators"
 

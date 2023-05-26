@@ -2,7 +2,7 @@
 
 import { ARMOR_FOR_QUALITY } from "@constants/forjeItems.js"
 import getBasicItemTemplate from "./getBasicItemTemplate.js"
-import getWeaponEffects from "./getWeaponEffects.js"
+import getArmorEffects from "./getArmorEffects.js"
 
 /**
  * Generates a random weapon with random stats based on trullyKarma
@@ -27,8 +27,7 @@ function generateArmor({ trullyKarma }) {
 		id,
 	} = getBasicItemTemplate({ equipType, trullyKarma })
 
-	const passiveEffects = getWeaponEffects({
-		type,
+	const passiveEffects = getArmorEffects({
 		variant,
 		multiplier: qualityMultiplier,
 	})
