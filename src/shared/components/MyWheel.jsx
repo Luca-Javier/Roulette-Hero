@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import { Wheel } from "react-custom-roulette"
 import useWheel from "@contexts/useWheel"
+import pointerSvg from "@assets/wheel/roulette-pointer.svg"
 
 function MyWheel() {
 	const wheel = useWheel()
@@ -19,7 +20,7 @@ function MyWheel() {
 			style={{ height, width }}>
 			<Wheel
 				pointerProps={{
-					src: "/src/assets/wheel/roulette-pointer.svg",
+					src: pointerSvg,
 					style: {
 						left,
 						top,

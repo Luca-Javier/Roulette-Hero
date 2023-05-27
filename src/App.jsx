@@ -1,5 +1,4 @@
 import { HashRouter, Routes, Route } from "react-router-dom"
-import Home from "./views/Home"
 import Music from "@components/Music"
 import { Suspense, lazy, useEffect } from "react"
 import { useSelector } from "react-redux"
@@ -16,7 +15,8 @@ export default () => {
 		if (language) i18n.changeLanguage(language)
 	}, [])
 
-	const LazyCharacters = lazy(() => import("./views/Characters")),
+	const LazyHome = lazy(() => import("./views/Home")),
+		LazyCharacters = lazy(() => import("./views/Characters")),
 		LazyOptions = lazy(() => import("./views/Options")),
 		LazyAbout = lazy(() => import("./views/About")),
 		LazyAskName = lazy(() => import("./views/AskName")),
@@ -26,11 +26,11 @@ export default () => {
 	return (
 		<Layout>
 			<Suspense fallback={<Loader />}>
-				<Music src="/src/assets/enviroment.mp3" />
+				<Music src="src/assets/enviroment.mp3" />
 				<NotificationContainer />
 				<HashRouter>
 					<Routes>
-						<Route path="/" element={<Home />} />
+						<Route path="/" element={<LazyHome />} />
 						<Route path="/characters" element={<LazyCharacters />} />
 						<Route path="/options" element={<LazyOptions />} />
 						<Route path="/ask-name" element={<LazyAskName />} />

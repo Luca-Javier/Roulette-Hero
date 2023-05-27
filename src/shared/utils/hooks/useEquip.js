@@ -5,7 +5,6 @@ import {
 	updateStatsFromArmor,
 } from "@reducers/playerReducer"
 import { useDispatch, useSelector } from "react-redux"
-import { useState } from "react"
 import useAchieve from "./useAchieves"
 import { SECTIONS } from "@constants/sections"
 import { resetSection, setSection } from "@reducers/eventReducer"
@@ -46,13 +45,15 @@ function useEquip({ item }) {
 		}
 
 		if (item.type === "foot") {
-			if (leftFoot && rightFoot) return //setIsSelectingSide("foot")
+			if (leftFoot && rightFoot)
+				return dispatch(setSection(SECTIONS.selectingItem))
 
 			const equipKey = leftFoot ? "rightFoot" : "leftFoot"
 
 			return doeEquipItem({ ...item, equipKey }, oldItem)
 		}
 
+		//? hace algo equipKey
 		const oldItem = equipment[item.equipKey || item.type]
 
 		doeEquipItem(item, oldItem)

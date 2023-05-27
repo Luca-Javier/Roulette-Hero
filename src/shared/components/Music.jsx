@@ -6,7 +6,11 @@ function Music({ src }) {
 	const { music } = useSelector(state => state.userConfig)
 
 	const playVideo = () => {
-		videoRef.current.play()
+		const audio = new Audio()
+		audio.src = src
+
+		videoRef.current.appendChild(audio).play()
+
 		document.removeEventListener("click", playVideo)
 	}
 
@@ -16,9 +20,7 @@ function Music({ src }) {
 		videoRef.current.volume = music / 100
 	}, [music])
 
-	return (
-		<video autoPlay loop ref={videoRef} src={src} style={{ display: "none" }} />
-	)
+	return <audio autoPlay loop ref={videoRef} />
 }
 
 export default Music
