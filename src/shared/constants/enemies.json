@@ -1,6 +1,6 @@
 [
 	{
-		"src": "src/assets/enemys/enemy-1.svg",
+		"src": "assets/enemys/enemy-1.svg",
 		"wheelConfig": {
 			"data": [
 				{
@@ -29,7 +29,7 @@
 		}
 	},
 	{
-		"src": "src/assets/enemys/enemy-2.svg",
+		"src": "assets/enemys/enemy-2.svg",
 		"wheelConfig": {
 			"data": [
 				{
@@ -58,7 +58,7 @@
 		}
 	},
 	{
-		"src": "src/assets/enemys/enemy-3.svg",
+		"src": "assets/enemys/enemy-3.svg",
 		"wheelConfig": {
 			"data": [
 				{
@@ -87,7 +87,7 @@
 		}
 	},
 	{
-		"src": "src/assets/enemys/enemy-4.svg",
+		"src": "assets/enemys/enemy-4.svg",
 		"wheelConfig": {
 			"data": [
 				{
@@ -116,7 +116,7 @@
 		}
 	},
 	{
-		"src": "src/assets/enemys/enemy-5.svg",
+		"src": "assets/enemys/enemy-5.svg",
 		"wheelConfig": {
 			"data": [
 				{

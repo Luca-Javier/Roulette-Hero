@@ -11,7 +11,7 @@ export default defineConfig({
 			entries: [
 				{
 					find: "@assets",
-					replacement: path.resolve(__dirname, "./src/assets"),
+					replacement: "/assets",
 				},
 				{
 					find: "@components",
@@ -56,4 +56,5 @@ export default defineConfig({
 	server: {
 		host: true,
 	},
+	publicDir: "./public",
 })

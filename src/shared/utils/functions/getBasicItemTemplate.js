@@ -45,7 +45,7 @@ function getBasicItemTemplate({ equipType, trullyKarma, selectedQuality }) {
 		return Math.round(Math.max(minWithKarma, maxCalculated))
 	}
 
-	const src = `/src/assets/${equipType}s/${type + "s"}/${variant}-${type}.svg`,
+	const src = `assets/${equipType}s/${type + "s"}/${variant}-${type}.svg`,
 		alt = i18n_alt({ type, quality, variant })
 
 	const getMoneyForQuality = quality => {

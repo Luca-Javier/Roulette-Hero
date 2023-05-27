@@ -19,7 +19,7 @@ export default () => {
 		{
 			id: 1,
 			description: t("default.description"),
-			img: "/src/assets/characters/default.svg",
+			img: "assets/characters/default.svg",
 			className: t("default.name"),
 			money: 22,
 			stones: 2,
@@ -37,7 +37,7 @@ export default () => {
 				...equipmentTemplate,
 				helmet: {
 					id: 3,
-					src: "/src/assets/armors/helmets/simple-helmet.svg",
+					src: "assets/armors/helmets/simple-helmet.svg",
 					alt: i18n_alt({
 						type: "helmet",
 						quality: "common",
@@ -55,7 +55,7 @@ export default () => {
 				},
 				leftHand: {
 					id: 1,
-					src: "/src/assets/weapons/swords/simple-sword.svg",
+					src: "assets/weapons/swords/simple-sword.svg",
 					alt: i18n_alt({
 						type: "sword",
 						quality: "common",
@@ -76,7 +76,7 @@ export default () => {
 		{
 			id: 2,
 			description: t("knight.description"),
-			img: "/src/assets/characters/knight.svg",
+			img: "assets/characters/knight.svg",
 			className: t("knight.name"),
 			money: 12,
 			stones: 4,
@@ -94,7 +94,7 @@ export default () => {
 				...equipmentTemplate,
 				leftHand: {
 					id: 1,
-					src: "/src/assets/weapons/swords/simple-sword.svg",
+					src: "assets/weapons/swords/simple-sword.svg",
 					alt: i18n_alt({
 						type: "sword",
 						quality: "common",
@@ -111,7 +111,7 @@ export default () => {
 				},
 				helmet: {
 					id: 2,
-					src: "/src/assets/armors/helmets/simple-helmet.svg",
+					src: "assets/armors/helmets/simple-helmet.svg",
 					alt: i18n_alt({
 						type: "helmet",
 						quality: "common",
@@ -128,7 +128,7 @@ export default () => {
 				},
 				chest: {
 					id: 3,
-					src: "/src/assets/armors/chests/simple-chest.svg",
+					src: "assets/armors/chests/simple-chest.svg",
 					alt: i18n_alt({
 						type: "chest",
 						quality: "common",
@@ -145,7 +145,7 @@ export default () => {
 				},
 				legs: {
 					id: 4,
-					src: "/src/assets/armors/legs/simple-legs.svg",
+					src: "assets/armors/legs/simple-legs.svg",
 					alt: i18n_alt({ type: "legs", quality: "common", variant: "simple" }),
 					quality: "common",
 					equipType: "armor",
@@ -161,7 +161,7 @@ export default () => {
 		{
 			id: 3,
 			description: t("hammerBro.description"),
-			img: "/src/assets/characters/hammer-bro.svg",
+			img: "assets/characters/hammer-bro.svg",
 			className: t("hammerBro.name"),
 			money: 32,
 			stones: 4,
@@ -181,7 +181,7 @@ export default () => {
 				...equipmentTemplate,
 				leftHand: {
 					id: 1,
-					src: "/src/assets/weapons/hammers/lucky-hammer.svg",
+					src: "assets/weapons/hammers/lucky-hammer.svg",
 					alt: i18n_alt({
 						type: "hammer",
 						quality: "common",
@@ -200,7 +200,7 @@ export default () => {
 				},
 				chest: {
 					id: 2,
-					src: "/src/assets/armors/chests/simple-chest.svg",
+					src: "assets/armors/chests/simple-chest.svg",
 					alt: i18n_alt({
 						type: "chest",
 						quality: "common",
@@ -221,7 +221,7 @@ export default () => {
 		{
 			id: 99,
 			description: t("developer.description"),
-			img: "/src/assets/characters/dev.svg",
+			img: "assets/characters/dev.svg",
 			className: t("developer.name"),
 			money: 2000,
 			stones: 2000,
@@ -239,7 +239,7 @@ export default () => {
 				...equipmentTemplate,
 				leftHand: {
 					id: 1,
-					src: "/src/assets/weapons/hammers/bloody-hammer.svg",
+					src: "assets/weapons/hammers/bloody-hammer.svg",
 					alt: i18n_alt({
 						type: "hammer",
 						quality: "common",
@@ -261,7 +261,7 @@ export default () => {
 				},
 				rightHand: {
 					id: 2,
-					src: "/src/assets/weapons/swords/critic-sword.svg",
+					src: "assets/weapons/swords/critic-sword.svg",
 					alt: i18n_alt({
 						type: "sword",
 						quality: "common",
@@ -281,7 +281,7 @@ export default () => {
 				},
 				legs: {
 					id: 3,
-					src: "/src/assets/armors/legs/simple-legs.svg",
+					src: "assets/armors/legs/simple-legs.svg",
 					alt: i18n_alt({ type: "legs", quality: "common", variant: "simple" }),
 					quality: "common",
 
@@ -297,7 +297,7 @@ export default () => {
 				},
 				chest: {
 					id: 4,
-					src: "/src/assets/armors/chests/simple-chest.svg",
+					src: "assets/armors/chests/simple-chest.svg",
 					alt: i18n_alt({
 						type: "chest",
 						quality: "common",
@@ -319,7 +319,7 @@ export default () => {
 			backpag: [
 				{
 					id: 5,
-					src: "/src/assets/weapons/swords/strongest-sword.svg",
+					src: "assets/weapons/swords/strongest-sword.svg",
 					alt: i18n_alt({
 						type: "sword",
 						quality: "rare",
@@ -340,7 +340,7 @@ export default () => {
 				},
 				{
 					id: 6,
-					src: "/src/assets/weapons/sables/strong-sable.svg",
+					src: "assets/weapons/sables/strong-sable.svg",
 					alt: i18n_alt({
 						type: "sable",
 						quality: "rare",
@@ -360,7 +360,7 @@ export default () => {
 				},
 				{
 					id: 7,
-					src: "/src/assets/weapons/pickaxes/simple-pickaxe.svg",
+					src: "assets/weapons/pickaxes/simple-pickaxe.svg",
 					alt: i18n_alt({
 						type: "pickaxe",
 						quality: "rare",

@@ -26,7 +26,7 @@ export default () => {
 	return (
 		<Layout>
 			<Suspense fallback={<Loader />}>
-				<Music src="src/assets/enviroment.mp3" />
+				<Music src="assets/enviroment.mp3" />
 				<NotificationContainer />
 				<HashRouter>
 					<Routes>
