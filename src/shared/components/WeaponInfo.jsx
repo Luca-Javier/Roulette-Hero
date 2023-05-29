@@ -114,21 +114,21 @@ function ActiveEffects({ effects }) {
 				<img
 					src={lifeStealIcon}
 					alt="Stole enemy health"
-					title={`stole ${lifeSteal.effect}% of your dealt damage as health`}
+					title={`stole ${lifeSteal}% of your dealt damage as health`}
 				/>
 			)}
 			{superCritic && (
 				<img
 					src={superCriticIcon}
 					alt="A super critic attack"
-					title={`deal a critic hit with ${superCritic.effect}% more damage `}
+					title={`deal a critic hit with ${superCritic}% more damage `}
 				/>
 			)}
 			{strongestAttack && (
 				<img
 					src={strongestIcon}
 					alt="A strongest attack"
-					title={`deal a normal attack with ${strongestAttack.effect}% more damage`}
+					title={`deal a normal attack with ${strongestAttack}% more damage`}
 				/>
 			)}
 		</>

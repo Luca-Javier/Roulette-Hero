@@ -13,12 +13,12 @@ function UserStats() {
 		{ helmet, leftHand, chest, rightHand, legs, leftFoot, rightFoot } =
 			equipment
 
-	const headAlt = "head equipment",
-		leftHandAlt = "hand equipment",
-		rightHandAlt = "hand equipment",
-		chestAlt = "chestplate",
-		legsAlt = "legs equipment",
-		footAlt = "foot equipment"
+	const headAlt = "empty head equipment",
+		leftHandAlt = "empty hand equipment",
+		rightHandAlt = "empty hand equipment",
+		chestAlt = "empty chestplate",
+		legsAlt = "empty legs equipment",
+		footAlt = "empty foot equipment"
 
 	return (
 		<section className="flex gap-1 between h-100 align-center">

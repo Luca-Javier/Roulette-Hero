@@ -21,10 +21,10 @@ export default () => {
 			description: t("default.description"),
 			img: "assets/characters/default.svg",
 			className: t("default.name"),
-			money: 22,
-			stones: 2,
+			money: 17,
+			stones: 4,
 			stats: {
-				health: 16,
+				health: 14,
 				armor: 0.2,
 				critic: 25,
 				dodge: 15,
@@ -50,7 +50,7 @@ export default () => {
 					variant: "simple",
 					price: 17,
 					armor: 0.2,
-					health: 2,
+					health: 3,
 					passiveEffects: {},
 				},
 				leftHand: {
@@ -78,10 +78,10 @@ export default () => {
 			description: t("knight.description"),
 			img: "assets/characters/knight.svg",
 			className: t("knight.name"),
-			money: 12,
+			money: 19,
 			stones: 4,
 			stats: {
-				health: 32,
+				health: 11,
 				armor: 0.6,
 				critic: 25,
 				dodge: 25,
@@ -140,7 +140,7 @@ export default () => {
 					variant: "simple",
 					price: 17,
 					armor: 0.2,
-					health: 5,
+					health: 4,
 					passiveEffects: {},
 				},
 				legs: {
@@ -153,7 +153,7 @@ export default () => {
 					variant: "simple",
 					price: 16,
 					armor: 0.2,
-					health: 4,
+					health: 3,
 					passiveEffects: {},
 				},
 			},
@@ -163,10 +163,10 @@ export default () => {
 			description: t("hammerBro.description"),
 			img: "assets/characters/hammer-bro.svg",
 			className: t("hammerBro.name"),
-			money: 32,
-			stones: 4,
+			money: 21,
+			stones: 3,
 			stats: {
-				health: 21,
+				health: 12,
 				armor: 0.2,
 				critic: 25,
 				dodge: 25,
@@ -181,18 +181,18 @@ export default () => {
 				...equipmentTemplate,
 				leftHand: {
 					id: 1,
-					src: "assets/weapons/hammers/lucky-hammer.svg",
+					src: "assets/weapons/hammers/simple-hammer.svg",
 					alt: i18n_alt({
 						type: "hammer",
 						quality: "common",
-						variant: "lucky",
+						variant: "simple",
 					}),
 					quality: "rare",
 					equipType: "weapon",
 					type: "hammer",
-					variant: "lucky",
+					variant: "simple",
 					price: 14,
-					attack: 4,
+					attack: 5,
 					passiveEffects: {
 						[WEAPON_PASSIVE_EFFECTS.hammerDamageMultiplier]: 0.1,
 					},
@@ -211,7 +211,7 @@ export default () => {
 					type: "chest",
 					variant: "simple",
 					price: 15,
-					health: 5,
+					health: 3,
 					armor: 0.2,
 					passiveEffects: {},
 				},
@@ -261,7 +261,7 @@ export default () => {
 				},
 				rightHand: {
 					id: 2,
-					src: "assets/weapons/swords/critic-sword.svg",
+					src: "assets/weapons/swords/lethal-sword.svg",
 					alt: i18n_alt({
 						type: "sword",
 						quality: "common",
@@ -304,12 +304,28 @@ export default () => {
 						variant: "simple",
 					}),
 					quality: "common",
-
 					equipType: "armor",
 					type: "chest",
 					variant: "simple",
 					price: 17,
 					armor: 0.2,
+					health: 4,
+					passiveEffects: {},
+				},
+				leftFoot: {
+					id: 5,
+					src: "assets/armors/foots/armored-foot.svg",
+					alt: i18n_alt({
+						type: "foot",
+						quality: "rare",
+						variant: "armored",
+					}),
+					quality: "rare",
+					equipType: "armor",
+					type: "foot",
+					variant: "armored",
+					price: 46,
+					armor: 0.4,
 					health: 4,
 					passiveEffects: {
 						[ARMOR_EFFECTS.extraArmor]: 0.1,
@@ -318,8 +334,8 @@ export default () => {
 			},
 			backpag: [
 				{
-					id: 5,
-					src: "assets/weapons/swords/strongest-sword.svg",
+					id: 6,
+					src: "assets/weapons/swords/strong-sword.svg",
 					alt: i18n_alt({
 						type: "sword",
 						quality: "rare",
@@ -339,7 +355,7 @@ export default () => {
 					},
 				},
 				{
-					id: 6,
+					id: 7,
 					src: "assets/weapons/sables/strong-sable.svg",
 					alt: i18n_alt({
 						type: "sable",
@@ -359,7 +375,7 @@ export default () => {
 					},
 				},
 				{
-					id: 7,
+					id: 8,
 					src: "assets/weapons/pickaxes/simple-pickaxe.svg",
 					alt: i18n_alt({
 						type: "pickaxe",

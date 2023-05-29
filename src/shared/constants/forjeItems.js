@@ -12,9 +12,9 @@ export const FORJE_DESCENDENT_QUALITY = {
 }
 
 export const FORJE_PRICE = {
-	common: 6,
-	rare: 11,
-	epic: 17,
+	common: 3,
+	rare: 5,
+	epic: 7,
 }
 
 export const FORJE_PERCENT_BY_QUALITY = {
@@ -24,9 +24,9 @@ export const FORJE_PERCENT_BY_QUALITY = {
 }
 
 export const LUCKY_FORJE_PERCENT_BY_QUALITY = {
-	common: 50,
-	rare: 30,
-	epic: 15,
+	common: 30,
+	rare: 15,
+	epic: 7,
 }
 
 export const UPDGRADE_QUALITY = {

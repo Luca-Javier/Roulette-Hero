@@ -1,3 +1,4 @@
+import { CRITIC_SCALE } from "../../constants/fight"
 import getActiveEffectSize from "./getActiveEffectSize"
 import getCustomOptionWheelStyle from "./getCustomOptionWheelStyle"
 
@@ -62,8 +63,8 @@ const getAttackWheelConfig = ({ item, playerData }) => {
 
 	//Possible attacks as keys and the damage as values
 	const possibleAttacks = {
-		normal: realAttack,
-		critic: realAttack * 2 * criticFromRapierItem,
+		normal: Math.round(realAttack),
+		critic: Math.round(realAttack * CRITIC_SCALE * criticFromRapierItem),
 		fail: 0,
 		dodged: 0,
 		...possibleEffectsAttacks,

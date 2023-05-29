@@ -80,8 +80,6 @@ const playerReducer = createSlice({
 			Object.keys(state.equipment).forEach(key => {
 				if (state.equipment[key]?.id !== newItem.id) return
 
-				console.log(key)
-
 				if (newItem.equipType == EQUIPTYPE.armor) {
 					removeStatsFromArmor({ state, item: state.equipment[key] })
 					setArmorStats({ state, item: newItem })

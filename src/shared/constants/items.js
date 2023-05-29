@@ -22,7 +22,7 @@ export const ARMOR_VARIANTS = {
 export const ARMORS = {
 	helmet: "helmet",
 	chest: "chest",
-	legs: "legs",
+	legs: "leg",
 	foot: "foot",
 }
 
@@ -47,10 +47,10 @@ export const EQUIPTYPE = {
 }
 
 export const ACTIVE_EFFECTS = {
-	lifeSteal: "lifeSteal",
-	superCritic: "superCritic",
+	lifeSteal: "life steal",
+	superCritic: "super critic",
 	strongestAttack: "strongest",
-	luckyHit: "luckyHit",
+	luckyHit: "lucky",
 	stoleMoney: "stole",
 	stoleStones: "mining",
 }

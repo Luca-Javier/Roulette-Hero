@@ -1,15 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1920">
     <style>
-    <!-- stroke: color -->
-        .st0{fill:#fff}.st1{fill:black;stroke:white;stroke-width:80;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+        .st0{fill:#fff}.st1{fill:black;stroke:yellow;stroke-width:80;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
     </style>
-    <g id="Layer_4">
+    <g id="Layer_4" >
         <path class="st0" d="M340.4 238.6c-17.4-18.4-46.4-19.2-64.8-1.9-18.4 17.4-19.2 46.4-1.9 64.8 17.4 18.4 46.4 19.2 64.8 1.9 18.4-17.4 19.2-46.4 1.9-64.8z"/>
         <path class="st0" d="M338.5 303.4l110.4 164 50.2-47.3z"/>
     </g>
-    <g id="STROKES">
-        <g id="XMLID_1_">
-            <path class="st1" d="M461.3 471.1l20.4-19.2 27.9-26.4 133.8-126.4"/>
+    <g id="STROKES" >
+        <g id="XMLID_1_" >
+            <path class="st1" d="M461.3 471.1l20.4-19.2 27.9-26.4 133.8-126.4" />
             <path class="st1" d="M317.2 607.2l143.9-135.9"/>
             <path class="st1" d="M338.5 303.4c18.4-17.4 19.2-46.4 1.9-64.8-17.4-18.4-46.4-19.2-64.8-1.9-18.4 17.4-19.2 46.4-1.9 64.8 17.4 18.4 46.4 19.3 64.8 1.9z"/>
             <path class="st1" d="M259.7 219.9l15.9 16.9"/>

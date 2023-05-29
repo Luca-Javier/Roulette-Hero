@@ -9,6 +9,7 @@ import MyWheel from "@components/MyWheel"
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { GET_WHEEL_RETURN } from "@constants/wheelTemplates"
+import { Helmet } from "react-helmet-async"
 
 function About() {
 	const { configWheel, handleSpin, spin } = useWheel()
@@ -27,6 +28,11 @@ function About() {
 
 	return (
 		<section className="about-cantainer">
+			<Helmet>
+				<title>{t("meta.title")}</title>
+				<meta name="description" content={t("meta.description")} />
+			</Helmet>
+
 			<div>
 				<h1 className="m-0">Roulette Hero</h1>
 				<p className="color-placeholder m-0">{t("description")}</p>

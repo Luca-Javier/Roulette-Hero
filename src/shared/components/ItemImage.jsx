@@ -1,6 +1,7 @@
 function ItemImage({ item, width, className, ...args }) {
 	const styles = {
 		width: width || null,
+		aspectRatio: 1,
 	}
 
 	return (

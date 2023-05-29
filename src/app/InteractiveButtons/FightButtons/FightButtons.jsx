@@ -3,8 +3,9 @@ import Button from "@components/Button"
 import LuckyButtons from "@components/LuckyButtons"
 import effects from "./effects"
 import ItemImage from "@components/ItemImage"
+import useResetApp from "@hooks/useResetApp"
 
-function FightingButton() {
+function FightButtons() {
 	const state = effects()
 	const { isFightDone, isAttacking } = state
 
@@ -15,7 +16,7 @@ function FightingButton() {
 	return <AttackOptions state={state} />
 }
 
-export default FightingButton
+export default FightButtons
 
 function FightOptions({ state }) {
 	const { t, isDisabled, luckyAttack, player, run, setIsAttacking } = state
@@ -62,13 +63,19 @@ function AttackOptions({ state }) {
 }
 
 function FightDone({ state }) {
-	const { t, enemy, player, walk, returnIndex } = state
+	const { t, enemy, player, walk } = state
+	const { reset } = useResetApp()
 
 	return (
 		<>
 			{enemy.currentHealth === 0 && <Button text={t("walk")} onClick={walk} />}
 			{player.currentHealth === 0 && (
-				<Button text={t("end")} onClick={returnIndex} />
+				<Button
+					style={{ width: "5rem", flexGrow: 0 }}
+					text={t("end")}
+					to="/"
+					onClick={reset}
+				/>
 			)}
 		</>
 	)

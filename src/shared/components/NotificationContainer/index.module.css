@@ -37,15 +37,17 @@
 
 @keyframes slideOut {
 	0% {
+		display: flex;
 		opacity: 1;
 		transform: translateY(15px);
 	}
 	100% {
+		display: flex;
 		transform: translateY(0);
 	}
 }
 
 .notify-container.isDesactive {
-	display: flex;
+	display: none;
 	animation: slideOut 1s ease-in-out forwards;
 }

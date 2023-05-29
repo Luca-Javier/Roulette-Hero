@@ -5,6 +5,7 @@ import useWheel from "@contexts/useWheel"
 import { useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { GET_WHEEL_RETURN } from "@constants/wheelTemplates"
+import { Helmet } from "react-helmet-async"
 
 function ErrorPage() {
 	const navigate = useNavigate()
@@ -23,6 +24,11 @@ function ErrorPage() {
 
 	return (
 		<div className="p-1 h-100 flex between flex-column">
+			<Helmet>
+				<title>{t("meta.title")}</title>
+				<meta name="description" content={t("meta.description")} />
+			</Helmet>
+
 			<div>
 				<h1>{t("title")}</h1>
 				<p>{t("sorry")}</p>

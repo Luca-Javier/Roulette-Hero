@@ -31,10 +31,10 @@ function getWeaponEffects({ type, variant, multiplier }) {
 		activeEffects[ACTIVE_EFFECTS.lifeSteal] = multiplier(0.1)
 
 	if (variant === WEAPON_VARIANTS.lethal)
-		activeEffects[ACTIVE_EFFECTS.superCritic] = multiplier(0.2)
+		activeEffects[ACTIVE_EFFECTS.superCritic] = 1 + multiplier(0.2)
 
 	if (variant === WEAPON_VARIANTS.strong)
-		activeEffects[ACTIVE_EFFECTS.strongestAttack] = multiplier(0.1)
+		activeEffects[ACTIVE_EFFECTS.strongestAttack] = 1 + multiplier(0.1)
 
 	return { passiveEffects, activeEffects }
 }

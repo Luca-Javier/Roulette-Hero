@@ -9,7 +9,6 @@ import {
 	setRandomEvent,
 	createRandomShopItems,
 	removePuchasedItem,
-	setLastEvent,
 	setEvent,
 	setSection,
 } from "@reducers/eventReducer"
@@ -25,15 +24,17 @@ import { useTranslation } from "react-i18next"
 import { i18n_random } from "@functions/translators"
 import useAchieve from "./useAchieves"
 import { SECTIONS } from "@constants/sections"
+import { useLastEvent } from "@contexts/useLastEvent"
 
 function useEvent() {
-	const { event, lastEvent, section } = useSelector(state => state.event)
-	const { money, stats } = useSelector(state => state.player)
+	const { event, section } = useSelector(state => state.event)
+	const { money: playerMoney, stats } = useSelector(state => state.player)
 	const { trullyKarma } = stats
 	const dispatch = useDispatch()
 	const { getReward } = useReward()
 	const { t } = useTranslation("messages")
 	const { unlockAchieve } = useAchieve()
+	const { lastEvent } = useLastEvent()
 
 	const [customCallback, setCustomCallback] = useState()
 
@@ -48,10 +49,13 @@ function useEvent() {
 		dispatch(setSection(SECTIONS.userStats))
 	}
 
-	const fight = () => dispatch(setEvent(EVENT.fighting))
+	const fight = () => {
+		dispatch(cleanChat())
+		dispatch(setEvent(EVENT.fighting))
+	}
 
 	const buyItem = item => {
-		if (money < item.price * 2)
+		if (playerMoney < item.price * 2)
 			return dispatch(addMessage(t("shop.not enough money")))
 
 		if (item.type === "hammer") unlockAchieve(ACHIEVES["hammer bro"])
@@ -63,8 +67,8 @@ function useEvent() {
 	}
 
 	useEffect(() => {
-		if (lastEvent === event) return undefined
-		dispatch(setLastEvent(event))
+		if (lastEvent.current === event) return undefined
+		lastEvent.current = event
 
 		if (event === EVENT.chest) {
 			dispatch(addMessage(t("chest.found")))
@@ -127,9 +131,11 @@ function useEvent() {
 		}
 
 		if (event === EVENT.getKarma) {
-			const money = Math.floor(Math.random() * 33) + 10
+			const money = Math.floor(Math.random() * 17) + 10
 
 			setCustomCallback(() => () => {
+				if (playerMoney < money)
+					return dispatch(addMessage(t("shop.not enough money")))
 				dispatch(updateKarma(0.2))
 				dispatch(updateMoney(-money))
 			})
@@ -146,9 +152,11 @@ function useEvent() {
 			return undefined
 		}
 		if (event === EVENT.getLucky) {
-			const money = Math.floor(Math.random() * 19) + 10
+			const money = Math.floor(Math.random() * 11) + 10
 
 			setCustomCallback(() => () => {
+				if (playerMoney < money)
+					return dispatch(addMessage(t("shop.not enough money")))
 				dispatch(updateLucky(1))
 				dispatch(updateMoney(-money))
 			})
@@ -165,7 +173,6 @@ function useEvent() {
 			return undefined
 		}
 		if (event === EVENT.shop) {
-			console.log("hola")
 			dispatch(setSection(SECTIONS.shop))
 			dispatch(createRandomShopItems({ trullyKarma }))
 

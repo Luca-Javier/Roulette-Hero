@@ -3,11 +3,19 @@
 		"play": "Jugar",
 		"characters": "Personajes",
 		"options": "Opciones",
-		"continue": "Continuar"
+		"continue": "Continuar",
+		"meta": {
+			"title": "Inicio | Roulette Hero",
+			"description": "Un juego de aventura donde todo depende de tu suerte y tus decisiones"
+		}
 	},
 	"characters": {
 		"title": "Selecciona Personaje",
-		"select": "Seleccionar"
+		"select": "Seleccionar",
+		"meta": {
+			"title": "Personajes | Roulette Hero",
+			"description": "Selecciona el personaje con el que quieres jugar"
+		}
 	},
 	"options": {
 		"title": "Opciones",
@@ -17,24 +25,40 @@
 		"configure": "Cofiguración",
 		"music": "Musica",
 		"language": "Lenguaje",
-		"give up": "Rendirse"
+		"give up": "Rendirse",
+		"meta": {
+			"title": "Opciones | Roulette Hero",
+			"description": "Configuración de Roulette Hero"
+		}
 	},
 	"about": {
 		"description": "Mi primer juego desarrollado",
 		"issues text": "Sí tienes alguna sugerencia, pregunta, encontraste algún error o solo quiere contactame, no dudes en hacerlo",
 		"return": "Volver",
-		"source code": "Código fuente"
+		"source code": "Código fuente",
+		"meta": {
+			"title": "Acerca  | Roulette Hero",
+			"description": "Acerca de mi, el desarrollador de Roulette Hero. Medio sociales, github, código fuente y contacto"
+		}
 	},
 	"askName": {
 		"ask name": "Cuál es tu nombre viajero?",
 		"ready": "Listo",
-		"title": "Solo letras y numeros son válidos"
+		"title": "Solo letras y numeros son válidos",
+		"meta": {
+			"title": "Nombre | Roulette Hero",
+			"description": "¿Cual es tu nombre viajero?. La aventura está por comenzar!"
+		}
 	},
 	"error": {
 		"title": "Oops!",
 		"sorry": "Lo lamento, ha ocurrido un error inesperado",
 		"guide": "Por favor regrese al comienzo",
-		"return": "Volver"
+		"return": "Volver",
+		"meta": {
+			"title": "Error 404 | Roulette Hero",
+			"description": "Error 404 page not found"
+		}
 	},
 	"wheel": {
 		"play": "Jugar",
@@ -45,6 +69,10 @@
 		"run": "Correr"
 	},
 	"playing": {
-		"select side question": "Por cual lo quieres reemplazar?"
+		"select side question": "Por cual lo quieres reemplazar?",
+		"meta": {
+			"title": "Jugando | Roulette Hero",
+			"description": "Jugando Roulette Hero"
+		}
 	}
 }

@@ -2,10 +2,10 @@ import React from "react"
 import { useSelector } from "react-redux"
 import Button from "@components/Button"
 import { EVENT } from "@constants/events"
-import FightingButton from "./FightButtons"
 import useEvent from "@hooks/useEvent"
 import ShopButtons from "./ShopButtons"
 import ItemInfoButtons from "./ItemInfoButtons"
+import FightButtons from "./FightButtons/FightButtons"
 import ForjeButtons from "./ForjeButtons"
 import { useTranslation } from "react-i18next"
 import { SECTIONS } from "@constants/sections"
@@ -41,7 +41,7 @@ function InteractiveButtons() {
 				</>
 			)}
 
-			{event === EVENT.fighting && <FightingButton />}
+			{event === EVENT.fighting && <FightButtons />}
 			{event === EVENT.chest && <SimpleEventButtons text={t("open chest")} />}
 
 			{event === EVENT.changeKarma && <SimpleEventButtons text={t("take")} />}
@@ -61,6 +61,7 @@ export default InteractiveButtons
 
 function SimpleEventButtons({ text }) {
 	const { walk, simpleEventCallback } = useEvent()
+	const { t } = useTranslation("buttons")
 
 	return (
 		<>

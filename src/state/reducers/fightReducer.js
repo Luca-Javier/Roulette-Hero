@@ -8,7 +8,6 @@ const initialState = {
 		src: "",
 		fullHealth: null,
 		currentHealth: null,
-		//armor: null,
 		attack: null,
 		critickProb: null,
 		dodge: null,
@@ -99,7 +98,7 @@ const fightReducer = createSlice({
 				res === ACTIVE_EFFECTS.strongestAttack ||
 				res === ACTIVE_EFFECTS.superCritic
 			)
-				state.enemy.currentHealth -= attack.attack * attack.effect
+				state.enemy.currentHealth -= Math.floor(attack.attack * attack.effect)
 
 			if (state.enemy.currentHealth < 0) state.enemy.currentHealth = 0
 		},

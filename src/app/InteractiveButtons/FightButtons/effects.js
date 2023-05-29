@@ -18,6 +18,7 @@ import useReward from "@hooks/useReward"
 import { useTranslation } from "react-i18next"
 import { ACTIVE_EFFECTS } from "@constants/items"
 import { updateMoney, updateStones } from "@reducers/playerReducer"
+import { CRITIC_SCALE } from "../../../shared/constants/fight"
 
 const animationAttacks = {
 	player: {
@@ -37,12 +38,10 @@ const animationAttacks = {
 
 //💀💀💀💀💀💀
 function effects() {
-	// Imports
 	const { handleSpin, configWheel } = useWheel()
 	const { player, enemy, isEnemyAttacking } = useSelector(state => state.fight)
 	const { armor } = useSelector(state => state.player.stats)
 	const dispatch = useDispatch()
-	const navigate = useNavigate()
 	const { getReward } = useReward()
 	const { t } = useTranslation("messages", { keyPrefix: "fight" })
 	const { leftHand, rightHand } = useSelector(state => state.player.equipment)
@@ -55,7 +54,6 @@ function effects() {
 	const [isAttacking, setIsAttacking] = useState(false)
 
 	// Events
-
 	const attack = attack => {
 		setIsAttacking(false)
 		setSelectedAttack(attack)
@@ -64,6 +62,7 @@ function effects() {
 
 	const run = () => {
 		configWheel(WHEEL_RUN)
+		setIsDisabled(true)
 		setIsRunning(true)
 	}
 
@@ -110,10 +109,11 @@ function effects() {
 		}, 2000)
 	}
 
-	const returnIndex = () => navigate("/")
-
 	useEffect(() => {
-		if (!isRunning) return undefined
+		if (!isRunning) {
+			setIsDisabled(false)
+			return undefined
+		}
 		;(async () => {
 			const res = await handleSpin()
 			configWheel(enemy.wheelConfig)
@@ -141,7 +141,6 @@ function effects() {
 
 			if (res === "kill") {
 				oneShot()
-
 				return undefined
 			}
 
@@ -226,8 +225,8 @@ function effects() {
 				const playerDefense = Math.floor(armor)
 
 				const possibleAttacks = {
-					normal: enemy.attack - playerDefense,
-					critic: enemy.attack * 2 - playerDefense,
+					normal: Math.round(enemy.attack - playerDefense),
+					critic: Math.round(enemy.attack * CRITIC_SCALE - playerDefense),
 					fail: 0,
 					dodged: 0,
 				}
@@ -267,7 +266,6 @@ function effects() {
 		player,
 		enemy,
 		walk,
-		returnIndex,
 		luckyAttack,
 		isDisabled,
 		run,

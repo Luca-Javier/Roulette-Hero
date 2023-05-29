@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux"
 import useResetApp from "@hooks/useResetApp"
 import { useTranslation } from "react-i18next"
 import debounce from "@functions/debounce"
+import { Helmet } from "react-helmet-async"
 
 function Options() {
 	const navigate = useNavigate()
@@ -21,6 +22,10 @@ function Options() {
 
 	return (
 		<>
+			<Helmet>
+				<title>{t("meta.title")}</title>
+				<meta name="description" content={t("meta.description")} />
+			</Helmet>
 			<div className="options-title">
 				<h3 className="title txt-left">{t("title")}</h3>
 				<img src={closeIcon} alt="close options icon" onClick={goBack} />

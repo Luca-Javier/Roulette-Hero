@@ -6,9 +6,9 @@ import { SECTIONS } from "@constants/sections"
 
 const initialState = {
 	event: EVENT.waiting,
-	lastEvent: "",
+
 	numEvents: 0,
-	customEventMessage: "",
+	customEventMessage: [],
 	cleanChat: "initial",
 	itemInfo: null,
 	shopItems: [],
@@ -32,10 +32,10 @@ const eventReducer = createSlice({
 			state.numEvents++
 		},
 		addMessage: (state, action) => {
-			state.customEventMessage = action.payload
+			state.customEventMessage.push(action.payload)
 		},
 		cleanChat: state => {
-			state.cleanChat = !state.cleanChat
+			state.customEventMessage = []
 		},
 
 		setItemInfo: (state, action) => {
@@ -54,7 +54,7 @@ const eventReducer = createSlice({
 		updateShopItemsPrice: (state, action) => {
 			const { isSeduced } = action.payload
 
-			const updatedItems = shopItems.map(item => {
+			const updatedItems = state.shopItems.map(item => {
 				const newPrice = isSeduced ? item.price * 0.8 : item.price * 1.2
 
 				return { ...item, price: Math.round(newPrice) }
@@ -79,10 +79,6 @@ const eventReducer = createSlice({
 			}
 
 			state.shopItems = items
-		},
-
-		setLastEvent: (state, action) => {
-			state.lastEvent = action.payload
 		},
 
 		setSection: (state, action) => {
@@ -111,7 +107,7 @@ export const {
 	cleanItemInfo,
 	createRandomShopItems,
 	removePuchasedItem,
-	setLastEvent,
+
 	updateShopItemsPrice,
 	resetEventStore,
 	setSection,

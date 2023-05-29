@@ -11,7 +11,7 @@ function ArmorInfo({ item }) {
 
 	if (passiveEffects.extraArmor) armorFromEffect += passiveEffects.extraArmor
 
-	const realArmor = armor + armorFromEffect
+	const realArmor = (armor + armorFromEffect).toFixed(1)
 
 	return (
 		<div className="flex flex-column w-100 mb-2">
@@ -45,17 +45,17 @@ function PassiveEffects({ effects }) {
 				<img
 					src={luckyHitMultiplierIcon}
 					alt="Effect lucky hit multiplier icon"
-					title={`add ${luckyStatMultiplier}% lucky yo your hits`}
+					title={`add ${luckyStatMultiplier}% lucky`}
 				/>
 			)}
-			{reflectDamage && (
+			{/* reflectDamage && (
 				<img
 					src={reflectDamageIcon}
 					style={{ filter: "invert(0.8)" }}
 					alt="Reflect damage effect icon"
 					title={`return ${reflectDamage}% of damage to the enemy`}
 				/>
-			)}
+			) */}
 			{extraArmor && (
 				<img
 					src={extraArmorIcon}

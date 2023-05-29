@@ -21,7 +21,7 @@ function useReward() {
 
 	//Logic
 	const getMoney = () => {
-		const defaultMoney = Math.random() * 11 + 1
+		const defaultMoney = Math.random() * 9 + 7
 
 		const money = defaultMoney + defaultMoney * (trullyKarma - 1)
 

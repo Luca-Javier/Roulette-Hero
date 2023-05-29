@@ -6,18 +6,23 @@ function Music({ src }) {
 	const { music } = useSelector(state => state.userConfig)
 
 	const playVideo = () => {
-		const audio = new Audio()
-		audio.src = src
+		videoRef.current.src = src
 
-		videoRef.current.appendChild(audio).play()
+		music / 100 < 0.1 ? videoRef.current.pause() : videoRef.current.play()
 
 		document.removeEventListener("click", playVideo)
 	}
 
 	useEffect(() => {
 		document.addEventListener("click", playVideo)
+	}, [])
 
-		videoRef.current.volume = music / 100
+	useEffect(() => {
+		const volume = music / 100
+
+		volume < 0.1 ? videoRef.current.pause() : videoRef.current.play()
+
+		videoRef.current.volume = volume
 	}, [music])
 
 	return <audio autoPlay loop ref={videoRef} />

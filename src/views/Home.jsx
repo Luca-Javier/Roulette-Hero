@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
 import { GET_WHEEL_TEMPLATE_BEGINNING } from "@constants/wheelTemplates"
 import useResetApp from "@hooks/useResetApp"
+import { Helmet } from "react-helmet-async"
 
 function Home() {
 	const navigate = useNavigate()
@@ -24,25 +25,32 @@ function Home() {
 		import("./Playing").then(() => import("./AskName"))
 	}, [])
 
-	const goCharacter = async () => {
+	const goCharacter = async e => {
+		e.preventDefault()
 		await handleSpin(1)
 		navigate("/characters")
 		reset()
 	}
 
-	const goPlay = async () => {
+	const goPlay = async e => {
+		e.preventDefault()
 		await handleSpin(0)
 		if (numEvents) return navigate("/playing")
 		navigate("/ask-name")
 	}
 
-	const goOptions = async () => {
+	const goOptions = async e => {
+		e.preventDefault()
 		await handleSpin(2)
 		navigate("/options")
 	}
 
 	return (
 		<section className="flex flex-column h-100">
+			<Helmet>
+				<title>{t("meta.title")}</title>
+				<meta name="description" content={t("meta.description")} />
+			</Helmet>
 			<h1 className="title">Roulette Hero</h1>
 			<article className="grow-1">
 				<MyWheel />
@@ -51,6 +59,7 @@ function Home() {
 				<div className="flex-buttons">
 					<Button
 						text={numEvents ? t("continue") : t("play")}
+						to={numEvents ? "/playing" : "/ask-name"}
 						onClick={goPlay}
 						disabled={spin}
 					/>
@@ -58,10 +67,16 @@ function Home() {
 				<div className="flex-buttons">
 					<Button
 						text={t("characters")}
+						to="/characters"
 						onClick={goCharacter}
 						disabled={spin}
 					/>
-					<Button text={t("options")} onClick={goOptions} disabled={spin} />
+					<Button
+						text={t("options")}
+						to="/options"
+						onClick={goOptions}
+						disabled={spin}
+					/>
 				</div>
 			</article>
 		</section>

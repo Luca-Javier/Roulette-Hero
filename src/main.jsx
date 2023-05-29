@@ -10,16 +10,22 @@ import { createRoot } from "react-dom/client"
 import { PersistGate } from "redux-persist/integration/react"
 import "@i18n"
 import { NotificationProvider } from "@contexts/useNotification"
+import { LastEventProvider } from "./state/contexts/useLastEvent"
+import { HelmetProvider } from "react-helmet-async"
 
 createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
 		<WheelProvider>
 			<NotificationProvider>
-				<Provider store={store}>
-					<PersistGate loading={null} persistor={persistor}>
-						<App />
-					</PersistGate>
-				</Provider>
+				<LastEventProvider>
+					<HelmetProvider>
+						<Provider store={store}>
+							<PersistGate loading={null} persistor={persistor}>
+								<App />
+							</PersistGate>
+						</Provider>
+					</HelmetProvider>
+				</LastEventProvider>
 			</NotificationProvider>
 		</WheelProvider>
 	</React.StrictMode>

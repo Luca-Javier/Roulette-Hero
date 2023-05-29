@@ -38,7 +38,7 @@ export default {
 		win: "You win!",
 		die: "You died...",
 		"stole money": `You stoled ${money} coins from the enemy`,
-		"stole stones": `You stoled <b class='stones'>{{stones}}</b> stones from the enemy`,
+		"stole stones": `You stoled <b class='stone'>{{stones}}</b> stones from the enemy`,
 	},
 	reward: {
 		"get money": `You got ${money} coins`,
@@ -47,8 +47,8 @@ export default {
 	},
 	changeKarma: {
 		money: [
-			`You found ${c("money", "monedas")} in a homeless hat`,
-			`You found ${c("money", "monedas")} in a wallet`,
+			`You found ${c("money", "money")} in a homeless hat`,
+			`You found ${c("money", "money")} in a wallet`,
 		],
 		stones: [
 			`You found ${c("stones", "stones")} in a museum`,
