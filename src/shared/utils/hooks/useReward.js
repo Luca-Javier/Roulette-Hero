@@ -6,6 +6,10 @@ import { addMessage } from "@reducers/eventReducer"
 import { addBackpag, updateMoney, updateStones } from "@reducers/playerReducer"
 import { useTranslation } from "react-i18next"
 import useAchieve from "./useAchieves"
+import {
+	MONEY_REWARD_BY_TRULLYKARMA,
+	STONES_REWARD_BY_TRULLYKARMA,
+} from "@constants/luckyScale"
 
 function useReward() {
 	const { trullyKarma } = useSelector(state => state.player.stats)
@@ -16,24 +20,26 @@ function useReward() {
 	const rewards = new WeightedList([
 		["money", 42.5],
 		["stones", 42.5],
-		["item", 15000],
+		["item", 15],
 	])
 
 	//Logic
 	const getMoney = () => {
-		const defaultMoney = Math.random() * 9 + 7
+		const defaultMoney =
+			Math.random() * 9 + 7 + trullyKarma * MONEY_REWARD_BY_TRULLYKARMA
 
 		const money = defaultMoney + defaultMoney * (trullyKarma - 1)
 
-		return money > defaultMoney ? money : defaultMoney
+		return Math.floor(money > defaultMoney ? money : defaultMoney)
 	}
 
 	const getStones = () => {
-		const defaultStones = Math.random() * 3 + 2
+		const defaultStones =
+			Math.random() * 3 + 1 + trullyKarma * STONES_REWARD_BY_TRULLYKARMA
 
 		const stones = defaultStones + defaultStones * (trullyKarma - 1)
 
-		return stones > defaultStones ? stones : defaultStones
+		return Math.floor(stones > defaultStones ? stones : defaultStones)
 	}
 
 	const getRandomItem = () => {
@@ -51,14 +57,14 @@ function useReward() {
 		const reward = selectedReward || rewards.peek()[0]
 
 		if (reward == "money") {
-			const money = Math.floor(getMoney())
+			const money = getMoney()
 
 			dispatch(addMessage(t("get money", { money })))
 			dispatch(updateMoney(money))
 		}
 
 		if (reward == "stones") {
-			const stones = Math.floor(getStones())
+			const stones = getStones()
 
 			dispatch(addMessage(t("get stones", { stones })))
 			dispatch(updateStones(stones))

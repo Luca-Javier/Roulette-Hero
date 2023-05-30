@@ -53,7 +53,7 @@ function getBasicItemTemplate({ equipType, trullyKarma, selectedQuality }) {
 
 		//todo afectar esto con suerte
 		const randomVariant = Math.max(0.7, Math.random() * 1.3)
-		console.log(Math.floor(cost * randomVariant))
+
 		return Math.floor(cost * randomVariant)
 	}
 

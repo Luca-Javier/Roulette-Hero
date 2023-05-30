@@ -5,6 +5,7 @@ import optionButtonImg from "@assets/icons/others/options-button.svg"
 
 function GameHeader() {
 	const { name, className, money, stones } = useSelector(state => state.player)
+	const { isAttacking } = useSelector(state => state.fight)
 
 	return (
 		<section className="header">
@@ -17,7 +18,7 @@ function GameHeader() {
 				<p className="money">{money}</p>
 				<p className="stone">{stones}</p>
 				<div className="options-btn">
-					<Link to="/options">
+					<Link to={!isAttacking && "/options"}>
 						<img className="options-btn" src={optionButtonImg} alt="Options" />
 					</Link>
 				</div>

@@ -25,3 +25,8 @@ dist-ssr
 /trash
 .env
 
+
+/z9_ideas-list.txt
+/z9_bugs.txt
+/z9_Todo-list.txt
+/test.html

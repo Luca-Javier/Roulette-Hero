@@ -1,3 +1,5 @@
+import { ACTIVE_EFFECTS } from "../../shared/constants/items"
+
 const c = (color, txt) => `<b class='color-${color}'>${txt}</b>`
 const money = `<b class="money">{{ money }}</b>`
 
@@ -18,8 +20,8 @@ export default {
 	},
 	walking: {
 		walking: "Estas caminando...",
-		fight: "Un enemigo te encontro!",
-		backFight: "Encontraste un enemigo y estas destras de el",
+		fight: "Un enemigo te encontró!",
+		backFight: "Encontraste un enemigo y estás destras de el",
 		shop: "Encontraste una tienda",
 	},
 	fight: {
@@ -28,7 +30,7 @@ export default {
 		"player attack": `Hiciste un ataque {{attack}}`,
 		"player attack damage": `Hiciste <b class='color-good'>{{damage}}</b> de daño`,
 		"enemy dodged": `El enemigo ${c("wrong", "esquivo")} tu ataque`,
-		"enemy failed": `El enemigo ${c("good", "failed")}`,
+		"enemy failed": `El enemigo ${c("good", "falló")}`,
 		"enemy attack": `El enemigo hizo un ataque {{attack}}`,
 		"enemy attack damage": `El enemigo te hizo <b class='color-wrong'>{{damage}}</b> de daño`,
 		"player dodged": `Has ${c("good", "esquivado")} el ataque`,
@@ -36,6 +38,16 @@ export default {
 		die: "Moriste...",
 		"stole money": `Robaste ${money} monedas del enemigo`,
 		"stole stones": `Robaste <b class='stones'>{{stones}}</b> piedras del enemigo`,
+		attacks: {
+			normal: "normal",
+			critic: "crítico",
+			[ACTIVE_EFFECTS.stoleMoney]: "ladrón",
+			[ACTIVE_EFFECTS.superCritic]: "super crítico",
+			[ACTIVE_EFFECTS.lifeSteal]: "vampiro",
+			[ACTIVE_EFFECTS.strongestAttack]: "fuerte",
+			[ACTIVE_EFFECTS.luckyHit]: "suerte",
+			[ACTIVE_EFFECTS.stoleStones]: "minero",
+		},
 	},
 	reward: {
 		"get money": `Obtuviste ${money} monedas`,
@@ -82,9 +94,9 @@ export default {
     ${c("good", "(+0.2 karma)")}`,
 	],
 	getLucky: [
-		`Una anciana te vende un trebol ${money}. La compraías? 
+		`Una anciana te vende un trebol ${money}. La comprarías? 
     ${c("good", "(+1 lucky)")}`,
-		`Un anciano te ofrece una herradura ${money}. La compraías?
+		`Un anciano te ofrece una herradura ${money}. La comprarías?
     ${c("good", "(+1 lucky)")}`,
 	],
 }

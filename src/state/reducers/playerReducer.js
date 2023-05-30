@@ -3,9 +3,13 @@ import setArmorStats from "@functions/setArmorStats"
 import removeStatsFromArmor from "@functions/removeAmorStats"
 import getAllCharacters from "@constants/allCharacters"
 import { EQUIPTYPE } from "@constants/items"
+import updateLuckyStats from "@functions/updateLuckyStats.js"
+
+/**@typedef {import("../../shared/types/index.ts").PLayerInitialState} PLayerInitialState */
 
 const characters = getAllCharacters()
 
+/**@type {PLayerInitialState} */
 const initialState = {
 	name: "player name",
 	backpag: [],
@@ -113,28 +117,10 @@ const playerReducer = createSlice({
 		},
 
 		updateKarma: (state, action) => {
-			const karma = state.stats.karma,
-				lucky = state.stats.lucky
-
-			const newKarma = +(karma + action.payload).toFixed(1)
-
-			state.stats.karma = newKarma
-
-			const karmaFromLucky = newKarma * (lucky * 0.25)
-
-			state.stats.trullyKarma = newKarma + karmaFromLucky
+			updateLuckyStats({ state, karma: action.payload })
 		},
 		updateLucky: (state, action) => {
-			const karma = state.stats.karma,
-				lucky = state.stats.lucky
-
-			const newLucky = +(lucky + action.payload).toFixed(1)
-
-			state.stats.lucky = newLucky
-
-			const karmaFromLucky = karma * (newLucky * 0.25)
-
-			state.stats.trullyKarma = karma + karmaFromLucky
+			updateLuckyStats({ state, lucky: action.payload })
 		},
 	},
 })

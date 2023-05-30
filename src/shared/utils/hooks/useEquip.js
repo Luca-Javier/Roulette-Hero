@@ -15,8 +15,6 @@ function useEquip({ item }) {
 	const { leftHand, rightHand, leftFoot, rightFoot } = equipment
 	const { unlockKnight } = useAchieve()
 
-	//const [isSelectingSide, setIsSelectingSide] = useState("")
-
 	//Logic
 	const doeEquipItem = (item, oldItem) => {
 		dispatch(equipItem({ item }))
@@ -50,10 +48,11 @@ function useEquip({ item }) {
 
 			const equipKey = leftFoot ? "rightFoot" : "leftFoot"
 
+			const oldItem = equipment[equipKey]
+
 			return doeEquipItem({ ...item, equipKey }, oldItem)
 		}
 
-		//? hace algo equipKey
 		const oldItem = equipment[item.equipKey || item.type]
 
 		doeEquipItem(item, oldItem)
@@ -68,8 +67,6 @@ function useEquip({ item }) {
 	return {
 		equip,
 		equipOnSide,
-		//isSelectingSide,
-		//setIsSelectingSide,
 		equipment,
 	}
 }

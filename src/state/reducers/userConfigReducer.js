@@ -5,7 +5,7 @@ const initialState = {
 	music: 0,
 	sounds: 100,
 	unlockedCharacters: import.meta.env.VITE_UNLOCK_ACHIEVES
-		? [1, 2, 3, 99]
+		? [1, 2, 3, 97, 98, 99]
 		: [1],
 	language: "",
 	achieves: import.meta.env.VITE_UNLOCK_ACHIEVES ? Object.values(ACHIEVES) : [],

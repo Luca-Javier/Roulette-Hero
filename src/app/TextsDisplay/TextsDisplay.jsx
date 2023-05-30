@@ -1,11 +1,12 @@
 import React, { useEffect } from "react"
 
 import { useDispatch, useSelector } from "react-redux"
-import { addMessage } from "@reducers/eventReducer"
+import { addMessage, cleanChat } from "@reducers/eventReducer"
 import { useTranslation } from "react-i18next"
+import { decode } from "html-entities"
 
 function TextsDisplay() {
-	const { customEventMessage, event } = useSelector(state => state.event)
+	const { customEventMessages, event } = useSelector(state => state.event)
 	const dispatch = useDispatch()
 	const { t } = useTranslation("messages", { keyPrefix: "walking" })
 
@@ -14,16 +15,21 @@ function TextsDisplay() {
 		if (message.slice(0, 8) === "walking.") return
 
 		dispatch(addMessage(message))
+
+		return () => dispatch(cleanChat())
 	}, [event])
 
 	return (
 		<section className="texts-display">
 			<ul className="scroll">
-				{customEventMessage.length !== 0 &&
-					[...customEventMessage]
+				{customEventMessages.length !== 0 &&
+					[...customEventMessages]
 						.reverse()
 						.map((message, i) => (
-							<li key={i} dangerouslySetInnerHTML={{ __html: message }} />
+							<li
+								key={i}
+								dangerouslySetInnerHTML={{ __html: decode(message) }}
+							/>
 						))}
 			</ul>
 		</section>

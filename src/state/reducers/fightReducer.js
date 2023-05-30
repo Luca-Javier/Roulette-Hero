@@ -23,6 +23,7 @@ const initialState = {
 	isFighting: false,
 	animationClass: "",
 	isEnemyAttacking: false,
+	isAttacking: false,
 }
 
 const fightReducer = createSlice({
@@ -40,6 +41,12 @@ const fightReducer = createSlice({
 
 			state.isFighting = true
 			state.enemy = enemy
+		},
+		startAttackProcess: state => {
+			state.isAttacking = true
+		},
+		endAttackProcess: state => {
+			state.isAttacking = false
 		},
 		preparePlayerToFight: (state, action) => {
 			const playerData = action.payload.playerData,
@@ -135,6 +142,8 @@ export const {
 	doEnemyAttack,
 	endFight,
 	resetFightStore,
+	startAttackProcess,
+	endAttackProcess,
 } = fightReducer.actions
 
 export default fightReducer.reducer

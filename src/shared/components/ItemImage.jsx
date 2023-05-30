@@ -1,3 +1,5 @@
+import React from "react"
+
 function ItemImage({ item, width, className, ...args }) {
 	const styles = {
 		width: width || null,

@@ -3,6 +3,16 @@ import getBasicItemTemplate from "./getBasicItemTemplate"
 import getWeaponEffects from "./getWeaponEffects"
 import { UPDGRADE_QUALITY, DOWNGRADE_QUALITY } from "@constants/forjeItems"
 
+/**@typedef {import("../../types/index").Weapon} Weapon */
+
+/**
+ *
+ * @param {object} props
+ * @param {Weapon} props.item
+ *
+ * @returns {Weapon}
+ *
+ */
 function getForgedWeapon({ item, trullyKarma, downgrade }) {
 	const { id, type, variant, src, equipType, quality } = item
 

@@ -1,3 +1,5 @@
+import { ACTIVE_EFFECTS } from "../../shared/constants/items"
+
 const c = (color, txt) => `<b class="color-${color}">${txt}</b>`
 const money = `<b class="money">{{ money }}</b>`
 
@@ -39,6 +41,16 @@ export default {
 		die: "You died...",
 		"stole money": `You stoled ${money} coins from the enemy`,
 		"stole stones": `You stoled <b class='stone'>{{stones}}</b> stones from the enemy`,
+		attacks: {
+			normal: "normal",
+			critic: "critic",
+			[ACTIVE_EFFECTS.stoleMoney]: "stole",
+			[ACTIVE_EFFECTS.superCritic]: "super critic",
+			[ACTIVE_EFFECTS.lifeSteal]: "vampire",
+			[ACTIVE_EFFECTS.strongestAttack]: "strong",
+			[ACTIVE_EFFECTS.luckyHit]: "lucky",
+			[ACTIVE_EFFECTS.stoleStones]: "mining",
+		},
 	},
 	reward: {
 		"get money": `You got ${money} coins`,

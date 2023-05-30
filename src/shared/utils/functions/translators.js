@@ -12,7 +12,7 @@ export const i18n_alt = ({ type, quality, variant }) => {
 
 export const i18n_random = ({ ns, key, interpolations }) => {
 	const lng = i18n.language
-
+	console.log(lng)
 	const resources = i18n.getResource(lng, ns, key)
 
 	const t = i18n.getFixedT(lng, ns)

@@ -11,6 +11,7 @@ import {
 	removePuchasedItem,
 	setEvent,
 	setSection,
+	cleanShopItems,
 } from "@reducers/eventReducer"
 import getWalkTime from "@functions/getWalkingTime"
 import useReward from "./useReward"
@@ -27,7 +28,7 @@ import { SECTIONS } from "@constants/sections"
 import { useLastEvent } from "@contexts/useLastEvent"
 
 function useEvent() {
-	const { event, section } = useSelector(state => state.event)
+	const { event, section, shopItems } = useSelector(state => state.event)
 	const { money: playerMoney, stats } = useSelector(state => state.player)
 	const { trullyKarma } = stats
 	const dispatch = useDispatch()
@@ -87,7 +88,7 @@ function useEvent() {
 
 			setCustomCallback(() => () => {
 				getReward(possibleRewards)
-				dispatch(updateKarma(-0.3))
+				dispatch(updateKarma(-0.2))
 			})
 
 			let key = "changeKarma."
@@ -112,7 +113,7 @@ function useEvent() {
 
 			setCustomCallback(() => () => {
 				getReward(possibleRewards)
-				dispatch(updateLucky(-2))
+				dispatch(updateLucky(-1))
 			})
 
 			let key = "changeLucky."
@@ -172,8 +173,9 @@ function useEvent() {
 			)
 			return undefined
 		}
-		if (event === EVENT.shop) {
+		if (event === EVENT.shop && shopItems.length === 0) {
 			dispatch(setSection(SECTIONS.shop))
+
 			dispatch(createRandomShopItems({ trullyKarma }))
 
 			return undefined
@@ -191,6 +193,7 @@ function useEvent() {
 		dispatch(cleanChat())
 		dispatch(cleanItemInfo())
 		dispatch(addEventNum())
+		dispatch(cleanShopItems())
 		setTimeout(() => dispatch(setRandomEvent()), getWalkTime())
 	}, [event])
 

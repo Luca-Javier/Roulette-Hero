@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import useEvent from "@hooks/useEvent"
 import { useDispatch, useSelector } from "react-redux"
 import useWheel from "@contexts/useWheel"
-import { WHEEL_SEDUCE_SHOP } from "@constants/wheelTemplates"
 import {
 	addMessage,
 	updateShopItemsPrice,
@@ -11,18 +10,25 @@ import {
 import { useTranslation } from "react-i18next"
 import { i18n_random } from "@functions/translators"
 import { SECTIONS } from "@constants/sections"
+import { GET_WHEEL_SEDUCE_SHOP } from "@constants/wheelTemplates"
+import { updateMoney } from "@reducers/playerReducer"
 
 const effects = () => {
 	const dispatch = useDispatch()
 	const { walk, buyItem } = useEvent()
 	const { shopItems } = useSelector(state => state.event)
-	const { handleSpin, configWheel } = useWheel()
+	const { handleSpin, configWheel, spin } = useWheel()
 	const { t } = useTranslation("buttons")
+	const { t: t2 } = useTranslation("messages")
+	const {
+		money,
+		stats: { trullyKarma },
+	} = useSelector(state => state.player)
 
 	const [isBuying, setIsBuying] = useState(false)
 
 	useEffect(() => {
-		configWheel(WHEEL_SEDUCE_SHOP)
+		configWheel(GET_WHEEL_SEDUCE_SHOP({ trullyKarma }))
 	}, [])
 
 	const resetSection = () => setIsBuying(false)
@@ -33,6 +39,9 @@ const effects = () => {
 	}
 
 	const seduce = async () => {
+		if (money === 0) return dispatch(addMessage(t2("shop.not enough money")))
+
+		dispatch(updateMoney(-1))
 		const res = await handleSpin()
 
 		if (res === "normal") return
@@ -56,6 +65,7 @@ const effects = () => {
 		resetSection,
 		shopItems,
 		buyItem,
+		spin,
 	}
 }
 

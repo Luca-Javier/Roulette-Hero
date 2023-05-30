@@ -32,11 +32,23 @@ const resources = {
 	},
 }
 
+const languages = ["en", "es"]
+
+const detectedLanguage = navigator.language || navigator.userLanguage
+
+let lng
+
+if (languages.includes(detectedLanguage)) lng = detectedLanguage
+if (languages.includes(detectedLanguage.slice(0, 2)))
+	lng = detectedLanguage.slice(0, 2)
+
 i18n.use(initReactI18next).init({
-	lng: "en",
+	lng: lng ?? "en",
 	debug: Boolean(import.meta.env.VITE_DEBUG_I18N),
 	//returnNull: true,
 	fallbackLng: "en",
+	whitelist: languages,
+
 	resources,
 })
 

@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import useWheel from "@contexts/useWheel"
 import { useState } from "react"
@@ -9,34 +9,18 @@ import {
 	resetFightStore,
 	setAnimation,
 	toggleIsEnemyAttacking,
+	endAttackProcess,
+	startAttackProcess,
 } from "@reducers/fightReducer"
 import { addMessage, setEvent } from "@reducers/eventReducer"
 import { EVENT } from "@constants/events"
-import { useNavigate } from "react-router-dom"
-import { WHEEL_LUCKY_SHOOT, WHEEL_RUN } from "@constants/wheelTemplates"
 import useReward from "@hooks/useReward"
 import { useTranslation } from "react-i18next"
 import { ACTIVE_EFFECTS } from "@constants/items"
 import { updateMoney, updateStones } from "@reducers/playerReducer"
-import { CRITIC_SCALE } from "../../../shared/constants/fight"
+import { CRITIC_DAMAGE_SCALE, ANIMATION_ATTACKS } from "@constants/fight"
+import { GET_WHEEL_LUCKY_SHOOT, GET_WHEEL_RUN } from "@constants/wheelTemplates"
 
-const animationAttacks = {
-	player: {
-		normal: "player-attack",
-		//critic: "player-attack",
-		dodged: "player-dodged",
-		fail: "player-fail",
-		kill: "one-shot",
-	},
-	enemy: {
-		normal: "enemy-attack",
-		//critic: "enemy-attack",
-		dodged: "enemy-dodged",
-		fail: "enemy-fail",
-	},
-}
-
-//💀💀💀💀💀💀
 function effects() {
 	const { handleSpin, configWheel } = useWheel()
 	const { player, enemy, isEnemyAttacking } = useSelector(state => state.fight)
@@ -44,14 +28,18 @@ function effects() {
 	const dispatch = useDispatch()
 	const { getReward } = useReward()
 	const { t } = useTranslation("messages", { keyPrefix: "fight" })
-	const { leftHand, rightHand } = useSelector(state => state.player.equipment)
+	const { t: t2 } = useTranslation("messages", { keyPrefix: "fight.attacks" })
 
-	// States
+	const { leftHand, rightHand } = useSelector(state => state.player.equipment)
+	const { trullyKarma } = useSelector(state => state.player.stats)
+
 	const [selectedAttack, setSelectedAttack] = useState(null)
 	const [isFightDone, setIsFightDone] = useState(false)
+	//? Esto se puede reemplzar con isAttacking del state
 	const [isDisabled, setIsDisabled] = useState(false)
 	const [isRunning, setIsRunning] = useState(false)
 	const [isAttacking, setIsAttacking] = useState(false)
+	const wasRewarded = useRef(true)
 
 	// Events
 	const attack = attack => {
@@ -61,7 +49,7 @@ function effects() {
 	}
 
 	const run = () => {
-		configWheel(WHEEL_RUN)
+		configWheel(GET_WHEEL_RUN({ trullyKarma }))
 		setIsDisabled(true)
 		setIsRunning(true)
 	}
@@ -79,12 +67,12 @@ function effects() {
 		}
 
 		setSelectedAttack({ ...attack, ...possibleAttacks })
-		configWheel(WHEEL_LUCKY_SHOOT)
+		configWheel(GET_WHEEL_LUCKY_SHOOT(trullyKarma))
 	}
 
 	const oneShot = () => {
 		configWheel(enemy.wheelConfig)
-		dispatch(setAnimation(animationAttacks.player.kill))
+		dispatch(setAnimation(ANIMATION_ATTACKS.player.kill))
 
 		setTimeout(() => {
 			dispatch(endAnimation())
@@ -109,12 +97,13 @@ function effects() {
 		}, 2000)
 	}
 
+	//Player run
 	useEffect(() => {
 		if (!isRunning) {
-			setIsDisabled(false)
 			return undefined
 		}
 		;(async () => {
+			dispatch(startAttackProcess())
 			const res = await handleSpin()
 			configWheel(enemy.wheelConfig)
 
@@ -125,15 +114,18 @@ function effects() {
 				}, 2000)
 			}
 			setIsRunning(false)
+			dispatch(endAttackProcess())
 		})()
 	}, [isRunning])
 
-	//Player Attack
+	//Player attack
 	useEffect(() => {
 		if (selectedAttack === null) return undefined
 
+		dispatch(startAttackProcess())
 		setIsDisabled(true)
 		;(async () => {
+			wasRewarded.current = false
 			let res = await handleSpin(
 				import.meta.env.VITE_SELECTED_ATTACK_FIGHT || undefined
 			)
@@ -145,14 +137,14 @@ function effects() {
 			}
 
 			if (res === "fail") dispatch(addMessage(t("player failed")))
-			else dispatch(addMessage(t("player attack", { attack: res })))
+			else dispatch(addMessage(t("player attack", { attack: t2(res) })))
 
 			const attackDodged =
 				res !== "fail" ? Math.random() * 100 < enemy.dodge : false
 
 			if (attackDodged) res = "dodged"
 
-			dispatch(setAnimation(animationAttacks.player[res] || "player-attack"))
+			dispatch(setAnimation(ANIMATION_ATTACKS.player[res] || "player-attack"))
 
 			if (import.meta.env.VITE_DEBUG_FIGHT)
 				console.log({
@@ -210,14 +202,14 @@ function effects() {
 			let res = await handleSpin()
 
 			if (res === "fail") dispatch(addMessage(t("enemy failed")))
-			else dispatch(addMessage(t("enemy attack", { attack: res })))
+			else dispatch(addMessage(t("enemy attack", { attack: t2(res) })))
 
 			const attackDodged =
 				res !== "fail" ? Math.random() * 100 < player.dodge : false
 
 			if (attackDodged) res = "dodged"
 
-			dispatch(setAnimation(animationAttacks.enemy[res] || "enemy-attack"))
+			dispatch(setAnimation(ANIMATION_ATTACKS.enemy[res] || "enemy-attack"))
 
 			setTimeout(() => {
 				dispatch(endAnimation())
@@ -226,7 +218,9 @@ function effects() {
 
 				const possibleAttacks = {
 					normal: Math.round(enemy.attack - playerDefense),
-					critic: Math.round(enemy.attack * CRITIC_SCALE - playerDefense),
+					critic: Math.round(
+						enemy.attack * CRITIC_DAMAGE_SCALE - playerDefense
+					),
 					fail: 0,
 					dodged: 0,
 				}
@@ -242,6 +236,7 @@ function effects() {
 							: addMessage(t("player dodged"))
 					)
 
+				dispatch(endAttackProcess())
 				dispatch(toggleIsEnemyAttacking())
 				setIsDisabled(false)
 			}, 1000)
@@ -252,10 +247,13 @@ function effects() {
 	useEffect(() => {
 		if (player.currentHealth === 0) dispatch(addMessage(t("die")))
 		else if (enemy.currentHealth === 0) {
-			dispatch(addMessage(t("win")))
-			getReward()
+			if (!wasRewarded.current) {
+				getReward()
+				dispatch(addMessage(t("win")))
+			}
 		} else return undefined
 
+		dispatch(endAttackProcess())
 		setIsDisabled(false)
 		setIsFightDone(true)
 	}, [player.currentHealth, enemy.currentHealth])

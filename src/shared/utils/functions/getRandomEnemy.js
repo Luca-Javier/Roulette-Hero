@@ -1,5 +1,9 @@
 import enemies from "@constants/enemies.json"
-import { ENEMY_STATS_SCALE } from "@constants/fight"
+import {
+	ENEMY_STATS_SCALE,
+	EARLY_ENEMY_STATS_SCALE,
+	NUMVENTS_FOR_END_EARLY,
+} from "@constants/fight"
 
 /**
  * Generates a random enemy with calculated stats using numEvents
@@ -19,13 +23,16 @@ function getRandomEnemy({ playerStats, numEvents }) {
 	const { lucky } = playerStats
 
 	const scalability = stat => {
-		/* const min = 0.75 * stat * numEvents,
-			randomMax = Math.random() * stat * numEvents
-
-		return Math.round(Math.max(min, randomMax)) */
-
 		const random = Math.random() * stat
-		return Math.round(stat * numEvents * ENEMY_STATS_SCALE + random)
+
+		return Math.round(
+			random +
+				stat *
+					numEvents *
+					(NUMVENTS_FOR_END_EARLY > numEvents
+						? EARLY_ENEMY_STATS_SCALE
+						: ENEMY_STATS_SCALE)
+		)
 	}
 
 	const health = scalability(7)
@@ -37,7 +44,6 @@ function getRandomEnemy({ playerStats, numEvents }) {
 	enemy.critickProb = specialMovesProbs
 	enemy.dodge = specialMovesProbs
 
-	console.log({ attack: enemy.attack })
 	return enemy
 }
 

@@ -10,14 +10,13 @@ import { showItemInfo } from "@reducers/eventReducer"
 function UserStats() {
 	const { stats, equipment } = useSelector(state => state.player)
 	const { health, armor, critic, dodge, karma, lucky } = stats,
-		{ helmet, leftHand, chest, rightHand, legs, leftFoot, rightFoot } =
-			equipment
+		{ helmet, leftHand, chest, rightHand, leg, leftFoot, rightFoot } = equipment
 
 	const headAlt = "empty head equipment",
 		leftHandAlt = "empty hand equipment",
 		rightHandAlt = "empty hand equipment",
 		chestAlt = "empty chestplate",
-		legsAlt = "empty legs equipment",
+		legAlt = "empty leg equipment",
 		footAlt = "empty foot equipment"
 
 	return (
@@ -33,14 +32,14 @@ function UserStats() {
 				</ul>
 			</article>
 			<article className="stats-equipment-container">
-				<div className="flex justify-center gap-1">
+				<div className="flex justify-center gap-1 pointers">
 					<ItemStatsImage
 						item={helmet}
 						emptyAlt={headAlt}
 						emptyImg={emptyHeadImg}
 					/>
 				</div>
-				<div className="flex gap-1">
+				<div className="flex gap-1 pointers">
 					<ItemStatsImage
 						rotate={true}
 						item={leftHand}
@@ -58,14 +57,14 @@ function UserStats() {
 						emptyImg={emptyHandImg}
 					/>
 				</div>
-				<div className="flex justify-center gap-1">
+				<div className="flex justify-center gap-1 pointers">
 					<ItemStatsImage
-						item={legs}
-						emptyAlt={legsAlt}
+						item={leg}
+						emptyAlt={legAlt}
 						emptyImg={emptyPantImg}
 					/>
 				</div>
-				<div className="flex gap-1 justify-center">
+				<div className="flex gap-1 justify-center pointers">
 					<ItemStatsImage
 						item={leftFoot}
 						emptyAlt={footAlt}
@@ -94,7 +93,9 @@ function ItemStatsImage({ item, emptyImg, emptyAlt, rotate }) {
 			alt={item?.alt || emptyAlt}
 			title={item?.alt || emptyAlt}
 			className={`quality ${item?.quality || ""} ${rotate ? "rotate" : ""}`}
-			onClick={() => dispatch(showItemInfo(item))}
+			onClick={() => {
+				if (item) dispatch(showItemInfo(item))
+			}}
 		/>
 	)
 }

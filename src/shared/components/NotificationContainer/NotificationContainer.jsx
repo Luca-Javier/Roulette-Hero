@@ -1,4 +1,4 @@
-import { useNotification } from "../../../state/contexts/useNotification"
+import { useNotification } from "@contexts/useNotification"
 import styles from "./index.module.css"
 
 function NotificationContainer() {

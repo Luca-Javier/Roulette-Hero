@@ -61,3 +61,35 @@ export type Events = {
 	changeKarma: string
 	changeLucky: string
 }
+
+export type PLayerInitialState = {
+	id: number
+	description: string
+	img: string
+	className: string
+	money: number
+	stones: number
+	name: string
+	stats: {
+		health: number
+		armor: number
+		critic: number
+		dodge: number
+		lucky: number
+		karma: number
+		trullyKarma: number
+	}
+	classEffects: {
+		extraHammerDamage?: number
+	}
+	equipment: {
+		helmet: Armor | null
+		leftHand: Weapon | null
+		chest: Armor | null
+		rightHand: Weapon | null
+		leg: Armor | null
+		leftFoot: Armor | null
+		rightFoot: Armor | null
+	}
+	backpag: []
+}

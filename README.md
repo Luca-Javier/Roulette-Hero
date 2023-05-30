@@ -8,13 +8,13 @@ You can be both a kind and fortunate person, as well as a rude, arrogant, and un
 
 🕹️ [Click here to play](https://SOOOOOON)
 
-# Docs
+<!-- # Docs
 
 Docs generated with JSDoc to explain the most importance things about the code.
 
 :bookmark_tabs: [Click here to see the docs](https://SOOOOOON)
 
-Also you can see the tests for understand better the code.
+Also you can see the tests for understand better the code. -->
 
 # Support
 

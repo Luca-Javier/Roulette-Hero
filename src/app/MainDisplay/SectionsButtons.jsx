@@ -14,6 +14,7 @@ import { setSection } from "@reducers/eventReducer"
 
 function SectionsButtons() {
 	const { section, event } = useSelector(state => state.event)
+	const { isAttacking } = useSelector(state => state.fight)
 
 	return (
 		<article className="interactive-sections">
@@ -44,7 +45,7 @@ function SectionsButtons() {
 						<b>VS</b>
 					</SectionBtn>
 
-					<SectionBtn section={SECTIONS.seeSwords}>
+					<SectionBtn section={SECTIONS.seeSwords} disabled={isAttacking}>
 						<SwordsIcon />
 					</SectionBtn>
 				</>
@@ -61,7 +62,7 @@ function SectionsButtons() {
 
 export default SectionsButtons
 
-function SectionBtn({ section, children, disabledInFight }) {
+function SectionBtn({ section, children, disabledInFight, ...args }) {
 	const { section: s } = useSelector(state => state.event)
 	const dispatch = useDispatch()
 
@@ -71,9 +72,10 @@ function SectionBtn({ section, children, disabledInFight }) {
 			onClick={() => dispatch(setSection(section))}
 			disabled={
 				disabledInFight
-					? section === SECTIONS.fighting || section === SECTIONS.seeSwords
+					? s === SECTIONS.fighting || s === SECTIONS.seeSwords
 					: false
-			}>
+			}
+			{...args}>
 			{children}
 		</button>
 	)

@@ -56,6 +56,7 @@ html {
 body {
 	margin: 0;
 	overflow-x: hidden;
+	overflow-y: hidden;
 }
 
 img {
@@ -112,6 +113,9 @@ a {
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
 	color: var(--lucky-btn);
+}
+.lucky-btn:disabled {
+	filter: grayscale(0.1);
 }
 
 /* *------------------------------------Wheel------------------------------------ */
@@ -472,7 +476,6 @@ progress[value]::-webkit-progress-bar {
 }
 .select-side img {
 	width: 50px;
-	cursor: pointer;
 }
 .select-side button {
 	flex-grow: unset;
@@ -683,6 +686,7 @@ progress[value]::-webkit-progress-bar {
 .rotate {
 	transform: scaleX(-1);
 }
+
 /* *--------------------------------Global Styles-------------------------------- */
 
 main {
@@ -856,4 +860,12 @@ input {
 	line-height: 0.01px;
 	content: "";
 	animation: walking-points 3s infinite 4s;
+}
+
+.pointers > * {
+	cursor: pointer;
+}
+
+.testt ~ div {
+	display: none;
 }

@@ -33,12 +33,12 @@ const effects = () => {
 		!spin
 
 	const forje = async () => {
-		configWheel(GET_FORJE_WHEEL(item.quality))
+		configWheel(GET_FORJE_WHEEL({ quality: item.quality, trullyKarma }))
 		setPrice(FORJE_PRICE[item.quality])
 	}
 
 	const luckyForje = async () => {
-		configWheel(GET_LUCKY_FORJE_WHEEL(item.quality))
+		configWheel(GET_LUCKY_FORJE_WHEEL({ quality: item.quality, trullyKarma }))
 		setPrice(1)
 	}
 

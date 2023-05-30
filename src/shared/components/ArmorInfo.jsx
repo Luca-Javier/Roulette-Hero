@@ -1,6 +1,6 @@
 import React from "react"
 import luckyHitMultiplierIcon from "@assets/icons/effects/lucky-hit-multiplier.svg"
-import reflectDamageIcon from "@assets/icons/effects/reflect-damage.ico"
+//import reflectDamageIcon from "@assets/icons/effects/reflect-damage.ico"
 import extraArmorIcon from "@assets/icons/effects/extra-armor.svg"
 import ItemImage from "./ItemImage"
 
@@ -26,7 +26,7 @@ function ArmorInfo({ item }) {
 				<p className="stat-icon health">{health}</p>
 				<p className="stat-icon armor">
 					{armor}
-					{realArmor !== armor && <span> = {realArmor}</span>}
+					{realArmor != armor && <span> = {realArmor}</span>}
 				</p>
 				<p className="money">{price}</p>
 			</article>

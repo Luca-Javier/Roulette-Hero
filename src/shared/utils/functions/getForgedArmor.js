@@ -7,6 +7,16 @@ import getArmorEffects from "./getArmorEffects"
 import getBasicItemTemplate from "./getBasicItemTemplate"
 import { i18n_alt } from "./translators"
 
+/**@typedef {import("../../types/index").Armor} Armor */
+
+/**
+ *
+ * @param {object} props
+ * @param {Armor} props.item
+ *
+ * @returns {Armor}
+ *
+ */
 function getForgedArmor({ item, trullyKarma, downgrade }) {
 	const { id, type, variant, src, equipType, quality } = item
 

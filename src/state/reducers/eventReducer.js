@@ -6,9 +6,8 @@ import { SECTIONS } from "@constants/sections"
 
 const initialState = {
 	event: EVENT.waiting,
-
 	numEvents: 0,
-	customEventMessage: [],
+	customEventMessages: [],
 	cleanChat: "initial",
 	itemInfo: null,
 	shopItems: [],
@@ -25,6 +24,9 @@ const eventReducer = createSlice({
 		setEvent: (state, action) => {
 			state.event = action.payload
 		},
+		cleanShopItems: state => {
+			state.shopItems = []
+		},
 		setRandomEvent: state => {
 			state.event = EVENT_PROBS.peek()[0]
 		},
@@ -32,10 +34,11 @@ const eventReducer = createSlice({
 			state.numEvents++
 		},
 		addMessage: (state, action) => {
-			state.customEventMessage.push(action.payload)
+			if (state.customEventMessages.at(-1) !== action.payload)
+				state.customEventMessages.push(action.payload)
 		},
 		cleanChat: state => {
-			state.customEventMessage = []
+			state.customEventMessages = []
 		},
 
 		setItemInfo: (state, action) => {
@@ -107,7 +110,7 @@ export const {
 	cleanItemInfo,
 	createRandomShopItems,
 	removePuchasedItem,
-
+	cleanShopItems,
 	updateShopItemsPrice,
 	resetEventStore,
 	setSection,

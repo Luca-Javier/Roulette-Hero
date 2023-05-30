@@ -1,3 +1,4 @@
+import React from "react"
 import equipIcon from "@assets/icons/sections/equipment.svg"
 import backpackIcon from "@assets/icons/sections/backpack.svg"
 import swordsIcon from "@assets/icons/sections/swords-section.svg"

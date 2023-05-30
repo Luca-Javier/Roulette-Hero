@@ -26,13 +26,11 @@ let timeWheelFinish = 1200
 
 //todo separar logica y quizas las configs de arriba en un configs local de esta carpeta
 const WheelProvider = ({ children }) => {
-	//States
 	const [spin, setSpin] = useState(false)
 	const [winner, setWinner] = useState(0)
 	const [data, setData] = useState(initialData)
 	const [config, setConfig] = useState(initialConfig)
 
-	//Events
 	const configWheel = props => {
 		if (props.data) setData(props.data)
 		if (props.config) setConfig({ ...initialConfig, ...props.config })
@@ -61,7 +59,6 @@ const WheelProvider = ({ children }) => {
 		)
 	}
 
-	//Exports
 	const exports = {
 		handleSpin,
 		winner,
