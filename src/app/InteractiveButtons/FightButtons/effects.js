@@ -158,12 +158,11 @@ function effects() {
 			setTimeout(() => {
 				dispatch(endAnimation())
 
-				const attackDamage =
-					typeof selectedAttack.possibleAttacks[res] !== "object"
-						? selectedAttack.possibleAttacks[res]
-						: selectedAttack.possibleAttacks[res].attack
+				const attack = selectedAttack.possibleAttacks[res]
 
-				dispatch(attackEnemy({ res, attackDamage }))
+				const attackDamage = typeof attack !== "object" ? attack : attack.attack
+
+				dispatch(attackEnemy({ res, attack }))
 
 				if (res !== "fail")
 					dispatch(
@@ -173,17 +172,22 @@ function effects() {
 					)
 
 				if (res === ACTIVE_EFFECTS.stoleMoney) {
-					const money = selectedAttack.possibleAttacks[res].effect
+					const money = attack.effect
 
 					dispatch(addMessage(t("stole money", { money })))
 					dispatch(updateMoney(money))
 				}
 
 				if (res === ACTIVE_EFFECTS.stoleStones) {
-					const stones = selectedAttack.possibleAttacks[res].effect
+					const stones = attack.effect
 
 					dispatch(addMessage(t("stole stones", { stones })))
 					dispatch(updateStones(stones))
+				}
+				if (res === ACTIVE_EFFECTS.lifeSteal) {
+					const lifeSteal = Math.floor(attack.attack * attack.effect)
+
+					dispatch(addMessage(t("life steal", { lifeSteal })))
 				}
 
 				setSelectedAttack(null)

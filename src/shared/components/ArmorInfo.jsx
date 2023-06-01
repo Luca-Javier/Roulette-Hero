@@ -3,6 +3,7 @@ import luckyHitMultiplierIcon from "@assets/icons/effects/lucky-hit-multiplier.s
 //import reflectDamageIcon from "@assets/icons/effects/reflect-damage.ico"
 import extraArmorIcon from "@assets/icons/effects/extra-armor.svg"
 import ItemImage from "./ItemImage"
+import { ARMOR_EFFECTS } from "@constants/items"
 
 function ArmorInfo({ item }) {
 	const { alt, health, armor, passiveEffects, price } = item
@@ -37,7 +38,10 @@ function ArmorInfo({ item }) {
 export default ArmorInfo
 
 function PassiveEffects({ effects }) {
-	const { luckyStatMultiplier, reflectDamage, extraArmor } = effects
+	const {
+		[ARMOR_EFFECTS.luckyStatMultiplier]: luckyStatMultiplier,
+		[ARMOR_EFFECTS.extraArmor]: extraArmor,
+	} = effects
 
 	return (
 		<>

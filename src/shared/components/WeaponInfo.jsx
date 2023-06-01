@@ -8,6 +8,7 @@ import superCriticIcon from "@assets/icons/effects/super-critic.svg"
 import strongestIcon from "@assets/icons/effects/strongest-attack.svg"
 import { useSelector } from "react-redux"
 import ItemImage from "./ItemImage"
+import { ACTIVE_EFFECTS, WEAPON_PASSIVE_EFFECTS } from "@constants/items"
 
 function WeaponInfo({ item }) {
 	const {
@@ -74,8 +75,11 @@ function ClassEffects({ effects }) {
 }
 
 function PassiveEffects({ effects }) {
-	const { luckyHitMultiplier, hammerDamageMultiplier, rapierCriticMultiplier } =
-		effects
+	const {
+		[WEAPON_PASSIVE_EFFECTS.luckyHitMultiplier]: luckyHitMultiplier,
+		[WEAPON_PASSIVE_EFFECTS.hammerDamageMultiplier]: hammerDamageMultiplier,
+		[WEAPON_PASSIVE_EFFECTS.rapierCriticMultiplier]: rapierCriticMultiplier,
+	} = effects
 
 	return (
 		<>
@@ -106,7 +110,11 @@ function PassiveEffects({ effects }) {
 }
 
 function ActiveEffects({ effects }) {
-	const { lifeSteal, superCritic, strongestAttack } = effects
+	const {
+		[ACTIVE_EFFECTS.lifeSteal]: lifeSteal,
+		[ACTIVE_EFFECTS.superCritic]: superCritic,
+		[ACTIVE_EFFECTS.strongestAttack]: strongestAttack,
+	} = effects
 
 	return (
 		<>

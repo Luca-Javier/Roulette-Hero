@@ -38,6 +38,7 @@ export default {
 		die: "Moriste...",
 		"stole money": `Robaste ${money} monedas del enemigo`,
 		"stole stones": `Robaste <b class='stones'>{{stones}}</b> piedras del enemigo`,
+		"life steal": `Robaste <b class='color-good'>{{lifeSteal}}</b> vida del enemigo`,
 		attacks: {
 			normal: "normal",
 			critic: "crítico",

@@ -77,8 +77,7 @@ const fightReducer = createSlice({
 			state.player.dodge = dodge
 		},
 		attackEnemy: (state, action) => {
-			const res = action.payload.res,
-				attack = action.payload.attackDamage
+			const { res, attack } = action.payload
 
 			if (
 				res === "normal" ||
@@ -92,6 +91,7 @@ const fightReducer = createSlice({
 				state.enemy.currentHealth -= attack
 
 			if (res === ACTIVE_EFFECTS.lifeSteal) {
+				console.log({ attack })
 				state.enemy.currentHealth -= attack.attack
 
 				const lifeSteal = Math.floor(attack.attack * attack.effect)

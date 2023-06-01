@@ -41,6 +41,7 @@ export default {
 		die: "You died...",
 		"stole money": `You stoled ${money} coins from the enemy`,
 		"stole stones": `You stoled <b class='stone'>{{stones}}</b> stones from the enemy`,
+		"life steal": `You stole <b class='color-good'>{{lifeSteal}}</b> life from the enemy`,
 		attacks: {
 			normal: "normal",
 			critic: "critic",
