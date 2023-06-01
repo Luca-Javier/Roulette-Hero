@@ -6,7 +6,7 @@ A WEB game to play for free where all depends on your luck.
 
 You can be both a kind and fortunate person, as well as a rude, arrogant, and unfortunate one
 
-🕹️ [Click here to play](https://SOOOOOON)
+🕹️ [Click here to play](https://roulette-hero.vercel.app)
 
 <!-- # Docs
 
