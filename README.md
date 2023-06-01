@@ -1,4 +1,4 @@
-![Roulette Hero thumbnail](https://github.com/Luca-Javier/Roulette-Hero/assets/86807758/95c771ae-0998-4f5b-b67e-897b2dedbf32)
+![Roulette Hero thumbnail]([https://github.com/Luca-Javier/Roulette-Hero/assets/86807758/95c771ae-0998-4f5b-b67e-897b2dedbf32](https://user-images.githubusercontent.com/86807758/242654307-4af7a0b3-9308-428b-b02b-29fe53048928.jpg))
 
 # description
 
