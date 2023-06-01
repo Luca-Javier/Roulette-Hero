@@ -24,6 +24,7 @@ If you found any issue, bug, recommendation or whatever, please, let me know by 
 - 🔵 [Linkedin](https://www.linkedin.com/in/luca-javier-a103a2231/)
 - :purple_circle: [Instagram](https://www.instagram.com/luca_javier15/)
 - 🔴 [Gmail](mailto:luca.jav45@gmail.com)
+- :orange_circle:[Portfolio](https://luca-javier.github.io/portfolio/)
 
 # Future updates
 

@@ -54,7 +54,10 @@ function About() {
 					</a>
 				</li>
 				<li>
-					<a href="https://PORTFOLIO" target="_blank" rel="noopener">
+					<a
+						href="https://luca-javier.github.io/portfolio/"
+						target="_blank"
+						rel="noopener">
 						<img src={portfolioIcon} alt="Programming icon <>" />{" "}
 						<span>Porfolio</span>
 					</a>
