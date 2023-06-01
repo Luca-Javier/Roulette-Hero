@@ -47,7 +47,7 @@ export default () => {
 function Layout({ children }) {
 	return (
 		<>
-			<Tittle />
+			{/* <Tittle /> */}
 			<main
 				className="border border-3 border-white rounded-4 flex-grow-1 overflow-hidden"
 				style={{ position: "relative" }}>

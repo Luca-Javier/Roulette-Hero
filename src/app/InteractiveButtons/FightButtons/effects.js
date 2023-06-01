@@ -77,7 +77,7 @@ function effects() {
 		setTimeout(() => {
 			dispatch(endAnimation())
 			dispatch(addMessage(t("one shot")))
-			dispatch(attackEnemy({ res: "kill", attackDamage: 9999 }))
+			dispatch(attackEnemy({ res: "kill", attack: 9999 }))
 
 			setSelectedAttack(null)
 		}, 1000)

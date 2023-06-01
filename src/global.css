@@ -46,6 +46,7 @@ html {
 	font-size: 16px;
 	color: var(--color-text);
 	background-color: var(--color-first);
+	overflow: hidden;
 }
 *,
 *::before,
@@ -694,7 +695,7 @@ main {
 	max-height: var(--height);
 	flex-grow: 1;
 	border: medium solid var(--color-second);
-	border-radius: 15px;
+	border-radius: 9px;
 }
 #root {
 	width: 100vw;

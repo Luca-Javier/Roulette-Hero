@@ -51,7 +51,7 @@ function Home() {
 				<title>{t("meta.title")}</title>
 				<meta name="description" content={t("meta.description")} />
 			</Helmet>
-			<h1 className="title">Roulette Hero</h1>
+			<h1 className="title brand-title">Roulette Hero</h1>
 			<article className="grow-1">
 				<MyWheel />
 			</article>
