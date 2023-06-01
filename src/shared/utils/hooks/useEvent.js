@@ -34,7 +34,7 @@ function useEvent() {
 	const dispatch = useDispatch()
 	const { getReward } = useReward()
 	const { t } = useTranslation("messages")
-	const { unlockAchieve } = useAchieve()
+	const { unlockHammerBro } = useAchieve()
 	const { lastEvent } = useLastEvent()
 
 	const [customCallback, setCustomCallback] = useState()
@@ -59,7 +59,7 @@ function useEvent() {
 		if (playerMoney < item.price * 2)
 			return dispatch(addMessage(t("shop.not enough money")))
 
-		if (item.type === "hammer") unlockAchieve(ACHIEVES["hammer bro"])
+		if (item.type === "hammer") unlockHammerBro()
 
 		dispatch(removePuchasedItem({ item }))
 

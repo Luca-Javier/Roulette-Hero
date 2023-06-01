@@ -5,7 +5,6 @@ import {
 	updateStatsFromArmor,
 } from "@reducers/playerReducer"
 import { useDispatch, useSelector } from "react-redux"
-import useAchieve from "./useAchieves"
 import { SECTIONS } from "@constants/sections"
 import { resetSection, setSection } from "@reducers/eventReducer"
 
@@ -13,7 +12,6 @@ function useEquip({ item }) {
 	const dispatch = useDispatch()
 	const equipment = useSelector(state => state.player.equipment)
 	const { leftHand, rightHand, leftFoot, rightFoot } = equipment
-	const { unlockKnight } = useAchieve()
 
 	//Logic
 	const doeEquipItem = (item, oldItem) => {
@@ -37,8 +35,6 @@ function useEquip({ item }) {
 
 			const oldItem = equipment[equipKey]
 
-			unlockKnight()
-
 			return doeEquipItem({ ...item, equipKey }, oldItem)
 		}
 
@@ -53,7 +49,7 @@ function useEquip({ item }) {
 			return doeEquipItem({ ...item, equipKey }, oldItem)
 		}
 
-		const oldItem = equipment[item.equipKey || item.type]
+		const oldItem = equipment[item.type]
 
 		doeEquipItem(item, oldItem)
 	}

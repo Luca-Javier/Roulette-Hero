@@ -11,10 +11,10 @@ import updateLuckyStats from "./updateLuckyStats"
  *
  */
 function removeStatsFromArmor({ state, item }) {
-	const armor = (state.stats.armor - item.armor).toFixed(1)
+	const armor = +(state.stats.armor - item.armor).toFixed(1)
 
 	state.stats.health -= item.health
-	state.stats.armor -= armor
+	state.stats.armor = armor
 
 	const effects = item.passiveEffects
 
@@ -30,7 +30,11 @@ function removeStatsFromArmor({ state, item }) {
 		updateLuckyStats({ state, lucky: newLucky - lastLucky })
 	}
 
-	if (effects.extraArmor) state.stats.armor -= effects.extraArmor
+	if (effects.extraArmor) {
+		const withoutExtraArmor = +(armor - effects.extraArmor).toFixed(1)
+
+		state.stats.armor = withoutExtraArmor
+	}
 }
 
 export default removeStatsFromArmor

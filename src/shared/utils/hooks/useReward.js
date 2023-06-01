@@ -18,9 +18,9 @@ function useReward() {
 	const { unlockHammerBro } = useAchieve()
 
 	const rewards = new WeightedList([
-		["money", 42.5],
-		["stones", 42.5],
-		["item", 15],
+		["money", 40],
+		["stones", 40],
+		["item", 20],
 	])
 
 	//Logic

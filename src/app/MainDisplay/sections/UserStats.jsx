@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import emptyHeadImg from "@assets/armors/empty/head.svg"
 import emptyHandImg from "@assets/armors/empty/hand.svg"
@@ -6,9 +6,12 @@ import emptyChestImg from "@assets/armors/empty/chest.svg"
 import emptyPantImg from "@assets/armors/empty/pantalones.svg"
 import emptyFootImg from "@assets/armors/empty/foot.svg"
 import { showItemInfo } from "@reducers/eventReducer"
+import useAchieve from "@hooks/useAchieves"
 
 function UserStats() {
 	const { stats, equipment } = useSelector(state => state.player)
+	const { unlockKnight } = useAchieve()
+
 	const { health, armor, critic, dodge, karma, lucky } = stats,
 		{ helmet, leftHand, chest, rightHand, leg, leftFoot, rightFoot } = equipment
 
@@ -18,6 +21,8 @@ function UserStats() {
 		chestAlt = "empty chestplate",
 		legAlt = "empty leg equipment",
 		footAlt = "empty foot equipment"
+
+	useEffect(() => unlockKnight(), [equipment])
 
 	return (
 		<section className="flex gap-1 between h-100 align-center">

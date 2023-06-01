@@ -8,7 +8,7 @@ function NotificationContainer() {
 		<article
 			onClick={close}
 			className={`${styles.notifyContainer} ${
-				isVisible !== null && (isVisible ? styles.isActive : styles.isDesactive)
+				isVisible && (isVisible ? styles.isActive : styles.isDesactive)
 			}`}>
 			<div className={styles.notify}>{content}</div>
 		</article>

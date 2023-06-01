@@ -9,6 +9,8 @@
 	align-items: center;
 	min-height: 4rem;
 	opacity: 0;
+	display: flex;
+	transition: opacity 1s, transform 1s;
 }
 
 .notify {
@@ -31,11 +33,11 @@
 }
 
 .notify-container.isActive {
-	animation: slideIn 1s ease-in-out forwards;
-	display: flex;
+	transform: translateY(15px);
+	opacity: 1;
 }
 
-@keyframes slideOut {
+/* @keyframes slideOut {
 	0% {
 		display: flex;
 		opacity: 1;
@@ -51,3 +53,4 @@
 	display: none;
 	animation: slideOut 1s ease-in-out forwards;
 }
+ */

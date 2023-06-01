@@ -15,9 +15,10 @@ const NotificationProvider = ({ children }) => {
 	const [isVisible, setisVisible] = useState(null)
 
 	const notificate = content => {
-		setContent(content)
-		setisVisible(true)
-
+		setTimeout(() => {
+			setisVisible(true)
+			setContent(content)
+		}, 200)
 		setTimeout(() => setisVisible(false), 4000)
 	}
 
