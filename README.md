@@ -38,4 +38,4 @@ If you found any issue, bug, recommendation or whatever, please, let me know by 
 
 Thanks for playing and reading this. I hope you enjoy it.
 
-This is my first own project of moderate scale and I'am happy to share it :nerd_face:
+This is my first own project of moderate scale and I'am happy to share it :nerd_face:. Were 3 months of learning and dedication and [Design](https://www.figma.com/file/5ljrHplz1RyOXxleIF9GyT/Roulette-Hero?type=design&node-id=16%3A49&t=na6jjPiQ66DnlucW-1)
